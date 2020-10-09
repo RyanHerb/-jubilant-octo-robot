@@ -2,6 +2,9 @@ extends CanvasLayer
 
 signal start_game
 
+func _ready():
+	pass # Replace with function body.
+
 func show_message(text):
 	$Titre.text = text
 	$Titre.show()
@@ -16,6 +19,9 @@ func update_money(value):
 func new_game():
 	$Titre.show()
 	$StartButton.show()
+	$Lore.hide()
+	$Money.hide()
+	$NextLoreButton.hide()
 
 func _on_Start_pressed():
 	$Titre.hide()
