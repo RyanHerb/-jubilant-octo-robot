@@ -11,7 +11,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
+z_index = -5
 texture = ExtResource( 4 )
 offset = Vector2( 320, 180 )
 
@@ -19,6 +20,7 @@ offset = Vector2( 320, 180 )
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [node name="Star" type="Node2D" parent="."]
+position = Vector2( 320, 180 )
 
 [node name="Light2D" type="Light2D" parent="Star"]
 texture = ExtResource( 3 )

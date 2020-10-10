@@ -2,19 +2,20 @@ extends Node2D
 
 var Planet = preload("res://Planet.tscn")
 
+var viewport_size
 var planets = []
+var dragged_planet
 
-var min_step = 40
+var min_step = 70
 var max_step = 70
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	var screen_size = get_viewport_rect().size
 	var p
 	var direction
 	var radius
-	var viewport_size = get_viewport_rect().size
+	viewport_size = get_viewport_rect().size
 	$Star.position.x = viewport_size.x/2
 	$Star.position.y = viewport_size.y/2
 	for n in range(4):
@@ -30,6 +31,8 @@ func _ready():
 		radius = radius.rotated(p.rotation)
 		p.position += radius * (n+1)
 		p.connect("dragsignal", self, "_on_planet_drag")
+		p.position.x = clamp(p.position.x, 0, viewport_size.x)
+		p.position.y = clamp(p.position.y, 0, viewport_size.y)
 		
 func _draw():
 	var radius
@@ -39,7 +42,12 @@ func _draw():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-func _on_planet_drag():
+	if (typeof(dragged_planet) > 0) and (dragged_planet.dragging):
+		var mousepos = get_viewport().get_mouse_position()
+		dragged_planet.position = Vector2(mousepos.x, mousepos.y)
+		dragged_planet.position.x = clamp(dragged_planet.position.x, 0, viewport_size.x)
+		dragged_planet.position.y = clamp(dragged_planet.position.y, 0, viewport_size.y)
 	update()
+	
+func _on_planet_drag(target):
+	dragged_planet = target
