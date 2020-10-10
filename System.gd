@@ -27,6 +27,7 @@ func _ready():
 		p.rotation = direction
 		radius = radius.rotated(p.rotation)
 		p.position += radius * (n+1)
+		p.connect("dragsignal", self, "_on_planet_drag")
 		
 func _draw():
 	var radius
@@ -36,4 +37,7 @@ func _draw():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+
+func _on_planet_drag():
 	update()
