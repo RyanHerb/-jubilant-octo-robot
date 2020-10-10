@@ -1,6 +1,8 @@
 extends Node2D
 
-var descriptif = "rien"
+signal mission_accepte
+signal mission_refuse
+
 var min_temperature = 0
 var max_temperature = 1
 var atmosphere = "oxygen"
@@ -34,22 +36,45 @@ func check_if_done(min_temp, max_temp, atm):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	hide_all()
+	
+func hide_all():
+	$Accepter.hide()
+	$Refuser.hide()
+	$Description.hide()
+
+func show_intro_mission():
+	$Accepter.show()
+	$Description.show()
+	#$Refuser.show()
 
 
 func update_descr(text):
-	descriptif = text
+	$Description.text = text
 	
-func get_desc():
-	return descriptif	
-
 func update_values(min_tmp, max_tmp, gaz, money):
 	min_temperature = min_tmp
 	max_temperature = max_tmp
 	atmosphere = gaz
 	budget = money
 
+func get_desc():
+	return $Description.text
+	
+func get_budget():
+	return budget
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
+func _on_Accepter_pressed():
+	emit_signal("mission_accepte", self)
+	$Accepter.hide()
+	$Refuser.hide()
+	$Description.hide()
+
+
+func _on_Refuser_pressed():
+	$Accepter.hide()
+	$Refuser.hide()
+	$Description.hide()
+	emit_signal("mission_refuse")

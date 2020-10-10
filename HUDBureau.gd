@@ -3,6 +3,8 @@ extends Node2D
 export (PackedScene) var Mission
 
 signal mission_finished
+signal see_mission
+signal see_missionIntro
 
 
 func _ready():
@@ -16,39 +18,35 @@ func hide_all():
 	$Money.hide()
 	$Prestige.hide()
 	$RecapMission.hide()
-	$AcceptMission.hide()
-	$DescMission.hide()
 	$FinishMissionButton.hide()
 	$Fin.hide()
-	$RefuseMission.hide()
+	$NewMission.hide()
 	
 #func miniature_mission():
 	#$RecapMission.text = str($Mission.max_temperature)
 	#comment construir le text ???
 #affiche aussi le pourcentage de finition de la mission
 
+func show_interface():
+	$Money.show()
+	$Prestige.show()
+
 func start_game():
-	var cpt
+	pass
 
 func end_game():
 	$Fin.show()
 
-func show_intro_mission():
-	$AcceptMission.show()
-	#$DescMission.text = mission.getDescr()
-	$DescMission.show()
-	$RefuseMission.show()
+func new_mission():
+	$NewMission.show()
 
-func update_description_mission(text):
-	$DescMission.text = text
+func update_money(somme):
+	$Money.text = str(int($Money.text) + somme)
 
-
-func _on_AcceptMission_pressed():
+func mission_validated(mission):
 	$RecapMission.show()
-	$AcceptMission.hide()
-	$DescMission.hide()
 	$FinishMissionButton.show()
-	$RefuseMission.hide()
+	update_money(mission.get_budget())
 	#ajouter budget à Money
 
 
@@ -58,8 +56,11 @@ func _on_FinishMissionButton_pressed():
 	emit_signal("mission_finished")
 
 
-func _on_RefuseMission_pressed():
-	$AcceptMission.hide()
-	$RefuseMission.hide()
-	$DescMission.hide()
-	emit_signal("mission_finished")
+func _on_AffichMissionButton_pressed():
+	$AffichMissionButton.hide()
+	emit_signal("see_mission")
+
+
+func _on_NewMission_pressed():
+	$NewMission.hide()
+	emit_signal("see_missionIntro")

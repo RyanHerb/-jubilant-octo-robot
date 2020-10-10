@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUDBureau.gd" type="Script" id=2]
@@ -17,20 +17,11 @@ font_data = ExtResource( 1 )
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=12]
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 35
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 1 )
 
 [node name="HUDBureau" type="Node2D"]
@@ -88,32 +79,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AcceptMission" type="Button" parent="."]
-margin_left = 348.0
-margin_top = 271.0
-margin_right = 402.0
-margin_bottom = 298.0
-custom_fonts/font = SubResource( 12 )
-text = "accept"
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="DescMission" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 165.5
-margin_top = 5.0
-margin_right = 514.5
-margin_bottom = 138.0
-custom_fonts/font = SubResource( 6 )
-text = "test descriptif"
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
 [node name="FinishMissionButton" type="Button" parent="."]
 margin_left = 525.0
 margin_top = 181.0
@@ -145,16 +110,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RefuseMission" type="Button" parent="."]
-margin_left = 141.0
-margin_top = 273.5
-margin_right = 243.0
-margin_bottom = 297.5
-custom_fonts/font = SubResource( 13 )
-text = "decline"
+[node name="NewMission" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 295.0
+margin_right = 348.0
+margin_bottom = 315.0
+text = "new mission"
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="AcceptMission" to="." method="_on_AcceptMission_pressed"]
+[connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="pressed" from="FinishMissionButton" to="." method="_on_FinishMissionButton_pressed"]
-[connection signal="pressed" from="RefuseMission" to="." method="_on_RefuseMission_pressed"]
+[connection signal="pressed" from="NewMission" to="." method="_on_NewMission_pressed"]
