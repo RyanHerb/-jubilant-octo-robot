@@ -61,6 +61,15 @@ func update_values(min_tmp, max_tmp, gaz, money):
 func get_desc():
 	return $Description.text
 	
+func get_min_tmp():
+	return min_temperature
+
+func get_max_tmp():
+	return max_temperature
+	
+func get_gaz():
+	return atmosphere
+	
 func get_budget():
 	return budget
 

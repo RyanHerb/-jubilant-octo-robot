@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Mission.gd" type="Script" id=1]
+[ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
 
 [node name="Mission" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,10 +15,15 @@ __meta__ = {
 }
 
 [node name="Accepter" type="Button" parent="."]
-margin_left = 178.0
-margin_top = 292.0
-margin_right = 245.0
-margin_bottom = 312.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 274.5
+margin_top = 297.0
+margin_right = 341.5
+margin_bottom = 317.0
+custom_fonts/font = SubResource( 1 )
 text = "accepter"
 __meta__ = {
 "_edit_group_": true,
@@ -22,10 +31,10 @@ __meta__ = {
 }
 
 [node name="Refuser" type="Button" parent="."]
-margin_left = 362.0
-margin_top = 296.0
-margin_right = 419.0
-margin_bottom = 316.0
+margin_left = 449.0
+margin_top = 301.0
+margin_right = 506.0
+margin_bottom = 321.0
 text = "refuser"
 __meta__ = {
 "_edit_group_": true,

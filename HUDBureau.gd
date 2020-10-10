@@ -9,57 +9,74 @@ signal see_missionIntro
 
 func _ready():
 	$AffichMissionButton.show()
-	$Money.show()
-	$Prestige.show()
+	show_money_prestige()
 	start_game()
 
-func hide_all():
-	$AffichMissionButton.hide()
-	$Money.hide()
-	$Prestige.hide()
-	$RecapMission.hide()
-	$FinishMissionButton.hide()
-	$Fin.hide()
-	$NewMission.hide()
-	
-#func miniature_mission():
-	#$RecapMission.text = str($Mission.max_temperature)
-	#comment construir le text ???
-#affiche aussi le pourcentage de finition de la mission
-
-func show_interface():
-	$Money.show()
-	$Prestige.show()
 
 func start_game():
 	pass
 
 func end_game():
 	$Fin.show()
+	hide_money_prestige()
 
 func new_mission():
 	$NewMission.show()
 
+func mission_validated(mission):
+	$Objectifs.show()
+	$FinishMissionButton.show()
+	update_money(mission.get_budget())
+	$Objectifs.clear()
+	$Objectifs.add_text("Objectif:\n")
+	$Objectifs.add_text(str(mission.get_min_tmp()))
+	$Objectifs.add_text(" - ")
+	$Objectifs.add_text(str(mission.get_max_tmp()))
+	$Objectifs.add_text("\n")
+	$Objectifs.add_text(mission.get_gaz())
+
+
 func update_money(somme):
 	$Money.text = str(int($Money.text) + somme)
 
-func mission_validated(mission):
-	$RecapMission.show()
-	$FinishMissionButton.show()
-	update_money(mission.get_budget())
-	#ajouter budget à Money
+func update_prestige():
+	$Prestige.text = str(int($Prestige.text)+ 1)
+
+
+func hide_all():
+	$AffichMissionButton.hide()
+	hide_money_prestige()
+	$Objectifs.hide()
+	$FinishMissionButton.hide()
+	$Fin.hide()
+	$NewMission.hide()
+
+func show_interface():
+	show_money_prestige()
+
+func show_money_prestige():
+	$Money.show()
+	$SymboleMoney.show()
+	$Prestige.show()
+	$SymbolePrestige.show()
+
+func hide_money_prestige():
+	$Money.hide()
+	$SymboleMoney.hide()
+	$Prestige.hide()
+	$SymbolePrestige.hide()
+
 
 
 func _on_FinishMissionButton_pressed():
 	$FinishMissionButton.hide()
-	$RecapMission.hide()
+	$Objectifs.hide()
+	update_prestige()
 	emit_signal("mission_finished")
-
 
 func _on_AffichMissionButton_pressed():
 	$AffichMissionButton.hide()
 	emit_signal("see_mission")
-
 
 func _on_NewMission_pressed():
 	$NewMission.hide()
