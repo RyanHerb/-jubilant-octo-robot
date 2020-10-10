@@ -11,7 +11,7 @@ var max_step = 70
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Temperature.hide()
+	$ParamPlanete.hide()
 	randomize()
 	var p
 	var direction
@@ -32,6 +32,7 @@ func _ready():
 		radius = radius.rotated(p.rotation)
 		p.position += radius * (n+1)
 		p.connect("dragsignal", self, "_on_planet_drag")
+		p.connect("clicked", self, "show_param_planet")
 		p.position.x = clamp(p.position.x, 0, viewport_size.x)
 		p.position.y = clamp(p.position.y, 0, viewport_size.y)
 		
@@ -53,13 +54,19 @@ func _process(delta):
 
 func _on_planet_drag(target):
 	dragged_planet = target
-	compute_temp(target.distance_to_star())
-	$Temperature.show()
+	show_param_planet((target))
 	#entourer la planete d'un cercle
 	
 	#calculer distance au soleil
 	#puis afficher temperature de cette planete
 	#afficher cout de l'operation
-
+func show_param_planet(target):
+	compute_temp(target.distance_to_star())
+	$ParamPlanete.show()
+	
 func compute_temp(dist):
-	$Temperature.add_text(str(-dist*1.5 + 300))
+	$ParamPlanete.clear()
+	$ParamPlanete.add_text(str(int(-dist*1.5 + 300)))
+	$ParamPlanete.add_text(" - ")
+	$ParamPlanete.add_text(str(int(-dist*1.4 + 310)))
+	$ParamPlanete.add_text("\n oxygene")

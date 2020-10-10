@@ -51,7 +51,11 @@ func show_intro_mission():
 
 func update_descr(text):
 	$Description.text = text
-	
+
+
+func get_buget():
+	return budget
+
 func update_values(min_tmp, max_tmp, gaz, money):
 	min_temperature = min_tmp
 	max_temperature = max_tmp
