@@ -2,9 +2,11 @@ extends Node2D
 
 export (PackedScene) var Mission
 
+signal mission_accepted
 signal mission_finished
 signal see_mission
 signal see_missionIntro
+
 
 
 func _ready():
@@ -36,6 +38,7 @@ func mission_validated(mission):
 	$Objectifs.add_text(mission.get_gaz())
 
 
+
 func update_money(somme):
 	$Money.text = str(int($Money.text) + somme)
 
@@ -65,6 +68,14 @@ func hide_money_prestige():
 	$SymboleMoney.hide()
 	$Prestige.hide()
 	$SymbolePrestige.hide()
+
+
+func _on_AcceptMission_pressed():
+	$RecapMission.show()
+	$AcceptMission.hide()
+	$DescMission.hide()
+	$FinishMissionButton.show()
+	emit_signal("mission_accepted")
 
 
 

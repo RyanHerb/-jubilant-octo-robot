@@ -2,8 +2,6 @@ extends Node
 
 export (PackedScene) var Mission
 
-#var current_mission
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HUD.new_game()
@@ -18,8 +16,6 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
-
-	#current_mission = mission
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
