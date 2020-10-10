@@ -40,10 +40,14 @@ func _ready():
 func update_descr(text):
 	descriptif = text
 	
-func update_values(min_tmp, max_tmp, gaz):
+func get_desc():
+	return descriptif	
+
+func update_values(min_tmp, max_tmp, gaz, money):
 	min_temperature = min_tmp
 	max_temperature = max_tmp
 	atmosphere = gaz
+	budget = money
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
