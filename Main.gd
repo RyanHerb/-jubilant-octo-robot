@@ -26,21 +26,31 @@ func start_scenario():
 	var mission = create_mission_1()
 	add_child(mission)
 	$HUDBureau.show_intro_mission()
+	yield($EntreMissions, "timeout")
+	mission = create_mission_2()
+	$HUDBureau.show_intro_mission()
+	yield($EntreMissions, "timeout")
+	mission = create_mission_3()
+	$HUDBureau.show_intro_mission()
 
 func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
 	mission.update_descr("blubliblablop bliblbubla blablabloublou")
-	mission.update_values(0, 40, "oxygene")
+	mission.update_values(0, 40, "oxygene", 150)
 	return mission
 	
 func create_mission_2():
-	var mission = Mission.instance()
+	var mission = preload("res://Mission.tscn").instance()
 	mission.update_descr("blubliblablop bliblbubla blablabloublou")
-	mission.update_values(-20, 10, "azote")
+	mission.update_values(-20, 10, "azote", 400)
 	return mission
 	
 func create_mission_3():
-	var mission = Mission.instance()
+	var mission = preload("res://Mission.tscn").instance()
 	mission.update_descr("blubliblablop bliblbubla blablabloublou")
-	mission.update_values(20, 55, "zemon")
+	mission.update_values(20, 55, "zemon", 1000)
 	return mission
+
+
+func _on_HUDBureau_mission_finished():
+	$EntreMissions.start()

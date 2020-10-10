@@ -2,6 +2,8 @@ extends Node2D
 
 export (PackedScene) var Mission
 
+signal mission_finished
+
 
 func _ready():
 	$AffichMissionButton.show()
@@ -16,6 +18,7 @@ func hide_all():
 	$RecapMission.hide()
 	$AcceptMission.hide()
 	$DescMission.hide()
+	$FinishMissionButton.hide()
 	
 #func miniature_mission():
 	#$RecapMission.text = str($Mission.max_temperature)
@@ -28,6 +31,7 @@ func start_game():
 
 func show_intro_mission():
 	$AcceptMission.show()
+	#$DescMission.text = mission.getDescr()
 	$DescMission.show()
 
 
@@ -35,3 +39,11 @@ func _on_AcceptMission_pressed():
 	$RecapMission.show()
 	$AcceptMission.hide()
 	$DescMission.hide()
+	$FinishMissionButton.show()
+	#ajouter budget à Money
+
+
+func _on_FinishMissionButton_pressed():
+	$FinishMissionButton.hide()
+	$RecapMission.hide()
+	emit_signal("mission_finished")
