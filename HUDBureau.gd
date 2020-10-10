@@ -19,6 +19,7 @@ func hide_all():
 	$AcceptMission.hide()
 	$DescMission.hide()
 	$FinishMissionButton.hide()
+	$Fin.hide()
 	
 #func miniature_mission():
 	#$RecapMission.text = str($Mission.max_temperature)
@@ -28,11 +29,16 @@ func hide_all():
 func start_game():
 	var cpt
 
+func end_game():
+	$Fin.show()
 
 func show_intro_mission():
 	$AcceptMission.show()
 	#$DescMission.text = mission.getDescr()
 	$DescMission.show()
+
+func update_description_mission(text):
+	$DescMission.text = text
 
 
 func _on_AcceptMission_pressed():

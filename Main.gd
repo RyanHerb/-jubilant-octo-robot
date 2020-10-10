@@ -27,27 +27,38 @@ func start_scenario():
 	add_child(mission)
 	$HUDBureau.show_intro_mission()
 	yield($EntreMissions, "timeout")
+	$EntreMissions.stop()
 	mission = create_mission_2()
 	$HUDBureau.show_intro_mission()
 	yield($EntreMissions, "timeout")
+	$EntreMissions.stop()
 	mission = create_mission_3()
 	$HUDBureau.show_intro_mission()
+	yield($EntreMissions, "timeout")
+	$EntreMissions.stop()
+	$HUDBureau.end_game()
 
 func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
-	mission.update_descr("blubliblablop bliblbubla blablabloublou")
+	var descri = "bliblibloblo blubli blio"
+	mission.update_descr(descri)
+	$HUDBureau.update_description_mission(descri)
 	mission.update_values(0, 40, "oxygene", 150)
 	return mission
 	
 func create_mission_2():
 	var mission = preload("res://Mission.tscn").instance()
-	mission.update_descr("blubliblablop bliblbubla blablabloublou")
+	var descri = "ceci est la deuxieme mission"
+	mission.update_descr(descri)
+	$HUDBureau.update_description_mission(descri)
 	mission.update_values(-20, 10, "azote", 400)
 	return mission
 	
 func create_mission_3():
 	var mission = preload("res://Mission.tscn").instance()
-	mission.update_descr("blubliblablop bliblbubla blablabloublou")
+	var descri = "au secours c'est la fin"
+	mission.update_descr(descri)
+	$HUDBureau.update_description_mission(descri)
 	mission.update_values(20, 55, "zemon", 1000)
 	return mission
 
