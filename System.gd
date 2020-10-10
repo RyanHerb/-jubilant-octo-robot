@@ -4,6 +4,9 @@ var Planet = preload("res://Planet.tscn")
 
 var planets = []
 
+var min_step = 25
+var max_step = 50
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -11,18 +14,20 @@ func _ready():
 	$Star.position = Vector2(screen_size.x/2, screen_size.y/2)
 	var p
 	var direction
-	var step = 50
-	var velocity = Vector2(step, 0)
+	var radius
 	for n in range(4):
 		p = Planet.instance()
 		planets.append(p)
 		add_child(p)
 	
+		var s = rand_range(min_step, max_step)
+		radius = Vector2(s, 0)
 		direction = $Star.rotation + rand_range(-PI, PI)
 		p.position = $Star.position
 		p.rotation = direction
-		velocity = velocity.rotated(p.rotation)
-		p.position += velocity*(n+1)
+		radius = radius.rotated(p.rotation)
+		p.position += radius * (n+1)
+		p.connect("dragsignal", self, "_on_planet_drag")
 		
 func _draw():
 	var radius
@@ -32,4 +37,7 @@ func _draw():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+
+func _on_planet_drag():
 	update()
