@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://System.gd" type="Script" id=1]
 [ext_resource path="res://assets/stars/orange.png" type="Texture" id=2]
 [ext_resource path="res://assets/light.png" type="Texture" id=3]
-[ext_resource path="res://assets/backgrounds/stars.png" type="Texture" id=4]
+[ext_resource path="res://assets/backgrounds/bg_star_system_empty.png" type="Texture" id=4]
+[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers1.png" type="Texture" id=5]
+[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers2.png" type="Texture" id=6]
 
 [node name="System" type="Node2D"]
 position = Vector2( -2.38111, -7.62939e-06 )
@@ -15,6 +17,27 @@ __meta__ = {
 [node name="Background" type="Sprite" parent="."]
 z_index = -5
 texture = ExtResource( 4 )
+offset = Vector2( 320, 180 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2( 1, 0 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -4
+motion_offset = Vector2( 1, 0 )
+
+[node name="bg_star_layer1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -4
+texture = ExtResource( 5 )
+offset = Vector2( 320, 180 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -3
+motion_offset = Vector2( 2, 0 )
+
+[node name="bg_star_layer2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+z_index = -3
+texture = ExtResource( 6 )
 offset = Vector2( 320, 180 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
