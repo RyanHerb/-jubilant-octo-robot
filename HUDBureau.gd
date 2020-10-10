@@ -20,6 +20,7 @@ func hide_all():
 	$DescMission.hide()
 	$FinishMissionButton.hide()
 	$Fin.hide()
+	$RefuseMission.hide()
 	
 #func miniature_mission():
 	#$RecapMission.text = str($Mission.max_temperature)
@@ -36,6 +37,7 @@ func show_intro_mission():
 	$AcceptMission.show()
 	#$DescMission.text = mission.getDescr()
 	$DescMission.show()
+	$RefuseMission.show()
 
 func update_description_mission(text):
 	$DescMission.text = text
@@ -46,10 +48,18 @@ func _on_AcceptMission_pressed():
 	$AcceptMission.hide()
 	$DescMission.hide()
 	$FinishMissionButton.show()
+	$RefuseMission.hide()
 	#ajouter budget à Money
 
 
 func _on_FinishMissionButton_pressed():
 	$FinishMissionButton.hide()
 	$RecapMission.hide()
+	emit_signal("mission_finished")
+
+
+func _on_RefuseMission_pressed():
+	$AcceptMission.hide()
+	$RefuseMission.hide()
+	$DescMission.hide()
 	emit_signal("mission_finished")
