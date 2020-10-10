@@ -15,6 +15,7 @@ func hide_all():
 	$Prestige.hide()
 	$RecapMission.hide()
 	$AcceptMission.hide()
+	$DescMission.hide()
 	
 #func miniature_mission():
 	#$RecapMission.text = str($Mission.max_temperature)
@@ -26,8 +27,11 @@ func start_game():
 
 
 func show_intro_mission():
-	$AcceptMiission.show()
+	$AcceptMission.show()
+	$DescMission.show()
 
 
 func _on_AcceptMission_pressed():
 	$RecapMission.show()
+	$AcceptMission.hide()
+	$DescMission.hide()

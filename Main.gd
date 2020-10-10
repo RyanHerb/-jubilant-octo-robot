@@ -26,8 +26,6 @@ func start_scenario():
 	var mission = create_mission_1()
 	add_child(mission)
 	$HUDBureau.show_intro_mission()
-	#mission.show()
-	# comment faire le scénario ???
 
 func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
