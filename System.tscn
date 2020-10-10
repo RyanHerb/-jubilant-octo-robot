@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://System.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/stars/orange.png" type="Texture" id=2]
+[ext_resource path="res://assets/light.png" type="Texture" id=3]
+[ext_resource path="res://assets/backgrounds/stars.png" type="Texture" id=4]
 
 [node name="System" type="Node2D"]
 script = ExtResource( 1 )
@@ -9,8 +11,18 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Sprite2" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+offset = Vector2( 320, 180 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.27451, 0.27451, 0.27451, 1 )
+
 [node name="Star" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="Star"]
-scale = Vector2( 0.4, 0.4 )
+[node name="Light2D" type="Light2D" parent="Star"]
+texture = ExtResource( 3 )
+color = Color( 0.815686, 0.964706, 0.6, 1 )
+
+[node name="Sprite" type="Sprite" parent="Star/Light2D"]
 texture = ExtResource( 2 )
