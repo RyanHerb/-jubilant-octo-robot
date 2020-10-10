@@ -4,17 +4,19 @@ var Planet = preload("res://Planet.tscn")
 
 var planets = []
 
-var min_step = 25
-var max_step = 50
+var min_step = 40
+var max_step = 70
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	var screen_size = get_viewport_rect().size
-	$Star.position = Vector2(screen_size.x/2, screen_size.y/2)
 	var p
 	var direction
 	var radius
+	var viewport_size = get_viewport_rect().size
+	$Star.position.x = viewport_size.x/2
+	$Star.position.y = viewport_size.y/2
 	for n in range(4):
 		p = Planet.instance()
 		planets.append(p)
