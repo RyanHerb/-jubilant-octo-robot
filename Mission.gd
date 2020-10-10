@@ -1,9 +1,9 @@
 extends Node2D
 
-var descriptif
-var min_temperature
-var max_temperature
-var atmosphere
+var descriptif = "rien"
+var min_temperature = 0
+var max_temperature = 1
+var atmosphere = "oxygen"
 var budget = 1500
 
 
@@ -36,6 +36,14 @@ func check_if_done(min_temp, max_temp, atm):
 func _ready():
 	pass # Replace with function body.
 
+
+func update_descr(text):
+	descriptif = text
+	
+func update_values(min_tmp, max_tmp, gaz):
+	min_temperature = min_tmp
+	max_temperature = max_tmp
+	atmosphere = gaz
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
