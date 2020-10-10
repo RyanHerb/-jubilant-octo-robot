@@ -11,6 +11,7 @@ var max_step = 70
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Temperature.hide()
 	randomize()
 	var p
 	var direction
@@ -48,6 +49,16 @@ func _process(delta):
 		dragged_planet.position.x = clamp(dragged_planet.position.x, 0, viewport_size.x)
 		dragged_planet.position.y = clamp(dragged_planet.position.y, 0, viewport_size.y)
 	update()
-	
+		
+
 func _on_planet_drag(target):
 	dragged_planet = target
+	
+	$Temperature.text = str(-target.distance_to_star()*1.5 + 300)
+	$Temperature.show()
+	#entourer la planete d'un cercle
+	
+	#calculer distance au soleil
+	#puis afficher temperature de cette planete
+	#afficher cout de l'operation
+
