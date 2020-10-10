@@ -21,3 +21,6 @@ func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			emit_signal("dragsignal", self)
+
+func distance_to_star():
+	return position.distance_to(Vector2(viewport_size.x/2, viewport_size.y/2))

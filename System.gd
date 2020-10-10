@@ -53,8 +53,7 @@ func _process(delta):
 
 func _on_planet_drag(target):
 	dragged_planet = target
-	
-	$Temperature.text = str(-target.distance_to_star()*1.5 + 300)
+	compute_temp(target.distance_to_star())
 	$Temperature.show()
 	#entourer la planete d'un cercle
 	
@@ -62,3 +61,5 @@ func _on_planet_drag(target):
 	#puis afficher temperature de cette planete
 	#afficher cout de l'operation
 
+func compute_temp(dist):
+	$Temperature.add_text(str(-dist*1.5 + 300))

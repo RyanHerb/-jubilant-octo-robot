@@ -30,12 +30,9 @@ color = Color( 0.815686, 0.964706, 0.6, 1 )
 [node name="Sprite" type="Sprite" parent="Star/Light2D"]
 texture = ExtResource( 2 )
 
-[node name="Temperature" type="Label" parent="."]
+[node name="Temperature" type="RichTextLabel" parent="."]
 margin_left = 550.0
 margin_top = 250.0
 margin_right = 590.0
 margin_bottom = 264.0
 text = "20-50"
-__meta__ = {
-"_edit_use_anchors_": false
-}
