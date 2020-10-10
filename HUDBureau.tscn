@@ -2,8 +2,8 @@
 
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUDBureau.gd" type="Script" id=2]
-[ext_resource path="res://assets/planets/grey2.png" type="Texture" id=3]
-[ext_resource path="res://assets/planets/blue.png" type="Texture" id=4]
+[ext_resource path="res://assets/icons_ui/cash.png" type="Texture" id=3]
+[ext_resource path="res://assets/icons_ui/prestige.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 1 )
@@ -63,7 +63,8 @@ custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 2
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="FinishMissionButton" type="Button" parent="."]
@@ -106,14 +107,14 @@ __meta__ = {
 
 [node name="SymboleMoney" type="Sprite" parent="."]
 position = Vector2( 86, 345 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="SymbolePrestige" type="Sprite" parent="."]
-position = Vector2( 171, 343 )
-texture = ExtResource( 3 )
+position = Vector2( 181.079, 346.78 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
