@@ -70,12 +70,6 @@ func hide_money_prestige():
 	$Prestige.hide()
 	$SymbolePrestige.hide()
 
-#func update_recap(min_temp, max_temp, gaz):
-#	$RecapMission.text = "temp : [", min_temp, ", "
-
-func update_money(budget):
-	$Money.text = str(budget + int($Money.text))
-
 func _on_AcceptMission_pressed():
 	$RecapMission.show()
 	$AcceptMission.hide()
