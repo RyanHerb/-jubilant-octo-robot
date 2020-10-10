@@ -4,6 +4,7 @@ var dragging = false
 var viewport_size
 
 signal dragsignal(target);
+signal clicked(target)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +22,8 @@ func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			emit_signal("dragsignal", self)
+			if event.pressed:
+				emit_signal("clicked", self)
 
 func distance_to_star():
 	return position.distance_to(Vector2(viewport_size.x/2, viewport_size.y/2))
