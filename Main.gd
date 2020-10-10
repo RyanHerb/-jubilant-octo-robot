@@ -12,6 +12,7 @@ func start_scenario():
 	$HUDBureau.show_interface()
 	var mission = create_mission_1()
 	add_child(mission)
+
 	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
@@ -20,6 +21,7 @@ func start_scenario():
 	$EntreMissions.stop()
 	
 	mission = create_mission_2()
+
 	add_child(mission)
 	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
 	$HUDBureau.new_mission()
@@ -30,6 +32,7 @@ func start_scenario():
 	$EntreMissions.stop()
 	
 	mission = create_mission_3()
+
 	add_child(mission)
 	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
 	$HUDBureau.new_mission()
@@ -73,5 +76,8 @@ func create_mission_3():
 	mission.update_descr(descri)
 	mission.update_values(20, 55, "zemon", 1000)
 	return mission
+
+func _on_HUDBureau_mission_finished():
+	$EntreMissions.start()
 
 

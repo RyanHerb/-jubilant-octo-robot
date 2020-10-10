@@ -52,7 +52,7 @@ func show_intro_mission():
 func update_descr(text):
 	$Description.text = text
 
-	
+
 func get_buget():
 	return budget
 

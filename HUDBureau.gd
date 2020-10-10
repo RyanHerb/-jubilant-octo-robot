@@ -9,6 +9,7 @@ signal see_missionIntro
 
 
 
+
 func _ready():
 	$AffichMissionButton.show()
 	show_money_prestige()
@@ -69,6 +70,11 @@ func hide_money_prestige():
 	$Prestige.hide()
 	$SymbolePrestige.hide()
 
+#func update_recap(min_temp, max_temp, gaz):
+#	$RecapMission.text = "temp : [", min_temp, ", "
+
+func update_money(budget):
+	$Money.text = str(budget + int($Money.text))
 
 func _on_AcceptMission_pressed():
 	$RecapMission.show()
@@ -76,7 +82,6 @@ func _on_AcceptMission_pressed():
 	$DescMission.hide()
 	$FinishMissionButton.show()
 	emit_signal("mission_accepted")
-
 
 
 func _on_FinishMissionButton_pressed():
