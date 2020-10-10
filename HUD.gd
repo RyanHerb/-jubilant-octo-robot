@@ -20,8 +20,8 @@ func new_game():
 	$Titre.show()
 	$StartButton.show()
 	$Lore.hide()
-	$Money.hide()
 	$NextLoreButton.hide()
+
 
 func _on_Start_pressed():
 	$Titre.hide()
