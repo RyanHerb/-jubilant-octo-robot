@@ -28,6 +28,9 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
+	yield($HUDBureau, "see_system")
+	$HUDSystem.show_all()
+
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
@@ -37,6 +40,8 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
+	yield($HUDBureau, "see_system")
+	$HUDSystem.show_all()
 	yield($EntreMissions, "timeout")
 	$HUDBureau.end_game()
 
@@ -52,7 +57,6 @@ func startTimer():
 
 func _on_HUDBureau_mission_finished():
 	$EntreMissions.start()
-	$HUDSystem.hide_all()
 
 
 func _on_HUDSystem_mission_finished():
