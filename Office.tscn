@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://HUDBureau.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/backgrounds/scene_bureau_vide.png" type="Texture" id=2]
+[ext_resource path="res://assets/backgrounds/bureau_ordil.png" type="Texture" id=3]
+
+[node name="Office" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Alien" type="Sprite" parent="."]
+
+[node name="Desk" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="HUDOffice" parent="." instance=ExtResource( 1 )]
