@@ -1,8 +1,5 @@
 extends Node2D
 
-signal mission_accepted
-signal mission_finished
-signal see_mission
 signal see_missionIntro
 signal see_system
 

@@ -2,8 +2,7 @@ extends Node2D
 
 export (PackedScene) var Mission
 
-signal mission_accepted
-signal mission_finished
+
 signal see_mission(text)
 signal see_missionIntro
 signal see_system
