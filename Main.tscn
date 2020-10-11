@@ -4,6 +4,7 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HUDBureau.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUDSystem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://System.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -16,5 +17,6 @@ script = ExtResource( 1 )
 wait_time = 2.0
 
 [node name="HUDSystem" parent="." instance=ExtResource( 4 )]
+[node name="System" parent="." instance=ExtResource( 5 )]
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
 [connection signal="mission_finished" from="HUDBureau" to="." method="_on_HUDBureau_mission_finished"]
