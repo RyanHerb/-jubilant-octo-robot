@@ -26,7 +26,6 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
-	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
@@ -36,7 +35,6 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
-	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
 	yield($EntreMissions, "timeout")
 	$HUDBureau.end_game()
 

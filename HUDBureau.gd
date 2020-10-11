@@ -27,7 +27,7 @@ func new_mission():
 	$NewMission.show()
 
 func mission_validated(mission):
-	$Objectifs.show()
+	objectif_show()
 	$FinishMissionButton.show()
 	update_money(mission.get_budget())
 	$Objectifs.clear()
@@ -50,7 +50,7 @@ func update_prestige():
 func hide_all():
 	$AffichMissionButton.hide()
 	hide_money_prestige()
-	$Objectifs.hide()
+	objectif_hide()
 	$FinishMissionButton.hide()
 	$Fin.hide()
 	$NewMission.hide()
@@ -70,6 +70,14 @@ func hide_money_prestige():
 	$Prestige.hide()
 	$SymbolePrestige.hide()
 
+func objectif_hide():
+	$Objectifs.hide()
+	$IconeTemp.hide()
+	
+func objectif_show():
+	$Objectifs.show()
+	$IconeTemp.show()
+
 func _on_AcceptMission_pressed():
 	$RecapMission.show()
 	$AcceptMission.hide()
@@ -80,7 +88,7 @@ func _on_AcceptMission_pressed():
 
 func _on_FinishMissionButton_pressed():
 	$FinishMissionButton.hide()
-	$Objectifs.hide()
+	objectif_hide()
 	update_prestige()
 	emit_signal("mission_finished")
 
