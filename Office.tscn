@@ -18,7 +18,10 @@ centered = false
 texture = ExtResource( 3 )
 centered = false
 
-[node name="HUDOffice" parent="." instance=ExtResource( 1 )]
-[connection signal="see_mission" from="HUDOffice" to="." method="_on_HUDOffice_see_mission"]
-[connection signal="see_missionIntro" from="HUDOffice" to="." method="_on_HUDOffice_see_missionIntro"]
-[connection signal="see_system" from="HUDOffice" to="." method="_on_HUDOffice_see_system"]
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUDOffice" parent="HUDLayer" instance=ExtResource( 1 )]
+[connection signal="see_mission" from="HUDLayer/HUDOffice" to="." method="_on_HUDOffice_see_mission"]
+[connection signal="see_missionIntro" from="HUDLayer/HUDOffice" to="." method="_on_HUDOffice_see_missionIntro"]
+[connection signal="see_system" from="HUDLayer/HUDOffice" to="." method="_on_HUDOffice_see_system"]

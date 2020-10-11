@@ -47,4 +47,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HUDSystem" parent="." instance=ExtResource( 6 )]
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUDSystem" parent="HUDLayer" instance=ExtResource( 6 )]
+position = Vector2( -2.38111, -7.62939e-06 )
