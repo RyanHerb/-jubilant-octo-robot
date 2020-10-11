@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://System.gd" type="Script" id=1]
 [ext_resource path="res://assets/stars/orange.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/backgrounds/bg_star_system_empty.png" type="Texture" id=4]
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://HUDSystem.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers2.png" type="Texture" id=7]
+[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers1.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -21,6 +23,14 @@ __meta__ = {
 [node name="Background" type="Sprite" parent="."]
 z_index = -5
 texture = ExtResource( 4 )
+centered = false
+
+[node name="StarsLayer1" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="StarsLayer2" type="Sprite" parent="."]
+texture = ExtResource( 7 )
 centered = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
