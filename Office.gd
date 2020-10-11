@@ -5,24 +5,30 @@ signal see_system
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	hide()
+
+func hide():
+	.hide()
+	$HUDLayer/HUDOffice.hide()
+
+func show():
+	.show()
+	$HUDLayer/HUDOffice.show()
 
 func enter_office():
-	$HUDOffice.start_game()
+	$HUDLayer/HUDOffice.start_game()
 
 func init_HUD():
-	$HUDOffice.hide_all()
+	$HUDLayer/HUDOffice.hide_all()
 	
 func new_mission():
-	$HUDOffice.new_mission()
+	$HUDLayer/HUDOffice.new_mission()
 
 func start_game():
-	$HUDOffice.start_game()
+	$HUDLayer/HUDOffice.start_game()
 
 func mission_validated(mission):
-	$HUDOffice.mission_validated(mission)
-	
-
+	$HUDLayer/HUDOffice.mission_validated(mission)
 
 func _on_HUDOffice_see_missionIntro():
 	emit_signal("see_missionIntro")

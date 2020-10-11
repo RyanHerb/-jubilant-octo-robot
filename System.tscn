@@ -31,4 +31,7 @@ color = Color( 0.815686, 0.964706, 0.6, 1 )
 [node name="Sprite" type="Sprite" parent="Star/Light2D"]
 texture = ExtResource( 2 )
 
-[node name="HUDSystem" parent="." instance=ExtResource( 6 )]
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUDSystem" parent="HUDLayer" instance=ExtResource( 6 )]
+position = Vector2( -2.38111, -7.62939e-06 )

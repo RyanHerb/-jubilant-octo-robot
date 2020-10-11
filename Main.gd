@@ -5,8 +5,6 @@ export (PackedScene) var Mission
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$IntroEnd.new_game()
-	$Office.hide()
-	$System.hide()
 
 func start_scenario():
 	$Office.show()
@@ -14,10 +12,10 @@ func start_scenario():
 	add_child(mission)
 	mission.connect("mission_accepte", $Office, "mission_validated")
 	$Office.new_mission()
-	$Office/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
-	$Office/HUDOffice.connect("see_mission", mission, "show_text_mission")
-	$Office/HUDOffice.connect("see_system", self, "go_to_system")
-	$System/HUDSystem.connect("mission_finished", self, "go_to_office")
+	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
+	$Office/HUDLayer/HUDOffice.connect("see_mission", mission, "show_text_mission")
+	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system")
+	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "go_to_office")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	mission.queue_free()
@@ -26,7 +24,7 @@ func start_scenario():
 	add_child(mission)
 	mission.connect("mission_accepte", $Office, "mission_validated")
 	$Office.new_mission()
-	$Office/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
+	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	mission.queue_free()
@@ -35,7 +33,7 @@ func start_scenario():
 	add_child(mission)
 	mission.connect("mission_accepte", $Office, "mission_validated")
 	$Office.new_mission()
-	$Office/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
+	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	mission.queue_free()
@@ -46,7 +44,6 @@ func start_scenario():
 func go_to_system():
 	$Office.hide()
 	$System.show()
-	$System/HUDSystem.show()
 	
 func go_to_office():
 	$System.hide()
@@ -72,8 +69,7 @@ func _on_Office_mission_finished():
 
 func _on_HUDSystem_mission_finished():
 	$EntreMissions.start()
-	$System.hide_all()
-
+	$System.hide()
 
 func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
