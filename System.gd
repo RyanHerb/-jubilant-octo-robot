@@ -31,6 +31,7 @@ func _ready():
 		var rand_index = randi() % planet_sprites.size()
 		var sprite = load("%s" % planet_sprites[rand_index])
 		p.set_sprite(sprite)
+		p.temp_coefficient = rand_index+1
 
 		var s = rand_range(min_step, max_step)
 		radius = Vector2(s, 0)
@@ -69,15 +70,17 @@ func _on_planet_drag(target):
 	#puis afficher temperature de cette planete
 	#afficher cout de l'operation
 func show_param_planet(target):
-	compute_temp(target.distance_to_star())
+	compute_temp(target)
 	$ParamPlanete.add_text("\n %s" % target.atmosphere)
 	$ParamPlanete.show()
 
-func compute_temp(dist):
+func compute_temp(planet):
+	var dist = planet.distance_to_star()
+	var coef = planet.temp_coefficient
 	$ParamPlanete.clear()
-	$ParamPlanete.add_text("%s C*" % int(-dist*1.5 + 300))
+	$ParamPlanete.add_text("%s C*" % int(-dist*coef*1.5 + 300))
 	$ParamPlanete.add_text(" - ")
-	$ParamPlanete.add_text("%s C*" % int(-dist*1.4 + 310))
+	$ParamPlanete.add_text("%s C*" % int(-dist*coef*1.4 + 310))
 
 func get_planet_sprites():
 	return get_file_list(PLANET_PATH)

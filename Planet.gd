@@ -4,6 +4,7 @@ var dragging = false
 var viewport_size
 
 var atmosphere = "O2";
+var temp_coefficient = 1;
 
 signal dragsignal(target);
 signal clicked(target)
