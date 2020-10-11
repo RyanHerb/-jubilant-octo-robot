@@ -14,14 +14,10 @@ func _ready():
 	connect("dragsignal",self,"_toggle_drag")
 	viewport_size = get_viewport_rect().size
 
-func _toggle_drag(target):
+func _toggle_drag(_target):
 	dragging = !dragging
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
+func _on_KinematicBody2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			emit_signal("dragsignal", self)

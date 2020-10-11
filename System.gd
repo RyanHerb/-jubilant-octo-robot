@@ -52,7 +52,7 @@ func _draw():
 		draw_arc($Star.position, radius, 0, 360, 10000, Color(255, 255, 255))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (typeof(dragged_planet) > 0) and (dragged_planet.dragging):
 		var mousepos = get_viewport().get_mouse_position()
 		dragged_planet.position = Vector2(mousepos.x, mousepos.y)
