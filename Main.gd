@@ -6,7 +6,7 @@ export (PackedScene) var Mission
 func _ready():
 	$HUD.new_game()
 	$HUDBureau.hide_all()
-	
+	$System.hide()
 
 func start_scenario():
 	$HUDBureau.show_interface()
