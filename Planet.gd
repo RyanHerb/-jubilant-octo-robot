@@ -12,7 +12,7 @@ signal clicked(target)
 func _ready():
 	connect("dragsignal",self,"_toggle_drag")
 	viewport_size = get_viewport_rect().size
-	
+
 func _toggle_drag(target):
 	dragging = !dragging
 

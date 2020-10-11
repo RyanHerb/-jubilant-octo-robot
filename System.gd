@@ -38,7 +38,7 @@ func _ready():
 		p.connect("clicked", self, "show_param_planet")
 		p.position.x = clamp(p.position.x, 0, viewport_size.x)
 		p.position.y = clamp(p.position.y, 0, viewport_size.y)
-		
+
 func _draw():
 	var radius
 	for n in range(planets.size()):
@@ -53,13 +53,13 @@ func _process(delta):
 		dragged_planet.position.x = clamp(dragged_planet.position.x, 0, viewport_size.x)
 		dragged_planet.position.y = clamp(dragged_planet.position.y, 0, viewport_size.y)
 	update()
-		
+
 
 func _on_planet_drag(target):
 	dragged_planet = target
 	show_param_planet((target))
 	#entourer la planete d'un cercle
-	
+
 	#calculer distance au soleil
 	#puis afficher temperature de cette planete
 	#afficher cout de l'operation
@@ -67,7 +67,7 @@ func show_param_planet(target):
 	compute_temp(target.distance_to_star())
 	$ParamPlanete.add_text("\n %s" % target.atmosphere)
 	$ParamPlanete.show()
-	
+
 func compute_temp(dist):
 	$ParamPlanete.clear()
 	$ParamPlanete.add_text(str(int(-dist*1.5 + 300)))
