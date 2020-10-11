@@ -17,6 +17,8 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
+	yield($HUDBureau, "see_system")
+	$HUDSystem.show_all()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
@@ -26,7 +28,9 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
-	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
+	yield($HUDBureau, "see_system")
+	$HUDSystem.show_all()
+
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
@@ -36,7 +40,8 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
-	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
+	yield($HUDBureau, "see_system")
+	$HUDSystem.show_all()
 	yield($EntreMissions, "timeout")
 	$HUDBureau.end_game()
 
@@ -52,6 +57,11 @@ func startTimer():
 
 func _on_HUDBureau_mission_finished():
 	$EntreMissions.start()
+
+
+func _on_HUDSystem_mission_finished():
+	$EntreMissions.start()
+	$HUDSystem.hide_all()
 
 
 func create_mission_1():
@@ -74,4 +84,5 @@ func create_mission_3():
 	mission.update_descr(descri)
 	mission.update_values(20, 55, "zemon", 1000)
 	return mission
+
 
