@@ -4,8 +4,10 @@
 [ext_resource path="res://assets/backgrounds/scene_bureau_vide.png" type="Texture" id=2]
 [ext_resource path="res://assets/backgrounds/bureau_ordil.png" type="Texture" id=3]
 [ext_resource path="res://assets/light.png" type="Texture" id=4]
+[ext_resource path="res://Office.gd" type="Script" id=4]
 
 [node name="Office" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -33,3 +35,8 @@ energy = 0.9
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [node name="HUDOffice" parent="." instance=ExtResource( 1 )]
+[connection signal="mission_accepted" from="HUDOffice" to="." method="_on_HUDOffice_mission_accepted"]
+[connection signal="mission_finished" from="HUDOffice" to="." method="_on_HUDOffice_mission_finished"]
+[connection signal="see_mission" from="HUDOffice" to="." method="_on_HUDOffice_see_mission"]
+[connection signal="see_missionIntro" from="HUDOffice" to="." method="_on_HUDOffice_see_missionIntro"]
+[connection signal="see_system" from="HUDOffice" to="." method="_on_HUDOffice_see_system"]

@@ -3,14 +3,17 @@ extends CanvasLayer
 signal start_game
 
 func _ready():
-	pass # Replace with function body.
+	$NextLoreButton.hide()
+	$Lore.hide()
+
 
 func show_message(text):
 	$Titre.text = text
 	$Titre.show()
 	
 func show_game_over():
-	show_message("Thanks for playing")
+	$Background.show()
+	show_message("thanks for playing")
 # Called when the node enters the scene tree for the first time.
 
 func update_money(value):
@@ -22,6 +25,9 @@ func new_game():
 	$Lore.hide()
 	$NextLoreButton.hide()
 
+func end_game():
+	show_game_over()
+	
 
 func _on_Start_pressed():
 	$Titre.hide()
@@ -33,4 +39,5 @@ func _on_Start_pressed():
 func _on_NextLoreButton_pressed():
 	$Lore.hide()
 	$NextLoreButton.hide()
+	$Background.hide()
 	emit_signal("start_game")

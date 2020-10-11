@@ -4,64 +4,73 @@ export (PackedScene) var Mission
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HUD.new_game()
-	$HUDBureau.hide_all()
+	$IntroEnd.new_game()
+	$Office.hide()
 	$System.hide()
 
 func start_scenario():
-	$HUDBureau.show_interface()
+	$Office.show()
 	var mission = create_mission_1()
 	add_child(mission)
-
-	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
-	$HUDBureau.new_mission()
-	yield($HUDBureau, "see_missionIntro")
-	mission.show_intro_mission()
-	yield($HUDBureau, "see_system")
-	$HUDSystem.show_all()
+	mission.connect("mission_accepte", $Office, "mission_validated")
+	$Office.new_mission()
+	$Office/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
+	$Office/HUDOffice.connect("see_system", self, "go_to_system")
+	$System/HUDSystem.connect("mission_finished", self, "go_to_office")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
+	mission.queue_free()
 	
 	mission = create_mission_2()
 	add_child(mission)
-	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
-	$HUDBureau.new_mission()
-	yield($HUDBureau, "see_missionIntro")
-	mission.show_intro_mission()
-	yield($HUDBureau, "see_system")
-	$HUDSystem.show_all()
-
+	mission.connect("mission_accepte", $Office, "mission_validated")
+	$Office.new_mission()
+	$Office/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
+	mission.queue_free()
 	
 	mission = create_mission_3()
 	add_child(mission)
-	mission.connect("mission_accepte", $HUDBureau, "mission_validated")
-	$HUDBureau.new_mission()
-	yield($HUDBureau, "see_missionIntro")
-	mission.show_intro_mission()
-	yield($HUDBureau, "see_system")
-	$HUDSystem.show_all()
+	mission.connect("mission_accepte", $Office, "mission_validated")
+	$Office.new_mission()
+	$Office/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
 	yield($EntreMissions, "timeout")
-	$HUDBureau.end_game()
+	$EntreMissions.stop()
+	mission.queue_free()
+	end_game()
 
 
 
+func go_to_system():
+	$Office.hide()
+	$System.show()
+	$System/HUDSystem.show()
+	
+func go_to_office():
+	$System.hide()
+	$Office.show()
+	$EntreMissions.start()
+
+func end_game():
+	$System.hide()
+	$Office.hide()
+	$IntroEnd.end_game()
 
 func _on_HUD_start_game():
-	$HUDBureau.start_game()
+	$Office.start_game()
 	start_scenario()
 
 func startTimer():
 	$EntreMissions.start()
 
-func _on_HUDBureau_mission_finished():
+func _on_Office_mission_finished():
 	$EntreMissions.start()
 
 
 func _on_HUDSystem_mission_finished():
 	$EntreMissions.start()
-	$HUDSystem.hide_all()
+	$System.hide_all()
 
 
 func create_mission_1():

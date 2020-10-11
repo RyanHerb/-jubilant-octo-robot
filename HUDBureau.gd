@@ -17,10 +17,6 @@ func _ready():
 func start_game():
 	pass
 
-func end_game():
-	$Fin.show()
-	hide_money_prestige()
-
 func new_mission():
 	$NewMission.show()
 
@@ -46,7 +42,6 @@ func hide_all():
 	hide_money_prestige()
 	$Objectifs.hide()
 	$FinishMissionButton.hide()
-	$Fin.hide()
 	$NewMission.hide()
 
 func show_interface():
@@ -71,14 +66,6 @@ func objectif_hide():
 func objectif_show():
 	$Objectifs.show()
 	#$IconeTemp.show()
-
-func _on_AcceptMission_pressed():
-	$RecapMission.show()
-	$AcceptMission.hide()
-	$DescMission.hide()
-	$FinishMissionButton.show()
-	emit_signal("mission_accepted")
-	$ToSystemButton.show()
 
 func _on_FinishMissionButton_pressed():
 	$FinishMissionButton.hide()

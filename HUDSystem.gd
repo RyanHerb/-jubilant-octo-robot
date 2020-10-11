@@ -9,28 +9,13 @@ signal mission_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hide_all()
+	show_all()
 	
 func entrer_system():
 	show_all()
 
 
 
-func hide_all():
-	$ReinitPlanet.hide()
-	$ChangeGaz1.hide()
-	$ChangeGaz2.hide()
-	$CoutChanges.hide()
-	$AtmoLabel.hide()
-	$TempLabel.hide()
-	$TotalLabel.hide()
-	$TempLabel.hide()
-	$TempMax.hide()
-	$TempMin.hide()
-	$Money.hide()
-	$MoneySprite.hide()
-	$IconeTmp.hide()
-	$Valider.hide()
 	
 func show_all():
 	$ReinitPlanet.show()
@@ -43,13 +28,15 @@ func show_all():
 	$TempLabel.show()
 	$TempMax.show()
 	$TempMin.show()
-	$Money.show()
 	$MoneySprite.show()
 	$IconeTmp.show()
 	$Valider.show()
+	$Currentgaz.show()
+	$Atmosphere.show()
+	$Lazer.show()
 
 
 
 func _on_Valider_pressed():
-	hide_all()
+	hide()
 	emit_signal("mission_finished")

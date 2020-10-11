@@ -80,10 +80,10 @@ func get_budget():
 
 
 func _on_Accepter_pressed():
-	emit_signal("mission_accepte", self)
 	$Accepter.hide()
 	$Refuser.hide()
 	$Description.hide()
+	emit_signal("mission_accepte", self)
 
 
 func _on_Refuser_pressed():
