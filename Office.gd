@@ -5,7 +5,15 @@ signal see_system
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	hide()
+
+func hide():
+	.hide()
+	$HUDLayer/HUDOffice.hide()
+
+func show():
+	.show()
+	$HUDLayer/HUDOffice.show()
 
 func enter_office():
 	$HUDLayer/HUDOffice.start_game()

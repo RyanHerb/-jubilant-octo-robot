@@ -15,7 +15,6 @@ var max_step = 70
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ParamPlanete.hide()
 	randomize()
 	var p
 	var direction
@@ -44,6 +43,7 @@ func _ready():
 		p.connect("clicked", self, "show_param_planet")
 		p.position.x = clamp(p.position.x, 0, viewport_size.x)
 		p.position.y = clamp(p.position.y, 0, viewport_size.y)
+	hide()
 
 func _draw():
 	var radius
@@ -60,6 +60,13 @@ func _process(_delta):
 		dragged_planet.position.y = clamp(dragged_planet.position.y, 0, viewport_size.y)
 	update()
 
+func hide():
+	.hide()
+	$HUDLayer/HUDSystem.hide()
+
+func show():
+	.show()
+	$HUDLayer/HUDSystem.show()
 
 func _on_planet_drag(target):
 	dragged_planet = target
