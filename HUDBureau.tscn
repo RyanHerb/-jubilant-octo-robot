@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUDBureau.gd" type="Script" id=2]
@@ -18,10 +18,6 @@ size = 20
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 35
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -76,22 +72,6 @@ margin_right = 908.962
 margin_bottom = 104.206
 custom_fonts/font = SubResource( 4 )
 text = "valider"
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Fin" type="Label" parent="."]
-visible = false
-margin_left = 248.212
-margin_top = 44.9544
-margin_right = 631.212
-margin_bottom = 133.954
-custom_fonts/font = SubResource( 5 )
-text = "thanks for playing"
-align = 1
-valign = 1
-autowrap = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false

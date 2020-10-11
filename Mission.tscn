@@ -20,9 +20,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 274.5
-margin_top = 297.0
-margin_right = 341.5
-margin_bottom = 317.0
+margin_top = 296.0
+margin_right = 404.5
+margin_bottom = 320.0
 custom_fonts/font = SubResource( 1 )
 text = "accepter"
 __meta__ = {
@@ -31,6 +31,7 @@ __meta__ = {
 }
 
 [node name="Refuser" type="Button" parent="."]
+visible = false
 margin_left = 449.0
 margin_top = 301.0
 margin_right = 506.0
