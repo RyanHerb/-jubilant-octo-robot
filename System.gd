@@ -4,6 +4,7 @@ var Planet = preload("res://Planet.tscn")
 
 var viewport_size
 var planets = []
+var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
 var dragged_planet
 
 var min_step = 70
@@ -23,7 +24,9 @@ func _ready():
 		p = Planet.instance()
 		planets.append(p)
 		add_child(p)
-	
+
+		p.atmosphere = atmospheres[randi()%atmospheres.size()]
+
 		var s = rand_range(min_step, max_step)
 		radius = Vector2(s, 0)
 		direction = $Star.rotation + rand_range(-PI, PI)
@@ -62,6 +65,7 @@ func _on_planet_drag(target):
 	#afficher cout de l'operation
 func show_param_planet(target):
 	compute_temp(target.distance_to_star())
+	$ParamPlanete.add_text("\n %s" % target.atmosphere)
 	$ParamPlanete.show()
 	
 func compute_temp(dist):
@@ -69,4 +73,3 @@ func compute_temp(dist):
 	$ParamPlanete.add_text(str(int(-dist*1.5 + 300)))
 	$ParamPlanete.add_text(" - ")
 	$ParamPlanete.add_text(str(int(-dist*1.4 + 310)))
-	$ParamPlanete.add_text("\n oxygene")

@@ -3,6 +3,8 @@ extends Node2D
 var dragging = false
 var viewport_size
 
+var atmosphere = "O2";
+
 signal dragsignal(target);
 signal clicked(target)
 
