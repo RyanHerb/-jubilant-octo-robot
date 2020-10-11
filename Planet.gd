@@ -29,3 +29,6 @@ func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 
 func distance_to_star():
 	return position.distance_to(Vector2(viewport_size.x/2, viewport_size.y/2))
+
+func set_sprite(sprite):
+	$KinematicBody2D/Sprite.texture = sprite

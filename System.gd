@@ -2,6 +2,9 @@ extends Node2D
 
 var Planet = preload("res://Planet.tscn")
 
+const PLANET_PATH = 'res://assets/planets'
+const STAR_PATH = 'res://assets/stars'
+
 var viewport_size
 var planets = []
 var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
@@ -18,12 +21,16 @@ func _ready():
 	var direction
 	var radius
 	viewport_size = get_viewport_rect().size
+	var planet_sprites = get_planet_sprites()
 	for n in range(4):
 		p = Planet.instance()
 		planets.append(p)
 		add_child(p)
 
 		p.atmosphere = atmospheres[randi()%atmospheres.size()]
+		var rand_index = randi() % planet_sprites.size()
+		var sprite = load("%s" % planet_sprites[rand_index])
+		p.set_sprite(sprite)
 
 		var s = rand_range(min_step, max_step)
 		radius = Vector2(s, 0)
@@ -71,3 +78,27 @@ func compute_temp(dist):
 	$ParamPlanete.add_text("%s C*" % int(-dist*1.5 + 300))
 	$ParamPlanete.add_text(" - ")
 	$ParamPlanete.add_text("%s C*" % int(-dist*1.4 + 310))
+
+func get_planet_sprites():
+	return get_file_list(PLANET_PATH)
+
+func get_star_sprites():
+	return get_file_list(STAR_PATH)
+
+func get_file_list(path):
+	var files = []
+	var dir = Directory.new()
+	dir.open(path)
+	dir.list_dir_begin()
+
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif not file.begins_with("."):
+			if file.ends_with("png"):
+				files.append("%s/%s" % [path, file])
+
+	dir.list_dir_end()
+
+	return files
