@@ -70,6 +70,6 @@ func show_param_planet(target):
 
 func compute_temp(dist):
 	$ParamPlanete.clear()
-	$ParamPlanete.add_text(str(int(-dist*1.5 + 300)))
+	$ParamPlanete.add_text("%s C*" % int(-dist*1.5 + 300))
 	$ParamPlanete.add_text(" - ")
-	$ParamPlanete.add_text(str(int(-dist*1.4 + 310)))
+	$ParamPlanete.add_text("%s C*" % int(-dist*1.4 + 310))
