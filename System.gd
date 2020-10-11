@@ -18,8 +18,6 @@ func _ready():
 	var direction
 	var radius
 	viewport_size = get_viewport_rect().size
-	$Star.position.x = viewport_size.x/2
-	$Star.position.y = viewport_size.y/2
 	for n in range(4):
 		p = Planet.instance()
 		planets.append(p)
