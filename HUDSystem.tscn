@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/icons_ui/prestige_blue.png" type="Texture" id=2]
 [ext_resource path="res://HUDSystem.gd" type="Script" id=3]
+[ext_resource path="res://assets/icons_ui/temperature_jauge_slim.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -14,10 +15,10 @@ script = ExtResource( 3 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 818.306
-margin_top = 419.633
-margin_right = 894.306
-margin_bottom = 443.633
+margin_left = 828.385
+margin_top = 410.814
+margin_right = 904.385
+margin_bottom = 434.814
 custom_fonts/font = SubResource( 1 )
 text = "reinit"
 __meta__ = {
@@ -117,17 +118,33 @@ __meta__ = {
 }
 
 [node name="MoneySprite" type="Sprite" parent="."]
-position = Vector2( 921.002, 489.73 )
+position = Vector2( 921.002, 472.092 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -16 )
 
 [node name="Money" type="Label" parent="."]
-margin_left = 818.949
-margin_top = 466.171
-margin_right = 886.949
-margin_bottom = 484.171
+margin_left = 823.988
+margin_top = 454.832
+margin_right = 891.988
+margin_bottom = 472.832
 custom_fonts/font = SubResource( 1 )
 text = "15000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="IconeTmp" type="Sprite" parent="."]
+position = Vector2( 869.346, 212.927 )
+texture = ExtResource( 4 )
+
+[node name="Valider" type="Button" parent="."]
+margin_left = 815.169
+margin_top = 501.449
+margin_right = 931.169
+margin_bottom = 525.449
+custom_fonts/font = SubResource( 1 )
+text = "validate"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Valider" to="." method="_on_Valider_pressed"]

@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUDBureau.gd" type="Script" id=2]
 [ext_resource path="res://assets/icons_ui/cash.png" type="Texture" id=3]
 [ext_resource path="res://assets/icons_ui/prestige.png" type="Texture" id=4]
-[ext_resource path="res://assets/icons_ui/temperature_jauge_slim.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
+size = 9
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -32,12 +32,12 @@ position = Vector2( 18.8988, 166.31 )
 script = ExtResource( 2 )
 
 [node name="AffichMissionButton" type="Button" parent="."]
-margin_left = 823.042
-margin_top = 33.9067
-margin_right = 899.042
-margin_bottom = 57.9067
+margin_left = 9.0
+margin_top = -151.0
+margin_right = 88.0
+margin_bottom = -127.0
 custom_fonts/font = SubResource( 1 )
-text = "show"
+text = "objective"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -125,20 +125,16 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 812.703
-margin_top = -61.2381
-margin_right = 914.703
-margin_bottom = 0.761902
+margin_left = 0.0538635
+margin_top = -114.155
+margin_right = 102.054
+margin_bottom = -52.1548
 custom_fonts/mono_font = SubResource( 6 )
 text = "objectif"
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-
-[node name="IconeTemp" type="Sprite" parent="."]
-position = Vector2( 848.958, -11.3461 )
-texture = ExtResource( 5 )
 
 [node name="ToSystemButton" type="Button" parent="."]
 margin_left = 406.955
@@ -152,3 +148,4 @@ __meta__ = {
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="pressed" from="FinishMissionButton" to="." method="_on_FinishMissionButton_pressed"]
 [connection signal="pressed" from="NewMission" to="." method="_on_NewMission_pressed"]
+[connection signal="pressed" from="ToSystemButton" to="." method="_on_ToSystemButton_pressed"]

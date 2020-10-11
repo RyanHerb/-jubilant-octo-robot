@@ -17,6 +17,8 @@ func start_scenario():
 	$HUDBureau.new_mission()
 	yield($HUDBureau, "see_missionIntro")
 	mission.show_intro_mission()
+	yield($HUDBureau, "see_system")
+	$HUDSystem.show_all()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
@@ -53,6 +55,11 @@ func _on_HUDBureau_mission_finished():
 	$HUDSystem.hide_all()
 
 
+func _on_HUDSystem_mission_finished():
+	$EntreMissions.start()
+	$HUDSystem.hide_all()
+
+
 func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "bliblibloblo blubli blio"
@@ -73,4 +80,5 @@ func create_mission_3():
 	mission.update_descr(descri)
 	mission.update_values(20, 55, "zemon", 1000)
 	return mission
+
 

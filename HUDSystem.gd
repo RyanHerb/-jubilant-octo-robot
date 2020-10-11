@@ -1,5 +1,6 @@
 extends Node2D
 
+signal mission_finished
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -9,6 +10,11 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_all()
+	
+func entrer_system():
+	show_all()
+
+
 
 func hide_all():
 	$ReinitPlanet.hide()
@@ -23,6 +29,8 @@ func hide_all():
 	$TempMin.hide()
 	$Money.hide()
 	$MoneySprite.hide()
+	$IconeTmp.hide()
+	$Valider.hide()
 	
 func show_all():
 	$ReinitPlanet.show()
@@ -37,7 +45,11 @@ func show_all():
 	$TempMin.show()
 	$Money.show()
 	$MoneySprite.show()
+	$IconeTmp.show()
+	$Valider.show()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
+func _on_Valider_pressed():
+	hide_all()
+	emit_signal("mission_finished")

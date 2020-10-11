@@ -18,3 +18,4 @@ wait_time = 2.0
 [node name="HUDSystem" parent="." instance=ExtResource( 4 )]
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
 [connection signal="mission_finished" from="HUDBureau" to="." method="_on_HUDBureau_mission_finished"]
+[connection signal="mission_finished" from="HUDSystem" to="." method="_on_HUDSystem_mission_finished"]
