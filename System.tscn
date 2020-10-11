@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://System.gd" type="Script" id=1]
 [ext_resource path="res://assets/stars/orange.png" type="Texture" id=2]
 [ext_resource path="res://assets/light.png" type="Texture" id=3]
 [ext_resource path="res://assets/backgrounds/bg_star_system_empty.png" type="Texture" id=4]
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://HUDSystem.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -45,3 +46,5 @@ text = "20-50"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HUDSystem" parent="." instance=ExtResource( 6 )]
