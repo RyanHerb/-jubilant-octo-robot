@@ -42,10 +42,12 @@ func hide_all():
 	$Accepter.hide()
 	$Refuser.hide()
 	$Description.hide()
+	$Alien.hide()
 
 func show_intro_mission():
 	$Accepter.show()
 	$Description.show()
+	$Alien.show()
 	#$Refuser.show()
 
 func show_text_mission(text):
@@ -61,11 +63,13 @@ func update_descr(text):
 func get_buget():
 	return budget
 
-func update_values(min_tmp, max_tmp, gaz, money):
+func update_values(min_tmp, max_tmp, gaz, money, file):
 	min_temperature = min_tmp
 	max_temperature = max_tmp
 	atmosphere = gaz
 	budget = money
+	var sprite = load(file)
+	$Alien.texture = sprite
 
 func get_desc():
 	return $Description.text
@@ -85,14 +89,10 @@ func get_budget():
 
 
 func _on_Accepter_pressed():
-	$Accepter.hide()
-	$Refuser.hide()
-	$Description.hide()
+	hide_all()
 	emit_signal("mission_accepte", self)
 
 
 func _on_Refuser_pressed():
-	$Accepter.hide()
-	$Refuser.hide()
-	$Description.hide()
+	hide()
 	emit_signal("mission_refuse")

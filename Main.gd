@@ -79,21 +79,21 @@ func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "bliblibloblo blubli blio"
 	mission.update_descr(descri)
-	mission.update_values(0, 40, "oxygene", 150)
+	mission.update_values(0, 40, "oxygene", 150, "res://assets/aliens/alien_mars.png")
 	return mission
 	
 func create_mission_2():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "ceci est la deuxieme mission"
 	mission.update_descr(descri)
-	mission.update_values(-20, 10, "azote", 400)
+	mission.update_values(-20, 10, "azote", 400, "res://assets/aliens/alien_mars.png")
 	return mission
 	
 func create_mission_3():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "au secours c'est la fin"
 	mission.update_descr(descri)
-	mission.update_values(20, 55, "zemon", 1000)
+	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_mars.png")
 	return mission
 
 
