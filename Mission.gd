@@ -48,7 +48,12 @@ func show_intro_mission():
 	$Description.show()
 	#$Refuser.show()
 
-
+func show_text_mission(text):
+	if text == "hide":
+		$Description.show()
+	else:
+		$Description.hide()
+		
 func update_descr(text):
 	$Description.text = text
 

@@ -15,6 +15,7 @@ func start_scenario():
 	mission.connect("mission_accepte", $Office, "mission_validated")
 	$Office.new_mission()
 	$Office/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
+	$Office/HUDOffice.connect("see_mission", mission, "show_text_mission")
 	$Office/HUDOffice.connect("see_system", self, "go_to_system")
 	$System/HUDSystem.connect("mission_finished", self, "go_to_office")
 	yield($EntreMissions, "timeout")
@@ -51,6 +52,7 @@ func go_to_office():
 	$System.hide()
 	$Office.show()
 	$EntreMissions.start()
+	$Office/HUDOffice.objectif_hide()
 
 func end_game():
 	$System.hide()
