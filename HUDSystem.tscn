@@ -65,10 +65,10 @@ __meta__ = {
 }
 
 [node name="CoutChanges" type="Label" parent="."]
-margin_left = 830.01
-margin_top = 460.26
-margin_right = 901.01
-margin_bottom = 485.26
+margin_left = 823.71
+margin_top = 455.22
+margin_right = 894.71
+margin_bottom = 480.22
 custom_fonts/font = SubResource( 1 )
 text = "1000"
 align = 1
@@ -90,21 +90,21 @@ __meta__ = {
 }
 
 [node name="TempLabel" type="Label" parent="."]
-margin_left = 660.649
-margin_top = 218.892
-margin_right = 828.649
-margin_bottom = 251.892
+margin_left = 661.0
+margin_top = 219.0
+margin_right = 747.0
+margin_bottom = 252.0
 custom_fonts/font = SubResource( 1 )
-text = "temperature"
+text = "temp"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TotalLabel" type="Label" parent="."]
-margin_left = 718.155
+margin_left = 705.556
 margin_top = 456.091
-margin_right = 793.155
+margin_right = 780.556
 margin_bottom = 474.091
 custom_fonts/font = SubResource( 1 )
 text = "total"
@@ -113,34 +113,36 @@ __meta__ = {
 }
 
 [node name="TempMin" type="Label" parent="."]
-margin_left = 848.633
-margin_top = 216.457
-margin_right = 892.633
-margin_bottom = 234.457
+margin_left = 795.717
+margin_top = 217.717
+margin_right = 839.717
+margin_bottom = 235.717
 custom_fonts/font = SubResource( 1 )
 text = "20"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TempMax" type="Label" parent="."]
-margin_left = 886.711
-margin_top = 216.457
-margin_right = 927.711
-margin_bottom = 234.457
+margin_left = 872.852
+margin_top = 217.717
+margin_right = 913.852
+margin_bottom = 235.717
 custom_fonts/font = SubResource( 1 )
 text = "50"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MoneySprite" type="Sprite" parent="."]
-position = Vector2( 919.742, 480.911 )
+position = Vector2( 915.962, 475.872 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -16 )
 
 [node name="IconeTmp" type="Sprite" parent="."]
-position = Vector2( 885.826, 235.606 )
+position = Vector2( 849.288, 244.425 )
 texture = ExtResource( 4 )
 
 [node name="Valider" type="Button" parent="."]
@@ -155,24 +157,28 @@ __meta__ = {
 }
 
 [node name="Atmosphere" type="Label" parent="."]
-margin_left = 825.248
-margin_top = 259.544
-margin_right = 930.248
-margin_bottom = 277.544
+margin_left = 645.08
+margin_top = 260.804
+margin_right = 750.08
+margin_bottom = 278.804
 custom_fonts/font = SubResource( 2 )
-text = "oxygene"
+text = "atm"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Currentgaz" type="Label" parent="."]
-margin_left = 667.758
-margin_top = 259.544
-margin_right = 819.758
-margin_bottom = 277.544
+margin_left = 811.0
+margin_top = 257.0
+margin_right = 890.0
+margin_bottom = 275.0
 custom_fonts/font = SubResource( 3 )
-text = "atmosphere"
+text = "oxygen"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="ChangeGaz1" to="." method="_on_ChangeGaz1_pressed"]
+[connection signal="pressed" from="ChangeGaz2" to="." method="_on_ChangeGaz2_pressed"]
 [connection signal="pressed" from="Valider" to="." method="_on_Valider_pressed"]
