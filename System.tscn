@@ -26,7 +26,7 @@ centered = false
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [node name="Star" type="Node2D" parent="."]
-position = Vector2( 320, 180 )
+position = Vector2( 320, 270 )
 
 [node name="Light2D" type="Light2D" parent="Star"]
 texture = ExtResource( 3 )
