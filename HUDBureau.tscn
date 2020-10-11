@@ -139,6 +139,16 @@ __meta__ = {
 [node name="IconeTemp" type="Sprite" parent="."]
 position = Vector2( 848.958, -11.3461 )
 texture = ExtResource( 5 )
+
+[node name="ToSystemButton" type="Button" parent="."]
+margin_left = 406.955
+margin_top = 229.306
+margin_right = 465.955
+margin_bottom = 249.306
+text = "System"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="pressed" from="FinishMissionButton" to="." method="_on_FinishMissionButton_pressed"]
 [connection signal="pressed" from="NewMission" to="." method="_on_NewMission_pressed"]

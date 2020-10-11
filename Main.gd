@@ -50,6 +50,7 @@ func startTimer():
 
 func _on_HUDBureau_mission_finished():
 	$EntreMissions.start()
+	$HUDSystem.hide_all()
 
 
 func create_mission_1():

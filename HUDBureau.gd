@@ -13,11 +13,11 @@ signal see_missionIntro
 func _ready():
 	$AffichMissionButton.show()
 	show_money_prestige()
-	start_game()
+	#start_game()
 
 
-func start_game():
-	pass
+#func start_game():
+#	pass
 
 func end_game():
 	$Fin.show()
