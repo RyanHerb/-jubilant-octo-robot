@@ -17,4 +17,3 @@ wait_time = 0.8
 
 [node name="System" parent="." instance=ExtResource( 5 )]
 [connection signal="start_game" from="IntroEnd" to="." method="_on_HUD_start_game"]
-[connection signal="mission_finished" from="Office" to="." method="_on_Office_mission_finished"]

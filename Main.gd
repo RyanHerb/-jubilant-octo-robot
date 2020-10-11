@@ -15,6 +15,7 @@ func start_scenario():
 	mission.connect("mission_accepte", $Office, "mission_validated")
 	$Office.new_mission()
 	$Office/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
+	$Office/HUDOffice.connect("see_mission", mission, "show_text_mission")
 	$Office/HUDOffice.connect("see_system", self, "go_to_system")
 	$System/HUDSystem.connect("mission_finished", self, "go_to_office")
 	yield($EntreMissions, "timeout")
@@ -51,6 +52,7 @@ func go_to_office():
 	$System.hide()
 	$Office.show()
 	$EntreMissions.start()
+	$Office/HUDOffice.objectif_hide()
 
 func end_game():
 	$System.hide()
@@ -77,21 +79,21 @@ func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "bliblibloblo blubli blio"
 	mission.update_descr(descri)
-	mission.update_values(0, 40, "oxygene", 150)
+	mission.update_values(0, 40, "oxygene", 150, "res://assets/aliens/alien_mars.png")
 	return mission
 	
 func create_mission_2():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "ceci est la deuxieme mission"
 	mission.update_descr(descri)
-	mission.update_values(-20, 10, "azote", 400)
+	mission.update_values(-20, 10, "azote", 400, "res://assets/aliens/alien_mars.png")
 	return mission
 	
 func create_mission_3():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "au secours c'est la fin"
 	mission.update_descr(descri)
-	mission.update_values(20, 55, "zemon", 1000)
+	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_mars.png")
 	return mission
 
 

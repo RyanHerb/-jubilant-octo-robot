@@ -19,8 +19,6 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="HUDOffice" parent="." instance=ExtResource( 1 )]
-[connection signal="mission_accepted" from="HUDOffice" to="." method="_on_HUDOffice_mission_accepted"]
-[connection signal="mission_finished" from="HUDOffice" to="." method="_on_HUDOffice_mission_finished"]
 [connection signal="see_mission" from="HUDOffice" to="." method="_on_HUDOffice_see_mission"]
 [connection signal="see_missionIntro" from="HUDOffice" to="." method="_on_HUDOffice_see_missionIntro"]
 [connection signal="see_system" from="HUDOffice" to="." method="_on_HUDOffice_see_system"]

@@ -2,15 +2,15 @@ extends Node2D
 
 export (PackedScene) var Mission
 
-signal mission_accepted
-signal mission_finished
-signal see_mission
+
+signal see_mission(text)
 signal see_missionIntro
 signal see_system
 
 func _ready():
-	$AffichMissionButton.show()
+	$AffichMissionButton.hide()
 	$ToSystemButton.hide()
+	$Objectifs.hide()
 	show_money_prestige()
 	start_game()
 
@@ -22,6 +22,7 @@ func new_mission():
 
 func mission_validated(mission):
 	$Objectifs.show()
+	$AffichMissionButton.show()
 	update_money(mission.get_budget())
 	$Objectifs.clear()
 	$Objectifs.add_text(str(mission.get_min_tmp()))
@@ -61,21 +62,20 @@ func hide_money_prestige():
 
 func objectif_hide():
 	$Objectifs.hide()
-	#$IconeTemp.hide()
+	$AffichMissionButton.hide()
 	
 func objectif_show():
 	$Objectifs.show()
-	#$IconeTemp.show()
+	$AffichMissionButton.show()
 
-func _on_FinishMissionButton_pressed():
-	$FinishMissionButton.hide()
-	$Objectifs.hide()
-	update_prestige()
-	emit_signal("mission_finished")
 
 func _on_AffichMissionButton_pressed():
-	$AffichMissionButton.hide()
-	emit_signal("see_mission")
+	#$AffichMissionButton.hide()
+	if $AffichMissionButton.text == "show":
+		$AffichMissionButton.text = "hide"
+	else:
+		$AffichMissionButton.text = "show"
+	emit_signal("see_mission", $AffichMissionButton.text)
 
 func _on_NewMission_pressed():
 	$NewMission.hide()
