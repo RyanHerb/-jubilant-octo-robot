@@ -7,7 +7,7 @@ const STAR_PATH = 'res://assets/stars'
 
 var viewport_size
 var planets = []
-var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
+var atmospheres = ["oxygen", "nitrogen", "xenon"]
 var dragged_planet
 
 var min_step = 70
@@ -15,7 +15,6 @@ var max_step = 70
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ParamPlanete.hide()
 	randomize()
 	var p
 	var direction
@@ -66,21 +65,14 @@ func _on_planet_drag(target):
 	show_param_planet((target))
 	#entourer la planete d'un cercle
 
-	#calculer distance au soleil
-	#puis afficher temperature de cette planete
-	#afficher cout de l'operation
 func show_param_planet(target):
 	compute_temp(target)
-	$ParamPlanete.add_text("\n %s" % target.atmosphere)
-	$ParamPlanete.show()
 
 func compute_temp(planet):
 	var dist = planet.distance_to_star()
 	var coef = planet.temp_coefficient
-	$ParamPlanete.clear()
-	$ParamPlanete.add_text("%s C*" % int(-dist*coef*1.5 + 300))
-	$ParamPlanete.add_text(" - ")
-	$ParamPlanete.add_text("%s C*" % int(-dist*coef*1.4 + 310))
+	$HUDSystem.update_temp(int(-dist*coef*1.5 + 300), int(-dist*coef*1.4 + 300))
+	$HUDSystem.update_gaz(planet.atmosphere)
 
 func get_planet_sprites():
 	return get_file_list(PLANET_PATH)
