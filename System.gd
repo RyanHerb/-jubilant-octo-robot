@@ -79,8 +79,8 @@ func show_param_planet(target):
 func compute_temp(planet):
 	var dist = planet.distance_to_star()
 	var coef = planet.temp_coefficient
-	$HUDSystem.update_temp(int(-dist*coef*1.5 + 300), int(-dist*coef*1.4 + 300))
-	$HUDSystem.update_gaz(planet.atmosphere)
+	$HUDLayer/HUDSystem.update_temp(int(-dist*coef*1.5 + 300), int(-dist*coef*1.4 + 300))
+	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere)
 
 func get_planet_sprites():
 	return get_file_list(PLANET_PATH)
