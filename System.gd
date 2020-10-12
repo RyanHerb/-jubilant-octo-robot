@@ -77,6 +77,7 @@ func _on_planet_drag(target):
 	dragged_planet = target
 	show_param_planet((target))
 	current_planet = target
+	
 	#entourer la planete d'un cercle
 
 func show_param_planet(target):
