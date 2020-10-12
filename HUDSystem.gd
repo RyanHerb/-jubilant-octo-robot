@@ -1,7 +1,8 @@
 extends Node2D
 
 signal mission_finished
-
+signal atmo_changed
+signal reinit_system
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -38,7 +39,7 @@ func show_all():
 	$CoutChanges.show()
 	$AtmoLabel.show()
 	$TempLabel.show()
-	$TotalLabel.show()
+	$Total.show()
 	$TempLabel.show()
 	$TempMax.show()
 	$TempMin.show()
@@ -50,17 +51,24 @@ func show_all():
 	$Lazer.show()
 
 
+func update_total_cout(val):
+	$CoutChanges.text = str(int($CoutChanges.text) + val)
 
 func _on_Valider_pressed():
 	hide()
 	emit_signal("mission_finished")
 
 func _on_ChangeGaz1_pressed():
-	$CoutChanges.text = str(int($CoutChanges.text) + 1000)
 	$Currentgaz.text = $ChangeGaz1.text
 	update_gaz($Currentgaz.text)
+	emit_signal("atmo_changed", $Currentgaz.text)
 
 func _on_ChangeGaz2_pressed():
-	$CoutChanges.text = str(int($CoutChanges.text) + 1000)
 	$Currentgaz.text = $ChangeGaz2.text
 	update_gaz($Currentgaz.text)
+	emit_signal("atmo_changed", $Currentgaz.text)
+
+
+func _on_ReinitPlanet_pressed():
+	$CoutChanges.text = str(0)
+	emit_signal("reinit_system")
