@@ -15,7 +15,9 @@ func start_scenario():
 	$Office.connect("see_missionIntro", mission, "show_intro_mission")
 	$Office/HUDLayer/HUDOffice.connect("see_mission", mission, "show_text_mission")
 	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system")
-	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "mission_finished")
+	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "mission_finished", [mission])
+	#$System/HUDLayer/HUDSystem.connect("mission_finished", mission, "show_ending_mission")
+	mission.connect("thanks_ended", self, "startTimer")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	mission.queue_free()
@@ -45,12 +47,13 @@ func go_to_system():
 	$Office.hide_buttons()
 	$System.show()
 	
-func mission_finished(text):
+func mission_finished(text, mission):
 	$Office/HUDLayer/HUDOffice.update_money(-text)
 	$System.hide()
 	$Office.show()
-	$EntreMissions.start()
+	#$EntreMissions.start()
 	$Office/HUDLayer/HUDOffice.objectif_hide()
+	mission.show_ending_mission()
 
 func end_game():
 	$System.hide()
@@ -64,19 +67,21 @@ func _on_HUD_start_game():
 func startTimer():
 	$EntreMissions.start()
 
-func _on_Office_mission_finished():
-	$EntreMissions.start()
+#func _on_Office_mission_finished():
+#	$EntreMissions.start()
 
 
-func _on_HUDSystem_mission_finished():
-	$EntreMissions.start()
-	$System.hide()
+#func _on_HUDSystem_mission_finished():
+#	$EntreMissions.start()
+#	$System.hide()
 
 func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "bliblibloblo blubli blio\n \n aze\n Merci\n jzef"
+	var thanks = "My thanks"
 	mission.update_descr(descri)
-	mission.update_values(0, 40, "oxygene", 150, "res://assets/aliens/alien_ET_2.png")
+	mission.update_thank(thanks)
+	mission.update_values(0, 40, "oxygene", 150, "res://assets/aliens/alien_ET.png")
 	return mission
 	
 func create_mission_2():
