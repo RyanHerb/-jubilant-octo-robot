@@ -15,7 +15,7 @@ func start_scenario():
 	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", mission, "show_intro_mission")
 	$Office/HUDLayer/HUDOffice.connect("see_mission", mission, "show_text_mission")
 	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system")
-	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "go_to_office")
+	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "mission_finished")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	mission.queue_free()
@@ -45,7 +45,8 @@ func go_to_system():
 	$Office.hide_buttons()
 	$System.show()
 	
-func go_to_office():
+func mission_finished(text):
+	$Office/HUDLayer/HUDOffice.update_money(-text)
 	$System.hide()
 	$Office.show()
 	$EntreMissions.start()
@@ -73,9 +74,9 @@ func _on_HUDSystem_mission_finished():
 
 func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
-	var descri = "bliblibloblo blubli blio"
+	var descri = "bliblibloblo blubli blio\n \n aze\n Merci\n jzef"
 	mission.update_descr(descri)
-	mission.update_values(0, 40, "oxygene", 150, "res://assets/aliens/alien_mars.png")
+	mission.update_values(0, 40, "oxygene", 150, "res://assets/aliens/alien_ET_2.png")
 	return mission
 	
 func create_mission_2():
@@ -89,7 +90,7 @@ func create_mission_3():
 	var mission = preload("res://Mission.tscn").instance()
 	var descri = "au secours c'est la fin"
 	mission.update_descr(descri)
-	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_mars.png")
+	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
 	return mission
 
 
