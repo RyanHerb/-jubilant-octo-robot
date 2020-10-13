@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUDBureau.gd" type="Script" id=2]
 [ext_resource path="res://assets/icons_ui/cash.png" type="Texture" id=3]
 [ext_resource path="res://assets/icons_ui/prestige.png" type="Texture" id=4]
+[ext_resource path="res://assets/backgrounds/bg_bureau_pc_mic.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 9
@@ -32,15 +33,18 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
 [node name="HUDBureau" type="Node2D"]
 position = Vector2( 18.8988, 166.31 )
 script = ExtResource( 2 )
 
 [node name="AffichMissionButton" type="Button" parent="."]
-margin_left = 9.0
-margin_top = -151.0
-margin_right = 88.0
-margin_bottom = -127.0
+margin_left = 5.03967
+margin_top = -68.0
+margin_right = 73.0397
+margin_bottom = -44.0
 custom_fonts/font = SubResource( 1 )
 text = "show"
 __meta__ = {
@@ -48,10 +52,10 @@ __meta__ = {
 }
 
 [node name="Money" type="Label" parent="."]
-margin_left = 18.0
-margin_top = 337.0
-margin_right = 58.0
-margin_bottom = 359.0
+margin_left = 19.0
+margin_top = 340.0
+margin_right = 63.0
+margin_bottom = 362.0
 custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 2
@@ -62,7 +66,7 @@ __meta__ = {
 
 [node name="Prestige" type="Label" parent="."]
 margin_left = 110.0
-margin_top = 338.0
+margin_top = 340.0
 margin_right = 150.0
 margin_bottom = 360.0
 custom_fonts/font = SubResource( 3 )
@@ -87,10 +91,11 @@ __meta__ = {
 }
 
 [node name="NewMission" type="Button" parent="."]
-margin_left = 388.552
-margin_top = 264.762
-margin_right = 481.552
-margin_bottom = 284.762
+visible = false
+margin_left = 373.101
+margin_top = 265.69
+margin_right = 493.101
+margin_bottom = 297.69
 text = "new mission"
 __meta__ = {
 "_edit_group_": true,
@@ -98,15 +103,16 @@ __meta__ = {
 }
 
 [node name="SymboleMoney" type="Sprite" parent="."]
-position = Vector2( 86, 345 )
+position = Vector2( 85.1012, 345.69 )
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="SymbolePrestige" type="Sprite" parent="."]
-position = Vector2( 179.819, 345.52 )
+position = Vector2( 157.101, 329.69 )
 texture = ExtResource( 4 )
+centered = false
 __meta__ = {
 "_edit_group_": true
 }
@@ -116,9 +122,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -114.0
-margin_right = 112.0
-margin_bottom = -52.0
+margin_left = -5.03967
+margin_top = -150.538
+margin_right = 106.96
+margin_bottom = -88.5377
 custom_fonts/mono_font = SubResource( 5 )
 custom_fonts/normal_font = SubResource( 6 )
 text = "objectif"
@@ -138,12 +145,28 @@ __meta__ = {
 }
 
 [node name="MissionWaitingLabel" type="Label" parent="."]
-margin_left = 307.0
-margin_top = -104.0
-margin_right = 585.0
-margin_bottom = -64.0
+margin_left = 277.101
+margin_top = -134.31
+margin_right = 555.101
+margin_bottom = -94.31
 custom_fonts/font = SubResource( 7 )
 text = "one mission awaiting"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 461.101, 105.69 )
+texture = ExtResource( 5 )
+
+[node name="CallClient" type="Label" parent="."]
+margin_left = 533.101
+margin_top = 329.69
+margin_right = 657.101
+margin_bottom = 347.69
+custom_fonts/font = SubResource( 8 )
+text = "call next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
