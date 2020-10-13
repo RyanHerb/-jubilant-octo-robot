@@ -2,6 +2,7 @@ extends Node2D
 
 signal mission_accepte
 signal mission_refuse
+signal thanks_ended
 
 var min_temperature = 0
 var max_temperature = 1
@@ -43,12 +44,19 @@ func hide_all():
 	$Refuser.hide()
 	$Description.hide()
 	$Alien.hide()
+	$Thanks.hide()
+	$CloseThanks.hide()
 
 func show_intro_mission():
 	$Accepter.show()
 	$Description.show()
 	$Alien.show()
 	#$Refuser.show()
+
+func show_ending_mission():
+	$Alien.show()
+	$Thanks.show()
+	$CloseThanks.show()
 
 func show_text_mission(text):
 	if text == "hide":
@@ -58,6 +66,9 @@ func show_text_mission(text):
 		
 func update_descr(text):
 	$Description.text = text
+
+func update_thank(text):
+	$Thanks.text = text
 
 
 func get_buget():
@@ -96,3 +107,8 @@ func _on_Accepter_pressed():
 func _on_Refuser_pressed():
 	hide()
 	emit_signal("mission_refuse")
+
+
+func _on_CloseThanks_pressed():
+	hide_all()
+	emit_signal("thanks_ended")

@@ -34,6 +34,7 @@ font_data = ExtResource( 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=8]
+size = 14
 font_data = ExtResource( 1 )
 
 [node name="HUDBureau" type="Node2D"]
@@ -162,11 +163,12 @@ texture = ExtResource( 5 )
 
 [node name="CallClient" type="Label" parent="."]
 margin_left = 533.101
-margin_top = 329.69
+margin_top = 313.69
 margin_right = 657.101
-margin_bottom = 347.69
+margin_bottom = 331.69
 custom_fonts/font = SubResource( 8 )
 text = "call next"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
