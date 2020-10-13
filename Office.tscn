@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://HUDBureau.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/backgrounds/scene_bureau_vide.png" type="Texture" id=2]
-[ext_resource path="res://assets/backgrounds/bureau_ordil.png" type="Texture" id=3]
+[ext_resource path="res://assets/backgrounds/desk_animated/bg_bureau_pc_mic_01.png" type="Texture" id=3]
 [ext_resource path="res://Office.gd" type="Script" id=4]
 [ext_resource path="res://assets/light.png" type="Texture" id=5]
+[ext_resource path="res://assets/backgrounds/desk_animated/bg_bureau_pc_mic_02.png" type="Texture" id=6]
+[ext_resource path="res://assets/backgrounds/desk_animated/bg_bureau_pc_mic_04.png" type="Texture" id=7]
+[ext_resource path="res://assets/backgrounds/desk_animated/bg_bureau_pc_mic_03.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Office" type="Node2D"]
 script = ExtResource( 4 )
@@ -15,8 +26,10 @@ centered = false
 
 [node name="Alien" type="Sprite" parent="."]
 
-[node name="Desk" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+[node name="Desk" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 1
+playing = true
 centered = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

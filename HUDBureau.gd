@@ -11,6 +11,7 @@ func _ready():
 	$AffichMissionButton.hide()
 	$ToSystemButton.hide()
 	$Objectifs.hide()
+	$MissionWaitingLabel.hide()
 	show_money_prestige()
 	start_game()
 
@@ -19,6 +20,7 @@ func start_game():
 
 func new_mission():
 	$NewMission.show()
+	$MissionWaitingLabel.show()
 
 func mission_validated(mission):
 	$Objectifs.show()
@@ -44,6 +46,7 @@ func hide_buttons():
 	#$Objectifs.hide()
 	$FinishMissionButton.hide()
 	$NewMission.hide()
+	$MissionWaitingLabel.hide()
 
 func show_interface():
 	show_money_prestige()
@@ -79,6 +82,7 @@ func _on_AffichMissionButton_pressed():
 
 func _on_NewMission_pressed():
 	$NewMission.hide()
+	$MissionWaitingLabel.hide()
 	emit_signal("see_missionIntro")
 
 func _on_ToSystemButton_pressed():
