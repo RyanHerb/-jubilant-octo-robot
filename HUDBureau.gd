@@ -38,10 +38,10 @@ func update_money(somme):
 func update_prestige():
 	$Prestige.text = str(int($Prestige.text)+ 1)
 
-func hide_all():
+func hide_buttons():
 	$AffichMissionButton.hide()
-	hide_money_prestige()
-	$Objectifs.hide()
+	#hide_money_prestige()
+	#$Objectifs.hide()
 	$FinishMissionButton.hide()
 	$NewMission.hide()
 

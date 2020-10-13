@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/icons_ui/prestige_blue.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons_ui/cash.png" type="Texture" id=2]
 [ext_resource path="res://HUDSystem.gd" type="Script" id=3]
 [ext_resource path="res://assets/icons_ui/temperature_jauge_slim.png" type="Texture" id=4]
 [ext_resource path="res://assets/icons_ui/overlay_system.png" type="Texture" id=5]

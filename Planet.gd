@@ -7,7 +7,7 @@ var atmosphere_origin = "oxygen";
 var atmosphere_new = "oxygen"
 var position_init = Vector2(0, 0)
 var temp_coefficient = 1;
-var cost_atmosphere = 0
+var tmp_cost = Vector2(0, 0)
 
 signal dragsignal(target);
 signal clicked(target)
@@ -38,9 +38,9 @@ func is_origin_atmosphere(text):
 func update_atmosphere(text, cost):
 	atmosphere_new = text
 	if atmosphere_origin == text:
-		cost_atmosphere = 0
+		tmp_cost[1] = 0
 	else:
-		cost_atmosphere = cost
+		tmp_cost[1] = cost
 
 func put_origin_position(value):
 	position_init = value
@@ -53,7 +53,7 @@ func init_atmospheres(gaz):
 	atmosphere_new = gaz
 	
 func get_cost_atmo():
-	return cost_atmosphere
+	return tmp_cost[1]
 	
 func compute_move(vect):
 	return position_init.distance_to(vect)

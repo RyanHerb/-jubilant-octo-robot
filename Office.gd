@@ -11,6 +11,9 @@ func hide():
 	.hide()
 	$HUDLayer/HUDOffice.hide()
 
+func hide_buttons():
+	.hide()
+	$HUDLayer/HUDOffice.hide_buttons()
 func show():
 	.show()
 	$HUDLayer/HUDOffice.show()

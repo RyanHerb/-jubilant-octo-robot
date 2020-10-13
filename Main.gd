@@ -42,14 +42,14 @@ func start_scenario():
 
 
 func go_to_system():
-	$Office.hide()
+	$Office.hide_buttons()
 	$System.show()
 	
 func go_to_office():
 	$System.hide()
 	$Office.show()
 	$EntreMissions.start()
-	$Office/HUDOffice.objectif_hide()
+	$Office/HUDLayer/HUDOffice.objectif_hide()
 
 func end_game():
 	$System.hide()
