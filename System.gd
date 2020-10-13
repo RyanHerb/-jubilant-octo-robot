@@ -29,7 +29,6 @@ func _ready():
 		add_child(p)
 
 		p.atmosphere_origin = atmospheres[randi()%atmospheres.size()]
-		#p.put_origin_position(p.atmosphere_origin)
 		p.init_atmospheres(p.atmosphere_origin)
 		var rand_index = randi() % planet_sprites.size()
 		var sprite = load("%s" % planet_sprites[rand_index])
@@ -43,7 +42,7 @@ func _ready():
 		p.rotation = direction
 		radius = radius.rotated(p.rotation)
 		p.position += radius * (n+1)
-		p.put_origin_position(Vector2(p.position.x, p.position.y))
+		p.put_origin_position(p.position)
 		p.connect("dragsignal", self, "_on_planet_drag")
 		p.connect("clicked", self, "show_param_planet")
 		p.position.x = clamp(p.position.x, 0, viewport_size.x)
@@ -74,10 +73,14 @@ func show():
 	$HUDLayer/HUDSystem.show()
 
 func _on_planet_drag(target):
+	$HUDLayer/HUDSystem.entrer_system()
 	dragged_planet = target
 	show_param_planet((target))
 	current_planet = target
-	
+
+	var cost_curr_planet = current_planet.get_cost_pos()
+	current_planet.compute_move(target.position)
+	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_pos() - cost_curr_planet)
 	#entourer la planete d'un cercle
 
 func show_param_planet(target):
@@ -117,10 +120,12 @@ func get_file_list(path):
 func _on_HUDSystem_atmo_changed(new_atmo):
 	var cost_curr_planet = current_planet.get_cost_atmo()
 	current_planet.update_atmosphere(new_atmo, cout_atmospheres.get(new_atmo))
-	$HUDLayer/HUDSystem.update_total_cout(current_planet.get_cost_atmo() - cost_curr_planet)
+	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_atmo() - cost_curr_planet)
 
 
 func _on_HUDSystem_reinit_system():
 	for i in planets.size():
 		planets[i].position = planets[i].get_origin_position()
-	$HUDLayer/HUDSystem.update_total_cout(0)
+	$HUDLayer/HUDSystem.add_to_total_cout(0)
+	current_planet = null
+	$HUDLayer/HUDSystem.show_tips()

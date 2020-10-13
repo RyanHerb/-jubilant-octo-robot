@@ -55,8 +55,12 @@ func init_atmospheres(gaz):
 func get_cost_atmo():
 	return tmp_cost[1]
 	
+func get_cost_pos():
+	return tmp_cost[0]
+	
+
 func compute_move(vect):
-	return position_init.distance_to(vect)
+	tmp_cost[0] = int(position_init.distance_to(vect)*10)
 
 func set_sprite(sprite):
 	$KinematicBody2D/Sprite.texture = sprite
