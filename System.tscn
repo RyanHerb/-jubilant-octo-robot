@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://System.gd" type="Script" id=1]
 [ext_resource path="res://assets/stars/orange.png" type="Texture" id=2]
 [ext_resource path="res://assets/light.png" type="Texture" id=3]
 [ext_resource path="res://assets/backgrounds/bg_star_system_empty.png" type="Texture" id=4]
+[ext_resource path="res://ParallaxLayer.gd" type="Script" id=5]
 [ext_resource path="res://HUDSystem.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers1.png" type="Texture" id=7]
+[ext_resource path="res://ParallaxLayer2.gd" type="Script" id=8]
+[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers2.png" type="Texture" id=9]
 
 [node name="System" type="Node2D"]
 position = Vector2( -2.38111, -7.62939e-06 )
@@ -13,10 +17,39 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Background" type="Sprite" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( -2.38111, -7.62939e-06 )
 z_index = -5
 texture = ExtResource( 4 )
 centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 960, 540 )
+script = ExtResource( 5 )
+
+[node name="bg_stars_layer1" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 960, 540 )
+script = ExtResource( 8 )
+
+[node name="bg_stars_layer2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
