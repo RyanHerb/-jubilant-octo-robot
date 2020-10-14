@@ -5,6 +5,7 @@ export (PackedScene) var Mission
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$IntroEnd.new_game()
+	$System.hide()
 
 func start_scenario():
 	$Office.show()

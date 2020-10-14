@@ -13,7 +13,7 @@ func _ready():
 	show_tips()
 	
 func entrer_system():
-	show_all()
+	show()
 
 func update_temp(min_tmp, max_tmp):
 	$TempMin.text = str(min_tmp)
@@ -51,7 +51,8 @@ func show_tips():
 	$Atmosphere.hide()
 	$Lazer.show()
 	
-func show_all():
+func show():
+	.show()
 	$Tips.hide()
 	$ReinitPlanet.show()
 	$ChangeGaz1.show()

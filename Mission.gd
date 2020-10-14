@@ -115,5 +115,5 @@ func _on_Refuser_pressed():
 
 
 func _on_CloseThanks_pressed():
-	hide_all()
+	hide()
 	emit_signal("thanks_ended")

@@ -47,7 +47,6 @@ func _ready():
 		p.connect("clicked", self, "show_param_planet")
 		p.position.x = clamp(p.position.x, 0, viewport_size.x)
 		p.position.y = clamp(p.position.y, 0, viewport_size.y)
-	hide()
 
 func _draw():
 	var radius
