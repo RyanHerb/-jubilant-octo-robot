@@ -46,7 +46,7 @@ func go_to_system():
 	$Office.hide_buttons()
 	$System.show()
 	
-func mission_finished(text, mission):
+func mission_finished(text, _mission):
 	$Office/HUDLayer/HUDOffice.update_money(-text)
 	$System.hide()
 	$Office.show()
