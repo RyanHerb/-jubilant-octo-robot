@@ -5,6 +5,8 @@ export (PackedScene) var Mission
 signal see_mission(text)
 signal see_missionIntro
 signal see_system
+signal start_game
+
 
 func _ready():
 	$AffichMissionButton.hide()
@@ -15,17 +17,16 @@ func _ready():
 	$CallClient.hide()
 	$OrdiAllumage.hide()
 	show_money_prestige()
-	start_game()
-
-func start_game():
-	pass
-
+    $OrdiFerme.show()
+	
 func new_mission():
-	#$NewMission.show()
 	$CallClient.show()
 	$MissionWaitingLabel.show()
 
 func mission_validated(mission):
+	$OrdiFerme.hide()
+	$OrdiIdle.hide()
+	$ToSystem.show()
 	$Objectifs.show()
 	$AffichMissionButton.show()
 	update_money(mission.get_budget())
@@ -78,6 +79,8 @@ func start_anim_ordi():
 	$OrdiAllumage.play()
 	$OrdiFerme.hide()
 
+func start_timer_intro():
+	$Timer.start()
 # =============
 # = Callbacks =
 # =============
@@ -110,6 +113,7 @@ func _on_Timer_timeout():
 
 
 func _on_ToSystem_click_to_system():
+	$ToSystemButton.hide()
 	#$OrdiIdle.hide()
 	$ToSystem.hide()
 	emit_signal("see_system")

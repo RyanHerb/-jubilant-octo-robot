@@ -1,7 +1,6 @@
 extends Node2D
 
 signal see_missionIntro
-signal see_system
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +13,7 @@ func hide():
 func hide_buttons():
 	.hide()
 	$HUDLayer/HUDOffice.hide_buttons()
+	
 func show():
 	.show()
 	$HUDLayer/HUDOffice.show()

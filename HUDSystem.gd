@@ -20,16 +20,32 @@ func update_temp(min_tmp, max_tmp):
 	$TempMax.text = str(max_tmp)
 
 func update_gaz(gaz):
+	$SwitchTo.show()
 	$Currentgaz.text = gaz
-	if $Currentgaz.text == "oxygen":
-		$ChangeGaz1.text = "nitrogen"
-		$ChangeGaz2.text = "xenon"
-	elif $Currentgaz.text == "nitrogen":
-		$ChangeGaz1.text = "oxygen"
-		$ChangeGaz2.text = "xenon"
+	$ChangeGaz1.show()
+	$ChangeGaz2.show()
+	$ChangeGaz3.show()
+	if gaz == "oxygen":
+		$ChangeGaz1.disabled = true
+		$ChangeGaz1.modulate = Color(0.5, 0.5, 0.5, 1)
+		$ChangeGaz2.disabled = false
+		$ChangeGaz2.modulate = Color(1, 1, 1, 1)
+		$ChangeGaz3.disabled = false
+		$ChangeGaz3.modulate = Color(1, 1, 1, 1)
+	elif gaz == "nitrogen":
+		$ChangeGaz1.disabled = false
+		$ChangeGaz1.modulate = Color(1, 1, 1, 1)
+		$ChangeGaz2.disabled = true
+		$ChangeGaz2.modulate = Color(0.5, 0.5, 0.5, 1)
+		$ChangeGaz3.disabled = false
+		$ChangeGaz3.modulate = Color(1, 1, 1, 1)
 	else:
-		$ChangeGaz1.text = "oxygen"
-		$ChangeGaz2.text = "nitrogen"
+		$ChangeGaz1.disabled = false
+		$ChangeGaz1.modulate = Color(1, 1, 1, 1)
+		$ChangeGaz2.disabled = false
+		$ChangeGaz2.modulate = Color(1, 1, 1, 1)
+		$ChangeGaz3.disabled = true
+		$ChangeGaz3.modulate = Color(0.5, 0.5, 0.5, 1)
 	
 	
 func show_tips():
@@ -37,6 +53,8 @@ func show_tips():
 	$ReinitPlanet.hide()
 	$ChangeGaz1.hide()
 	$ChangeGaz2.hide()
+	$ChangeGaz3.hide()
+	$SwitchTo.hide()
 	$CoutChanges.hide()
 	$AtmoLabel.hide()
 	$TempLabel.hide()
@@ -55,8 +73,10 @@ func show():
 	.show()
 	$Tips.hide()
 	$ReinitPlanet.show()
-	$ChangeGaz1.show()
-	$ChangeGaz2.show()
+	#$ChangeGaz1.show()
+	#$ChangeGaz2.show()
+	#$ChangeGaz3.show()
+	#$SwitchTo.show()
 	$CoutChanges.show()
 	$AtmoLabel.show()
 	$TempLabel.show()
@@ -97,6 +117,13 @@ func _on_ChangeGaz2_pressed():
 	update_gaz($Currentgaz.text)
 	emit_signal("atmo_changed", $Currentgaz.text)
 
+func _on_ChangeGaz3_pressed():
+	$Currentgaz.text = $ChangeGaz3.text
+	update_gaz($Currentgaz.text)
+	emit_signal("atmo_changed", $Currentgaz.text)
+
+
 func _on_ReinitPlanet_pressed():
 	$CoutChanges.text = str(0)
 	emit_signal("reinit_system")
+

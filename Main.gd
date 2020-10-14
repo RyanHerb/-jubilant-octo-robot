@@ -7,6 +7,7 @@ func _ready():
 	$BeforeAnimOrdi.stop()
 	$IntroEnd.new_game()
 	$System.hide()
+	$Office.hide()
 
 func start_scenario():
 	var mission = create_mission_1()
@@ -51,6 +52,7 @@ func mission_finished(text, _mission):
 	$Office/HUDLayer/HUDOffice.update_money(-text)
 	$System.hide()
 	$Office.show()
+	
 	$Office/HUDLayer/HUDOffice.objectif_hide()
 	$EntreMissions.start()
 
@@ -95,7 +97,4 @@ func create_mission_3():
 	mission.update_descr(descri)
 	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
 	return mission
-
-
-
 

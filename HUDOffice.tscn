@@ -81,9 +81,6 @@ animations = [ {
 [node name="HUDBureau" type="Node2D"]
 position = Vector2( 18.8988, 166.31 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AffichMissionButton" type="Button" parent="."]
 margin_left = 5.03967
@@ -190,7 +187,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Desk" type="Sprite" parent="."]
 visible = false
 position = Vector2( 461.101, 105.69 )
 texture = ExtResource( 1 )

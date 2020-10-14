@@ -135,6 +135,7 @@ func _on_planet_click(target):
 	compute_temp(target)
 	current_planet = target
 	current_planet.dragging = true
+	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 
 	var cost_curr_planet = current_planet.get_cost_pos()
 	current_planet.compute_move(target.position)
