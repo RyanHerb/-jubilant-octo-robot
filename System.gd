@@ -14,8 +14,8 @@ var cout_atmospheres = {"oxygen" : 10, "nitrogen" : 50, "xenon" : 90}
 var dragged_planet
 var current_planet
 
-var min_step = 70
-var max_step = 70
+var min_step = 25
+var max_step = 75
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
