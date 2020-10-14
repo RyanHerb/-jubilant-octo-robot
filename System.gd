@@ -114,9 +114,11 @@ func get_file_list(path):
 # =============
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and !event.pressed and current_planet and current_planet.dragging:
-			current_planet.dragging = false
+	if event is InputEventMouseButton\
+	and event.button_index == BUTTON_LEFT\
+	and !event.pressed and current_planet\
+	and current_planet.dragging:
+		current_planet.dragging = false
 
 func _on_planet_click(target):
 	$HUDLayer/HUDSystem.show()

@@ -27,14 +27,16 @@ func new_game():
 
 func end_game():
 	show_game_over()
-	
+
+# =============
+# = Callbacks =
+# =============
 
 func _on_Start_pressed():
 	$Titre.hide()
 	$StartButton.hide()
 	$Lore.show()
 	$NextLoreButton.show()
-
 
 func _on_NextLoreButton_pressed():
 	$Lore.hide()

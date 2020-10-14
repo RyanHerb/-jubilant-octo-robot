@@ -35,6 +35,10 @@ func start_game():
 func mission_validated(mission):
 	$HUDLayer/HUDOffice.mission_validated(mission)
 
+# =============
+# = Callbacks =
+# =============
+
 func _on_HUDOffice_see_missionIntro():
 	$GreenLampNode2D.hide()
 	$Lamp.show()

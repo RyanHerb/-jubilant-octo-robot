@@ -78,6 +78,10 @@ func add_to_total_cout(val):
 func update_total_cost(val):
 	$CoutChanges.text = str(val)
 
+# =============
+# = Callbacks =
+# =============
+
 func _on_Valider_pressed():
 	hide()
 	emit_signal("mission_finished", int($CoutChanges.text))

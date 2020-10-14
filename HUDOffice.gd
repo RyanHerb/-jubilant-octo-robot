@@ -69,6 +69,9 @@ func objectif_show():
 	$Objectifs.show()
 	$AffichMissionButton.show()
 
+# =============
+# = Callbacks =
+# =============
 
 func _on_AffichMissionButton_pressed():
 	if $AffichMissionButton.text == "show":
