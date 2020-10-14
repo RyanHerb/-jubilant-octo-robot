@@ -57,7 +57,7 @@ func set_sprite(sprite):
 # =============
 
 func _on_KinematicBody2D_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT:
-			if event.pressed:
-				emit_signal("clicked", self)
+	if event is InputEventMouseButton\
+	and event.button_index == BUTTON_LEFT\
+	and event.pressed:
+		emit_signal("clicked", self)
