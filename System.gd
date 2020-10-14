@@ -43,8 +43,7 @@ func _ready():
 		radius = radius.rotated(p.rotation)
 		p.position += radius * (n+1)
 		p.put_origin_position(p.position)
-		p.connect("dragsignal", self, "_on_planet_drag")
-		p.connect("clicked", self, "show_param_planet")
+		p.connect("clicked", self, "_on_planet_click")
 		p.position.x = clamp(p.position.x, 0, viewport_size.x)
 		p.position.y = clamp(p.position.y, 0, viewport_size.y)
 
@@ -56,12 +55,20 @@ func _draw():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if (typeof(dragged_planet) > 0) and (dragged_planet.dragging):
-		var mousepos = get_viewport().get_mouse_position()
-		dragged_planet.position = Vector2(mousepos.x, mousepos.y)
-		dragged_planet.position.x = clamp(dragged_planet.position.x, 0, viewport_size.x)
-		dragged_planet.position.y = clamp(dragged_planet.position.y, 0, viewport_size.y)
+	drag_planet()
 	update()
+
+func drag_planet():
+	if (typeof(current_planet) > 0) and (current_planet.dragging):
+		var mousepos = get_viewport().get_mouse_position()
+		var mouse_dist = mousepos.distance_to($Star.position)
+		var planet_dist = current_planet.position.distance_to($Star.position)
+
+		var diff = planet_dist - mouse_dist
+		var move_vector = Vector2(diff, 0)
+		move_vector = move_vector.rotated(current_planet.rotation)
+		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
+			current_planet.position -= move_vector
 
 func hide():
 	.hide()
@@ -70,20 +77,6 @@ func hide():
 func show():
 	.show()
 	$HUDLayer/HUDSystem.show()
-
-func _on_planet_drag(target):
-	$HUDLayer/HUDSystem.entrer_system()
-	dragged_planet = target
-	show_param_planet((target))
-	current_planet = target
-
-	var cost_curr_planet = current_planet.get_cost_pos()
-	current_planet.compute_move(target.position)
-	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_pos() - cost_curr_planet)
-	#entourer la planete d'un cercle
-
-func show_param_planet(target):
-	compute_temp(target)
 
 func compute_temp(planet):
 	var dist = planet.distance_to_star()
@@ -115,6 +108,25 @@ func get_file_list(path):
 
 	return files
 
+# =============
+# = Callbacks =
+# =============
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and !event.pressed and current_planet and current_planet.dragging:
+			current_planet.dragging = false
+
+func _on_planet_click(target):
+	$HUDLayer/HUDSystem.show()
+	compute_temp(target)
+	current_planet = target
+	current_planet.dragging = true
+
+	var cost_curr_planet = current_planet.get_cost_pos()
+	current_planet.compute_move(target.position)
+	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_pos() - cost_curr_planet)
+	#entourer la planete d'un cercle
 
 func _on_HUDSystem_atmo_changed(new_atmo):
 	var cost_curr_planet = current_planet.get_cost_atmo()
