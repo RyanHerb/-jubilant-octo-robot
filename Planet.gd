@@ -45,7 +45,6 @@ func get_cost_atmo():
 	
 func get_cost_pos():
 	return tmp_cost[0]
-	
 
 func compute_move(vect):
 	tmp_cost[0] = int(position_init.distance_to(vect)*10)

@@ -133,7 +133,6 @@ func _on_HUDSystem_atmo_changed(new_atmo):
 	current_planet.update_atmosphere(new_atmo, cout_atmospheres.get(new_atmo))
 	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_atmo() - cost_curr_planet)
 
-
 func _on_HUDSystem_reinit_system():
 	for i in planets.size():
 		planets[i].position = planets[i].get_origin_position()
