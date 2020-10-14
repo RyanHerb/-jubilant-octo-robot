@@ -29,17 +29,27 @@ centered = false
 motion_mirroring = Vector2( 960, 540 )
 script = ExtResource( 5 )
 
-[node name="bg_stars_layer1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+[node name="bg_stars_layer1" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
 texture = ExtResource( 7 )
-centered = false
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 960, 540 )
 script = ExtResource( 8 )
 
-[node name="bg_stars_layer2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="bg_stars_layer2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+margin_right = 40.0
+margin_bottom = 40.0
 texture = ExtResource( 9 )
-centered = false
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
