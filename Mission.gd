@@ -37,9 +37,10 @@ func check_if_done(min_temp, max_temp, atm):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hide_all()
+	hide()
 	
-func hide_all():
+func hide():
+	.hide()
 	$Accepter.hide()
 	$Refuser.hide()
 	$Description.hide()
@@ -47,11 +48,15 @@ func hide_all():
 	$Thanks.hide()
 	$CloseThanks.hide()
 
-func show_intro_mission():
+func show():
+	.show()
 	$Accepter.show()
+	#$Refuser.show()
 	$Description.show()
 	$Alien.show()
-	#$Refuser.show()
+
+func show_intro_mission():
+	self.show()
 
 func show_ending_mission():
 	$Alien.show()
@@ -100,7 +105,7 @@ func get_budget():
 
 
 func _on_Accepter_pressed():
-	hide_all()
+	hide()
 	emit_signal("mission_accepte", self)
 
 

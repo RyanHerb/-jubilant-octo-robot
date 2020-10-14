@@ -22,7 +22,7 @@ func enter_office():
 	$HUDLayer/HUDOffice.start_game()
 
 func init_HUD():
-	$HUDLayer/HUDOffice.hide_all()
+	$HUDLayer/HUDOffice.hide()
 	
 func new_mission():
 	$Lamp.hide()

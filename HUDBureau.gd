@@ -2,7 +2,6 @@ extends Node2D
 
 export (PackedScene) var Mission
 
-
 signal see_mission(text)
 signal see_missionIntro
 signal see_system
@@ -43,10 +42,7 @@ func update_prestige():
 
 func hide_buttons():
 	$AffichMissionButton.hide()
-	#hide_money_prestige()
-	#$Objectifs.hide()
 	$FinishMissionButton.hide()
-	#$NewMission.hide()
 	$CallClient.hide()
 	$MissionWaitingLabel.hide()
 
@@ -75,7 +71,6 @@ func objectif_show():
 
 
 func _on_AffichMissionButton_pressed():
-	#$AffichMissionButton.hide()
 	if $AffichMissionButton.text == "show":
 		$AffichMissionButton.text = "hide"
 	else:
@@ -84,9 +79,7 @@ func _on_AffichMissionButton_pressed():
 
 func hide_mission_descr():
 	$CallClient.hide()
-#	$NewMission.hide()
 	$MissionWaitingLabel.hide()
-#	emit_signal("see_missionIntro")
 
 func _on_ToSystemButton_pressed():
 	$ToSystemButton.hide()
