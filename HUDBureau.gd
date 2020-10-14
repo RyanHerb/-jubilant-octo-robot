@@ -28,9 +28,9 @@ func mission_validated(mission):
 	update_money(mission.get_budget())
 	$Objectifs.clear()
 	$Objectifs.add_text(str(mission.get_min_tmp()))
-	$Objectifs.add_text(" - ")
+	$Objectifs.add_text(" °C - ")
 	$Objectifs.add_text(str(mission.get_max_tmp()))
-	$Objectifs.add_text("\n")
+	$Objectifs.add_text(" °C\n")
 	$Objectifs.add_text(mission.get_gaz())
 	$ToSystemButton.show()
 

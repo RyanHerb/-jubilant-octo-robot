@@ -79,9 +79,10 @@ func show():
 	$HUDLayer/HUDSystem.show()
 
 func compute_temp(planet):
-	var dist = planet.distance_to_star()
-	var coef = planet.temp_coefficient
-	$HUDLayer/HUDSystem.update_temp(int(-dist*coef*1.5 + 300), int(-dist*coef*1.4 + 300))
+	var dist = float(planet.distance_to_star($Star.position))
+	var coef = 1 + float(planet.temp_coefficient)
+	print(dist, " ", coef)
+	$HUDLayer/HUDSystem.update_temp(int(-dist*2.6)-50-coef*50, int(-dist*2.6-450))
 	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
 
 func get_planet_sprites():

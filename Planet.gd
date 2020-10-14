@@ -15,8 +15,12 @@ signal clicked(target)
 func _ready():
 	viewport_size = get_viewport_rect().size
 
-func distance_to_star():
-	return position.distance_to(Vector2(viewport_size.x/2, viewport_size.y/2))
+func _toggle_drag(_target):
+	dragging = !dragging
+
+func distance_to_star(star):
+	return position.distance_to(star)
+
 	
 func is_origin_atmosphere(text):
 	if text == atmosphere_origin:
