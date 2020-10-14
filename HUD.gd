@@ -27,7 +27,10 @@ func new_game():
 
 func end_game():
 	show_game_over()
-	
+
+# =============
+# = Callbacks =
+# =============
 
 func _on_Start_pressed():
 	$Titre.hide()

@@ -102,7 +102,9 @@ func get_gaz():
 func get_budget():
 	return budget
 
-
+# =============
+# = Callbacks =
+# =============
 
 func _on_Accepter_pressed():
 	hide()
