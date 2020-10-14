@@ -40,6 +40,10 @@ func put_origin_position(value):
 func get_origin_position():
 	return position_init
 
+func get_gaz():
+	return atmosphere_new
+
+
 func init_atmospheres(gaz):
 	atmosphere_origin = gaz
 	atmosphere_new = gaz

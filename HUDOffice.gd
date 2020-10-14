@@ -5,24 +5,28 @@ export (PackedScene) var Mission
 signal see_mission(text)
 signal see_missionIntro
 signal see_system
+signal start_game
+
 
 func _ready():
 	$AffichMissionButton.hide()
 	$ToSystemButton.hide()
 	$Objectifs.hide()
 	$MissionWaitingLabel.hide()
-	show_money_prestige()
-	start_game()
-
-func start_game():
-	pass
-
+	$ToSystem.hide()
+	$OrdiIdle.hide()
+	$OrdiFerme.show()
+	$CallClient.hide()
+	$OrdiAllumage.hide()
+	
 func new_mission():
-	#$NewMission.show()
 	$CallClient.show()
 	$MissionWaitingLabel.show()
 
 func mission_validated(mission):
+	$OrdiFerme.hide()
+	$OrdiIdle.hide()
+	$ToSystem.show()
 	$Objectifs.show()
 	$AffichMissionButton.show()
 	update_money(mission.get_budget())
@@ -69,6 +73,8 @@ func objectif_show():
 	$Objectifs.show()
 	$AffichMissionButton.show()
 
+func start_timer_intro():
+	$Timer.start()
 # =============
 # = Callbacks =
 # =============
@@ -84,6 +90,25 @@ func hide_mission_descr():
 	$CallClient.hide()
 	$MissionWaitingLabel.hide()
 
-func _on_ToSystemButton_pressed():
+func _on_OrdiAllumage_animation_finished():
+	$OrdiAllumage.hide()
+	$OrdiIdle.show()
+	$OrdiAllumage.stop()
+
+
+func _on_Timer_timeout():
+	$Timer.stop()
+	$OrdiAllumage.show()
+	$OrdiAllumage.play()
+	$OrdiFerme.hide()
+	show_money_prestige()
+#	start_game()
+	$CallClient.show()
+	emit_signal("start_game")
+
+
+func _on_ToSystem_click_to_system():
 	$ToSystemButton.hide()
+	#$OrdiIdle.hide()
+	$ToSystem.hide()
 	emit_signal("see_system")

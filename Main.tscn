@@ -16,4 +16,7 @@ script = ExtResource( 1 )
 wait_time = 0.8
 
 [node name="System" parent="." instance=ExtResource( 5 )]
+
+[node name="TimerIntro" type="Timer" parent="."]
 [connection signal="start_game" from="IntroEnd" to="." method="_on_HUD_start_game"]
+[connection signal="timeout" from="TimerIntro" to="." method="_on_TimerIntro_timeout"]

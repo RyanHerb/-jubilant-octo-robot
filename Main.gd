@@ -6,9 +6,9 @@ export (PackedScene) var Mission
 func _ready():
 	$IntroEnd.new_game()
 	$System.hide()
+	$Office.hide()
 
 func start_scenario():
-	$Office.show()
 	var mission = create_mission_1()
 	add_child(mission)
 	mission.connect("mission_accepte", $Office, "mission_validated")
@@ -51,6 +51,7 @@ func mission_finished(text, _mission):
 	$Office/HUDLayer/HUDOffice.update_money(-text)
 	$System.hide()
 	$Office.show()
+	
 	$Office/HUDLayer/HUDOffice.objectif_hide()
 	$EntreMissions.start()
 
@@ -60,8 +61,11 @@ func end_game():
 	$IntroEnd.end_game()
 
 func _on_HUD_start_game():
-	$Office.start_game()
-	start_scenario()
+	$Office.show()
+	#$Office.start_game()
+	$Office/HUDLayer/HUDOffice.start_timer_intro()
+	#$Office/HUDLayer/HUDOffice.connect()
+	$TimerIntro.start()
 
 func startTimer():
 	$EntreMissions.start()
@@ -89,4 +93,6 @@ func create_mission_3():
 	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
 	return mission
 
-
+func _on_TimerIntro_timeout():
+	start_scenario()
+	$TimerIntro.stop()
