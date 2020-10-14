@@ -26,10 +26,12 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_mirroring = Vector2( 960, 540 )
 script = ExtResource( 5 )
 
 [node name="bg_stars_layer1" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 7 )
@@ -39,10 +41,12 @@ __meta__ = {
 }
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_mirroring = Vector2( 960, 540 )
 script = ExtResource( 8 )
 
 [node name="bg_stars_layer2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 9 )

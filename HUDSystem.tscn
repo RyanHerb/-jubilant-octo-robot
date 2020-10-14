@@ -122,29 +122,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TempMin" type="Label" parent="."]
+[node name="TempMin" type="RichTextLabel" parent="."]
 margin_left = 790.677
 margin_top = 217.717
 margin_right = 834.677
 margin_bottom = 235.717
-custom_fonts/font = SubResource( 3 )
 text = "0"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TempMax" type="Label" parent="."]
+[node name="TempMax" type="RichTextLabel" parent="."]
 margin_left = 861.513
 margin_top = 217.717
 margin_right = 902.513
 margin_bottom = 235.717
-custom_fonts/font = SubResource( 3 )
 text = "0"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MoneySprite" type="Sprite" parent="."]
 position = Vector2( 915.962, 475.872 )
