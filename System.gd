@@ -17,33 +17,48 @@ var max_step = 70
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	viewport_size = get_viewport_rect().size
+	init_planets()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	drag_planet()
+	update()
+
+func get_random_sprite(list):
+	var rand_index = randi() % list.size()
+	var sprite = load("%s" % list[rand_index])
+	return [rand_index, sprite]
+
+func init_planets():
 	randomize()
 	var p
 	var direction
 	var radius
-	viewport_size = get_viewport_rect().size
 	var planet_sprites = get_planet_sprites()
-	for n in range(4):
+	var previous_dist = 35; # initial minimum distance from sun
+	var rng = rand_range(2, 5)
+	max_step = viewport_size.y / (rng * 2)
+	for n in range(rng):
 		p = Planet.instance()
 		planets.append(p)
 		add_child(p)
+		p.connect("clicked", self, "_on_planet_click")
 
-		p.atmosphere_origin = atmospheres[randi()%atmospheres.size()]
-		p.init_atmospheres(p.atmosphere_origin)
-		var rand_index = randi() % planet_sprites.size()
-		var sprite = load("%s" % planet_sprites[rand_index])
-		p.set_sprite(sprite)
-		p.temp_coefficient = rand_index+1
+		var atmosphere = atmospheres[randi()%atmospheres.size()]
+		var rand_sprite = get_random_sprite(planet_sprites)
+		var rand_index = rand_sprite[0]
+		var sprite = rand_sprite[1]
+
+		p.init(star.position, atmosphere, sprite, rand_index+1)
 
 		var s = rand_range(min_step, max_step)
-		radius = Vector2(s, 0)
-		direction = $Star.rotation + rand_range(-PI, PI)
-		p.position = $Star.position
-		p.rotation = direction
-		radius = radius.rotated(p.rotation)
-		p.position += radius * (n+1)
-		p.put_origin_position(p.position)
-		p.connect("clicked", self, "_on_planet_click")
+		var step = Vector2(previous_dist + s, 0)
+		p.rotation = star.rotation + rand_range(-PI, PI)
+		step = step.rotated(p.rotation)
+		p.position += step
+		previous_dist = p.position.distance_to(star.position)
+
 		p.position.x = clamp(p.position.x, 0, viewport_size.x)
 		p.position.y = clamp(p.position.y, 0, viewport_size.y)
 

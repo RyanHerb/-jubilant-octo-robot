@@ -15,6 +15,13 @@ signal clicked(target)
 func _ready():
 	viewport_size = get_viewport_rect().size
 
+func init(pos, atm, sprt, tmp_coef):
+	position = pos
+	position_init = pos
+	atmosphere_origin = atm
+	init_atmospheres(atm)
+	set_sprite(sprt)
+
 func distance_to_star():
 	return position.distance_to(Vector2(viewport_size.x/2, viewport_size.y/2))
 	
