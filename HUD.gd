@@ -38,7 +38,6 @@ func _on_Start_pressed():
 	$Lore.show()
 	$NextLoreButton.show()
 
-
 func _on_NextLoreButton_pressed():
 	$Lore.hide()
 	$NextLoreButton.hide()
