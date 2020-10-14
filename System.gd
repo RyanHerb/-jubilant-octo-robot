@@ -84,30 +84,6 @@ func compute_temp(planet):
 	$HUDLayer/HUDSystem.update_temp(int(-dist*coef*1.5 + 300), int(-dist*coef*1.4 + 300))
 	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
 
-func get_planet_sprites():
-	return get_file_list(PLANET_PATH)
-
-func get_star_sprites():
-	return get_file_list(STAR_PATH)
-
-func get_file_list(path):
-	var files = []
-	var dir = Directory.new()
-	dir.open(path)
-	dir.list_dir_begin()
-
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif not file.begins_with("."):
-			if file.ends_with("png"):
-				files.append("%s/%s" % [path, file])
-
-	dir.list_dir_end()
-
-	return files
-
 # =============
 # = Callbacks =
 # =============
@@ -141,3 +117,31 @@ func _on_HUDSystem_reinit_system():
 	$HUDLayer/HUDSystem.add_to_total_cout(0)
 	current_planet = null
 	$HUDLayer/HUDSystem.show_tips()
+
+# =========
+# = Utils =
+# =========
+
+func get_planet_sprites():
+	return get_file_list(PLANET_PATH)
+
+func get_star_sprites():
+	return get_file_list(STAR_PATH)
+
+func get_file_list(path):
+	var files = []
+	var dir = Directory.new()
+	dir.open(path)
+	dir.list_dir_begin()
+
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif not file.begins_with("."):
+			if file.ends_with("png"):
+				files.append("%s/%s" % [path, file])
+
+	dir.list_dir_end()
+
+	return files
