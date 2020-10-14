@@ -81,8 +81,7 @@ func show():
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star($Star.position))
 	var coef = 1 + float(planet.temp_coefficient)
-	print(dist, " ", coef, " ", -dist*2.6, " ", 1150-coef*50, " = ", (-dist*2.5)+1150-(coef*50))
-	$HUDLayer/HUDSystem.update_temp(int(-dist*2.8)+1150-coef*50, int(-dist*2.4)+1150-coef*50)
+	$HUDLayer/HUDSystem.update_temp(int(-dist*2.6)+750-coef*50, int(-dist*2.6)+750-coef*50)
 	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
 
 func get_planet_sprites():
@@ -118,6 +117,7 @@ func _unhandled_input(event):
 	and event.button_index == BUTTON_LEFT\
 	and !event.pressed and current_planet\
 	and current_planet.dragging:
+		compute_temp(current_planet)
 		current_planet.dragging = false
 
 func _on_planet_click(target):
