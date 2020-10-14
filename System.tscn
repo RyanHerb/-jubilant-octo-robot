@@ -1,8 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://System.gd" type="Script" id=1]
-[ext_resource path="res://assets/stars/orange.png" type="Texture" id=2]
-[ext_resource path="res://assets/light.png" type="Texture" id=3]
 [ext_resource path="res://assets/backgrounds/bg_star_system_empty.png" type="Texture" id=4]
 [ext_resource path="res://ParallaxLayer.gd" type="Script" id=5]
 [ext_resource path="res://HUDSystem.tscn" type="PackedScene" id=6]
@@ -53,16 +51,6 @@ __meta__ = {
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
-
-[node name="Star" type="Node2D" parent="."]
-position = Vector2( 320, 270 )
-
-[node name="Light2D" type="Light2D" parent="Star"]
-texture = ExtResource( 3 )
-color = Color( 0.815686, 0.964706, 0.6, 1 )
-
-[node name="Sprite" type="Sprite" parent="Star/Light2D"]
-texture = ExtResource( 2 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 

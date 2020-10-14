@@ -1,12 +1,14 @@
 extends Node2D
 
 var Planet = preload("res://Planet.tscn")
+var Star = preload("res://Star.tscn")
 
 const PLANET_PATH = 'res://assets/planets'
 const STAR_PATH = 'res://assets/stars'
 
 var viewport_size
 var planets = []
+var star
 var atmospheres = ["oxygen", "nitrogen", "xenon"]
 var cout_atmospheres = {"oxygen" : 10, "nitrogen" : 50, "xenon" : 90}
 var dragged_planet
@@ -18,7 +20,14 @@ var max_step = 70
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport_size = get_viewport_rect().size
+	init_star()
 	init_planets()
+
+func _draw():
+	var radius
+	for n in range(planets.size()):
+		radius = star.position.distance_to(planets[n].position)
+		draw_arc(star.position, radius, 0, 360, 5000, Color(255, 255, 255))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -30,10 +39,22 @@ func get_random_sprite(list):
 	var sprite = load("%s" % list[rand_index])
 	return [rand_index, sprite]
 
+func init_star():
+	randomize()
+	var star_sprites = get_star_sprites()
+	var rand_sprite = get_random_sprite(star_sprites)
+	star = Star.instance()
+	add_child(star)
+
+	var intensity = rand_sprite[0]
+	var sprite = rand_sprite[1]
+
+	var pos = Vector2(viewport_size.x/3, viewport_size.y/2)
+	star.init(pos, sprite, intensity)
+
 func init_planets():
 	randomize()
 	var p
-	var direction
 	var radius
 	var planet_sprites = get_planet_sprites()
 	var previous_dist = 35; # initial minimum distance from sun
@@ -62,22 +83,11 @@ func init_planets():
 		p.position.x = clamp(p.position.x, 0, viewport_size.x)
 		p.position.y = clamp(p.position.y, 0, viewport_size.y)
 
-func _draw():
-	var radius
-	for n in range(planets.size()):
-		radius = $Star.position.distance_to(planets[n].position)
-		draw_arc($Star.position, radius, 0, 360, 10000, Color(255, 255, 255))
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	drag_planet()
-	update()
-
 func drag_planet():
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
 		var mousepos = get_viewport().get_mouse_position()
-		var mouse_dist = mousepos.distance_to($Star.position)
-		var planet_dist = current_planet.position.distance_to($Star.position)
+		var mouse_dist = mousepos.distance_to(star.position)
+		var planet_dist = current_planet.position.distance_to(star.position)
 
 		var diff = planet_dist - mouse_dist
 		var move_vector = Vector2(diff, 0)
