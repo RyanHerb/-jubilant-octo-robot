@@ -31,6 +31,9 @@ font_data = ExtResource( 1 )
 [node name="HUDSystem" type="Node2D"]
 material = SubResource( 1 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Lazer" type="Sprite" parent="."]
 position = Vector2( 480.03, 271.428 )
@@ -47,6 +50,7 @@ margin_bottom = 514.189
 custom_fonts/font = SubResource( 3 )
 text = "reinit"
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
