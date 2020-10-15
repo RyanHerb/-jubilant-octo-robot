@@ -59,8 +59,8 @@ func show_interface():
 func show_money_prestige():
 	$Money.show()
 	$SymboleMoney.show()
-	$Prestige.show()
-	$SymbolePrestige.show()
+	$Prestige.hide()
+	$SymbolePrestige.hide()
 
 func hide_money_prestige():
 	$Money.hide()
