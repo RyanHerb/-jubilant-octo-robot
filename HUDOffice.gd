@@ -10,6 +10,10 @@ func _ready():
 	$AffichMissionButton.hide()
 	$Objectifs.hide()
 	$MissionWaitingLabel.hide()
+	$ToSystem.hide()
+	$OrdiIdle.hide()
+	$CallClient.hide()
+	$OrdiAllumage.hide()
 	show_money_prestige()
 	start_game()
 
@@ -31,6 +35,8 @@ func mission_validated(mission):
 	$Objectifs.add_text(str(mission.get_max_tmp()))
 	$Objectifs.add_text(" °C\n")
 	$Objectifs.add_text(mission.get_gaz())
+	$OrdiIdle.hide()
+	$ToSystem.show()
 
 func update_money(somme):
 	$Money.text = str(int($Money.text) + somme)
@@ -67,6 +73,11 @@ func objectif_show():
 	$Objectifs.show()
 	$AffichMissionButton.show()
 
+func start_anim_ordi():
+	$OrdiAllumage.show()
+	$OrdiAllumage.play()
+	$OrdiFerme.hide()
+
 # =============
 # = Callbacks =
 # =============
@@ -84,9 +95,8 @@ func hide_mission_descr():
 
 func _on_OrdiAllumage_animation_finished():
 	$OrdiAllumage.hide()
-	$OrdiIdle.show()
 	$OrdiAllumage.stop()
-
+	$OrdiIdle.show()
 
 func _on_Timer_timeout():
 	$Timer.stop()
