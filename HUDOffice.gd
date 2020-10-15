@@ -8,7 +8,6 @@ signal see_system
 
 func _ready():
 	$AffichMissionButton.hide()
-	$ToSystemButton.hide()
 	$Objectifs.hide()
 	$MissionWaitingLabel.hide()
 	show_money_prestige()
@@ -32,7 +31,6 @@ func mission_validated(mission):
 	$Objectifs.add_text(str(mission.get_max_tmp()))
 	$Objectifs.add_text(" °C\n")
 	$Objectifs.add_text(mission.get_gaz())
-	$ToSystemButton.show()
 
 func update_money(somme):
 	$Money.text = str(int($Money.text) + somme)
@@ -84,6 +82,24 @@ func hide_mission_descr():
 	$CallClient.hide()
 	$MissionWaitingLabel.hide()
 
-func _on_ToSystemButton_pressed():
-	$ToSystemButton.hide()
+func _on_OrdiAllumage_animation_finished():
+	$OrdiAllumage.hide()
+	$OrdiIdle.show()
+	$OrdiAllumage.stop()
+
+
+func _on_Timer_timeout():
+	$Timer.stop()
+	$OrdiAllumage.show()
+	$OrdiAllumage.play()
+	$OrdiFerme.hide()
+	show_money_prestige()
+#	start_game()
+	$CallClient.show()
+	emit_signal("start_game")
+
+
+func _on_ToSystem_click_to_system():
+	#$OrdiIdle.hide()
+	$ToSystem.hide()
 	emit_signal("see_system")

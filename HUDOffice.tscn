@@ -37,6 +37,25 @@ font_data = ExtResource( 3 )
 size = 14
 font_data = ExtResource( 3 )
 
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 23 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 24 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 10, 14.0924 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="HUDBureau" type="Node2D"]
 position = Vector2( 18.8988, 166.31 )
 script = ExtResource( 2 )
@@ -138,17 +157,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ToSystemButton" type="Button" parent="."]
-margin_left = 406.955
-margin_top = 229.306
-margin_right = 465.955
-margin_bottom = 249.306
-text = "System"
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
 [node name="MissionWaitingLabel" type="Label" parent="."]
 margin_left = 277.101
 margin_top = -134.31
@@ -176,7 +184,52 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+
+[node name="OrdiFerme" type="Sprite" parent="."]
+position = Vector2( 330, 242 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="OrdiIdle" type="Sprite" parent="."]
+position = Vector2( 330, 242 )
+texture = ExtResource( 22 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="OrdiAllumage" type="AnimatedSprite" parent="."]
+position = Vector2( 330, 242 )
+frames = SubResource( 9 )
+frame = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ToSystem" type="Area2D" parent="."]
+script = ExtResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToSystem"]
+position = Vector2( 333, 211 )
+scale = Vector2( 8, 3 )
+shape = SubResource( 10 )
+
+[node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
+position = Vector2( 330, 242 )
+frames = SubResource( 11 )
+frame = 3
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="pressed" from="FinishMissionButton" to="." method="_on_FinishMissionButton_pressed"]
 [connection signal="pressed" from="NewMission" to="." method="_on_NewMission_pressed"]
-[connection signal="pressed" from="ToSystemButton" to="." method="_on_ToSystemButton_pressed"]
+[connection signal="animation_finished" from="OrdiAllumage" to="." method="_on_OrdiAllumage_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="click_to_system" from="ToSystem" to="." method="_on_ToSystem_click_to_system"]
