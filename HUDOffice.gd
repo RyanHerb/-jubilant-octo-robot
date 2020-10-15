@@ -117,11 +117,9 @@ func _on_Timer_timeout():
 	$CallClient.show()
 	emit_signal("start_game")
 
-
 func _on_ToSystem_click_to_system():
 	$ToSystem.hide()
 	emit_signal("see_system")
-
 
 func _on_Accept_accept_mission():
 	$Accept.hide()

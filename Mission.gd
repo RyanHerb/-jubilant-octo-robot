@@ -35,7 +35,6 @@ func _ready():
 	hide()
 	
 func hide():
-	.hide()
 	$Description.hide()
 	$Alien.hide()
 	$Thanks.hide()

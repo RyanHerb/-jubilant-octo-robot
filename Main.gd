@@ -81,7 +81,7 @@ func _on_BeforeAnimOrdi_timeout():
 
 
 func create_mission_1():
-	var descri = "bliblibloblo blubli blio\n \n aze\n Merci\n jzef"
+	var descri = "bliblibloblo blubli blio\n \n aze\n jzef"
 	var thanks = "My thanks"
 	mission.update_descr(descri)
 	mission.update_thank(thanks)
