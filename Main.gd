@@ -4,14 +4,14 @@ export (PackedScene) var Mission
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$BeforeAnimOrdi.stop()
 	$IntroEnd.new_game()
 	$System.hide()
 
 func start_scenario():
-	$Office.show()
 	var mission = create_mission_1()
 	add_child(mission)
-	mission.connect("mission_accepte", $Office, "mission_validated")
+	mission.connect("mission_accepte", $Office/HUDLayer/HUDOffice, "mission_validated")
 	$Office.new_mission()
 	$Office.connect("see_missionIntro", mission, "show_intro_mission")
 	$Office/HUDLayer/HUDOffice.connect("see_mission", mission, "show_text_mission")
@@ -61,10 +61,17 @@ func end_game():
 
 func _on_HUD_start_game():
 	$Office.start_game()
-	start_scenario()
+	$Office.show()
+	$BeforeAnimOrdi.start()
 
 func startTimer():
 	$EntreMissions.start()
+
+func _on_BeforeAnimOrdi_timeout():
+	$BeforeAnimOrdi.stop()
+	$Office/HUDLayer/HUDOffice.start_anim_ordi()
+	start_scenario()
+
 
 func create_mission_1():
 	var mission = preload("res://Mission.tscn").instance()
@@ -88,5 +95,7 @@ func create_mission_3():
 	mission.update_descr(descri)
 	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
 	return mission
+
+
 
 
