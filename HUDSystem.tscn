@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/icons_ui/cash.png" type="Texture" id=2]
 [ext_resource path="res://HUDSystem.gd" type="Script" id=3]
 [ext_resource path="res://assets/icons_ui/temperature_jauge_slim.png" type="Texture" id=4]
 [ext_resource path="res://assets/icons_ui/overlay_system.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/8bitOperatorPlus8-Regular.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -18,20 +19,23 @@ font_data = SubResource( 2 )
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFontData" id=6]
 font_path = "res://assets/Begok v15_2015___free.ttf"
 
-[sub_resource type="DynamicFont" id=6]
-font_data = SubResource( 5 )
-
 [sub_resource type="DynamicFont" id=7]
+font_data = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
 size = 15
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=10]
 size = 11
 font_data = ExtResource( 1 )
 
@@ -139,29 +143,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TempMin" type="Label" parent="."]
+[node name="TempMin" type="RichTextLabel" parent="."]
 margin_left = 790.677
 margin_top = 217.717
 margin_right = 834.677
 margin_bottom = 235.717
-custom_fonts/font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 5 )
 text = "0"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TempMax" type="Label" parent="."]
+[node name="TempMax" type="RichTextLabel" parent="."]
 margin_left = 861.513
 margin_top = 217.717
 margin_right = 902.513
 margin_bottom = 235.717
-custom_fonts/font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 5 )
 text = "0"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MoneySprite" type="Sprite" parent="."]
 position = Vector2( 895.962, 482.872 )
@@ -188,7 +184,7 @@ margin_left = 664.22
 margin_top = 262.26
 margin_right = 746.22
 margin_bottom = 280.26
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "atm"
 align = 2
 __meta__ = {
@@ -200,7 +196,7 @@ margin_left = 811.0
 margin_top = 257.0
 margin_right = 890.0
 margin_bottom = 275.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -211,7 +207,7 @@ margin_left = 680.0
 margin_top = 44.0
 margin_right = 915.0
 margin_bottom = 275.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "find the perfect
 planet to complet
 your mission"
@@ -224,7 +220,7 @@ margin_left = 679.0
 margin_top = 391.0
 margin_right = 757.0
 margin_bottom = 405.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "switch to:"
 __meta__ = {
 "_edit_use_anchors_": false
