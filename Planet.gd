@@ -17,7 +17,6 @@ func _ready():
 
 func init(pos, atm, sprt, tmp_coef):
 	position = pos
-	position_init = pos
 	atmosphere_origin = atm
 	init_atmospheres(atm)
 	set_sprite(sprt)
