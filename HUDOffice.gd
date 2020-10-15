@@ -3,9 +3,9 @@ extends Node2D
 export (PackedScene) var Mission
 
 signal see_mission(text)
-signal see_missionIntro
 signal see_system
 signal start_game
+signal mission_accepted
 
 
 func _ready():
@@ -16,6 +16,7 @@ func _ready():
 	$OrdiIdle.hide()
 	$CallClient.hide()
 	$OrdiAllumage.hide()
+	$Accept.hide()
 	show_money_prestige()
 	$OrdiFerme.show()
 	
@@ -36,6 +37,7 @@ func mission_validated(mission):
 	$Objectifs.add_text(str(mission.get_max_tmp()))
 	$Objectifs.add_text(" °C\n")
 	$Objectifs.add_text(mission.get_gaz())
+	$Objectifs.show()
 	$OrdiIdle.hide()
 	$ToSystem.show()
 
@@ -79,6 +81,10 @@ func start_anim_ordi():
 	$OrdiAllumage.play()
 	$OrdiFerme.hide()
 
+func show_ordi_accept():
+	$Accept.show()
+	$OrdiIdle.hide()
+
 func start_timer_intro():
 	$Timer.start()
 # =============
@@ -115,3 +121,9 @@ func _on_Timer_timeout():
 func _on_ToSystem_click_to_system():
 	$ToSystem.hide()
 	emit_signal("see_system")
+
+
+func _on_Accept_accept_mission():
+	$Accept.hide()
+	$ToSystem.show()
+	emit_signal("mission_accepted")

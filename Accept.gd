@@ -1,6 +1,6 @@
 extends Area2D
 
-signal click_to_system
+signal accept_mission
 
 func _ready():
 	pass # Replace with function body.
@@ -10,5 +10,5 @@ func _input_event(_viewport, event, _shape_idx):
 	and event.button_index == BUTTON_LEFT \
 	and event.is_pressed():
 		.hide()
-		emit_signal("click_to_system")
+		emit_signal("accept_mission")
 

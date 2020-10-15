@@ -55,12 +55,12 @@ func init_star():
 func init_planets():
 	randomize()
 	var p
-	var radius
+	#var radius
 	var planet_sprites = get_planet_sprites()
 	var previous_dist = 35; # initial minimum distance from sun
 	var rng = rand_range(2, 5)
 	max_step = viewport_size.y / (rng * 2)
-	for n in range(rng):
+	for _n in range(rng):
 		p = Planet.instance()
 		planets.append(p)
 		add_child(p)
