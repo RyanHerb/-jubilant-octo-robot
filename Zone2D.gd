@@ -1,7 +1,5 @@
 extends Area2D
 
-signal loreEnd
-
 signal enter
 
 func _input_event(_viewport, event, _shape_idx):
@@ -9,5 +7,5 @@ func _input_event(_viewport, event, _shape_idx):
 	and event.button_index == BUTTON_LEFT \
 	and event.is_pressed():
 		.hide()
-		emit_signal("loreEnd")
+		emit_signal("enter")
 
