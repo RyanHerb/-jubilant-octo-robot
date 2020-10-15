@@ -210,7 +210,7 @@ texture = ExtResource( 6 )
 
 [node name="OrdiIdle" type="Sprite" parent="."]
 position = Vector2( 330, 242 )
-texture = ExtResource( 15 )
+texture = ExtResource( 26 )
 
 [node name="OrdiAllumage" type="AnimatedSprite" parent="."]
 position = Vector2( 330, 242 )
@@ -230,7 +230,7 @@ shape = SubResource( 10 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
-frame = 5
+frame = 2
 playing = true
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="pressed" from="FinishMissionButton" to="." method="_on_FinishMissionButton_pressed"]

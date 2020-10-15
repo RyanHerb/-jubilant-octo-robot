@@ -25,7 +25,7 @@ func start_scenario():
 	
 	mission = create_mission_2()
 	add_child(mission)
-	mission.connect("mission_accepte", $Office, "mission_validated")
+	mission.connect("mission_accepte", $Office/HUDLayer/HUDOffice, "mission_validated")
 	$Office.new_mission()
 	$Office.connect("see_missionIntro", mission, "show_intro_mission")
 	yield($EntreMissions, "timeout")
@@ -34,14 +34,13 @@ func start_scenario():
 	
 	mission = create_mission_3()
 	add_child(mission)
-	mission.connect("mission_accepte", $Office, "mission_validated")
+	mission.connect("mission_accepte", $Office/HUDLayer/HUDOffice, "mission_validated")
 	$Office.new_mission()
 	$Office.connect("see_missionIntro", mission, "show_intro_mission")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	mission.queue_free()
 	end_game()
-
 
 
 func go_to_system():
@@ -52,8 +51,8 @@ func mission_finished(text, _mission):
 	$Office/HUDLayer/HUDOffice.update_money(-text)
 	$System.hide()
 	$Office.show()
-	
 	$Office/HUDLayer/HUDOffice.objectif_hide()
+	$Office/HUDLayer/HUDOffice/OrdiIdle.show()
 	$EntreMissions.start()
 
 func end_game():
@@ -62,7 +61,6 @@ func end_game():
 	$IntroEnd.end_game()
 
 func _on_HUD_start_game():
-	$Office.start_game()
 	$Office.show()
 	$BeforeAnimOrdi.start()
 

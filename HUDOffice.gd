@@ -17,12 +17,12 @@ func _ready():
 	$CallClient.hide()
 	$OrdiAllumage.hide()
 	show_money_prestige()
-    $OrdiFerme.show()
+	$OrdiFerme.show()
 	
 func new_mission():
 	$CallClient.show()
 	$MissionWaitingLabel.show()
-
+	
 func mission_validated(mission):
 	$OrdiFerme.hide()
 	$OrdiIdle.hide()
@@ -113,7 +113,5 @@ func _on_Timer_timeout():
 
 
 func _on_ToSystem_click_to_system():
-	$ToSystemButton.hide()
-	#$OrdiIdle.hide()
 	$ToSystem.hide()
 	emit_signal("see_system")
