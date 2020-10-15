@@ -84,6 +84,14 @@ func init_planets():
 		p.position.y = clamp(p.position.y, 0, viewport_size.y)
 		p.put_origin_position(p.position)
 
+func free_planets():
+	# TODO
+	pass
+
+func free_star():
+	# TODO
+	pass
+
 func drag_planet():
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
 		var mousepos = get_viewport().get_mouse_position()
