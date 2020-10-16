@@ -55,12 +55,12 @@ func init_star():
 func init_planets():
 	randomize()
 	var p
-	var radius
+	#var radius
 	var planet_sprites = get_planet_sprites()
 	var previous_dist = 35; # initial minimum distance from sun
 	var rng = rand_range(2, 5)
 	max_step = viewport_size.y / (rng * 2)
-	for n in range(rng):
+	for _n in range(rng):
 		p = Planet.instance()
 		planets.append(p)
 		add_child(p)
@@ -116,7 +116,7 @@ func compute_temp(planet):
 	var dist = float(planet.distance_to_star($Star.position))
 	var coef = 1 + float(planet.temp_coefficient)
 	print(dist, " ", coef)
-	$HUDLayer/HUDSystem.update_temp(int(-dist*2.6)-50-coef*50, int(-dist*2.6-450))
+	$HUDLayer/HUDSystem.update_temp(int(-dist*2.7)+750-coef*50, int(-dist*2.2)+750-coef*50)
 	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
 
 # =============
@@ -140,6 +140,7 @@ func _on_planet_click(target):
 	var cost_curr_planet = current_planet.get_cost_pos()
 	current_planet.compute_move(target.position)
 	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_pos() - cost_curr_planet)
+	compute_temp(target)
 	#entourer la planete d'un cercle
 
 func _on_HUDSystem_atmo_changed(new_atmo):

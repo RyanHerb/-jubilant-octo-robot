@@ -1,12 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/Begok v15_2015___free.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/8bitOperatorPlus8-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://IntroEnd.gd" type="Script" id=2]
 [ext_resource path="res://assets/backgrounds/bg_star_system_layers_flattened.png" type="Texture" id=3]
+[ext_resource path="res://Zone2D.gd" type="Script" id=4]
+[ext_resource path="res://Area2D.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
+size = 42
 font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 48.1523, 269.7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 23
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 47.8344, 26.6522 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -19,68 +31,70 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StartButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -67.0
-margin_top = -49.0
-margin_right = 67.0
-custom_fonts/font = SubResource( 1 )
-text = " start "
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
 [node name="Titre" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -192.0
+margin_left = -308.5
 margin_top = -16.5
-margin_right = 192.0
+margin_right = 308.5
 margin_bottom = 16.5
 custom_fonts/font = SubResource( 1 )
-text = "different planet"
+text = "Asylum Seekers from Space"
+align = 1
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Lore" type="Label" parent="."]
+[node name="Zone2D" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="EntierZone" type="CollisionShape2D" parent="Zone2D"]
+position = Vector2( 480.996, 268.044 )
+scale = Vector2( 10, 1 )
+shape = SubResource( 2 )
+
+[node name="clickAnywhere" type="Label" parent="Zone2D"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -300.02
-margin_top = -163.0
-margin_right = 300.02
-margin_bottom = 163.0
+margin_left = 415.067
+margin_top = 415.785
+margin_right = 585.067
+margin_bottom = 431.785
+custom_fonts/font = SubResource( 3 )
+text = "Click to start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="ZoneLore" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 484.175, 268.044 )
+scale = Vector2( 10, 10 )
+shape = SubResource( 4 )
+
+[node name="Lore" type="Label" parent="Area2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 179.98
+margin_top = 107.0
+margin_right = 828.98
+margin_bottom = 433.0
 custom_fonts/font = SubResource( 1 )
-text = "your mission is to find home
+text = "Your mission is to find home
 to aliens
 "
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-
-[node name="NextLoreButton" type="Button" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -127.0
-margin_top = -39.0
-margin_right = 1.0
-custom_fonts/font = SubResource( 1 )
-text = "next"
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-[connection signal="pressed" from="StartButton" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="NextLoreButton" to="." method="_on_NextLoreButton_pressed"]
+[connection signal="enter" from="Zone2D" to="." method="_on_Zone2D_enter"]
+[connection signal="loreEnd" from="Area2D" to="." method="_on_Area2D_loreEnd"]

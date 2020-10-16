@@ -29,12 +29,6 @@ func new_mission():
 	$GreenLampNode2D.show()
 	$HUDLayer/HUDOffice.new_mission()
 
-func start_game():
-	$HUDLayer/HUDOffice.start_game()
-
-#func mission_validated(mission):
-#	$HUDLayer/HUDOffice.mission_validated(mission)
-
 # =============
 # = Callbacks =
 # =============

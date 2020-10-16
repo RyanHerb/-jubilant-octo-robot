@@ -15,14 +15,15 @@ signal clicked(target)
 func _ready():
 	viewport_size = get_viewport_rect().size
 
-func init(pos, atm, sprt, tmp_coef):
+func init(pos, atm, sprt, coef):
 	position = pos
 	atmosphere_origin = atm
 	init_atmospheres(atm)
 	set_sprite(sprt)
+	temp_coefficient = coef
 
-func distance_to_star():
-	return position.distance_to(Vector2(viewport_size.x/2, viewport_size.y/2))
+func distance_to_star(star):
+	return position.distance_to(star)
 	
 func is_origin_atmosphere(text):
 	if text == atmosphere_origin:
