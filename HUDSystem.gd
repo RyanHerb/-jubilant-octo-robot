@@ -53,7 +53,7 @@ func show_tips():
 	$ChangeGaz2.hide()
 	$ChangeGaz3.hide()
 	$SwitchTo.hide()
-	$CoutChanges.hide()
+	$CoutChanges.show()
 	$AtmoLabel.hide()
 	$TempLabel.hide()
 	$Total.show()
@@ -102,9 +102,11 @@ func check_cost_to_money():
 	if int($CoutChanges.text) <= current_money:
 		$Valider.disabled = false
 		$Valider.modulate = Color(1, 1, 1, 1)
+		$CoutChanges.modulate = Color(1, 1, 1, 1)
 	else:
 		$Valider.disabled = true
 		$Valider.modulate = Color(0.5, 0.5, 0.5, 1)
+		$CoutChanges.modulate = Color(1, 0, 0, 1)
 # =============
 # = Callbacks =
 # =============
