@@ -8,24 +8,27 @@ var min_temperature = 0
 var max_temperature = 1
 var atmosphere = "oxygen"
 var budget = 1500
+var repartition_point = [50, 50] #temperature, gaz
 
 func check_atmosphere(atm):
+	print(atm == atmosphere)
 	return atm == atmosphere
 	
 func check_temp(min_temp_planet, max_temp_planet):
-	var progress = 50
-	if (min_temp_planet < min_temperature):
-		progress -= abs(min_temperature - min_temp_planet)
-	if (max_temp_planet > max_temperature):
-		progress -= abs(max_temp_planet - max_temperature)
-	if progress < 0:
-		progress = 0
-	return progress
+	var moy_pl = (max_temp_planet + min_temp_planet) / 2
+	print("moy_pl < min_m", moy_pl < min_temperature)
+	print("moy_pl > max_m", moy_pl > max_temperature)
+	if (moy_pl < min_temperature
+	or moy_pl > max_temperature):
+		return 0
+	
+	var moy_m = (min_temperature + max_temperature) / 2
+	return (repartition_point[0] - (abs(max_temperature - moy_pl) / repartition_point[0]) * abs(moy_m - moy_pl))
 	
 func check_if_done(min_temp, max_temp, atm):
 	var progress = 0
 	if (check_atmosphere(atm)):
-		progress += 50
+		progress += repartition_point[1]
 	progress += check_temp(min_temp, max_temp)
 	return progress
 	
@@ -37,20 +40,25 @@ func _ready():
 func hide():
 	$Description.hide()
 	$Alien.hide()
-	$Thanks.hide()
+	$ThanksCools.hide()
+	$ThanksNuls.hide()
 	$CloseThanks.hide()
+	
 
 func show():
-	.show()
 	$Description.show()
 	$Alien.show()
 
 func show_intro_mission():
 	self.show()
 
-func show_ending_mission():
+func show_ending_mission(min_temp, max_temp, atm):
 	$Alien.show()
-	$Thanks.show()
+	var prestige = check_if_done(min_temp, max_temp, atm)
+	if (prestige > 70):
+		$ThanksCools.show()
+	else:
+		$ThanksNuls.show()
 	$CloseThanks.show()
 
 func show_text_mission(text):
@@ -62,8 +70,9 @@ func show_text_mission(text):
 func update_descr(text):
 	$Description.text = text
 
-func update_thank(text):
-	$Thanks.text = text
+func update_thank(cools, nuls):
+	$ThanksCools.text = cools
+	$ThanksNuls.text = nuls
 
 
 func get_buget():

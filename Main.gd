@@ -58,14 +58,12 @@ func mission_accepte(mission):
 	
 func mission_finished(text, tmp_min, tmp_max, gas, _mission):
 	$Office/HUDLayer/HUDOffice.add_to_money(-text)
-	var prestige = _mission.check_if_done(tmp_min, tmp_max, gas)
-	#if prestige > 50:
-	print(prestige)
 	$System.hide()
 	$Office.show()
 	$Office/HUDLayer/HUDOffice.objectif_hide()
 	$Office/HUDLayer/HUDOffice/OrdiIdle.show()
-	$EntreMissions.start()
+	_mission.show_ending_mission(tmp_min, tmp_max, gas)
+	#$EntreMissions.start()
 
 func end_game():
 	$System.hide()
@@ -87,15 +85,16 @@ func _on_BeforeAnimOrdi_timeout():
 
 func create_mission_1():
 	var descri = "bliblibloblo blubli blio\n \n aze\n jzef"
-	var thanks = "My thanks"
+	var thanksBien = "My thanks"
+	var thanksNuls = "Hum... well, thanks, I gess."
 	mission.update_descr(descri)
-	mission.update_thank(thanks)
+	mission.update_thank(thanksBien, thanksNuls)
 	mission.update_values(0, 40, "oxygene", 1500, "res://assets/aliens/alien_ET.png")
 	
 func create_mission_2():
 	var descri = "ceci est la deuxieme mission"
 	mission.update_descr(descri)
-	mission.update_values(-20, 10, "azote", 400, "res://assets/aliens/alien_mars.png")
+	mission.update_values(-20, 10, "nitrogen", 400, "res://assets/aliens/alien_mars.png")
 	
 func create_mission_3():
 	var descri = "au secours c'est la fin"

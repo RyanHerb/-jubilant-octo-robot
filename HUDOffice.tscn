@@ -195,7 +195,7 @@ margin_right = 106.96
 margin_bottom = -88.5377
 custom_fonts/mono_font = SubResource( 5 )
 custom_fonts/normal_font = SubResource( 6 )
-text = "objectif"
+text = "Objectif"
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -207,7 +207,7 @@ margin_top = -134.31
 margin_right = 555.101
 margin_bottom = -94.31
 custom_fonts/font = SubResource( 7 )
-text = "one mission awaiting"
+text = "One mission awaiting"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -223,7 +223,7 @@ margin_top = 313.69
 margin_right = 657.101
 margin_bottom = 331.69
 custom_fonts/font = SubResource( 8 )
-text = "call next"
+text = "Call next"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -255,7 +255,7 @@ shape = SubResource( 10 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
-frame = 8
+frame = 3
 playing = true
 
 [node name="Accept" type="Area2D" parent="."]
@@ -269,7 +269,7 @@ shape = SubResource( 12 )
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
 frames = SubResource( 13 )
-frame = 2
+frame = 7
 playing = true
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="pressed" from="FinishMissionButton" to="." method="_on_FinishMissionButton_pressed"]
