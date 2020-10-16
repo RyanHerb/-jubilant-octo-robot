@@ -255,7 +255,7 @@ shape = SubResource( 10 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
-frame = 9
+frame = 5
 playing = true
 
 [node name="Accept" type="Area2D" parent="."]
@@ -269,7 +269,7 @@ shape = SubResource( 12 )
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
 frames = SubResource( 13 )
-frame = 3
+frame = 9
 playing = true
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="pressed" from="FinishMissionButton" to="." method="_on_FinishMissionButton_pressed"]

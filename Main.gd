@@ -43,6 +43,8 @@ func start_scenario():
 
 
 func go_to_system():
+	var money = int($Office/HUDLayer/HUDOffice.get_money())
+	$System/HUDLayer/HUDSystem.give_money_value(money)
 	$Office.hide_buttons()
 	$System.show()
 	

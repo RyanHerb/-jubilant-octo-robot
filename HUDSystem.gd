@@ -3,10 +3,8 @@ extends Node2D
 signal mission_finished
 signal atmo_changed
 signal reinit_system
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
+var current_money
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,10 +88,23 @@ func show():
 
 func add_to_total_cout(val):
 	$CoutChanges.text = str(int($CoutChanges.text) + val)
+	check_cost_to_money()
 
 func update_total_cost(val):
 	$CoutChanges.text = str(val)
+	check_cost_to_money()
 
+func give_money_value(val):
+	current_money = val
+
+
+func check_cost_to_money():
+	if int($CoutChanges.text) <= current_money:
+		$Valider.disabled = false
+		$Valider.modulate = Color(1, 1, 1, 1)
+	else:
+		$Valider.disabled = true
+		$Valider.modulate = Color(0.5, 0.5, 0.5, 1)
 # =============
 # = Callbacks =
 # =============

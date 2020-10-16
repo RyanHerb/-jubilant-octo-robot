@@ -30,7 +30,7 @@ func mission_validated(mission):
 	$ToSystem.show()
 	$Objectifs.show()
 	$AffichMissionButton.show()
-	update_money(mission.get_budget())
+	add_to_money(mission.get_budget())
 	$Objectifs.clear()
 	$Objectifs.add_text(str(mission.get_min_tmp()))
 	$Objectifs.add_text(" °C - ")
@@ -41,7 +41,7 @@ func mission_validated(mission):
 	$OrdiIdle.hide()
 	$ToSystem.show()
 
-func update_money(somme):
+func add_to_money(somme):
 	$Money.text = str(int($Money.text) + somme)
 
 func update_prestige():
@@ -87,6 +87,10 @@ func show_ordi_accept():
 
 func start_timer_intro():
 	$Timer.start()
+
+func get_money():
+	return $Money.text
+
 # =============
 # = Callbacks =
 # =============
