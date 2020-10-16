@@ -56,8 +56,11 @@ func mission_accepte(mission):
 	mission.hide()
 	$Office/HUDLayer/HUDOffice.mission_validated(mission)
 	
-func mission_finished(text, _mission):
-	$Office/HUDLayer/HUDOffice.update_money(-text)
+func mission_finished(text, tmp_min, tmp_max, gas, _mission):
+	$Office/HUDLayer/HUDOffice.add_to_money(-text)
+	var prestige = _mission.check_if_done(tmp_min, tmp_max, gas)
+	#if prestige > 50:
+	print(prestige)
 	$System.hide()
 	$Office.show()
 	$Office/HUDLayer/HUDOffice.objectif_hide()
@@ -87,7 +90,7 @@ func create_mission_1():
 	var thanks = "My thanks"
 	mission.update_descr(descri)
 	mission.update_thank(thanks)
-	mission.update_values(0, 40, "oxygene", 150, "res://assets/aliens/alien_ET.png")
+	mission.update_values(0, 40, "oxygene", 1500, "res://assets/aliens/alien_ET.png")
 	
 func create_mission_2():
 	var descri = "ceci est la deuxieme mission"

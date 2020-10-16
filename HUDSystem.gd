@@ -1,6 +1,6 @@
 extends Node2D
 
-signal mission_finished
+signal mission_finished(cost, tmp_min, tmp_max, gas)
 signal atmo_changed
 signal reinit_system
 
@@ -113,7 +113,7 @@ func check_cost_to_money():
 
 func _on_Valider_pressed():
 	hide()
-	emit_signal("mission_finished", int($CoutChanges.text))
+	emit_signal("mission_finished", int($CoutChanges.text), int($TempMin.text), int($TempMax.text), $Currentgaz.text)
 	$CoutChanges.text = str(0)
 
 func _on_ChangeGaz1_pressed():
