@@ -3,8 +3,7 @@ extends CanvasLayer
 signal start_game
 
 func _ready():
-	$NextLoreButton.hide()
-	$Lore.hide()
+	$Area2D.hide()
 
 
 func show_message(text):
@@ -21,9 +20,7 @@ func update_money(value):
 
 func new_game():
 	$Titre.show()
-	$StartButton.show()
-	$Lore.hide()
-	$NextLoreButton.hide()
+	$Area2D.hide()
 
 func end_game():
 	show_game_over()
@@ -32,14 +29,16 @@ func end_game():
 # = Callbacks =
 # =============
 
-func _on_Start_pressed():
-	$Titre.hide()
-	$StartButton.hide()
-	$Lore.show()
-	$NextLoreButton.show()
-
 func _on_NextLoreButton_pressed():
-	$Lore.hide()
-	$NextLoreButton.hide()
+	pass
+
+
+func _on_Zone2D_enter():
+	$Titre.hide()
+	$Area2D.show()
+
+
+func _on_Area2D_loreEnd():
+	$Area2D.hide()
 	$Background.hide()
 	emit_signal("start_game")

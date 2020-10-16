@@ -15,12 +15,15 @@ signal clicked(target)
 func _ready():
 	viewport_size = get_viewport_rect().size
 
-func _toggle_drag(_target):
-	dragging = !dragging
+func init(pos, atm, sprt, coef):
+	position = pos
+	atmosphere_origin = atm
+	init_atmospheres(atm)
+	set_sprite(sprt)
+	temp_coefficient = coef
 
 func distance_to_star(star):
 	return position.distance_to(star)
-
 	
 func is_origin_atmosphere(text):
 	if text == atmosphere_origin:
@@ -39,6 +42,10 @@ func put_origin_position(value):
 	
 func get_origin_position():
 	return position_init
+
+func get_gaz():
+	return atmosphere_new
+
 
 func init_atmospheres(gaz):
 	atmosphere_origin = gaz

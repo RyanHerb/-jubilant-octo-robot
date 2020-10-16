@@ -9,11 +9,6 @@ var max_temperature = 1
 var atmosphere = "oxygen"
 var budget = 1500
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 func check_atmosphere(atm):
 	return atm == atmosphere
 	
@@ -40,9 +35,6 @@ func _ready():
 	hide()
 	
 func hide():
-	.hide()
-	$Accepter.hide()
-	$Refuser.hide()
 	$Description.hide()
 	$Alien.hide()
 	$Thanks.hide()
@@ -50,8 +42,6 @@ func hide():
 
 func show():
 	.show()
-	$Accepter.show()
-	#$Refuser.show()
 	$Description.show()
 	$Alien.show()
 
@@ -105,16 +95,6 @@ func get_budget():
 # =============
 # = Callbacks =
 # =============
-
-func _on_Accepter_pressed():
-	hide()
-	emit_signal("mission_accepte", self)
-
-
-func _on_Refuser_pressed():
-	hide()
-	emit_signal("mission_refuse")
-
 
 func _on_CloseThanks_pressed():
 	hide()

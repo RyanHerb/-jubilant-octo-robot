@@ -81,6 +81,7 @@ offset = Vector2( 480, 270 )
 visible = false
 position = Vector2( 560, 330 )
 frames = SubResource( 1 )
+frame = 3
 playing = true
 centered = false
 
@@ -109,13 +110,12 @@ script = ExtResource( 14 )
 [node name="LampGreen" type="AnimatedSprite" parent="GreenLampNode2D"]
 position = Vector2( 600, 405 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="LampCollision" type="CollisionShape2D" parent="GreenLampNode2D"]
 position = Vector2( 600.051, 428.367 )
 shape = SubResource( 3 )
 [connection signal="see_mission" from="HUDLayer/HUDOffice" to="." method="_on_HUDOffice_see_mission"]
-[connection signal="see_missionIntro" from="HUDLayer/HUDOffice" to="." method="_on_HUDOffice_see_missionIntro"]
 [connection signal="see_system" from="HUDLayer/HUDOffice" to="." method="_on_HUDOffice_see_system"]
 [connection signal="click_lamp" from="GreenLampNode2D" to="." method="_on_GreenLampNode2D_click_lamp"]

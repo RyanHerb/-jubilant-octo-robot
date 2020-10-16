@@ -3,8 +3,10 @@ extends Node2D
 export (PackedScene) var Mission
 
 signal see_mission(text)
-signal see_missionIntro
 signal see_system
+signal start_game
+signal mission_accepted
+
 
 func _ready():
 	$AffichMissionButton.hide()
@@ -14,31 +16,32 @@ func _ready():
 	$OrdiIdle.hide()
 	$CallClient.hide()
 	$OrdiAllumage.hide()
+	$Accept.hide()
 	show_money_prestige()
-	start_game()
-
-func start_game():
-	pass
-
+	$OrdiFerme.show()
+	
 func new_mission():
-	#$NewMission.show()
 	$CallClient.show()
 	$MissionWaitingLabel.show()
-
+	
 func mission_validated(mission):
+	$OrdiFerme.hide()
+	$OrdiIdle.hide()
+	$ToSystem.show()
 	$Objectifs.show()
 	$AffichMissionButton.show()
-	update_money(mission.get_budget())
+	add_to_money(mission.get_budget())
 	$Objectifs.clear()
 	$Objectifs.add_text(str(mission.get_min_tmp()))
 	$Objectifs.add_text(" °C - ")
 	$Objectifs.add_text(str(mission.get_max_tmp()))
 	$Objectifs.add_text(" °C\n")
 	$Objectifs.add_text(mission.get_gaz())
+	$Objectifs.show()
 	$OrdiIdle.hide()
 	$ToSystem.show()
 
-func update_money(somme):
+func add_to_money(somme):
 	$Money.text = str(int($Money.text) + somme)
 
 func update_prestige():
@@ -56,8 +59,8 @@ func show_interface():
 func show_money_prestige():
 	$Money.show()
 	$SymboleMoney.show()
-	$Prestige.show()
-	$SymbolePrestige.show()
+	$Prestige.hide()
+	$SymbolePrestige.hide()
 
 func hide_money_prestige():
 	$Money.hide()
@@ -77,6 +80,16 @@ func start_anim_ordi():
 	$OrdiAllumage.show()
 	$OrdiAllumage.play()
 	$OrdiFerme.hide()
+
+func show_ordi_accept():
+	$Accept.show()
+	$OrdiIdle.hide()
+
+func start_timer_intro():
+	$Timer.start()
+
+func get_money():
+	return $Money.text
 
 # =============
 # = Callbacks =
@@ -108,8 +121,11 @@ func _on_Timer_timeout():
 	$CallClient.show()
 	emit_signal("start_game")
 
-
 func _on_ToSystem_click_to_system():
-	#$OrdiIdle.hide()
 	$ToSystem.hide()
 	emit_signal("see_system")
+
+func _on_Accept_accept_mission():
+	$Accept.hide()
+	$ToSystem.show()
+	emit_signal("mission_accepted")
