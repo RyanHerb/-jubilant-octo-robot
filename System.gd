@@ -21,8 +21,6 @@ var max_step = 75
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport_size = get_viewport_rect().size
-	init_star()
-	init_planets()
 
 func _draw():
 	var radius
@@ -86,12 +84,25 @@ func init_planets():
 		p.put_origin_position(p.position)
 
 func free_planets():
-	# TODO
-	pass
+	update_current_planet(null)
+	for p in planets:
+		p.queue_free()
+	planets = []
+
+func init():
+	init_star()
+	init_planets()
+
+func reinit():
+	my_free()
+	init()
 
 func free_star():
-	# TODO
-	pass
+	star.queue_free()
+
+func my_free():
+	free_planets()
+	free_star()
 
 func drag_planet():
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
@@ -107,7 +118,7 @@ func drag_planet():
 		compute_temp(current_planet)
 
 func compute_temp(planet):
-	var dist = float(planet.distance_to_star($Star.position))
+	var dist = float(planet.distance_to_star(star.position))
 	var coef = 1 + float(planet.temp_coefficient)
 	#print(dist, " ", coef)
 	var tmp_min = int(-dist*2.5)+750-coef*50
@@ -120,6 +131,13 @@ func compute_temp(planet):
 	$HUDLayer/HUDSystem.update_temp(tmp_min, tmp_min + 100)
 	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
 
+func update_current_planet(planet):
+	if (planet != null):
+		$HUDLayer/HUDSystem.update_maxi_planet(planet.get_coef_tmp()) # nope !!
+	else:
+		$HUDLayer/HUDSystem.hide_maxi_planet()
+	current_planet = planet
+	
 # =============
 # =  Display  =
 # =============
@@ -146,7 +164,7 @@ func _unhandled_input(event):
 func _on_planet_click(target):
 	$HUDLayer/HUDSystem.show()
 	compute_temp(target)
-	current_planet = target
+	update_current_planet(target)
 	current_planet.dragging = true
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 	compute_temp(target)
@@ -162,8 +180,11 @@ func _on_HUDSystem_reinit_system():
 		planets[i].position = planets[i].get_origin_position()
 		planets[i].reinit()
 	$HUDLayer/HUDSystem.add_to_total_cout(0)
-	current_planet = null
+	update_current_planet(null)
 	$HUDLayer/HUDSystem.show_tips()
+
+func _on_HUDSystem_find_new_system():
+	reinit()
 
 # =========
 # = Utils =
