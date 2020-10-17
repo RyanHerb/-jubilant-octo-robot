@@ -104,6 +104,7 @@ func drag_planet():
 		move_vector = move_vector.rotated(current_planet.rotation)
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
+		compute_temp(current_planet)
 
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star($Star.position))
