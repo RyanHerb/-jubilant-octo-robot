@@ -15,7 +15,7 @@ func start_scenario():
 	create_mission_1()
 	add_child(mission)
 	$Office.new_mission()
-	$Office.connect("see_missionIntro", self, "mission_intro", [mission])
+	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", self, "mission_intro", [mission])
 	$Office/HUDLayer/HUDOffice.connect("mission_accepted", self, "mission_accepte", [mission])
 	$Office/HUDLayer/HUDOffice.connect("see_mission", mission, "show_text_mission")
 	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system")

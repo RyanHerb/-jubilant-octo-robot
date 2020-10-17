@@ -8,6 +8,7 @@ signal start_game
 signal mission_accepted
 signal animation_finished
 signal thanks_ended
+signal see_missionIntro
 
 
 func _ready():
@@ -22,10 +23,14 @@ func _ready():
 	show_money_prestige()
 	$OrdiFerme.show()
 	$CloseMission.hide()
+	$MicSimple.show()
+	$Mic.hide()
 	
 func new_mission():
 	$CallClient.show()
 	$MissionWaitingLabel.show()
+	$Mic.show()
+	$MicSimple.hide()
 	
 func mission_validated(mission):
 	$OrdiFerme.hide()
@@ -40,6 +45,7 @@ func mission_validated(mission):
 	$Objectifs.show()
 	$OrdiIdle.hide()
 	$ToSystem.show()
+	$MicSimple.show()
 
 func add_to_money(somme):
 	$Money.text = str(int($Money.text) + somme)
@@ -72,6 +78,7 @@ func show_ordi_accept():
 func show_thank():
 	$CloseMission.show()
 	$ToSystem.hide()
+	$MicSimple.show()
 
 func show_money_prestige():
 	$Money.show()
@@ -98,6 +105,8 @@ func hide_buttons():
 	$FinishMissionButton.hide()
 	$CallClient.hide()
 	$MissionWaitingLabel.hide()
+	$MicSimple.hide()
+
 
 func show_interface():
 	show_money_prestige()
@@ -146,6 +155,13 @@ func _on_CloseMission_thanks_ended():
 	$CloseMission.hide()
 	$OrdiIdle.show()
 	emit_signal("thanks_ended")
+
+func _on_Mic_click_lamp():
+	$Mic.hide()
+	$MicSimple.show()
+	#$Lamp.show()
+	hide_mission_descr()
+	emit_signal("see_missionIntro")
 
 # =========
 # = Utils =
