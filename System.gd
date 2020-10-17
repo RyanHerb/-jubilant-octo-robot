@@ -20,8 +20,6 @@ var max_step = 75
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport_size = get_viewport_rect().size
-	init_star()
-	init_planets()
 
 func _draw():
 	var radius
@@ -85,12 +83,17 @@ func init_planets():
 		p.put_origin_position(p.position)
 
 func free_planets():
-	# TODO
-	pass
+	current_planet = null
+	for p in planets:
+		p.queue_free()
+	planets = []
 
 func free_star():
-	# TODO
-	pass
+	star.queue_free()
+
+func my_free():
+	free_planets()
+	free_star()
 
 func drag_planet():
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
