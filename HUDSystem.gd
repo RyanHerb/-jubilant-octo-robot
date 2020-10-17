@@ -86,6 +86,8 @@ func show():
 	$Currentgaz.show()
 	$Atmosphere.show()
 	$Lazer.show()
+	$SpriteTemp.show()
+	$HighLow.show()
 
 func show_tips():
 	.show()
@@ -102,6 +104,8 @@ func show_tips():
 	$Valider.hide()
 	$Currentgaz.hide()
 	$Atmosphere.hide()
+	$SpriteTemp.hide()
+	$HighLow.hide()
 
 # =============
 # = Callbacks =

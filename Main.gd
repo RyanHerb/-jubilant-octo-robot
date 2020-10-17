@@ -21,7 +21,6 @@ func start_scenario():
 	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system", [mission])
 	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "mission_validated", [mission])
 	$Office/HUDLayer/HUDOffice.connect("thanks_ended", self, "mission_finished", [mission])
-	#mission.connect("thanks_ended", self, "startTimer")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
