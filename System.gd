@@ -89,6 +89,14 @@ func free_planets():
 		p.queue_free()
 	planets = []
 
+func init():
+	init_star()
+	init_planets()
+
+func reinit():
+	my_free()
+	init()
+
 func free_star():
 	star.queue_free()
 

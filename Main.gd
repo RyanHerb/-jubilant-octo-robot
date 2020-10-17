@@ -13,8 +13,7 @@ func _ready():
 
 func start_scenario():
 	create_mission_1()
-	$System.init_star()
-	$System.init_planets()
+	$System.init()
 	add_child(mission)
 	$Office.new_mission()
 	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", self, "mission_intro", [mission])
@@ -28,17 +27,13 @@ func start_scenario():
 	$EntreMissions.stop()
 	
 	create_mission_2()
-	$System.my_free()
-	$System.init_star()
-	$System.init_planets()
+	$System.reinit()
 	$Office.new_mission()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
 	create_mission_3()
-	$System.my_free()
-	$System.init_star()
-	$System.init_planets()
+	$System.reinit()
 	$Office.new_mission()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
