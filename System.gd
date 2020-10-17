@@ -27,7 +27,9 @@ func _draw():
 	for n in range(planets.size()):
 		radius = star.position.distance_to(planets[n].position)
 		draw_arc(star.position, radius, 0, 360, 5000, Color(255, 255, 255))
-
+	if current_planet != null:
+		draw_arc(current_planet.position, 17, 0, 360, 1000, Color(1, 1, 1, 1), 2)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	drag_planet()
@@ -116,6 +118,7 @@ func drag_planet():
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
 		compute_temp(current_planet)
+		#draw_arc(current_planet.position, 60, 0, 360, 50, Color(255, 255, 255))
 
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star(star.position))
