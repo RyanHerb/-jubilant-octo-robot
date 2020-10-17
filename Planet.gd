@@ -32,6 +32,7 @@ func is_origin_atmosphere(text):
 
 func update_atmosphere(text, cost):
 	atmosphere_new = text
+	print(tmp_cost, cost)
 	if atmosphere_origin == text:
 		tmp_cost[1] = 0
 	else:

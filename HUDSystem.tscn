@@ -161,8 +161,11 @@ margin_top = 217.717
 margin_right = 834.677
 margin_bottom = 235.717
 custom_fonts/font = SubResource( 6 )
-text = "0"
+text = "-1000"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TempMax" type="Label" parent="."]
 margin_left = 861.513
@@ -170,7 +173,7 @@ margin_top = 217.717
 margin_right = 902.513
 margin_bottom = 235.717
 custom_fonts/font = SubResource( 7 )
-text = "0"
+text = "-1000"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -210,6 +213,7 @@ margin_top = 257.0
 margin_right = 890.0
 margin_bottom = 275.0
 custom_fonts/font = SubResource( 10 )
+text = "Aze"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

@@ -9,8 +9,8 @@ const STAR_PATH = 'res://assets/stars'
 var viewport_size
 var planets = []
 var star
-var atmospheres = ["oxygen", "nitrogen", "xenon"]
-var cout_atmospheres = {"oxygen" : 10, "nitrogen" : 50, "xenon" : 90}
+var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
+var cout_atmospheres = {"Oxygen" : 10, "Nitrogen" : 50, "Xenon" : 90}
 var dragged_planet
 var current_planet
 
@@ -120,6 +120,9 @@ func compute_temp(planet):
 	$HUDLayer/HUDSystem.update_temp(int(-dist*2.7)+750-coef*50, int(-dist*2.2)+750-coef*50)
 	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
 
+func get_cost_change_atmo(atmo):
+	return cout_atmospheres.get(atmo)
+
 # =============
 # = Callbacks =
 # =============
@@ -146,7 +149,7 @@ func _on_planet_click(target):
 
 func _on_HUDSystem_atmo_changed(new_atmo):
 	var cost_curr_planet = current_planet.get_cost_atmo()
-	current_planet.update_atmosphere(new_atmo, cout_atmospheres.get(new_atmo))
+	current_planet.update_atmosphere(new_atmo, get_cost_change_atmo(new_atmo))
 	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_atmo() - cost_curr_planet)
 
 func _on_HUDSystem_reinit_system():

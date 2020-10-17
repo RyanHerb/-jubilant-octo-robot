@@ -48,12 +48,12 @@ func go_to_system():
 	$Office.hide_buttons()
 	$System.show()
 	
-func mission_intro(mission):
-	mission.show_intro_mission()
+func mission_intro(_mission):
+	_mission.show_intro_mission()
 	$Office/HUDLayer/HUDOffice.show_ordi_accept()
 	
-func mission_accepte(mission):
-	mission.hide()
+func mission_accepte(_mission):
+	_mission.hide()
 	$Office/HUDLayer/HUDOffice.mission_validated(mission)
 	
 func mission_finished(text, tmp_min, tmp_max, gas, _mission):
@@ -86,7 +86,7 @@ func _on_BeforeAnimOrdi_timeout():
 func create_mission_1():
 	var descri = "bliblibloblo blubli blio\n \n aze\n jzef"
 	var thanksBien = "My thanks"
-	var thanksNuls = "Hum... well, thanks, I gess."
+	var thanksNuls = "Hum... well, thanks, I guess."
 	mission.update_descr(descri)
 	mission.update_thank(thanksBien, thanksNuls)
 	mission.update_values(0, 40, "oxygene", 1500, "res://assets/aliens/alien_ET.png")

@@ -23,14 +23,14 @@ func update_gaz(gaz):
 	$ChangeGaz1.show()
 	$ChangeGaz2.show()
 	$ChangeGaz3.show()
-	if gaz == "oxygen":
+	if gaz == "Oxygen":
 		$ChangeGaz1.disabled = true
 		$ChangeGaz1.modulate = Color(0.5, 0.5, 0.5, 1)
 		$ChangeGaz2.disabled = false
 		$ChangeGaz2.modulate = Color(1, 1, 1, 1)
 		$ChangeGaz3.disabled = false
 		$ChangeGaz3.modulate = Color(1, 1, 1, 1)
-	elif gaz == "nitrogen":
+	elif gaz == "Nitrogen":
 		$ChangeGaz1.disabled = false
 		$ChangeGaz1.modulate = Color(1, 1, 1, 1)
 		$ChangeGaz2.disabled = true
@@ -132,5 +132,8 @@ func _on_ChangeGaz3_pressed():
 
 func _on_ReinitPlanet_pressed():
 	$CoutChanges.text = str(0)
+	$TempMin.text = "-1000"
+	$TempMax.text = "-1000"
+	$Currentgaz.text = "Aze"
 	emit_signal("reinit_system")
 

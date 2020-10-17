@@ -2,7 +2,6 @@ extends Area2D
 
 signal loreEnd
 
-signal enter
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton \

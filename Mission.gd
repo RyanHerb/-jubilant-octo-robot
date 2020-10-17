@@ -1,7 +1,5 @@
 extends Node2D
 
-signal mission_accepte
-signal mission_refuse
 signal thanks_ended
 
 var min_temperature = 0
