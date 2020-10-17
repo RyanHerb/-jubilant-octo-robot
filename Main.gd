@@ -25,17 +25,12 @@ func start_scenario():
 	$EntreMissions.stop()
 	
 	create_mission_2()
-	add_child(mission)
 	$Office.new_mission()
-	$Office.connect("see_missionIntro", self, "mission_intro", [mission])
-	mission.connect("thanks_ended", self, "startTimer")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
 	create_mission_3()
-	add_child(mission)
 	$Office.new_mission()
-	$Office.connect("see_missionIntro", mission, "show_intro_mission")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	mission.queue_free()

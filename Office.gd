@@ -49,3 +49,5 @@ func _on_GreenLampNode2D_click_lamp():
 
 func _on_HUDOffice_animation_finished():
 	emit_signal("animation_finished")
+
+
