@@ -19,8 +19,9 @@ func start_scenario():
 	$Office/HUDLayer/HUDOffice.connect("mission_accepted", self, "mission_accepte", [mission])
 	$Office/HUDLayer/HUDOffice.connect("see_mission", mission, "show_text_mission")
 	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system")
-	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "mission_finished", [mission])
-	mission.connect("thanks_ended", self, "startTimer")
+	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "mission_validated", [mission])
+	$Office/HUDLayer/HUDOffice.connect("thanks_ended", self, "mission_finished", [mission])
+	#mission.connect("thanks_ended", self, "startTimer")
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
@@ -50,7 +51,7 @@ func mission_accepte(_mission):
 	_mission.hide()
 	$Office/HUDLayer/HUDOffice.mission_validated(mission)
 	
-func mission_finished(text, tmp_min, tmp_max, gas, _mission):
+func mission_validated(text, tmp_min, tmp_max, gas, _mission):
 	$Office/HUDLayer/HUDOffice.add_to_money(-text)
 	$System.hide()
 	$Office.show()
@@ -58,6 +59,11 @@ func mission_finished(text, tmp_min, tmp_max, gas, _mission):
 	$Office/HUDLayer/HUDOffice/OrdiIdle.show()
 	$Office/HUDLayer/HUDOffice.color_descr(1)
 	_mission.show_ending_mission(tmp_min, tmp_max, gas)
+	$Office/HUDLayer/HUDOffice.show_thank()
+
+func mission_finished(mission):
+	mission.hide()
+	startTimer()
 
 func end_game():
 	$System.hide()
@@ -98,7 +104,7 @@ func create_mission_2():
 	var descri = "ceci est la deuxieme mission"
 	mission.update_descr(descri)
 	var thanksBien = "Thank you"
-	var thanksNuls = "Hum... well, thanks, I guess."
+	var thanksNuls = "Just asking... how important is your army?"
 	mission.update_thank(thanksBien, thanksNuls)
 	mission.update_values(-20, 10, -5, "nitrogen", 400, "res://assets/aliens/alien_mars_double.png")
 	

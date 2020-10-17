@@ -7,6 +7,7 @@ signal see_system
 signal start_game
 signal mission_accepted
 signal animation_finished
+signal thanks_ended
 
 
 func _ready():
@@ -20,6 +21,7 @@ func _ready():
 	$Accept.hide()
 	show_money_prestige()
 	$OrdiFerme.show()
+	$CloseMission.hide()
 	
 func new_mission():
 	$CallClient.show()
@@ -66,6 +68,10 @@ func color_descr(val):
 func show_ordi_accept():
 	$Accept.show()
 	$OrdiIdle.hide()
+
+func show_thank():
+	$CloseMission.show()
+	$ToSystem.hide()
 
 func show_money_prestige():
 	$Money.show()
@@ -135,6 +141,11 @@ func _on_Accept_accept_mission():
 	$Accept.hide()
 	$ToSystem.show()
 	emit_signal("mission_accepted")
+
+func _on_CloseMission_thanks_ended():
+	$CloseMission.hide()
+	$OrdiIdle.show()
+	emit_signal("thanks_ended")
 
 # =========
 # = Utils =

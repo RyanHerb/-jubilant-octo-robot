@@ -43,7 +43,7 @@ func show_ending_mission(min_temp, max_temp, atm):
 		$ThanksCools.show()
 	else:
 		$ThanksNuls.show()
-	$CloseThanks.show()
+	#$CloseThanks.show()
 
 func update_descr(text):
 	$Description.text = text
@@ -79,19 +79,10 @@ func hide():
 	$Alien.hide()
 	$ThanksCools.hide()
 	$ThanksNuls.hide()
-	$CloseThanks.hide()
 
 func show():
 	$Description.show()
 	$Alien.show()
-
-# =============
-# = Callbacks =
-# =============
-
-func _on_CloseThanks_pressed():
-	hide()
-	emit_signal("thanks_ended")
 
 # =========
 # = Utils =

@@ -59,19 +59,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CloseThanks" type="Button" parent="."]
-margin_left = 305.678
-margin_top = 372.42
-margin_right = 392.678
-margin_bottom = 396.42
-custom_fonts/font = SubResource( 1 )
-text = "close"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
 position = Vector2( 480.542, 273.642 )
 texture = ExtResource( 4 )
-[connection signal="pressed" from="CloseThanks" to="." method="_on_CloseThanks_pressed"]
