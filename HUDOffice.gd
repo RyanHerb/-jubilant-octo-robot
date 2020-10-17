@@ -72,6 +72,8 @@ func color_descr(val):
 # =============
 
 func show_ordi_accept():
+	.hide()
+	.show()
 	$Accept.show()
 	$OrdiIdle.hide()
 
