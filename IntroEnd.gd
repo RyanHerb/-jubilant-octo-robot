@@ -12,7 +12,6 @@ func show_message(text):
 	$Titre.show()
 	
 func show_game_over():
-	#$Background.show()
 	show_message("thanks for playing")
 # Called when the node enters the scene tree for the first time.
 
