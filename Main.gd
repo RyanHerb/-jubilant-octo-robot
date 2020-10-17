@@ -80,7 +80,7 @@ func startTimer():
 func _on_BeforeAnimOrdi_timeout():
 	$BeforeAnimOrdi.stop()
 	$Office/HUDLayer/HUDOffice.start_anim_ordi()
-	start_scenario()
+	#start_scenario()
 
 
 func create_mission_1():
@@ -100,3 +100,8 @@ func create_mission_3():
 	var descri = "au secours c'est la fin"
 	mission.update_descr(descri)
 	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
+
+
+func _on_Office_animation_finished():
+	start_scenario()
+	

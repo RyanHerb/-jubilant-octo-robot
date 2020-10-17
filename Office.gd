@@ -1,6 +1,7 @@
 extends Node2D
 
 signal see_missionIntro
+signal animation_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,3 +45,7 @@ func _on_GreenLampNode2D_click_lamp():
 	$Lamp.show()
 	$HUDLayer/HUDOffice.hide_mission_descr()
 	emit_signal("see_missionIntro")
+
+
+func _on_HUDOffice_animation_finished():
+	emit_signal("animation_finished")

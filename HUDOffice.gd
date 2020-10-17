@@ -6,6 +6,7 @@ signal see_mission(text)
 signal see_system
 signal start_game
 signal mission_accepted
+signal animation_finished
 
 
 func _ready():
@@ -110,6 +111,7 @@ func _on_OrdiAllumage_animation_finished():
 	$OrdiAllumage.hide()
 	$OrdiAllumage.stop()
 	$OrdiIdle.show()
+	emit_signal("animation_finished")
 
 func _on_Timer_timeout():
 	$Timer.stop()
@@ -117,7 +119,6 @@ func _on_Timer_timeout():
 	$OrdiAllumage.play()
 	$OrdiFerme.hide()
 	show_money_prestige()
-#	start_game()
 	$CallClient.show()
 	emit_signal("start_game")
 
