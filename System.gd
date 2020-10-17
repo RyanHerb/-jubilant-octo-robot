@@ -10,7 +10,7 @@ var viewport_size
 var planets = []
 var star
 var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
-var cout_atmospheres = {"Oxygen" : 10, "Nitrogen" : 50, "Xenon" : 90}
+var cout_atmospheres = {"Oxygen" : 10, "Nitrogen" : 50, "Xenon" : 100}
 var dragged_planet
 var current_planet
 
