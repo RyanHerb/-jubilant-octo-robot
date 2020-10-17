@@ -118,7 +118,7 @@ func drag_planet():
 		compute_temp(current_planet)
 
 func compute_temp(planet):
-	var dist = float(planet.distance_to_star($Star.position))
+	var dist = float(planet.distance_to_star(star.position))
 	var coef = 1 + float(planet.temp_coefficient)
 	#print(dist, " ", coef)
 	var tmp_min = int(-dist*2.5)+750-coef*50
@@ -175,6 +175,9 @@ func _on_HUDSystem_reinit_system():
 	$HUDLayer/HUDSystem.add_to_total_cout(0)
 	current_planet = null
 	$HUDLayer/HUDSystem.show_tips()
+
+func _on_HUDSystem_find_new_system():
+	reinit()
 
 # =========
 # = Utils =

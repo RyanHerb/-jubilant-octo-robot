@@ -3,6 +3,7 @@ extends Node2D
 signal mission_finished(cost, tmp_min, tmp_max, gas)
 signal atmo_changed
 signal reinit_system
+signal find_new_system
 
 var current_money
 
@@ -12,6 +13,9 @@ func _ready():
 	
 func entrer_system():
 	show()
+
+func reinit():
+	$CoutChanges.text = "0"
 
 func update_temp(min_tmp, max_tmp):
 	$TempMin.text = str(min_tmp)
@@ -88,9 +92,11 @@ func show():
 	$Lazer.show()
 	$SpriteTemp.show()
 	$HighLow.show()
+	$NewSystem.show()
 
 func show_tips():
 	.show()
+	$Tips.show()
 	$ReinitPlanet.hide()
 	$ChangeGaz1.hide()
 	$ChangeGaz2.hide()
@@ -106,6 +112,7 @@ func show_tips():
 	$Atmosphere.hide()
 	$SpriteTemp.hide()
 	$HighLow.hide()
+	$NewSystem.show()
 
 # =============
 # = Callbacks =
@@ -137,3 +144,9 @@ func _on_ReinitPlanet_pressed():
 	$TempMax.text = "-1000"
 	$Currentgaz.text = "Aze"
 	emit_signal("reinit_system")
+
+
+func _on_NewSystem_pressed():
+	show_tips()
+	reinit()
+	emit_signal("find_new_system")
