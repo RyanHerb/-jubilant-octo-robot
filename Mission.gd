@@ -5,9 +5,10 @@ signal thanks_ended
 var min_temperature
 var max_temperature
 var temp_asked
-var atmosphere = "oxygen"
+var atmosphere = "Oxygen"
 var budget = 1500
 var repartition_point = [50, 50] #temperature, gaz
+var coef_prestige = 1
 
 
 func _ready():
@@ -15,25 +16,27 @@ func _ready():
 	
 
 func check_atmosphere(atm):
-	print(atm == atmosphere)
+	print("atm ", atm, " atm_m ", atmosphere, " : ", atm == atmosphere)
 	return atm == atmosphere
 	
 func check_temp(min_temp_planet, max_temp_planet):
-	var moy_pl = (max_temp_planet + min_temp_planet) / 2
-	print("moy_pl < min_m", moy_pl < min_temperature)
-	print("moy_pl > max_m", moy_pl > max_temperature)
+	var moy_pl = (float(max_temp_planet) + float(min_temp_planet)) / 2
 	if (moy_pl < min_temperature
 	or moy_pl > max_temperature):
 		return 0
 	
-	var moy_m = (min_temperature + max_temperature) / 2
-	return (repartition_point[0] - (abs(max_temperature - moy_pl) / repartition_point[0]) * abs(moy_m - moy_pl))
+	var moy_m = (float(min_temperature) + float(max_temperature)) / 2
+	var point_temp = float(repartition_point[0])
+	var res = (point_temp - ((abs(float(max_temperature) -moy_m) / point_temp) * abs(moy_m - moy_pl)))
+	return res
 	
 func check_if_done(min_temp, max_temp, atm):
 	var progress = 0
 	if (check_atmosphere(atm)):
 		progress += repartition_point[1]
+		print("points atmo : ", progress)
 	progress += check_temp(min_temp, max_temp)
+	print("point totaux : ", progress)
 	return progress
 	
 func show_ending_mission(min_temp, max_temp, atm):
@@ -43,7 +46,8 @@ func show_ending_mission(min_temp, max_temp, atm):
 		$ThanksCools.show()
 	else:
 		$ThanksNuls.show()
-	#$CloseThanks.show()
+	prestige *= coef_prestige 
+	return int(prestige)
 
 func update_descr(text):
 	$Description.text = text
@@ -52,12 +56,13 @@ func update_thank(cools, nuls):
 	$ThanksCools.text = cools
 	$ThanksNuls.text = nuls
 
-func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, file):
+func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, prestige, file):
 	min_temperature = min_tmp
 	max_temperature = max_tmp
 	atmosphere = gaz
 	temp_asked = tmp_asked
 	budget = money
+	coef_prestige = prestige
 	var sprite = load(file)
 	$Alien.texture = sprite
 

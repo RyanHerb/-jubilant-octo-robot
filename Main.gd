@@ -58,7 +58,8 @@ func mission_validated(text, tmp_min, tmp_max, gas, _mission):
 	$Office/HUDLayer/HUDOffice.objectif_hide()
 	$Office/HUDLayer/HUDOffice/OrdiIdle.show()
 	$Office/HUDLayer/HUDOffice.color_descr(1)
-	_mission.show_ending_mission(tmp_min, tmp_max, gas)
+	var prestige = _mission.show_ending_mission(tmp_min, tmp_max, gas)
+	$Office/HUDLayer/HUDOffice.add_to_prestige(prestige)
 	$Office/HUDLayer/HUDOffice.show_thank()
 
 func mission_finished(mission):
@@ -98,15 +99,15 @@ func create_mission_1():
 	var thanksBien = "My thanks"
 	var thanksNuls = "Hum... well, I may asked too much."
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(0, 40, 20, "oxygene", 1500, "res://assets/aliens/alien_ET.png")
+	mission.update_values(-40, 40, 0, "Oxygen", 1500, 1, "res://assets/aliens/alien_ET.png")
 	
 func create_mission_2():
 	var descri = "ceci est la deuxieme mission"
 	mission.update_descr(descri)
 	var thanksBien = "Thank you"
-	var thanksNuls = "Just asking... how important is your army?"
+	var thanksNuls = "Just asking for a friend... how important is your army?"
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(-20, 10, -5, "nitrogen", 400, "res://assets/aliens/alien_mars_double.png")
+	mission.update_values(-20, 10, -5, "Nitrogen", 400, 2, "res://assets/aliens/alien_mars_double.png")
 	
 func create_mission_3():
 	var descri = "au secours c'est la fin"
@@ -114,4 +115,4 @@ func create_mission_3():
 	var thanksBien = "... let's go"
 	var thanksNuls = "You will die!"
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(20, 55, 35, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
+	mission.update_values(20, 55, 35, "Xenon", 1000, 3,  "res://assets/aliens/alien_xenomorph_half.png")

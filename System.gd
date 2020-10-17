@@ -156,6 +156,7 @@ func _on_HUDSystem_atmo_changed(new_atmo):
 func _on_HUDSystem_reinit_system():
 	for i in planets.size():
 		planets[i].position = planets[i].get_origin_position()
+		planets[i].reinit()
 	$HUDLayer/HUDSystem.add_to_total_cout(0)
 	current_planet = null
 	$HUDLayer/HUDSystem.show_tips()

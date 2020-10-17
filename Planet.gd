@@ -22,6 +22,10 @@ func init(pos, atm, sprt, coef):
 	set_sprite(sprt)
 	temp_coefficient = coef
 
+func reinit():
+	atmosphere_new = atmosphere_origin
+	tmp_cost = [0, 0]
+
 func distance_to_star(star):
 	return position.distance_to(star)
 	

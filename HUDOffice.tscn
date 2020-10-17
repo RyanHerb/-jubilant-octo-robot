@@ -304,7 +304,7 @@ shape = SubResource( 10 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="Accept" type="Area2D" parent="."]
@@ -318,7 +318,7 @@ shape = SubResource( 12 )
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
 frames = SubResource( 13 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="CloseMission" type="Area2D" parent="."]
@@ -332,7 +332,7 @@ shape = SubResource( 15 )
 [node name="Sprite" type="AnimatedSprite" parent="CloseMission"]
 position = Vector2( 330, 242 )
 frames = SubResource( 16 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="Mic" type="Area2D" parent="."]
@@ -350,6 +350,7 @@ playing = true
 [node name="MicSimple" type="AnimatedSprite" parent="."]
 position = Vector2( 597, 241 )
 frames = SubResource( 19 )
+frame = 3
 playing = true
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="pressed" from="FinishMissionButton" to="." method="_on_FinishMissionButton_pressed"]

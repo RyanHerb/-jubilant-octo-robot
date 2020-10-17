@@ -50,8 +50,8 @@ func mission_validated(mission):
 func add_to_money(somme):
 	$Money.text = str(int($Money.text) + somme)
 
-func update_prestige():
-	$Prestige.text = str(int($Prestige.text)+ 1)
+func add_to_prestige(val):
+	$Prestige.text = str(int($Prestige.text) + val)
 
 func start_anim_ordi():
 	$OrdiAllumage.show()
@@ -85,8 +85,8 @@ func show_thank():
 func show_money_prestige():
 	$Money.show()
 	$SymboleMoney.show()
-	$Prestige.hide()
-	$SymbolePrestige.hide()
+	$Prestige.show()
+	$SymbolePrestige.show()
 
 func hide_money_prestige():
 	$Money.hide()
