@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Mission.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/8bitOperatorPlus8-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/aliens/alien_mars.png" type="Texture" id=3]
+[ext_resource path="res://assets/aliens/alien_mars_double.png" type="Texture" id=3]
 [ext_resource path="res://assets/backgrounds/bureau_ordil.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -13,7 +13,7 @@ font_data = ExtResource( 2 )
 script = ExtResource( 1 )
 
 [node name="Alien" type="Sprite" parent="."]
-position = Vector2( 588.75, 271.968 )
+position = Vector2( 418.261, 185.208 )
 texture = ExtResource( 3 )
 centered = false
 __meta__ = {
@@ -30,29 +30,31 @@ text = "bliblblibo azdazd
 azdazd
 azdad
 merci"
+autowrap = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Thanks" type="Label" parent="."]
+[node name="ThanksCools" type="Label" parent="."]
 margin_left = 285.0
 margin_top = 41.0
 margin_right = 632.0
 margin_bottom = 286.0
 custom_fonts/font = SubResource( 1 )
 text = "Thanks"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CloseThanks" type="Button" parent="."]
-margin_left = 305.678
-margin_top = 372.42
-margin_right = 392.678
-margin_bottom = 396.42
+[node name="ThanksNuls" type="Label" parent="."]
+margin_left = 285.0
+margin_top = 41.0
+margin_right = 632.0
+margin_bottom = 286.0
 custom_fonts/font = SubResource( 1 )
-text = "close"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,4 +63,3 @@ __meta__ = {
 visible = false
 position = Vector2( 480.542, 273.642 )
 texture = ExtResource( 4 )
-[connection signal="pressed" from="CloseThanks" to="." method="_on_CloseThanks_pressed"]

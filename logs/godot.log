@@ -1,0 +1,5 @@
+Godot Engine v3.2.3.stable.official - https://godotengine.org
+OpenGL ES 3.0 Renderer: GeForce GTX 960/PCIe/SSE2
+ 
+**ERROR**: Error calling method from signal 'see_system': 'Node2D(Office.gd)::_on_HUDOffice_see_system': Method not found..
+   At: core/object.cpp:1260:emit_signal() - Error calling method from signal 'see_system': 'Node2D(Office.gd)::_on_HUDOffice_see_system': Method not found..

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alien_mars.png-bed42bda466d58324ca4a5d52b19e6ad.stex"
+path="res://.import/ordi_end_05.png-776b48f9f3c4459c39827870ae2322d5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aliens/alien_mars.png"
-dest_files=[ "res://.import/alien_mars.png-bed42bda466d58324ca4a5d52b19e6ad.stex" ]
+source_file="res://assets/backgrounds/ordi/ordi_end_05.png"
+dest_files=[ "res://.import/ordi_end_05.png-776b48f9f3c4459c39827870ae2322d5.stex" ]
 
 [params]
 
