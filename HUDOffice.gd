@@ -170,4 +170,7 @@ func _on_Mic_click_lamp():
 # =========
 
 func get_money():
-	return $Money.text
+	return int($Money.text)
+	
+func get_prestige():
+	return int($Prestige.text)

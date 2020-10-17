@@ -69,7 +69,8 @@ func mission_finished(mission):
 func end_game():
 	$System.hide()
 	$Office.hide()
-	$IntroEnd.end_game()
+	var pres = $Office/HUDLayer/HUDOffice.get_prestige()
+	$IntroEnd.comment_result(pres, 1200)
 
 func startTimer():
 	$EntreMissions.start()

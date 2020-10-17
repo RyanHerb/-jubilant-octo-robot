@@ -4,6 +4,7 @@ signal start_game
 
 func _ready():
 	$Area2D.hide()
+	$Commentaire.hide()
 
 
 func show_message(text):
@@ -11,7 +12,7 @@ func show_message(text):
 	$Titre.show()
 	
 func show_game_over():
-	$Background.show()
+	#$Background.show()
 	show_message("thanks for playing")
 # Called when the node enters the scene tree for the first time.
 
@@ -22,16 +23,16 @@ func new_game():
 	$Titre.show()
 	$Area2D.hide()
 
-func end_game():
-	show_game_over()
+func comment_result(prestige, prestige_max):
+	$Commentaire.show()
+	$Commentaire.choose_comments(prestige, prestige_max)
+
+#func end_game():
+	#show_game_over()
 
 # =============
 # = Callbacks =
 # =============
-
-func _on_NextLoreButton_pressed():
-	pass
-
 
 func _on_Zone2D_enter():
 	$Titre.hide()
@@ -42,3 +43,8 @@ func _on_Area2D_loreEnd():
 	$Area2D.hide()
 	$Background.hide()
 	emit_signal("start_game")
+
+
+func _on_Commentaire_Comment_end():
+	$Commentaire.hide()
+	show_game_over()
