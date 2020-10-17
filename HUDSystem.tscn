@@ -8,8 +8,31 @@
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
 
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 6 )
+
 [sub_resource type="DynamicFont" id=2]
 size = 24
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 21
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -24,31 +47,8 @@ font_data = ExtResource( 6 )
 size = 24
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 21
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 20
-font_data = ExtResource( 6 )
-
 [sub_resource type="DynamicFont" id=8]
 size = 24
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 24
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 20
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 25
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 6 )
 
 [node name="HUDSystem" type="Node2D"]
@@ -60,18 +60,99 @@ script = ExtResource( 3 )
 position = Vector2( 480.03, 271.428 )
 texture = ExtResource( 5 )
 
-[node name="ReinitPlanet" type="Button" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 679.833
-margin_top = 490.189
-margin_right = 755.833
-margin_bottom = 514.189
-custom_fonts/font = SubResource( 2 )
-text = "Reset"
+[node name="Tips" type="Label" parent="."]
+margin_left = 680.0
+margin_top = 44.0
+margin_right = 915.0
+margin_bottom = 275.0
+custom_fonts/font = SubResource( 11 )
+text = "Find the perfect planet to complet your mission.
+Change its orbite and atmospher."
+autowrap = true
 __meta__ = {
-"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TempLabel" type="Label" parent="."]
+margin_left = 665.26
+margin_top = 217.74
+margin_right = 748.26
+margin_bottom = 250.74
+custom_fonts/font = SubResource( 2 )
+text = "temp"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TempMin" type="Label" parent="."]
+margin_left = 790.677
+margin_top = 217.717
+margin_right = 834.677
+margin_bottom = 235.717
+custom_fonts/font = SubResource( 6 )
+text = "-1000"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TempMax" type="Label" parent="."]
+margin_left = 861.513
+margin_top = 217.717
+margin_right = 902.513
+margin_bottom = 235.717
+custom_fonts/font = SubResource( 7 )
+text = "-1000"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Atmosphere" type="Label" parent="."]
+margin_left = 664.22
+margin_top = 260.0
+margin_right = 746.22
+margin_bottom = 278.0
+custom_fonts/font = SubResource( 9 )
+text = "atm"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Currentgaz" type="Label" parent="."]
+margin_left = 811.0
+margin_top = 260.0
+margin_right = 890.0
+margin_bottom = 278.0
+custom_fonts/font = SubResource( 10 )
+text = "Aze"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtmoLabel" type="Label" parent="."]
+margin_left = 662.0
+margin_top = 322.0
+margin_right = 937.0
+margin_bottom = 345.0
+custom_fonts/font = SubResource( 2 )
+text = "Atmosphere"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwitchTo" type="Label" parent="."]
+margin_left = 679.0
+margin_top = 391.0
+margin_right = 757.0
+margin_bottom = 405.0
+custom_fonts/font = SubResource( 12 )
+text = "Switch to:"
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
@@ -108,6 +189,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Total" type="Label" parent="."]
+margin_left = 705.556
+margin_top = 460.091
+margin_right = 780.556
+margin_bottom = 478.091
+custom_fonts/font = SubResource( 2 )
+text = "Cost"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CoutChanges" type="Label" parent="."]
 margin_left = 803.0
 margin_top = 460.0
@@ -120,69 +212,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AtmoLabel" type="Label" parent="."]
-margin_left = 662.0
-margin_top = 322.0
-margin_right = 937.0
-margin_bottom = 345.0
-custom_fonts/font = SubResource( 2 )
-text = "Atmosphere"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TempLabel" type="Label" parent="."]
-margin_left = 665.26
-margin_top = 217.74
-margin_right = 748.26
-margin_bottom = 250.74
-custom_fonts/font = SubResource( 2 )
-text = "temp"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Total" type="Label" parent="."]
-margin_left = 705.556
-margin_top = 460.091
-margin_right = 780.556
-margin_bottom = 478.091
-custom_fonts/font = SubResource( 2 )
-text = "Cost"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TempMin" type="Label" parent="."]
-margin_left = 790.677
-margin_top = 217.717
-margin_right = 834.677
-margin_bottom = 235.717
-custom_fonts/font = SubResource( 6 )
-text = "-1000"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TempMax" type="Label" parent="."]
-margin_left = 861.513
-margin_top = 217.717
-margin_right = 902.513
-margin_bottom = 235.717
-custom_fonts/font = SubResource( 7 )
-text = "-1000"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="MoneySprite" type="Sprite" parent="."]
 position = Vector2( 895.962, 482.872 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -16 )
+
+[node name="ReinitPlanet" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 679.833
+margin_top = 490.189
+margin_right = 755.833
+margin_bottom = 514.189
+custom_fonts/font = SubResource( 2 )
+text = "Reset"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="Valider" type="Button" parent="."]
 margin_left = 799.389
@@ -194,56 +242,8 @@ text = "Validate"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Atmosphere" type="Label" parent="."]
-margin_left = 664.22
-margin_top = 262.26
-margin_right = 746.22
-margin_bottom = 280.26
-custom_fonts/font = SubResource( 9 )
-text = "atm"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Currentgaz" type="Label" parent="."]
-margin_left = 811.0
-margin_top = 257.0
-margin_right = 890.0
-margin_bottom = 275.0
-custom_fonts/font = SubResource( 10 )
-text = "Aze"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tips" type="Label" parent="."]
-margin_left = 680.0
-margin_top = 44.0
-margin_right = 915.0
-margin_bottom = 275.0
-custom_fonts/font = SubResource( 11 )
-text = "Find the perfect
-planet to complet
-your mission"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SwitchTo" type="Label" parent="."]
-margin_left = 679.0
-margin_top = 391.0
-margin_right = 757.0
-margin_bottom = 405.0
-custom_fonts/font = SubResource( 12 )
-text = "Switch to:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="pressed" from="ReinitPlanet" to="." method="_on_ReinitPlanet_pressed"]
 [connection signal="pressed" from="ChangeGaz1" to="." method="_on_ChangeGaz1_pressed"]
 [connection signal="pressed" from="ChangeGaz2" to="." method="_on_ChangeGaz2_pressed"]
 [connection signal="pressed" from="ChangeGaz3" to="." method="_on_ChangeGaz3_pressed"]
+[connection signal="pressed" from="ReinitPlanet" to="." method="_on_ReinitPlanet_pressed"]
 [connection signal="pressed" from="Valider" to="." method="_on_Valider_pressed"]

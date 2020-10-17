@@ -11,4 +11,3 @@ func _input_event(_viewport, event, _shape_idx):
 	and event.is_pressed():
 		.hide()
 		emit_signal("click_to_system")
-

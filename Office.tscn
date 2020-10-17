@@ -81,6 +81,7 @@ offset = Vector2( 480, 270 )
 visible = false
 position = Vector2( 560, 330 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 centered = false
 
@@ -109,7 +110,6 @@ script = ExtResource( 14 )
 [node name="LampGreen" type="AnimatedSprite" parent="GreenLampNode2D"]
 position = Vector2( 600, 405 )
 frames = SubResource( 2 )
-frame = 2
 playing = true
 
 [node name="LampCollision" type="CollisionShape2D" parent="GreenLampNode2D"]
