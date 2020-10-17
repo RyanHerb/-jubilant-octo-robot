@@ -41,6 +41,7 @@ func go_to_system():
 	var money = int($Office/HUDLayer/HUDOffice.get_money())
 	$System/HUDLayer/HUDSystem.give_money_value(money)
 	$Office.hide_buttons()
+	$Office/HUDLayer/HUDOffice.hide_prestige()
 	$System.show()
 	
 func mission_intro(_mission):
@@ -61,9 +62,10 @@ func mission_validated(text, tmp_min, tmp_max, gas, _mission):
 	var prestige = _mission.show_ending_mission(tmp_min, tmp_max, gas)
 	$Office/HUDLayer/HUDOffice.add_to_prestige(prestige)
 	$Office/HUDLayer/HUDOffice.show_thank()
+	$Office/HUDLayer/HUDOffice.show_prestige()
 
-func mission_finished(mission):
-	mission.hide()
+func mission_finished(_mission):
+	_mission.hide()
 	startTimer()
 
 func end_game():
@@ -100,7 +102,7 @@ func create_mission_1():
 	var thanksBien = "My thanks"
 	var thanksNuls = "Hum... well, I may asked too much."
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(-40, 80, 20, "Oxygen", 1500, 1, "res://assets/aliens/alien_ET.png")
+	mission.update_values(-60, 100, 20, "Oxygen", 1000, 1, "res://assets/aliens/alien_ET.png")
 	
 func create_mission_2():
 	var descri = "ceci est la deuxieme mission"
@@ -108,7 +110,7 @@ func create_mission_2():
 	var thanksBien = "Thank you"
 	var thanksNuls = "Just asking for a friend... how important is your army?"
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(-50, 20, -10, "Nitrogen", 1000, 2, "res://assets/aliens/alien_mars_double.png")
+	mission.update_values(-50, 20, -10, "Nitrogen", 700, 2, "res://assets/aliens/alien_mars_double.png")
 	
 func create_mission_3():
 	var descri = "au secours c'est la fin"

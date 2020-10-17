@@ -85,15 +85,20 @@ func show_thank():
 func show_money_prestige():
 	$Money.show()
 	$SymboleMoney.show()
+
+func show_prestige():
 	$Prestige.show()
 	$SymbolePrestige.show()
-
+	
 func hide_money_prestige():
 	$Money.hide()
 	$SymboleMoney.hide()
+	hide_prestige()
+
+func hide_prestige():
 	$Prestige.hide()
 	$SymbolePrestige.hide()
-
+	
 func objectif_hide():
 	$Objectifs.hide()
 	$AffichMissionButton.hide()

@@ -61,33 +61,33 @@
 [ext_resource path="res://assets/backgrounds/mic/micro_laser_03.png" type="Texture" id=59]
 [ext_resource path="res://assets/backgrounds/mic/micro_laser_04.png" type="Texture" id=60]
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 39 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 15
 font_data = ExtResource( 39 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
 size = 22
 font_data = ExtResource( 39 )
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=5]
 size = 25
 font_data = ExtResource( 39 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
 size = 25
 font_data = ExtResource( 39 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 22
 font_data = ExtResource( 39 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 26 ) ],
 "loop": true,
@@ -95,10 +95,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 13.8954 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ ExtResource( 25 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 23 ) ],
 "loop": true,
@@ -106,10 +106,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 10, 13.8954 )
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [ ExtResource( 33 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 36 ) ],
 "loop": true,
@@ -117,10 +117,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 10, 13.4085 )
 
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ ExtResource( 42 ), ExtResource( 47 ), ExtResource( 43 ), ExtResource( 45 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 41 ), ExtResource( 46 ) ],
 "loop": true,
@@ -128,10 +128,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 51.9692, 90.598 )
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ ExtResource( 55 ), ExtResource( 56 ), ExtResource( 53 ), ExtResource( 54 ) ],
 "loop": true,
@@ -139,7 +139,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=19]
+[sub_resource type="SpriteFrames" id=17]
 animations = [ {
 "frames": [ ExtResource( 59 ), ExtResource( 60 ), ExtResource( 57 ), ExtResource( 58 ) ],
 "loop": true,
@@ -170,7 +170,7 @@ margin_left = -13.0
 margin_top = -152.0
 margin_right = 94.0
 margin_bottom = -90.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 1 )
 text = "Objectif"
 align = 1
 __meta__ = {
@@ -179,11 +179,11 @@ __meta__ = {
 }
 
 [node name="AffichMissionButton" type="Button" parent="."]
-margin_left = 5.03967
-margin_top = -108.903
-margin_right = 73.0397
-margin_bottom = -84.9028
-custom_fonts/font = SubResource( 1 )
+margin_left = 7.03967
+margin_top = -112.903
+margin_right = 75.0397
+margin_bottom = -88.9028
+custom_fonts/font = SubResource( 2 )
 text = "show"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -194,7 +194,7 @@ margin_left = 277.101
 margin_top = -134.31
 margin_right = 555.101
 margin_bottom = -94.31
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 text = "One mission awaiting"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -230,7 +230,7 @@ margin_left = 7.0
 margin_top = 340.0
 margin_right = 61.0
 margin_bottom = 362.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 2
 __meta__ = {
@@ -250,7 +250,7 @@ margin_left = 99.0
 margin_top = 340.0
 margin_right = 150.0
 margin_bottom = 360.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 text = "0"
 align = 2
 __meta__ = {
@@ -271,7 +271,7 @@ margin_left = 533.101
 margin_top = 313.69
 margin_right = 657.101
 margin_bottom = 331.69
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "Call next"
 align = 1
 __meta__ = {
@@ -288,7 +288,7 @@ texture = ExtResource( 26 )
 
 [node name="OrdiAllumage" type="AnimatedSprite" parent="."]
 position = Vector2( 330, 242 )
-frames = SubResource( 9 )
+frames = SubResource( 8 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -299,12 +299,12 @@ script = ExtResource( 27 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToSystem"]
 position = Vector2( 333, 211 )
 scale = Vector2( 8, 3 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
-frames = SubResource( 11 )
-frame = 5
+frames = SubResource( 10 )
+frame = 9
 playing = true
 
 [node name="Accept" type="Area2D" parent="."]
@@ -313,12 +313,12 @@ script = ExtResource( 38 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Accept"]
 position = Vector2( 333, 211 )
 scale = Vector2( 8, 3 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
-frames = SubResource( 13 )
-frame = 9
+frames = SubResource( 12 )
+frame = 3
 playing = true
 
 [node name="CloseMission" type="Area2D" parent="."]
@@ -327,12 +327,12 @@ script = ExtResource( 51 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CloseMission"]
 position = Vector2( 333, 211 )
 scale = Vector2( 8, 3 )
-shape = SubResource( 15 )
+shape = SubResource( 13 )
 
 [node name="Sprite" type="AnimatedSprite" parent="CloseMission"]
 position = Vector2( 330, 242 )
-frames = SubResource( 16 )
-frame = 2
+frames = SubResource( 14 )
+frame = 6
 playing = true
 
 [node name="Mic" type="Area2D" parent="."]
@@ -340,16 +340,16 @@ script = ExtResource( 52 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mic"]
 position = Vector2( 594.725, 258.875 )
-shape = SubResource( 17 )
+shape = SubResource( 15 )
 
 [node name="Mic_anim" type="AnimatedSprite" parent="Mic"]
 position = Vector2( 597, 241 )
-frames = SubResource( 18 )
+frames = SubResource( 16 )
 playing = true
 
 [node name="MicSimple" type="AnimatedSprite" parent="."]
 position = Vector2( 597, 241 )
-frames = SubResource( 19 )
+frames = SubResource( 17 )
 frame = 3
 playing = true
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]

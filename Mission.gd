@@ -1,7 +1,5 @@
 extends Node2D
 
-signal thanks_ended
-
 var min_temperature
 var max_temperature
 var temp_asked
@@ -28,6 +26,7 @@ func check_temp(min_temp_planet, max_temp_planet):
 	var moy_m = (float(min_temperature) + float(max_temperature)) / 2
 	var point_temp = float(repartition_point[0])
 	var res = (point_temp - ((abs(float(max_temperature) -moy_m) / point_temp) * abs(moy_m - moy_pl)))
+	print("point temp : ", res)
 	return res
 	
 func check_if_done(min_temp, max_temp, atm):
@@ -42,7 +41,7 @@ func check_if_done(min_temp, max_temp, atm):
 func show_ending_mission(min_temp, max_temp, atm):
 	$Alien.show()
 	var prestige = check_if_done(min_temp, max_temp, atm)
-	if (prestige > 70):
+	if (prestige > 60):
 		$ThanksCools.show()
 	else:
 		$ThanksNuls.show()
