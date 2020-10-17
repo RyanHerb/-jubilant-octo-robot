@@ -18,7 +18,7 @@ func start_scenario():
 	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", self, "mission_intro", [mission])
 	$Office/HUDLayer/HUDOffice.connect("mission_accepted", self, "mission_accepte", [mission])
 	$Office/HUDLayer/HUDOffice.connect("see_mission", mission, "show_text_mission")
-	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system")
+	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system", [mission])
 	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "mission_validated", [mission])
 	$Office/HUDLayer/HUDOffice.connect("thanks_ended", self, "mission_finished", [mission])
 	#mission.connect("thanks_ended", self, "startTimer")
@@ -37,12 +37,14 @@ func start_scenario():
 	mission.queue_free()
 	end_game()
 
-func go_to_system():
+func go_to_system(_mission):
 	var money = int($Office/HUDLayer/HUDOffice.get_money())
 	$System/HUDLayer/HUDSystem.give_money_value(money)
 	$Office.hide_buttons()
 	$Office/HUDLayer/HUDOffice.hide_prestige()
 	$System.show()
+	_mission.hide()
+	
 	
 func mission_intro(_mission):
 	_mission.show_intro_mission()

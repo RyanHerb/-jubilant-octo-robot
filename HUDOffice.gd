@@ -114,7 +114,6 @@ func hide_buttons():
 	$MissionWaitingLabel.hide()
 	$MicSimple.hide()
 
-
 func show_interface():
 	show_money_prestige()
 

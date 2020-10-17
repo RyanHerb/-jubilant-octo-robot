@@ -10,7 +10,7 @@ var viewport_size
 var planets = []
 var star
 var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
-var cout_atmospheres = {"Oxygen" : 10, "Nitrogen" : 50, "Xenon" : 100}
+var cout_atmospheres = {"Oxygen" : 50, "Nitrogen" : 100, "Xenon" : 200}
 var dragged_planet
 var current_planet
 
@@ -111,6 +111,12 @@ func compute_temp(planet):
 	var coef = 1 + float(planet.temp_coefficient)
 	#print(dist, " ", coef)
 	var tmp_min = int(-dist*2.5)+750-coef*50
+	
+	if (typeof(planet) > 0):
+		var cost_curr_planet = planet.get_cost_pos()
+		planet.compute_move(planet.position)
+		$HUDLayer/HUDSystem.add_to_total_cout(planet.get_cost_pos() - cost_curr_planet)
+	
 	$HUDLayer/HUDSystem.update_temp(tmp_min, tmp_min + 100)
 	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
 
@@ -143,10 +149,6 @@ func _on_planet_click(target):
 	current_planet = target
 	current_planet.dragging = true
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
-
-	var cost_curr_planet = current_planet.get_cost_pos()
-	current_planet.compute_move(target.position)
-	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_pos() - cost_curr_planet)
 	compute_temp(target)
 	#entourer la planete d'un cercle
 

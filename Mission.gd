@@ -24,6 +24,7 @@ func check_temp(min_temp_planet, max_temp_planet):
 		return 0
 	
 	var moy_m = (float(min_temperature) + float(max_temperature)) / 2
+	print("moyennes m/pl : ", moy_m, " ", moy_pl)
 	var point_temp = float(repartition_point[0])
 	var res = (point_temp - ((abs(float(max_temperature) -moy_m) / point_temp) * abs(moy_m - moy_pl)))
 	print("point temp : ", res)
