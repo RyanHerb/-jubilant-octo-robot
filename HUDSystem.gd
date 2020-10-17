@@ -17,6 +17,9 @@ func entrer_system():
 func reinit():
 	$CoutChanges.text = "0"
 
+func update_maxi_planet(val):
+	$MaxiPlanet.animation = str(val)
+
 func update_temp(min_tmp, max_tmp):
 	$TempMin.text = str(min_tmp)
 	$TempMax.text = str(max_tmp)
@@ -93,6 +96,7 @@ func show():
 	$SpriteTemp.show()
 	$HighLow.show()
 	$NewSystem.show()
+	$MaxiPlanet.show()
 
 func show_tips():
 	.show()
@@ -113,6 +117,10 @@ func show_tips():
 	$SpriteTemp.hide()
 	$HighLow.hide()
 	$NewSystem.show()
+	$MaxiPlanet.hide()
+
+func hide_maxi_planet():
+	$MaxiPlanet.hide()
 
 # =============
 # = Callbacks =
