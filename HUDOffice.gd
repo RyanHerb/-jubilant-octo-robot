@@ -32,12 +32,9 @@ func mission_validated(mission):
 	$Objectifs.show()
 	$AffichMissionButton.show()
 	add_to_money(mission.get_budget())
-	$Objectifs.clear()
-	$Objectifs.add_text(str(mission.get_min_tmp()))
-	$Objectifs.add_text(" °C - ")
-	$Objectifs.add_text(str(mission.get_max_tmp()))
-	$Objectifs.add_text(" °C\n")
-	$Objectifs.add_text(mission.get_gaz())
+	var string = "%s °C\n %s" %[str(mission.get_asked_tmp()), mission.get_gaz()]
+	$Objectifs.text = string
+	color_descr(0)
 	$Objectifs.show()
 	$OrdiIdle.hide()
 	$ToSystem.show()
@@ -92,6 +89,14 @@ func start_timer_intro():
 func get_money():
 	return $Money.text
 
+func color_descr(val):
+	if (val == 0): # office
+		$Objectifs.modulate = Color(0, 0, 0, 1)
+	else: # system
+		$Objectifs.modulate = Color(1, 1, 1, 1)
+	
+
+
 # =============
 # = Callbacks =
 # =============
@@ -124,6 +129,7 @@ func _on_Timer_timeout():
 
 func _on_ToSystem_click_to_system():
 	$ToSystem.hide()
+	color_descr(1)
 	emit_signal("see_system")
 
 func _on_Accept_accept_mission():

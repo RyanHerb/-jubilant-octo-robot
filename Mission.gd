@@ -2,8 +2,9 @@ extends Node2D
 
 signal thanks_ended
 
-var min_temperature = 0
-var max_temperature = 1
+var min_temperature
+var max_temperature
+var temp_asked
 var atmosphere = "oxygen"
 var budget = 1500
 var repartition_point = [50, 50] #temperature, gaz
@@ -76,10 +77,11 @@ func update_thank(cools, nuls):
 func get_buget():
 	return budget
 
-func update_values(min_tmp, max_tmp, gaz, money, file):
+func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, file):
 	min_temperature = min_tmp
 	max_temperature = max_tmp
 	atmosphere = gaz
+	temp_asked = tmp_asked
 	budget = money
 	var sprite = load(file)
 	$Alien.texture = sprite
@@ -92,6 +94,9 @@ func get_min_tmp():
 
 func get_max_tmp():
 	return max_temperature
+	
+func get_asked_tmp():
+	return temp_asked
 	
 func get_gaz():
 	return atmosphere

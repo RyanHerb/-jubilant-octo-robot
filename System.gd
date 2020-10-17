@@ -111,7 +111,7 @@ func hide():
 
 func show():
 	.show()
-	$HUDLayer/HUDSystem.show()
+	$HUDLayer/HUDSystem.show_tips()
 
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star($Star.position))

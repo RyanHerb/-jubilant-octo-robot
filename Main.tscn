@@ -18,6 +18,7 @@ wait_time = 0.8
 [node name="System" parent="." instance=ExtResource( 5 )]
 
 [node name="BeforeAnimOrdi" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="start_game" from="IntroEnd" to="." method="_on_HUD_start_game"]
 [connection signal="animation_finished" from="Office" to="." method="_on_Office_animation_finished"]
 [connection signal="timeout" from="BeforeAnimOrdi" to="." method="_on_BeforeAnimOrdi_timeout"]

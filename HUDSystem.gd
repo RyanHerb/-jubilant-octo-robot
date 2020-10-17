@@ -47,6 +47,7 @@ func update_gaz(gaz):
 	
 	
 func show_tips():
+	$Lazer.show()
 	$Tips.show()
 	$ReinitPlanet.hide()
 	$ChangeGaz1.hide()
@@ -64,7 +65,6 @@ func show_tips():
 	$Valider.hide()
 	$Currentgaz.hide()
 	$Atmosphere.hide()
-	$Lazer.show()
 	
 func show():
 	.show()

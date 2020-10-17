@@ -38,31 +38,12 @@ func update_atmosphere(text, cost):
 	else:
 		tmp_cost[1] = cost
 
-func put_origin_position(value):
-	position_init = value
-	
-func get_origin_position():
-	return position_init
-
-func get_gaz():
-	return atmosphere_new
-
-
 func init_atmospheres(gaz):
 	atmosphere_origin = gaz
 	atmosphere_new = gaz
-	
-func get_cost_atmo():
-	return tmp_cost[1]
-	
-func get_cost_pos():
-	return tmp_cost[0]
 
 func compute_move(vect):
 	tmp_cost[0] = int(position_init.distance_to(vect)*10)
-
-func set_sprite(sprite):
-	$KinematicBody2D/Sprite.texture = sprite
 
 # =============
 # = Callbacks =
@@ -73,3 +54,26 @@ func _on_KinematicBody2D_input_event(_viewport, event, _shape_idx):
 	and event.button_index == BUTTON_LEFT\
 	and event.pressed:
 		emit_signal("clicked", self)
+
+# =========
+# = Utils =
+# =========
+
+func get_origin_position():
+	return position_init
+
+func get_gaz():
+	return atmosphere_new
+	
+func get_cost_atmo():
+	return tmp_cost[1]
+	
+func get_cost_pos():
+	return tmp_cost[0]
+
+func set_sprite(sprite):
+	$KinematicBody2D/Sprite.texture = sprite
+
+func put_origin_position(value):
+	position_init = value
+	

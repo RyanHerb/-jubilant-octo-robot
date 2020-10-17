@@ -62,8 +62,8 @@ func mission_finished(text, tmp_min, tmp_max, gas, _mission):
 	$Office.show()
 	$Office/HUDLayer/HUDOffice.objectif_hide()
 	$Office/HUDLayer/HUDOffice/OrdiIdle.show()
+	$Office/HUDLayer/HUDOffice.color_descr(1)
 	_mission.show_ending_mission(tmp_min, tmp_max, gas)
-	#$EntreMissions.start()
 
 func end_game():
 	$System.hide()
@@ -80,7 +80,6 @@ func startTimer():
 func _on_BeforeAnimOrdi_timeout():
 	$BeforeAnimOrdi.stop()
 	$Office/HUDLayer/HUDOffice.start_anim_ordi()
-	#start_scenario()
 
 
 func create_mission_1():
@@ -89,17 +88,17 @@ func create_mission_1():
 	var thanksNuls = "Hum... well, thanks, I guess."
 	mission.update_descr(descri)
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(0, 40, "oxygene", 1500, "res://assets/aliens/alien_ET.png")
+	mission.update_values(0, 40, 20, "oxygene", 1500, "res://assets/aliens/alien_ET.png")
 	
 func create_mission_2():
 	var descri = "ceci est la deuxieme mission"
 	mission.update_descr(descri)
-	mission.update_values(-20, 10, "nitrogen", 400, "res://assets/aliens/alien_mars.png")
+	mission.update_values(-20, 10, -5, "nitrogen", 400, "res://assets/aliens/alien_mars.png")
 	
 func create_mission_3():
 	var descri = "au secours c'est la fin"
 	mission.update_descr(descri)
-	mission.update_values(20, 55, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
+	mission.update_values(20, 55, 35, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
 
 
 func _on_Office_animation_finished():
