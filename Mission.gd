@@ -9,6 +9,11 @@ var atmosphere = "oxygen"
 var budget = 1500
 var repartition_point = [50, 50] #temperature, gaz
 
+
+func _ready():
+	hide()
+	
+
 func check_atmosphere(atm):
 	print(atm == atmosphere)
 	return atm == atmosphere
@@ -31,26 +36,6 @@ func check_if_done(min_temp, max_temp, atm):
 	progress += check_temp(min_temp, max_temp)
 	return progress
 	
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	hide()
-	
-func hide():
-	$Description.hide()
-	$Alien.hide()
-	$ThanksCools.hide()
-	$ThanksNuls.hide()
-	$CloseThanks.hide()
-	
-
-func show():
-	$Description.show()
-	$Alien.show()
-
-func show_intro_mission():
-	self.show()
-
 func show_ending_mission(min_temp, max_temp, atm):
 	$Alien.show()
 	var prestige = check_if_done(min_temp, max_temp, atm)
@@ -60,22 +45,12 @@ func show_ending_mission(min_temp, max_temp, atm):
 		$ThanksNuls.show()
 	$CloseThanks.show()
 
-func show_text_mission(text):
-	if text == "hide":
-		$Description.show()
-	else:
-		$Description.hide()
-		
 func update_descr(text):
 	$Description.text = text
 
 func update_thank(cools, nuls):
 	$ThanksCools.text = cools
 	$ThanksNuls.text = nuls
-
-
-func get_buget():
-	return budget
 
 func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, file):
 	min_temperature = min_tmp
@@ -86,9 +61,42 @@ func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, file):
 	var sprite = load(file)
 	$Alien.texture = sprite
 
-func get_desc():
-	return $Description.text
-	
+# =============
+# =  Display  =
+# =============
+
+func show_intro_mission():
+	self.show()
+
+func show_text_mission(text):
+	if text == "hide":
+		$Description.show()
+	else:
+		$Description.hide()
+
+func hide():
+	$Description.hide()
+	$Alien.hide()
+	$ThanksCools.hide()
+	$ThanksNuls.hide()
+	$CloseThanks.hide()
+
+func show():
+	$Description.show()
+	$Alien.show()
+
+# =============
+# = Callbacks =
+# =============
+
+func _on_CloseThanks_pressed():
+	hide()
+	emit_signal("thanks_ended")
+
+# =========
+# = Utils =
+# =========
+
 func get_min_tmp():
 	return min_temperature
 
@@ -103,11 +111,8 @@ func get_gaz():
 	
 func get_budget():
 	return budget
-
-# =============
-# = Callbacks =
-# =============
-
-func _on_CloseThanks_pressed():
-	hide()
-	emit_signal("thanks_ended")
+func get_desc():
+	return $Description.text
+	
+func get_buget():
+	return budget

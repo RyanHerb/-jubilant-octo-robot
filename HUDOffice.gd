@@ -45,14 +45,27 @@ func add_to_money(somme):
 func update_prestige():
 	$Prestige.text = str(int($Prestige.text)+ 1)
 
-func hide_buttons():
-	$AffichMissionButton.hide()
-	$FinishMissionButton.hide()
-	$CallClient.hide()
-	$MissionWaitingLabel.hide()
+func start_anim_ordi():
+	$OrdiAllumage.show()
+	$OrdiAllumage.play()
+	$OrdiFerme.hide()
 
-func show_interface():
-	show_money_prestige()
+func start_timer_intro():
+	$Timer.start()
+
+func color_descr(val):
+	if (val == 0): # office
+		$Objectifs.modulate = Color(0, 0, 0, 1)
+	else: # system
+		$Objectifs.modulate = Color(1, 1, 1, 1)
+	
+# =============
+# =  Display  =
+# =============
+
+func show_ordi_accept():
+	$Accept.show()
+	$OrdiIdle.hide()
 
 func show_money_prestige():
 	$Money.show()
@@ -74,28 +87,14 @@ func objectif_show():
 	$Objectifs.show()
 	$AffichMissionButton.show()
 
-func start_anim_ordi():
-	$OrdiAllumage.show()
-	$OrdiAllumage.play()
-	$OrdiFerme.hide()
+func hide_buttons():
+	$AffichMissionButton.hide()
+	$FinishMissionButton.hide()
+	$CallClient.hide()
+	$MissionWaitingLabel.hide()
 
-func show_ordi_accept():
-	$Accept.show()
-	$OrdiIdle.hide()
-
-func start_timer_intro():
-	$Timer.start()
-
-func get_money():
-	return $Money.text
-
-func color_descr(val):
-	if (val == 0): # office
-		$Objectifs.modulate = Color(0, 0, 0, 1)
-	else: # system
-		$Objectifs.modulate = Color(1, 1, 1, 1)
-	
-
+func show_interface():
+	show_money_prestige()
 
 # =============
 # = Callbacks =
@@ -136,3 +135,10 @@ func _on_Accept_accept_mission():
 	$Accept.hide()
 	$ToSystem.show()
 	emit_signal("mission_accepted")
+
+# =========
+# = Utils =
+# =========
+
+func get_money():
+	return $Money.text

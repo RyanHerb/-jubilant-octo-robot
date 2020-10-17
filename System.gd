@@ -105,14 +105,6 @@ func drag_planet():
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
 
-func hide():
-	.hide()
-	$HUDLayer/HUDSystem.hide()
-
-func show():
-	.show()
-	$HUDLayer/HUDSystem.show_tips()
-
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star($Star.position))
 	var coef = 1 + float(planet.temp_coefficient)
@@ -120,8 +112,17 @@ func compute_temp(planet):
 	$HUDLayer/HUDSystem.update_temp(int(-dist*2.7)+750-coef*50, int(-dist*2.2)+750-coef*50)
 	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
 
-func get_cost_change_atmo(atmo):
-	return cout_atmospheres.get(atmo)
+# =============
+# =  Display  =
+# =============
+
+func hide():
+	.hide()
+	$HUDLayer/HUDSystem.hide()
+
+func show():
+	.show()
+	$HUDLayer/HUDSystem.show_tips()
 
 # =============
 # = Callbacks =
@@ -184,5 +185,8 @@ func get_file_list(path):
 				files.append("%s/%s" % [path, file])
 
 	dir.list_dir_end()
-
 	return files
+
+
+func get_cost_change_atmo(atmo):
+	return cout_atmospheres.get(atmo)

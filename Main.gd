@@ -36,7 +36,6 @@ func start_scenario():
 	mission.queue_free()
 	end_game()
 
-
 func go_to_system():
 	var money = int($Office/HUDLayer/HUDOffice.get_money())
 	$System/HUDLayer/HUDSystem.give_money_value(money)
@@ -65,17 +64,27 @@ func end_game():
 	$Office.hide()
 	$IntroEnd.end_game()
 
-func _on_HUD_start_game():
-	$Office.show()
-	$BeforeAnimOrdi.start()
-
 func startTimer():
 	$EntreMissions.start()
+
+# =============
+# = Callbacks =
+# =============
+
+func _on_Office_animation_finished():
+	start_scenario()
 
 func _on_BeforeAnimOrdi_timeout():
 	$BeforeAnimOrdi.stop()
 	$Office/HUDLayer/HUDOffice.start_anim_ordi()
 
+func _on_HUD_start_game():
+	$Office.show()
+	$BeforeAnimOrdi.start()
+
+# ====================
+# = List of missions =
+# ====================
 
 func create_mission_1():
 	var descri = "bliblibloblo blubli blio\n \n aze\n jzef"
@@ -94,8 +103,3 @@ func create_mission_3():
 	var descri = "au secours c'est la fin"
 	mission.update_descr(descri)
 	mission.update_values(20, 55, 35, "zemon", 1000,  "res://assets/aliens/alien_xenomorph_half.png")
-
-
-func _on_Office_animation_finished():
-	start_scenario()
-	

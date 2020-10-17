@@ -76,4 +76,3 @@ func set_sprite(sprite):
 
 func put_origin_position(value):
 	position_init = value
-	

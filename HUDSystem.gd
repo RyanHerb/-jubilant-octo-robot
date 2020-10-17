@@ -45,27 +45,30 @@ func update_gaz(gaz):
 		$ChangeGaz3.disabled = true
 		$ChangeGaz3.modulate = Color(0.5, 0.5, 0.5, 1)
 	
-	
-func show_tips():
-	.show()
-	#$Lazer.show()
-	#$Tips.show()
-	$ReinitPlanet.hide()
-	$ChangeGaz1.hide()
-	$ChangeGaz2.hide()
-	$ChangeGaz3.hide()
-	$SwitchTo.hide()
-	#$CoutChanges.show()
-	$AtmoLabel.hide()
-	$TempLabel.hide()
-	#$Total.show()
-	$TempLabel.hide()
-	$TempMax.hide()
-	$TempMin.hide()
-	#$MoneySprite.show()
-	$Valider.hide()
-	$Currentgaz.hide()
-	$Atmosphere.hide()
+func add_to_total_cout(val):
+	$CoutChanges.text = str(int($CoutChanges.text) + val)
+	check_cost_to_money()
+
+func update_total_cost(val):
+	$CoutChanges.text = str(val)
+	check_cost_to_money()
+
+func give_money_value(val):
+	current_money = val
+
+func check_cost_to_money():
+	if int($CoutChanges.text) <= current_money:
+		$Valider.disabled = false
+		$Valider.modulate = Color(1, 1, 1, 1)
+		$CoutChanges.modulate = Color(1, 1, 1, 1)
+	else:
+		$Valider.disabled = true
+		$Valider.modulate = Color(0.5, 0.5, 0.5, 1)
+		$CoutChanges.modulate = Color(1, 0, 0, 1)
+
+# =============
+# =  Display  =
+# =============
 	
 func show():
 	.show()
@@ -84,28 +87,22 @@ func show():
 	$Atmosphere.show()
 	$Lazer.show()
 
+func show_tips():
+	.show()
+	$ReinitPlanet.hide()
+	$ChangeGaz1.hide()
+	$ChangeGaz2.hide()
+	$ChangeGaz3.hide()
+	$SwitchTo.hide()
+	$AtmoLabel.hide()
+	$TempLabel.hide()
+	$TempLabel.hide()
+	$TempMax.hide()
+	$TempMin.hide()
+	$Valider.hide()
+	$Currentgaz.hide()
+	$Atmosphere.hide()
 
-func add_to_total_cout(val):
-	$CoutChanges.text = str(int($CoutChanges.text) + val)
-	check_cost_to_money()
-
-func update_total_cost(val):
-	$CoutChanges.text = str(val)
-	check_cost_to_money()
-
-func give_money_value(val):
-	current_money = val
-
-
-func check_cost_to_money():
-	if int($CoutChanges.text) <= current_money:
-		$Valider.disabled = false
-		$Valider.modulate = Color(1, 1, 1, 1)
-		$CoutChanges.modulate = Color(1, 1, 1, 1)
-	else:
-		$Valider.disabled = true
-		$Valider.modulate = Color(0.5, 0.5, 0.5, 1)
-		$CoutChanges.modulate = Color(1, 0, 0, 1)
 # =============
 # = Callbacks =
 # =============
@@ -130,11 +127,9 @@ func _on_ChangeGaz3_pressed():
 	update_gaz($Currentgaz.text)
 	emit_signal("atmo_changed", $Currentgaz.text)
 
-
 func _on_ReinitPlanet_pressed():
 	$CoutChanges.text = str(0)
 	$TempMin.text = "-1000"
 	$TempMax.text = "-1000"
 	$Currentgaz.text = "Aze"
 	emit_signal("reinit_system")
-
