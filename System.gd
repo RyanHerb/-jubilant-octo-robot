@@ -106,8 +106,8 @@ func my_free():
 	free_star()
 
 func drag_planet():
-	valid = true
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
+		valid = true
 		var mousepos = get_viewport().get_mouse_position()
 		var mouse_dist = mousepos.distance_to(star.position)
 		var planet_dist = current_planet.position.distance_to(star.position)
