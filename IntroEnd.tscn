@@ -98,7 +98,7 @@ margin_top = 107.0
 margin_right = 828.98
 margin_bottom = 433.0
 custom_fonts/font = SubResource( 4 )
-text = "Your mission is to find home to aliens
+text = "Lore
 "
 autowrap = true
 __meta__ = {

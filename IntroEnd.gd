@@ -1,11 +1,14 @@
 extends CanvasLayer
 
 signal start_game
+var loreText = "Bienvenu au bureau de Asylum Seekers from Space. Votre mission sera d'aider les Aliens venus vous demander de l'aider pour construire leur nouveau foyer. Ecoutez leur requête et créez leur nouvelle planète suivant leur critères."
+
 
 func _ready():
 	$Area2D.hide()
 	$Commentaire.hide()
 	$ThanksForPlaying.hide()
+	$Area2D/Lore.text = loreText
 
 
 func show_message(text):
