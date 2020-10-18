@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alien_xenomorph.png-bd2bdd88c539e401082cd8af25512f8c.stex"
+path="res://.import/ordi_end_09.png-e1fa83703180016074efa928822a7186.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aliens/alien_xenomorph.png"
-dest_files=[ "res://.import/alien_xenomorph.png-bd2bdd88c539e401082cd8af25512f8c.stex" ]
+source_file="res://assets/backgrounds/ordi/ordi_end_09.png"
+dest_files=[ "res://.import/ordi_end_09.png-e1fa83703180016074efa928822a7186.stex" ]
 
 [params]
 

@@ -8,14 +8,16 @@ const STAR_PATH = 'res://assets/stars'
 
 var viewport_size
 var planets = []
+var valid = true
 var star
-var atmospheres = ["oxygen", "nitrogen", "xenon"]
-var cout_atmospheres = {"oxygen" : 10, "nitrogen" : 50, "xenon" : 90}
+var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
+var cout_atmospheres = {"Oxygen" : 50, "Nitrogen" : 100, "Xenon" : 200}
 var dragged_planet
 var current_planet
 
 var min_step = 25
 var max_step = 75
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -93,16 +95,48 @@ func free_star():
 	pass
 
 func drag_planet():
+	valid = true
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
 		var mousepos = get_viewport().get_mouse_position()
 		var mouse_dist = mousepos.distance_to(star.position)
 		var planet_dist = current_planet.position.distance_to(star.position)
+
+		for p in planets:
+			if current_planet != p:
+				var p_dist = p.position.distance_to(star.position)
+				var mouse_diff = p_dist - mouse_dist
+				if abs(mouse_diff) <= 32:
+					valid = false
+					p.set_warn(true)
+				else:
+					p.set_warn(false)
+
+		current_planet.set_warn(!valid)
 
 		var diff = planet_dist - mouse_dist
 		var move_vector = Vector2(diff, 0)
 		move_vector = move_vector.rotated(current_planet.rotation)
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
+		compute_temp(current_planet)
+
+func compute_temp(planet):
+	var dist = float(planet.distance_to_star($Star.position))
+	var coef = 1 + float(planet.temp_coefficient)
+	#print(dist, " ", coef)
+	var tmp_min = int(-dist*2.5)+750-coef*50
+	
+	if (typeof(planet) > 0):
+		var cost_curr_planet = planet.get_cost_pos()
+		planet.compute_move(planet.position)
+		$HUDLayer/HUDSystem.add_to_total_cout(planet.get_cost_pos() - cost_curr_planet)
+	
+	$HUDLayer/HUDSystem.update_temp(tmp_min, tmp_min + 100)
+	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
+
+# =============
+# =  Display  =
+# =============
 
 func hide():
 	.hide()
@@ -110,14 +144,7 @@ func hide():
 
 func show():
 	.show()
-	$HUDLayer/HUDSystem.show()
-
-func compute_temp(planet):
-	var dist = float(planet.distance_to_star($Star.position))
-	var coef = 1 + float(planet.temp_coefficient)
-	print(dist, " ", coef)
-	$HUDLayer/HUDSystem.update_temp(int(-dist*2.7)+750-coef*50, int(-dist*2.2)+750-coef*50)
-	$HUDLayer/HUDSystem.update_gaz(planet.atmosphere_new)
+	$HUDLayer/HUDSystem.show_tips()
 
 # =============
 # = Callbacks =
@@ -136,21 +163,18 @@ func _on_planet_click(target):
 	current_planet = target
 	current_planet.dragging = true
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
-
-	var cost_curr_planet = current_planet.get_cost_pos()
-	current_planet.compute_move(target.position)
-	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_pos() - cost_curr_planet)
 	compute_temp(target)
 	#entourer la planete d'un cercle
 
 func _on_HUDSystem_atmo_changed(new_atmo):
 	var cost_curr_planet = current_planet.get_cost_atmo()
-	current_planet.update_atmosphere(new_atmo, cout_atmospheres.get(new_atmo))
+	current_planet.update_atmosphere(new_atmo, get_cost_change_atmo(new_atmo))
 	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_atmo() - cost_curr_planet)
 
 func _on_HUDSystem_reinit_system():
 	for i in planets.size():
 		planets[i].position = planets[i].get_origin_position()
+		planets[i].reinit()
 	$HUDLayer/HUDSystem.add_to_total_cout(0)
 	current_planet = null
 	$HUDLayer/HUDSystem.show_tips()
@@ -180,5 +204,8 @@ func get_file_list(path):
 				files.append("%s/%s" % [path, file])
 
 	dir.list_dir_end()
-
 	return files
+
+
+func get_cost_change_atmo(atmo):
+	return cout_atmospheres.get(atmo)
