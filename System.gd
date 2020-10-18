@@ -94,15 +94,23 @@ func free_star():
 	pass
 
 func drag_planet():
+	var too_close = false
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
 		var mousepos = get_viewport().get_mouse_position()
 		var mouse_dist = mousepos.distance_to(star.position)
 		var planet_dist = current_planet.position.distance_to(star.position)
 
+		for p in planets:
+			if current_planet != p:
+				var p_dist = p.position.distance_to(star.position)
+				var mouse_diff = p_dist - mouse_dist
+				if abs(mouse_diff) <= 32:
+					too_close = true
+
 		var diff = planet_dist - mouse_dist
 		var move_vector = Vector2(diff, 0)
 		move_vector = move_vector.rotated(current_planet.rotation)
-		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
+		if !too_close and mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
 		compute_temp(current_planet)
 
