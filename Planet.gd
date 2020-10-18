@@ -9,6 +9,8 @@ var position_init = Vector2(0, 0)
 var temp_coefficient = 1;
 var tmp_cost = Vector2(0, 0)
 
+var pos_left
+
 signal clicked(target)
 
 # Called when the node enters the scene tree for the first time.
@@ -49,6 +51,10 @@ func init_atmospheres(gaz):
 func compute_move(vect):
 	tmp_cost[0] = int(position_init.distance_to(vect)*10)
 
+func move_to_left(pos):
+	pos_left = pos
+	$Timer.start()
+
 # =============
 # = Callbacks =
 # =============
@@ -58,7 +64,7 @@ func _on_KinematicBody2D_input_event(_viewport, event, _shape_idx):
 	and event.button_index == BUTTON_LEFT\
 	and event.pressed:
 		emit_signal("clicked", self)
-
+			
 # =========
 # = Utils =
 # =========
@@ -83,3 +89,12 @@ func put_origin_position(value):
 	
 func get_coef_tmp():
 	return temp_coefficient
+
+func put_origin(vec):
+	position_init = vec
+
+func _on_Timer_timeout():
+	position.x -= 30
+	pos_left -= 30
+	if pos_left <= 0:
+		$Timer.stop()

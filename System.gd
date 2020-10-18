@@ -45,7 +45,7 @@ func init_star():
 	var star_sprites = get_star_sprites()
 	var rand_sprite = get_random_sprite(star_sprites)
 	star = Star.instance()
-	add_child(star)
+	$CalqueSystem.add_child(star)
 
 	var intensity = rand_sprite[0]
 	var sprite = rand_sprite[1]
@@ -64,7 +64,7 @@ func init_planets():
 	for _n in range(rng):
 		p = Planet.instance()
 		planets.append(p)
-		add_child(p)
+		$CalqueSystem.add_child(p)
 		p.connect("clicked", self, "_on_planet_click")
 
 		var atmosphere = atmospheres[randi()%atmospheres.size()]
@@ -94,7 +94,13 @@ func free_planets():
 func init():
 	init_star()
 	init_planets()
-
+	star.position.x += viewport_size.x
+	star.move_to_left(viewport_size.x)
+	#star.connect("move_left_done", self, "reinit")
+	for i in range(len(planets)):
+		planets[i].position.x += viewport_size.x
+		planets[i].move_to_left(viewport_size.x)
+	
 func reinit():
 	my_free()
 	init()
@@ -118,12 +124,10 @@ func drag_planet():
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
 		compute_temp(current_planet)
-		#draw_arc(current_planet.position, 60, 0, 360, 50, Color(255, 255, 255))
 
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star(star.position))
 	var coef = 1 + float(planet.temp_coefficient)
-	#print(dist, " ", coef)
 	var tmp_min = int(-dist*2.5)+750-coef*50
 	
 	if (typeof(planet) > 0):
@@ -148,10 +152,12 @@ func update_current_planet(planet):
 func hide():
 	.hide()
 	$HUDLayer/HUDSystem.hide()
+	$CalqueSystem.hide()
 
 func show():
 	.show()
 	$HUDLayer/HUDSystem.show_tips()
+	$CalqueSystem.show()
 
 # =============
 # = Callbacks =
@@ -171,7 +177,6 @@ func _on_planet_click(target):
 	current_planet.dragging = true
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 	compute_temp(target)
-	#entourer la planete d'un cercle
 
 func _on_HUDSystem_atmo_changed(new_atmo):
 	var cost_curr_planet = current_planet.get_cost_atmo()
@@ -187,7 +192,10 @@ func _on_HUDSystem_reinit_system():
 	$HUDLayer/HUDSystem.show_tips()
 
 func _on_HUDSystem_find_new_system():
-	reinit()
+	star.move_to_left(600)
+	for i in range(len(planets)):
+		planets[i].move_to_left(600)
+	star.connect("move_left_done", self, "reinit")
 
 # =========
 # = Utils =
@@ -215,7 +223,6 @@ func get_file_list(path):
 
 	dir.list_dir_end()
 	return files
-
 
 func get_cost_change_atmo(atmo):
 	return cout_atmospheres.get(atmo)
