@@ -8,6 +8,7 @@ const STAR_PATH = 'res://assets/stars'
 
 var viewport_size
 var planets = []
+var valid = true
 var star
 var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
 var cout_atmospheres = {"Oxygen" : 50, "Nitrogen" : 100, "Xenon" : 200}
@@ -94,7 +95,7 @@ func free_star():
 	pass
 
 func drag_planet():
-	var too_close = false
+	valid = true
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
 		var mousepos = get_viewport().get_mouse_position()
 		var mouse_dist = mousepos.distance_to(star.position)
@@ -105,12 +106,17 @@ func drag_planet():
 				var p_dist = p.position.distance_to(star.position)
 				var mouse_diff = p_dist - mouse_dist
 				if abs(mouse_diff) <= 32:
-					too_close = true
+					valid = false
+					p.set_warn(true)
+				else:
+					p.set_warn(false)
+
+		current_planet.set_warn(!valid)
 
 		var diff = planet_dist - mouse_dist
 		var move_vector = Vector2(diff, 0)
 		move_vector = move_vector.rotated(current_planet.rotation)
-		if !too_close and mouse_dist < viewport_size.y/2 and mouse_dist > 60:
+		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
 		compute_temp(current_planet)
 

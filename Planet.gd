@@ -49,6 +49,15 @@ func init_atmospheres(gaz):
 func compute_move(vect):
 	tmp_cost[0] = int(position_init.distance_to(vect)*10)
 
+func set_sprite(sprite):
+	$KinematicBody2D/Sprite.texture = sprite
+
+func set_warn(warn):
+	if warn:
+		$KinematicBody2D/Sprite.modulate = Color(1, 0, 0)
+	else:
+		$KinematicBody2D/Sprite.modulate = Color(1, 1, 1)
+
 # =============
 # = Callbacks =
 # =============
