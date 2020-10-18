@@ -30,6 +30,7 @@ func new_mission():
 	$CallClient.show()
 	$MissionWaitingLabel.show()
 	$Mic.show()
+	$Mic/ButtonLightUp.play()
 	$MicSimple.hide()
 	
 func mission_validated(mission):

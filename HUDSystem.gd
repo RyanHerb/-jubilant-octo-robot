@@ -109,6 +109,7 @@ func show_tips():
 
 func _on_Valider_pressed():
 	hide()
+	$Valider/SystemClose.play()
 	emit_signal("mission_finished", int($CoutChanges.text), int($TempMin.text), int($TempMax.text), $Currentgaz.text)
 	$CoutChanges.text = str(0)
 

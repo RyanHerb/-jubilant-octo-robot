@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Mission.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/8bitOperatorPlus8-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/aliens/alien_mars_double.png" type="Texture" id=3]
 [ext_resource path="res://assets/backgrounds/bureau_ordil.png" type="Texture" id=4]
+[ext_resource path="res://assets/sounds/ET.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -63,3 +64,6 @@ __meta__ = {
 visible = false
 position = Vector2( 480.542, 273.642 )
 texture = ExtResource( 4 )
+
+[node name="IntroSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

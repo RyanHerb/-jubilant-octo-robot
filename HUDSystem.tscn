@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
+[ext_resource path="res://assets/sounds/system-close.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/icons_ui/cash.png" type="Texture" id=2]
 [ext_resource path="res://HUDSystem.gd" type="Script" id=3]
 [ext_resource path="res://assets/icons_ui/overlay_system.png" type="Texture" id=5]
@@ -242,6 +243,9 @@ text = "Validate"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SystemClose" type="AudioStreamPlayer" parent="Valider"]
+stream = ExtResource( 1 )
 [connection signal="pressed" from="ChangeGaz1" to="." method="_on_ChangeGaz1_pressed"]
 [connection signal="pressed" from="ChangeGaz2" to="." method="_on_ChangeGaz2_pressed"]
 [connection signal="pressed" from="ChangeGaz3" to="." method="_on_ChangeGaz3_pressed"]
