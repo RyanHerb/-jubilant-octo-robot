@@ -112,3 +112,6 @@ func get_desc():
 	
 func get_buget():
 	return budget
+
+func set_intro_sound(path):
+	$IntroSound.stream = load(path)

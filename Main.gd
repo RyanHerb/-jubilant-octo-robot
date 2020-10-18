@@ -13,6 +13,7 @@ func _ready():
 
 func start_scenario():
 	create_mission_1()
+	$System.init()
 	add_child(mission)
 	$Office.new_mission()
 	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", self, "mission_intro", [mission])
@@ -26,11 +27,13 @@ func start_scenario():
 	$EntreMissions.stop()
 	
 	create_mission_2()
+	$System.reinit()
 	$Office.new_mission()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
 	create_mission_3()
+	$System.reinit()
 	$Office.new_mission()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
@@ -48,6 +51,7 @@ func go_to_system(_mission):
 	
 func mission_intro(_mission):
 	_mission.show_intro_mission()
+	_mission.get_node('IntroSound').play()
 	$Office/HUDLayer/HUDOffice.show_ordi_accept()
 	
 func mission_accepte(_mission):
@@ -105,6 +109,7 @@ func create_mission_1():
 	var thanksNuls = "Hum... well, I may asked too much."
 	mission.update_thank(thanksBien, thanksNuls)
 	mission.update_values(-60, 100, 20, "Oxygen", 1000, 1, "res://assets/aliens/alien_ET.png")
+	mission.set_intro_sound("res://assets/sounds/ET.wav")
 	
 func create_mission_2():
 	var descri = "ceci est la deuxieme mission"
@@ -113,6 +118,7 @@ func create_mission_2():
 	var thanksNuls = "Just asking for a friend... how important is your army?"
 	mission.update_thank(thanksBien, thanksNuls)
 	mission.update_values(-50, 20, -10, "Nitrogen", 700, 2, "res://assets/aliens/alien_mars_double.png")
+	mission.set_intro_sound("res://assets/sounds/martian.wav")
 	
 func create_mission_3():
 	var descri = "au secours c'est la fin"
@@ -121,3 +127,4 @@ func create_mission_3():
 	var thanksNuls = "You will die!"
 	mission.update_thank(thanksBien, thanksNuls)
 	mission.update_values(-70,-30, -50, "Xenon", 500, 3,  "res://assets/aliens/alien_xenomorph_half.png")
+	mission.set_intro_sound("res://assets/sounds/xenomorph.wav")
