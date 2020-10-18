@@ -1,15 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUDOffice.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/backgrounds/scene_bureau_vide.png" type="Texture" id=2]
 [ext_resource path="res://Office.gd" type="Script" id=4]
 [ext_resource path="res://assets/light.png" type="Texture" id=5]
 [ext_resource path="res://assets/backgrounds/bureau_ordil.png" type="Texture" id=11]
-[ext_resource path="res://ParallaxLayer2.gd" type="Script" id=15]
-[ext_resource path="res://ParallaxLayer.gd" type="Script" id=16]
-[ext_resource path="res://assets/backgrounds/bg_star_system_empty.png" type="Texture" id=17]
-[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers1.png" type="Texture" id=18]
-[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers2.png" type="Texture" id=19]
 
 [node name="Office" type="Node2D"]
 script = ExtResource( 4 )
@@ -17,33 +12,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="bg_black" type="Sprite" parent="ParallaxBackground"]
-texture = ExtResource( 17 )
-centered = false
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 960, 540 )
-script = ExtResource( 16 )
-
-[node name="bg_star_layer1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 18 )
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 960, 540 )
-script = ExtResource( 15 )
-
-[node name="bg_star_layer2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource( 19 )
-centered = false
-
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
-
-[node name="Alien" type="Sprite" parent="."]
 
 [node name="Desk" type="Sprite" parent="."]
 texture = ExtResource( 11 )

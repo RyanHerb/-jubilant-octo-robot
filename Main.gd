@@ -106,7 +106,7 @@ func create_mission_1():
 	var thanksBien = "My thanks"
 	var thanksNuls = "Hum... well, I may asked too much."
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(-60, 100, 20, "Oxygen", 1000, 1, "res://assets/aliens/alien_ET.png")
+	mission.update_values(-60, 100, 20, "Oxygen", 500, 1, "res://assets/aliens/alien_ET.png")
 	
 func create_mission_2():
 	var descri = "ceci est la deuxieme mission"
@@ -114,7 +114,7 @@ func create_mission_2():
 	var thanksBien = "Thank you"
 	var thanksNuls = "Just asking for a friend... how important is your army?"
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(-50, 20, -10, "Nitrogen", 700, 2, "res://assets/aliens/alien_mars_double.png")
+	mission.update_values(-50, 20, -10, "Nitrogen", 400, 2, "res://assets/aliens/alien_mars_double.png")
 	
 func create_mission_3():
 	var descri = "au secours c'est la fin"
@@ -122,4 +122,4 @@ func create_mission_3():
 	var thanksBien = "... let's go"
 	var thanksNuls = "You will die!"
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(-70,-30, -50, "Xenon", 500, 3,  "res://assets/aliens/alien_xenomorph_half.png")
+	mission.update_values(-70,-30, -50, "Xenon", 300, 3,  "res://assets/aliens/alien_xenomorph_half.png")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://IntroEnd.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Office.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ParallaxBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://System.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
@@ -19,6 +20,10 @@ wait_time = 0.8
 
 [node name="BeforeAnimOrdi" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource( 4 )]
 [connection signal="start_game" from="IntroEnd" to="." method="_on_HUD_start_game"]
 [connection signal="animation_finished" from="Office" to="." method="_on_Office_animation_finished"]
 [connection signal="timeout" from="BeforeAnimOrdi" to="." method="_on_BeforeAnimOrdi_timeout"]
