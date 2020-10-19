@@ -32,27 +32,28 @@ func _draw():
 		draw_arc(star.position, radius, 0, 360, 5000, Color(255, 255, 255))
 	if current_planet != null:
 		draw_arc(current_planet.position, 17, 0, 360, 1000, Color(1, 1, 1, 1), 2)
+		draw_arrow()
 		
-		var star_offset_vector = Vector2(48, 0).rotated(current_planet.rotation)
-		var planet_offset_vector = Vector2(32, 0).rotated(current_planet.rotation)
-		var start_line = current_planet.position - planet_offset_vector
-		var end_line = star.position + star_offset_vector
-		var arrow_planet = []
-		var arrow_star = []
-		var arrow_head_base = Vector2(10, 0).rotated(current_planet.rotation + PI/2)
+func draw_arrow():
+	var star_offset_vector = Vector2(48, 0).rotated(current_planet.rotation)
+	var planet_offset_vector = Vector2(32, 0).rotated(current_planet.rotation)
+	var start_line = current_planet.position - planet_offset_vector
+	var end_line = star.position + star_offset_vector
+	var arrow_planet = []
+	var arrow_star = []
+	var arrow_head_base = Vector2(5, 0).rotated(current_planet.rotation + PI/2)
 		
-		draw_line(start_line, end_line, Color(1, 1, 1, 1), 10.0, true)
-		
-		arrow_planet.append(current_planet.position - planet_offset_vector + arrow_head_base)
-		arrow_planet.append(current_planet.position - planet_offset_vector - arrow_head_base)
-		arrow_planet.append(current_planet.position - Vector2(16, 0).rotated(current_planet.rotation))
-		draw_colored_polygon(arrow_planet, Color(1, 1, 1, 1))
-		
-		arrow_star.append(star.position + star_offset_vector + arrow_head_base)
-		arrow_star.append(star.position + star_offset_vector - arrow_head_base)
-		arrow_star.append(star.position + Vector2(32, 0).rotated(current_planet.rotation))
-		draw_colored_polygon(arrow_star, Color(1, 1, 1, 1))
-		
+	draw_line(start_line, end_line, Color(1, 1, 1, 1), 2.0, true)
+
+	arrow_planet.append(current_planet.position - planet_offset_vector + arrow_head_base)
+	arrow_planet.append(current_planet.position - planet_offset_vector - arrow_head_base)
+	arrow_planet.append(current_planet.position - Vector2(16, 0).rotated(current_planet.rotation))
+	draw_colored_polygon(arrow_planet, Color(1, 1, 1, 1))
+
+	arrow_star.append(star.position + star_offset_vector + arrow_head_base)
+	arrow_star.append(star.position + star_offset_vector - arrow_head_base)
+	arrow_star.append(star.position + Vector2(32, 0).rotated(current_planet.rotation))
+	draw_colored_polygon(arrow_star, Color(1, 1, 1, 1))	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -267,6 +268,3 @@ func get_file_list(path):
 
 func get_cost_change_atmo(atmo):
 	return cout_atmospheres.get(atmo)
-
-func draw_arrow():
-	pass
