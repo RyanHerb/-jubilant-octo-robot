@@ -11,6 +11,15 @@ var current_money
 func _ready():
 	show_tips()
 	
+func _process(_delta):
+	var system = get_parent().get_parent()
+	if !system.valid and !$Valider.disabled:
+		$Valider.disabled = true
+		$Valider.modulate = Color(0.5, 0.5, 0.5, 1)
+	elif system.valid and $Valider.disabled:
+		$Valider.disabled = false
+		$Valider.modulate = Color(1, 1, 1, 1)
+
 func entrer_system():
 	show()
 

@@ -1,5 +1,6 @@
 extends Node2D
 
+var selected = false
 var dragging = false
 var viewport_size
 
@@ -8,6 +9,8 @@ var atmosphere_new = "oxygen"
 var position_init = Vector2(0, 0)
 var temp_coefficient = 1;
 var tmp_cost = Vector2(0, 0)
+
+var pos_left
 
 signal clicked(target)
 
@@ -25,6 +28,7 @@ func init(pos, atm, sprt, coef):
 func reinit():
 	atmosphere_new = atmosphere_origin
 	tmp_cost = [0, 0]
+	selected = false
 
 func distance_to_star(star):
 	return position.distance_to(star)
@@ -49,6 +53,16 @@ func init_atmospheres(gaz):
 func compute_move(vect):
 	tmp_cost[0] = int(position_init.distance_to(vect)*10)
 
+func move_to_left(pos):
+	pos_left = pos
+	$Timer.start()
+
+func set_warn(warn):
+	if warn:
+		$KinematicBody2D/Sprite.modulate = Color(1, 0, 0)
+	else:
+		$KinematicBody2D/Sprite.modulate = Color(1, 1, 1)
+
 # =============
 # = Callbacks =
 # =============
@@ -58,7 +72,7 @@ func _on_KinematicBody2D_input_event(_viewport, event, _shape_idx):
 	and event.button_index == BUTTON_LEFT\
 	and event.pressed:
 		emit_signal("clicked", self)
-
+			
 # =========
 # = Utils =
 # =========
@@ -83,3 +97,12 @@ func put_origin_position(value):
 	
 func get_coef_tmp():
 	return temp_coefficient
+
+func put_origin(vec):
+	position_init = vec
+
+func _on_Timer_timeout():
+	position.x -= 30
+	pos_left -= 30
+	if pos_left <= 0:
+		$Timer.stop()

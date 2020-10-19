@@ -6,8 +6,11 @@ var Star = preload("res://Star.tscn")
 const PLANET_PATH = 'res://assets/planets'
 const STAR_PATH = 'res://assets/stars'
 
+var arrow_sprite = load('res://assets/arrow_end.png')
+
 var viewport_size
 var planets = []
+var valid = true
 var star
 var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
 var cout_atmospheres = {"Oxygen" : 50, "Nitrogen" : 100, "Xenon" : 200}
@@ -29,6 +32,28 @@ func _draw():
 		draw_arc(star.position, radius, 0, 360, 5000, Color(255, 255, 255))
 	if current_planet != null:
 		draw_arc(current_planet.position, 17, 0, 360, 1000, Color(1, 1, 1, 1), 2)
+		draw_arrow()
+		
+func draw_arrow():
+	var star_offset_vector = Vector2(48, 0).rotated(current_planet.rotation)
+	var planet_offset_vector = Vector2(32, 0).rotated(current_planet.rotation)
+	var start_line = current_planet.position - planet_offset_vector
+	var end_line = star.position + star_offset_vector
+	var arrow_planet = []
+	var arrow_star = []
+	var arrow_head_base = Vector2(5, 0).rotated(current_planet.rotation + PI/2)
+		
+	draw_line(start_line, end_line, Color(1, 1, 1, 1), 2.0, true)
+
+	arrow_planet.append(current_planet.position - planet_offset_vector + arrow_head_base)
+	arrow_planet.append(current_planet.position - planet_offset_vector - arrow_head_base)
+	arrow_planet.append(current_planet.position - Vector2(16, 0).rotated(current_planet.rotation))
+	draw_colored_polygon(arrow_planet, Color(1, 1, 1, 1))
+
+	arrow_star.append(star.position + star_offset_vector + arrow_head_base)
+	arrow_star.append(star.position + star_offset_vector - arrow_head_base)
+	arrow_star.append(star.position + Vector2(32, 0).rotated(current_planet.rotation))
+	draw_colored_polygon(arrow_star, Color(1, 1, 1, 1))	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -45,7 +70,7 @@ func init_star():
 	var star_sprites = get_star_sprites()
 	var rand_sprite = get_random_sprite(star_sprites)
 	star = Star.instance()
-	add_child(star)
+	$CalqueSystem.add_child(star)
 
 	var intensity = rand_sprite[0]
 	var sprite = rand_sprite[1]
@@ -64,7 +89,7 @@ func init_planets():
 	for _n in range(rng):
 		p = Planet.instance()
 		planets.append(p)
-		add_child(p)
+		$CalqueSystem.add_child(p)
 		p.connect("clicked", self, "_on_planet_click")
 
 		var atmosphere = atmospheres[randi()%atmospheres.size()]
@@ -94,7 +119,13 @@ func free_planets():
 func init():
 	init_star()
 	init_planets()
-
+	star.position.x += viewport_size.x
+	star.move_to_left(viewport_size.x)
+	#star.connect("move_left_done", self, "reinit")
+	for i in range(len(planets)):
+		planets[i].position.x += viewport_size.x
+		planets[i].move_to_left(viewport_size.x)
+	
 func reinit():
 	my_free()
 	init()
@@ -107,10 +138,23 @@ func my_free():
 	free_star()
 
 func drag_planet():
+	valid = true
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
 		var mousepos = get_viewport().get_mouse_position()
 		var mouse_dist = mousepos.distance_to(star.position)
 		var planet_dist = current_planet.position.distance_to(star.position)
+
+		for p in planets:
+			if current_planet != p:
+				var p_dist = p.position.distance_to(star.position)
+				var mouse_diff = p_dist - mouse_dist
+				if abs(mouse_diff) <= 32:
+					valid = false
+					p.set_warn(true)
+				else:
+					p.set_warn(false)
+
+		current_planet.set_warn(!valid)
 
 		var diff = planet_dist - mouse_dist
 		var move_vector = Vector2(diff, 0)
@@ -118,12 +162,10 @@ func drag_planet():
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
 		compute_temp(current_planet)
-		#draw_arc(current_planet.position, 60, 0, 360, 50, Color(255, 255, 255))
 
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star(star.position))
 	var coef = 1 + float(planet.temp_coefficient)
-	#print(dist, " ", coef)
 	var tmp_min = int(-dist*2.5)+750-coef*50
 	
 	if (typeof(planet) > 0):
@@ -148,10 +190,12 @@ func update_current_planet(planet):
 func hide():
 	.hide()
 	$HUDLayer/HUDSystem.hide()
+	$CalqueSystem.hide()
 
 func show():
 	.show()
 	$HUDLayer/HUDSystem.show_tips()
+	$CalqueSystem.show()
 
 # =============
 # = Callbacks =
@@ -167,11 +211,14 @@ func _unhandled_input(event):
 func _on_planet_click(target):
 	$HUDLayer/HUDSystem.show()
 	compute_temp(target)
+	if current_planet and (target != current_planet):
+		current_planet.selected = false
 	update_current_planet(target)
-	current_planet.dragging = true
+	if (current_planet.selected):
+		current_planet.dragging = true
+	current_planet.selected = true
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 	compute_temp(target)
-	#entourer la planete d'un cercle
 
 func _on_HUDSystem_atmo_changed(new_atmo):
 	var cost_curr_planet = current_planet.get_cost_atmo()
@@ -187,7 +234,10 @@ func _on_HUDSystem_reinit_system():
 	$HUDLayer/HUDSystem.show_tips()
 
 func _on_HUDSystem_find_new_system():
-	reinit()
+	star.move_to_left(600)
+	for i in range(len(planets)):
+		planets[i].move_to_left(600)
+	star.connect("move_left_done", self, "reinit")
 
 # =========
 # = Utils =
@@ -215,7 +265,6 @@ func get_file_list(path):
 
 	dir.list_dir_end()
 	return files
-
 
 func get_cost_change_atmo(atmo):
 	return cout_atmospheres.get(atmo)
