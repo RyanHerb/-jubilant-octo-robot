@@ -115,10 +115,11 @@ scale = Vector2( 10, 10 )
 shape = SubResource( 5 )
 
 [node name="TotalRes" type="Label" parent="Commentaire"]
-margin_left = 278.983
-margin_top = 110.178
-margin_right = 670.983
-margin_bottom = 138.178
+margin_left = 192.0
+margin_top = 71.0
+margin_right = 768.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 193.017, 8.822 )
 custom_fonts/font = SubResource( 6 )
 text = "Total"
 align = 1
@@ -127,12 +128,39 @@ __meta__ = {
 }
 
 [node name="Comment" type="Label" parent="Commentaire"]
-margin_left = 176.0
-margin_top = 208.0
-margin_right = 791.0
-margin_bottom = 396.0
+margin_left = 192.0
+margin_top = 128.0
+margin_right = 768.0
+margin_bottom = 240.0
 custom_fonts/font = SubResource( 7 )
 text = "You did it"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TotalMoney" type="Label" parent="Commentaire"]
+margin_left = 192.0
+margin_top = 297.0
+margin_right = 768.0
+margin_bottom = 329.0
+custom_fonts/font = SubResource( 6 )
+text = "Total"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CommentMoney" type="Label" parent="Commentaire"]
+margin_left = 192.0
+margin_top = 355.0
+margin_right = 768.0
+margin_bottom = 443.0
+custom_fonts/font = SubResource( 7 )
+text = "You served your office well."
 align = 1
 autowrap = true
 __meta__ = {
@@ -152,12 +180,13 @@ __meta__ = {
 }
 
 [node name="ThanksForPlaying" type="Label" parent="."]
-margin_left = 272.0
+margin_left = 256.0
 margin_top = 160.0
-margin_right = 698.0
-margin_bottom = 189.0
+margin_right = 704.0
+margin_bottom = 192.0
 custom_fonts/font = SubResource( 8 )
 text = "Thanks for playing"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 signal start_game
-var loreText = "Bienvenu au bureau de Asylum Seekers from Space. Votre mission sera d'aider les Aliens venus vous demander de l'aider pour construire leur nouveau foyer. Ecoutez leur requête et créez leur nouvelle planète suivant leur critères."
+var loreText = "Welcome to your social worker’s space office ! \nYour mission, should you choose to accept it, is to help asylum seekers from space find a new home.\nListen to their requests and build them the perfect planet to meet their needs !"
 
 
 func _ready():
@@ -26,9 +26,10 @@ func new_game():
 	$ASS.show()
 	$Area2D.hide()
 
-func comment_result(prestige, prestige_max):
+func comment_result(prestige, prestige_max, money, money_max):
 	$Commentaire.show()
 	$Commentaire.choose_comments(prestige, prestige_max)
+	$Commentaire.choose_comments_money(money, money_max)
 
 #func end_game():
 	#show_game_over()
