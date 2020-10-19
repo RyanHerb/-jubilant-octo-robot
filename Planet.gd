@@ -55,6 +55,15 @@ func move_to_left(pos):
 	pos_left = pos
 	$Timer.start()
 
+func set_sprite(sprite):
+	$KinematicBody2D/Sprite.texture = sprite
+
+func set_warn(warn):
+	if warn:
+		$KinematicBody2D/Sprite.modulate = Color(1, 0, 0)
+	else:
+		$KinematicBody2D/Sprite.modulate = Color(1, 1, 1)
+
 # =============
 # = Callbacks =
 # =============
