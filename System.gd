@@ -6,8 +6,6 @@ var Star = preload("res://Star.tscn")
 const PLANET_PATH = 'res://assets/planets'
 const STAR_PATH = 'res://assets/stars'
 
-var arrow_sprite = load('res://assets/arrow_end.png')
-
 var viewport_size
 var planets = []
 var valid = true

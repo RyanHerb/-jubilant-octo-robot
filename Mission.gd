@@ -49,7 +49,9 @@ func show_ending_mission(min_temp, max_temp, atm):
 		$ThanksCools.show()
 	else:
 		$ThanksNuls.show()
-	prestige *= coef_prestige 
+	$Prestige.compute_stars(int(prestige))
+	$Prestige.show()
+	prestige *= coef_prestige
 	return int(prestige)
 
 func update_descr(text):
@@ -87,6 +89,7 @@ func hide():
 	$Alien.hide()
 	$ThanksCools.hide()
 	$ThanksNuls.hide()
+	$Prestige.hide()
 
 func show():
 	$Description.show()
@@ -115,6 +118,9 @@ func get_desc():
 	
 func get_buget():
 	return budget
+
+func get_coef_prestige():
+	return coef_prestige
 
 func set_intro_sound(path):
 	$IntroSound.stream = load(path)
