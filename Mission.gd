@@ -70,6 +70,8 @@ func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, prestige, file):
 	coef_prestige = prestige
 	var sprite = load(file)
 	$Alien.texture = sprite
+	var string = "Budget: %s$" %[money] 
+	$Budget.text = string
 
 # =============
 # =  Display  =
@@ -90,10 +92,12 @@ func hide():
 	$ThanksCools.hide()
 	$ThanksNuls.hide()
 	$Prestige.hide()
+	$Budget.hide()
 
 func show():
 	$Description.show()
 	$Alien.show()
+	$Budget.show()
 
 # =========
 # = Utils =
@@ -113,6 +117,7 @@ func get_gaz():
 	
 func get_budget():
 	return budget
+	
 func get_desc():
 	return $Description.text
 	

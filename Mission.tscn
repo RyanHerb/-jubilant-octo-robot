@@ -1,14 +1,18 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Mission.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/8bitOperatorPlus8-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/icons_ui/prestige.png" type="Texture" id=3]
-[ext_resource path="res://assets/backgrounds/bureau_ordil.png" type="Texture" id=4]
+[ext_resource path="res://assets/backgrounds/scene_bureau_vide.png" type="Texture" id=4]
 [ext_resource path="res://assets/sounds/ET.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/aliens/alien_xenomorph_half.png" type="Texture" id=6]
 [ext_resource path="res://Prestige.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 20
 font_data = ExtResource( 2 )
 
@@ -70,6 +74,18 @@ __meta__ = {
 visible = false
 position = Vector2( 480.542, 273.642 )
 texture = ExtResource( 4 )
+
+[node name="Budget" type="Label" parent="."]
+margin_left = 290.0
+margin_top = 288.0
+margin_right = 366.0
+margin_bottom = 303.0
+rect_rotation = 0.546919
+custom_fonts/font = SubResource( 3 )
+text = "Budget:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="IntroSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
