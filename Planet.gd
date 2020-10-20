@@ -1,7 +1,7 @@
 extends Node2D
 
-var selected = false
 var dragging = false
+var mouse_offset = 0
 var viewport_size
 
 var atmosphere_origin = "oxygen";
@@ -28,7 +28,6 @@ func init(pos, atm, sprt, coef):
 func reinit():
 	atmosphere_new = atmosphere_origin
 	tmp_cost = [0, 0]
-	selected = false
 
 func distance_to_star(star):
 	return position.distance_to(star)
@@ -62,6 +61,14 @@ func set_warn(warn):
 		$KinematicBody2D/Sprite.modulate = Color(1, 0, 0)
 	else:
 		$KinematicBody2D/Sprite.modulate = Color(1, 1, 1)
+
+func drag(offset):
+	dragging = true
+	mouse_offset = offset
+
+func stop_drag():
+	dragging = false
+	mouse_offset = 0
 
 # =============
 # = Callbacks =

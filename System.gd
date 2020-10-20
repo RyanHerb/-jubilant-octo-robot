@@ -156,7 +156,7 @@ func drag_planet():
 
 		current_planet.set_warn(!valid)
 
-		var diff = planet_dist - mouse_dist
+		var diff = planet_dist - mouse_dist - current_planet.mouse_offset
 		var move_vector = Vector2(diff, 0)
 		move_vector = move_vector.rotated(current_planet.rotation)
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
@@ -206,17 +206,17 @@ func _unhandled_input(event):
 	and event.button_index == BUTTON_LEFT\
 	and !event.pressed and current_planet\
 	and current_planet.dragging:
-		current_planet.dragging = false
+		current_planet.stop_drag()
 
 func _on_planet_click(target):
 	$HUDLayer/HUDSystem.show()
 	compute_temp(target)
-	if current_planet and (target != current_planet):
-		current_planet.selected = false
 	update_current_planet(target)
-	if (current_planet.selected):
-		current_planet.dragging = true
-	current_planet.selected = true
+
+	var mousepos = get_viewport().get_mouse_position()
+	var mouse_dist = mousepos.distance_to(star.position)
+	var offset = current_planet.position.distance_to(star.position) - mouse_dist
+	current_planet.drag(offset)
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 	compute_temp(target)
 
