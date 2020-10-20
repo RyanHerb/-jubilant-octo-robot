@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/alien_waiting.wav-13a08115b472b3551b9ec7d9bd310dd9.sample"
+
+[deps]
+
+source_file="res://assets/sounds/alien_waiting.wav"
+dest_files=[ "res://.import/alien_waiting.wav-13a08115b472b3551b9ec7d9bd310dd9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
