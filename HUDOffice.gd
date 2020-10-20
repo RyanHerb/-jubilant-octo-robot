@@ -40,7 +40,7 @@ func mission_validated(mission):
 	$Objectifs.show()
 	$AffichMissionButton.show()
 	add_to_money(mission.get_budget())
-	var string = "%s °C\n %s" %[str(mission.get_asked_tmp()), mission.get_gaz()]
+	var string = "Objectives:\n%s °C\n %s" %[str(mission.get_asked_tmp()), mission.get_gaz()]
 	$Objectifs.text = string
 	color_descr(0)
 	$Objectifs.show()

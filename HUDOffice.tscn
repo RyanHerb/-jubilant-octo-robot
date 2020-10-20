@@ -117,7 +117,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 10, 13.4085 )
 
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ ExtResource( 42 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 41 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
 "loop": true,
@@ -125,10 +125,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 51.9692, 90.598 )
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="SpriteFrames" id=15]
 animations = [ {
 "frames": [ ExtResource( 55 ), ExtResource( 56 ), ExtResource( 53 ), ExtResource( 54 ) ],
 "loop": true,
@@ -136,7 +136,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=15]
+[sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 57 ) ],
 "loop": true,
@@ -166,7 +166,7 @@ anchor_bottom = 0.5
 margin_left = -13.0
 margin_top = -150.0
 margin_right = 94.0
-margin_bottom = -88.0
+margin_bottom = -82.0
 custom_fonts/font = SubResource( 1 )
 text = "Objectif"
 align = 1
@@ -177,9 +177,9 @@ __meta__ = {
 
 [node name="AffichMissionButton" type="Button" parent="."]
 margin_left = 6.0397
-margin_top = -116.0
+margin_top = -96.0
 margin_right = 85.0397
-margin_bottom = -95.0
+margin_bottom = -75.0
 custom_fonts/font = SubResource( 2 )
 text = "details"
 __meta__ = {
@@ -276,7 +276,6 @@ shape = SubResource( 8 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 9 )
-frame = 1
 playing = true
 
 [node name="OpenSystem" type="AudioStreamPlayer" parent="ToSystem"]
@@ -293,7 +292,7 @@ shape = SubResource( 10 )
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
-frame = 8
+frame = 7
 playing = true
 
 [node name="CloseMission" type="Area2D" parent="."]
@@ -306,8 +305,8 @@ shape = SubResource( 12 )
 
 [node name="Sprite" type="AnimatedSprite" parent="CloseMission"]
 position = Vector2( 330, 242 )
-frames = SubResource( 16 )
-frame = 8
+frames = SubResource( 13 )
+frame = 7
 playing = true
 
 [node name="Mic" type="Area2D" parent="."]
@@ -315,12 +314,12 @@ script = ExtResource( 52 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mic"]
 position = Vector2( 594.725, 258.875 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="Mic_anim" type="AnimatedSprite" parent="Mic"]
 position = Vector2( 597, 241 )
-frames = SubResource( 14 )
-frame = 1
+frames = SubResource( 15 )
+frame = 2
 playing = true
 
 [node name="ButtonLightUp" type="AudioStreamPlayer" parent="Mic"]
@@ -328,8 +327,7 @@ stream = ExtResource( 62 )
 
 [node name="MicSimple" type="AnimatedSprite" parent="."]
 position = Vector2( 597, 241 )
-frames = SubResource( 15 )
-frame = 3
+frames = SubResource( 16 )
 playing = true
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="animation_finished" from="OrdiAllumage" to="." method="_on_OrdiAllumage_animation_finished"]
