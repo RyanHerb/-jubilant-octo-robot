@@ -22,11 +22,11 @@ func choose_comments(prestige, prestige_max):
 
 func choose_comments_money(money, money_max):
 	if (money < (money_max/3)):
-		$CommentMoney.text = nul
+		$CommentMoney.text = nulMoney
 	elif (money > (money_max/2)):
-		$CommentMoney.text = good
+		$CommentMoney.text = goodMoney
 	else:
-		$CommentMoney.text = moyen
+		$CommentMoney.text = midMoney
 	var strTotal = "Your day's earnings: %s $" %[str(money)]
 	$TotalMoney.text = strTotal
 
