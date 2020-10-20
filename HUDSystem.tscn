@@ -1,7 +1,7 @@
 [gd_scene load_steps=203 format=2]
 
 [ext_resource path="res://assets/sounds/system-close.wav" type="AudioStream" id=1]
-[ext_resource path="res://assets/icons_ui/temp_jauge_vertical.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons_ui/temperature_jauge_vertical.png" type="Texture" id=1]
 [ext_resource path="res://assets/icons_ui/cash.png" type="Texture" id=2]
 [ext_resource path="res://HUDSystem.gd" type="Script" id=3]
 [ext_resource path="res://assets/planets/zoomed/red4/red4_rotating_15.png" type="Texture" id=4]
