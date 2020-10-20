@@ -28,6 +28,7 @@ func init(pos, atm, sprt, coef):
 func reinit():
 	atmosphere_new = atmosphere_origin
 	tmp_cost = [0, 0]
+	set_warn(false)
 
 func distance_to_star(star):
 	return position.distance_to(star)
