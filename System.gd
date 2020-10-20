@@ -260,8 +260,8 @@ func get_file_list(path):
 		if file == "":
 			break
 		elif not file.begins_with("."):
-			if file.ends_with("png"):
-				files.append("%s/%s" % [path, file])
+			if file.ends_with(".import"):
+				files.append("%s/%s" % [path, file.replace(".import", "")])
 
 	dir.list_dir_end()
 	return files
