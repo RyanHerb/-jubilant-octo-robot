@@ -10,6 +10,9 @@ signal animation_finished
 signal thanks_ended
 signal see_missionIntro
 
+var prestige = 0
+var coef_prestige = 0
+
 
 func _ready():
 	$AffichMissionButton.hide()
@@ -51,8 +54,13 @@ func mission_validated(mission):
 func add_to_money(somme):
 	$Money.text = str(int($Money.text) + somme)
 
-func add_to_prestige(val):
-	$Prestige.text = str(int($Prestige.text) + val)
+func update_prestige(prest_m, coef_prest_m):
+	var sum_coeff_prestige = coef_prest_m + coef_prestige
+	var up_prest = (float(prestige * coef_prestige) + float(prest_m * coef_prest_m)) / sum_coeff_prestige
+	
+	prestige = up_prest
+	coef_prestige += int(coef_prest_m)
+	$Prestige.text = str(stepify(prestige/20, 0.1))
 
 func start_anim_ordi():
 	$OrdiAllumage.show()
@@ -67,7 +75,7 @@ func color_descr(val):
 		$Objectifs.modulate = Color(0, 0, 0, 1)
 	else: # system
 		$Objectifs.modulate = Color(1, 1, 1, 1)
-	
+
 # =============
 # =  Display  =
 # =============
@@ -176,4 +184,4 @@ func get_money():
 	return int($Money.text)
 	
 func get_prestige():
-	return int($Prestige.text)
+	return float($Prestige.text)

@@ -17,7 +17,7 @@ func choose_comments(prestige, prestige_max):
 		$Comment.text = good
 	else:
 		$Comment.text = moyen
-	var strTotal = "Customers' reviews: %s" %[str(prestige)]
+	var strTotal = "Customers' reviews: %s/5" %[str(prestige)]
 	$TotalRes.text = strTotal
 
 func choose_comments_money(money, money_max):

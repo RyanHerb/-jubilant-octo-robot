@@ -66,7 +66,7 @@ func mission_validated(text, tmp_min, tmp_max, gas, _mission):
 	$Office/HUDLayer/HUDOffice.color_descr(1)
 	var prestige = _mission.show_ending_mission(tmp_min, tmp_max, gas)
 	var coef_prestige = _mission.get_coef_prestige()
-	$Office/HUDLayer/HUDOffice.add_to_prestige(prestige, coef_prestige)
+	$Office/HUDLayer/HUDOffice.update_prestige(prestige, coef_prestige)
 	$Office/HUDLayer/HUDOffice.show_thank()
 	$Office/HUDLayer/HUDOffice.show_prestige()
 
@@ -79,7 +79,7 @@ func end_game():
 	$Office.hide()
 	var pres = $Office/HUDLayer/HUDOffice.get_prestige()
 	var money = $Office/HUDLayer/HUDOffice.get_money()
-	$IntroEnd.comment_result(pres, 600, money, 1400)
+	$IntroEnd.comment_result(pres, 5, money, 1400)
 
 func startTimer():
 	$EntreMissions.start()
@@ -122,7 +122,7 @@ func create_mission_2():
 	mission.set_intro_sound("res://assets/sounds/martian.wav")
 	
 func create_mission_3():
-	var descri = "YOU THERE! MY PLANET HAS BEEN DESTROYED DUE TO SOME FILTHY MAGGOTS’ DECEPTION. FIND ME A NEW PLANET FROM WHICH I CAN ANNIHILATE THEM WITH XENON. FAR FROM THE SUN, WE DON’T LIKE THE HEAT, SO MAKE IT 120C AT MOST, YOU HEAR?! AND HURRY UP OR YOUR MANGY OFFICE\nWILL SUFFER THE\nSAME FATE AS\nTHE CREATORS!!"
+	var descri = "YOU THERE! MY PLANET HAS BEEN DESTROYED DUE TO SOME FILTHY MAGGOTS’ DECEPTION. FIND ME A NEW PLANET FROM WHICH I CAN ANNIHILATE THEM WITH XENON. FAR FROM THE SUN, WE DON’T LIKE THE HEAT, SO MAKE IT 120°C AT MOST, YOU HEAR?! AND HURRY UP OR YOUR MANGY OFFICE\nWILL SUFFER THE\nSAME FATE AS\nTHE CREATORS!!"
 	mission.update_descr(descri)
 	var thanksBien = "PERHAPS YOU AREN’T AS USELESS AS YOU SEEM !\nNOW TELL ME, HAS A SMALL SPECIES WITH LIGHT-UP FINGERS HAS BEEN THROUGH HERE?"
 	var thanksNuls = "DIE!!!!"

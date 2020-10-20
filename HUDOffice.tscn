@@ -276,6 +276,7 @@ shape = SubResource( 8 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 9 )
+frame = 2
 playing = true
 
 [node name="OpenSystem" type="AudioStreamPlayer" parent="ToSystem"]
@@ -292,7 +293,7 @@ shape = SubResource( 10 )
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="CloseMission" type="Area2D" parent="."]
@@ -306,7 +307,7 @@ shape = SubResource( 12 )
 [node name="Sprite" type="AnimatedSprite" parent="CloseMission"]
 position = Vector2( 330, 242 )
 frames = SubResource( 13 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="Mic" type="Area2D" parent="."]

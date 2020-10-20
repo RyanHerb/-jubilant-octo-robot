@@ -51,7 +51,7 @@ func show_ending_mission(min_temp, max_temp, atm):
 		$ThanksNuls.show()
 	$Prestige.compute_stars(int(prestige))
 	$Prestige.show()
-	prestige *= coef_prestige
+	#prestige *= coef_prestige
 	return int(prestige)
 
 func update_descr(text):
