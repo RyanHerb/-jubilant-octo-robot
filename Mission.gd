@@ -4,10 +4,10 @@ var min_temperature
 var max_temperature
 var temp_asked
 var atmosphere = "Oxygen"
-var budget = 1500
+var budget
 var repartition_point = [50, 50] #temperature, gaz
-var coef_prestige = 1
-
+var prestige_good_job = 60 # au dessus de ce prestige, l'alien est content!
+var coef_prestige
 
 func _ready():
 	hide()
@@ -28,6 +28,8 @@ func check_temp(min_temp_planet, max_temp_planet):
 	var point_temp = float(repartition_point[0])
 	var res = (point_temp - ((abs(float(max_temperature) -moy_m) / point_temp) * abs(moy_m - moy_pl)))
 	print("point temp : ", res)
+	if res < 0 :
+		res = 0
 	return res
 	
 func check_if_done(min_temp, max_temp, atm):
@@ -37,12 +39,13 @@ func check_if_done(min_temp, max_temp, atm):
 		print("points atmo : ", progress)
 	progress += check_temp(min_temp, max_temp)
 	print("point totaux : ", progress)
+	#progress /=20
 	return progress
 	
 func show_ending_mission(min_temp, max_temp, atm):
 	$Alien.show()
 	var prestige = check_if_done(min_temp, max_temp, atm)
-	if (prestige > 60):
+	if (prestige >= prestige_good_job):
 		$ThanksCools.show()
 	else:
 		$ThanksNuls.show()

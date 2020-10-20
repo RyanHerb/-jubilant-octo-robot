@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ParallaxLayer2.gd" type="Script" id=1]
+[ext_resource path="res://assets/backgrounds/bg_star_system_empty.png" type="Texture" id=2]
+[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers1.png" type="Texture" id=3]
+[ext_resource path="res://assets/backgrounds/bg_star_system_stars_layers2.png" type="Texture" id=4]
+[ext_resource path="res://ParallaxLayer.gd" type="Script" id=5]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 480, 270 )
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 960, 540 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 480, 270 )
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 960, 540 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer2"]
+position = Vector2( 480, 270 )
+texture = ExtResource( 4 )

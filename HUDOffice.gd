@@ -110,7 +110,6 @@ func objectif_show():
 
 func hide_buttons():
 	$AffichMissionButton.hide()
-	$FinishMissionButton.hide()
 	$CallClient.hide()
 	$MissionWaitingLabel.hide()
 	$MicSimple.hide()
@@ -123,10 +122,10 @@ func show_interface():
 # =============
 
 func _on_AffichMissionButton_pressed():
-	if $AffichMissionButton.text == "show":
+	if $AffichMissionButton.text == "details":
 		$AffichMissionButton.text = "hide"
 	else:
-		$AffichMissionButton.text = "show"
+		$AffichMissionButton.text = "details"
 	emit_signal("see_mission", $AffichMissionButton.text)
 
 func hide_mission_descr():
@@ -166,7 +165,6 @@ func _on_CloseMission_thanks_ended():
 func _on_Mic_click_lamp():
 	$Mic.hide()
 	$MicSimple.show()
-	#$Lamp.show()
 	hide_mission_descr()
 	emit_signal("see_missionIntro")
 
