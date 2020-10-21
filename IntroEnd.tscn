@@ -168,10 +168,10 @@ __meta__ = {
 }
 
 [node name="Click" type="Label" parent="Commentaire"]
-margin_left = 393.0
-margin_top = 461.342
-margin_right = 603.0
-margin_bottom = 477.342
+margin_left = 375.0
+margin_top = 460.342
+margin_right = 585.0
+margin_bottom = 476.342
 custom_fonts/font = SubResource( 2 )
 text = "Click to continue"
 align = 1

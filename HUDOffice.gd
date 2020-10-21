@@ -33,7 +33,7 @@ func new_mission():
 	$CallClient.show()
 	$MissionWaitingLabel.show()
 	$Mic.show()
-	$Mic/ButtonLightUp.play()
+	$micro.play()
 	$MicSimple.hide()
 	
 func mission_validated(mission):
@@ -53,11 +53,15 @@ func mission_validated(mission):
 
 func add_to_money(somme):
 	$Money.text = str(int($Money.text) + somme)
+	$Accept/cash.play()
 
 func update_prestige(prest_m, coef_prest_m):
 	var sum_coeff_prestige = coef_prest_m + coef_prestige
 	var up_prest = (float(prestige * coef_prestige) + float(prest_m * coef_prest_m)) / sum_coeff_prestige
-	
+	if (prest_m > 5):
+		$mission_success.play()
+	else:
+		$mission_fail.play()
 	prestige = up_prest
 	coef_prestige += int(coef_prest_m)
 	$Prestige.text = str(stepify(prestige/20, 0.1))
@@ -66,6 +70,7 @@ func start_anim_ordi():
 	$OrdiAllumage.show()
 	$OrdiAllumage.play()
 	$OrdiFerme.hide()
+	$micro.play()
 
 func start_timer_intro():
 	$Timer.start()
@@ -150,6 +155,7 @@ func _on_Timer_timeout():
 	$Timer.stop()
 	$OrdiAllumage.show()
 	$OrdiAllumage.play()
+	$micro.play()
 	$OrdiFerme.hide()
 	show_money_prestige()
 	$CallClient.show()

@@ -22,6 +22,11 @@ var max_step = 75
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport_size = get_viewport_rect().size
+	$dragging.stream.loop_mode = 2
+	$dragging.stream.loop_begin = 0
+	$dragging.stream.loop_end = 100000
+	$dragging.volume_db = -6.0
+
 
 func _draw():
 	var radius
@@ -205,6 +210,8 @@ func _unhandled_input(event):
 	and !event.pressed and current_planet\
 	and current_planet.dragging:
 		current_planet.dragging = false
+		$dragging_end.play()
+		$dragging.stop()
 
 func _on_planet_click(target):
 	$HUDLayer/HUDSystem.show()
@@ -214,6 +221,9 @@ func _on_planet_click(target):
 	update_current_planet(target)
 	if (current_planet.selected):
 		current_planet.dragging = true
+		$dragging.play()
+	else:
+		$target_planet.play()
 	current_planet.selected = true
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 	compute_temp(target)
@@ -224,6 +234,7 @@ func _on_HUDSystem_atmo_changed(new_atmo):
 	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_atmo() - cost_curr_planet)
 
 func _on_HUDSystem_reinit_system():
+	$reset.play()
 	for i in planets.size():
 		planets[i].position = planets[i].get_origin_position()
 		planets[i].reinit()

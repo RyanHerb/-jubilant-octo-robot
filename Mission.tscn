@@ -12,11 +12,11 @@
 size = 20
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 20
 font_data = ExtResource( 2 )
 
@@ -81,7 +81,7 @@ margin_top = 288.0
 margin_right = 366.0
 margin_bottom = 303.0
 rect_rotation = 0.546919
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Budget:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -123,7 +123,7 @@ margin_left = 285.193
 margin_top = 141.84
 margin_right = 418.193
 margin_bottom = 156.84
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Your review:"
 __meta__ = {
 "_edit_use_anchors_": false

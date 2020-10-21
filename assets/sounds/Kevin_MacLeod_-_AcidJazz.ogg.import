@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Kevin_MacLeod_-_AcidJazz.ogg-d91ff3691d919affbaf32f047ec0ea16.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/Kevin_MacLeod_-_AcidJazz.ogg"
+dest_files=[ "res://.import/Kevin_MacLeod_-_AcidJazz.ogg-d91ff3691d919affbaf32f047ec0ea16.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

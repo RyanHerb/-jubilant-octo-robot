@@ -1,11 +1,12 @@
 extends Node2D
 
-signal mission_finished(cost, tmp_min, tmp_max, gas)
+signal mission_finished(cost, tmp_min, tmp_max, gaz)
 signal atmo_changed
 signal reinit_system
 signal find_new_system
 
 var current_money
+var current_gaz
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +36,7 @@ func update_temp(min_tmp, max_tmp):
 	$TempMax.text = str(max_tmp)
 
 func update_gaz(gaz):
+	current_gaz = gaz
 	$SwitchTo.show()
 	#$Currentgaz.text = gaz
 	$ChangeGaz1.show()
@@ -126,21 +128,24 @@ func hide_maxi_planet():
 func _on_Valider_pressed():
 	hide()
 	$Valider/SystemClose.play()
-	emit_signal("mission_finished", int($CoutChanges.text), int($TempMin.text), int($TempMax.text), $Currentgaz.text)
+	emit_signal("mission_finished", int($CoutChanges.text), int($TempMin.text), int($TempMax.text), current_gaz)
 	$CoutChanges.text = str(0)
 
 func _on_ChangeGaz1_pressed():
 	#$Currentgaz.text = $ChangeGaz1.text
+	$ChangeGaz1/clic.play()
 	update_gaz($ChangeGaz1.text)
 	emit_signal("atmo_changed", $ChangeGaz1.text)
 
 func _on_ChangeGaz2_pressed():
 	#$Currentgaz.text = $ChangeGaz2.text
+	$ChangeGaz1/clic.play()
 	update_gaz($ChangeGaz2.text)
 	emit_signal("atmo_changed", $ChangeGaz2.text)
 
 func _on_ChangeGaz3_pressed():
 	#$Currentgaz.text = $ChangeGaz3.text
+	$ChangeGaz1/clic.play()
 	update_gaz($ChangeGaz3.text)
 	emit_signal("atmo_changed", $ChangeGaz3.text)
 
@@ -154,6 +159,7 @@ func _on_ReinitPlanet_pressed():
 
 
 func _on_NewSystem_pressed():
+	$NewSystem/new_system.play()
 	show_tips()
 	reinit()
 	emit_signal("find_new_system")
