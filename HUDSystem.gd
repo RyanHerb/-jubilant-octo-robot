@@ -35,7 +35,7 @@ func update_temp(min_tmp, max_tmp):
 
 func update_gaz(gaz):
 	$SwitchTo.show()
-	$Currentgaz.text = gaz
+	#$Currentgaz.text = gaz
 	$ChangeGaz1.show()
 	$ChangeGaz2.show()
 	$ChangeGaz3.show()
@@ -91,15 +91,13 @@ func show():
 	$Tips.hide()
 	$ReinitPlanet.show()
 	$CoutChanges.show()
-	$AtmoLabel.show()
-	$TempLabel.show()
 	$Total.show()
-	$TempLabel.show()
 	$TempMax.show()
 	$TempMin.show()
 	$MoneySprite.show()
 	$Valider.show()
-	$Currentgaz.show()
+	$TempLabel.show()
+	#$Currentgaz.show()
 	$Atmosphere.show()
 	$Lazer.show()
 	$SpriteTemp.show()
@@ -115,13 +113,11 @@ func show_tips():
 	$ChangeGaz2.hide()
 	$ChangeGaz3.hide()
 	$SwitchTo.hide()
-	$AtmoLabel.hide()
 	$TempLabel.hide()
 	$TempLabel.hide()
 	$TempMax.hide()
 	$TempMin.hide()
 	$Valider.hide()
-	$Currentgaz.hide()
 	$Atmosphere.hide()
 	$SpriteTemp.hide()
 	$HighLow.hide()
@@ -142,25 +138,25 @@ func _on_Valider_pressed():
 	$CoutChanges.text = str(0)
 
 func _on_ChangeGaz1_pressed():
-	$Currentgaz.text = $ChangeGaz1.text
-	update_gaz($Currentgaz.text)
-	emit_signal("atmo_changed", $Currentgaz.text)
+	#$Currentgaz.text = $ChangeGaz1.text
+	update_gaz($ChangeGaz1.text)
+	emit_signal("atmo_changed", $ChangeGaz1.text)
 
 func _on_ChangeGaz2_pressed():
-	$Currentgaz.text = $ChangeGaz2.text
-	update_gaz($Currentgaz.text)
-	emit_signal("atmo_changed", $Currentgaz.text)
+	#$Currentgaz.text = $ChangeGaz2.text
+	update_gaz($ChangeGaz2.text)
+	emit_signal("atmo_changed", $ChangeGaz2.text)
 
 func _on_ChangeGaz3_pressed():
-	$Currentgaz.text = $ChangeGaz3.text
-	update_gaz($Currentgaz.text)
-	emit_signal("atmo_changed", $Currentgaz.text)
+	#$Currentgaz.text = $ChangeGaz3.text
+	update_gaz($ChangeGaz3.text)
+	emit_signal("atmo_changed", $ChangeGaz3.text)
 
 func _on_ReinitPlanet_pressed():
 	$CoutChanges.text = str(0)
 	$TempMin.text = "-1000"
 	$TempMax.text = "-1000"
-	$Currentgaz.text = "Aze"
+	#$Currentgaz.text = "Aze"
 	emit_signal("reinit_system")
 
 
