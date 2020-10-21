@@ -3,7 +3,7 @@ extends CanvasLayer
 signal start_game
 signal start_new_game
 var loreText = "Welcome to your social worker’s space office ! \nYour mission, should you choose to accept it, is to help asylum seekers from space find a new home.\nListen to their requests and build them the perfect planet to meet their needs !"
-
+var credits = "Credits:\nDeveloppers:  Abytron Bananaman Cyanael\nArtwork and sound:  Abytron\nVoices:  Bananaman Valhanya"
 
 func _ready():
 	$Area2D.hide()
@@ -11,6 +11,8 @@ func _ready():
 	$ThanksForPlaying.hide()
 	$Area2D/Lore.text = loreText
 	$PlayAgain.hide()
+	$Credits.hide()
+	$Credits.text = credits
 
 
 func show_message(text):
@@ -19,6 +21,7 @@ func show_message(text):
 	
 func show_game_over():
 	$ThanksForPlaying.show()
+	$Credits.show()
 	$PlayAgain.show()
 # Called when the node enters the scene tree for the first time.
 
@@ -61,5 +64,6 @@ func _on_Commentaire_Comment_end():
 func _on_PlayAgain_pressed():
 	$ThanksForPlaying.hide()
 	$PlayAgain.hide()
+	$Credits.hide()
 	emit_signal("start_new_game")
 	

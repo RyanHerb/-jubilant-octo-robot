@@ -24,7 +24,7 @@ wait_time = 0.5
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -20.0
+volume_db = -15.0
 autoplay = true
 
 [node name="ParallaxBackground2" parent="." instance=ExtResource( 4 )]
