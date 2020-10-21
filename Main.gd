@@ -36,7 +36,7 @@ func start_scenario():
 	$Office.new_mission()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
-	mission.queue_free()
+	$System.my_free()
 	end_game()
 
 func go_to_system(_mission):
@@ -46,6 +46,7 @@ func go_to_system(_mission):
 	$Office/HUDLayer/HUDOffice.hide_prestige()
 	$System.show()
 	_mission.hide()
+	_mission.hide_alien()
 	
 	
 func mission_intro(_mission):
@@ -72,6 +73,7 @@ func mission_validated(text, tmp_min, tmp_max, gas, _mission):
 
 func mission_finished(_mission):
 	_mission.hide()
+	_mission.hide_alien()
 	startTimer()
 
 func end_game():
@@ -80,6 +82,8 @@ func end_game():
 	var pres = $Office/HUDLayer/HUDOffice.get_prestige()
 	var money = $Office/HUDLayer/HUDOffice.get_money()
 	$IntroEnd.comment_result(pres, 5, money, 1400)
+	$Office/HUDLayer/HUDOffice.endgame()
+	$IntroEnd.connect("start_new_game", self, "_ready")
 
 func startTimer():
 	$EntreMissions.start()

@@ -11,10 +11,10 @@ var coef_prestige
 
 func _ready():
 	hide()
+	hide_alien()
 	
 
 func check_atmosphere(atm):
-	print("atm ", atm, " atm_m ", atmosphere, " : ", atm == atmosphere)
 	return atm == atmosphere
 	
 func check_temp(min_temp_planet, max_temp_planet):
@@ -24,10 +24,8 @@ func check_temp(min_temp_planet, max_temp_planet):
 		return 0
 	
 	var moy_m = (float(min_temperature) + float(max_temperature)) / 2
-	print("moyennes m/pl : ", moy_m, " ", moy_pl)
 	var point_temp = float(repartition_point[0])
 	var res = (point_temp - ((abs(float(max_temperature) -moy_m) / point_temp) * abs(moy_m - moy_pl)))
-	print("point temp : ", res)
 	if res < 0 :
 		res = 0
 	return res
@@ -36,9 +34,7 @@ func check_if_done(min_temp, max_temp, atm):
 	var progress = 0
 	if (check_atmosphere(atm)):
 		progress += repartition_point[1]
-		print("points atmo : ", progress)
 	progress += check_temp(min_temp, max_temp)
-	print("point totaux : ", progress)
 	#progress /=20
 	return progress
 	
@@ -47,8 +43,10 @@ func show_ending_mission(min_temp, max_temp, atm):
 	var prestige = check_if_done(min_temp, max_temp, atm)
 	if (prestige >= prestige_good_job):
 		$ThanksCools.show()
+		$mission_success.play()
 	else:
 		$ThanksNuls.show()
+		$mission_fail.play()
 	$Prestige.compute_stars(int(prestige))
 	$Prestige.show()
 	#prestige *= coef_prestige
@@ -88,7 +86,7 @@ func show_text_mission(text):
 
 func hide():
 	$Description.hide()
-	$Alien.hide()
+	#$Alien.hide()
 	$ThanksCools.hide()
 	$ThanksNuls.hide()
 	$Prestige.hide()
@@ -98,6 +96,9 @@ func show():
 	$Description.show()
 	$Alien.show()
 	$Budget.show()
+
+func hide_alien():
+	$Alien.hide()
 
 # =========
 # = Utils =

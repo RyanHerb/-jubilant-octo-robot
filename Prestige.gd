@@ -19,11 +19,9 @@ func compute_stars(val): # int, valeur sur 100
 		array_stars_icons[0].texture = prestigeNone
 	
 	for i in range(0, higher_star):
-		print(i, " full")
 		array_stars_icons[i].texture = prestigeFull
 	
 	for i in range(higher_star, 5):
-		print(i, " empty")
 		array_stars_icons[i].texture = prestigeNone
 	
 	if prestige > 0 and prestige < 10:
