@@ -33,7 +33,7 @@ func new_mission():
 	$CallClient.show()
 	$MissionWaitingLabel.show()
 	$Mic.show()
-	$micro.play()
+	$Mic/ButtonLightUp.play()
 	$MicSimple.hide()
 	
 func mission_validated(mission):
@@ -66,7 +66,7 @@ func start_anim_ordi():
 	$OrdiAllumage.show()
 	$OrdiAllumage.play()
 	$OrdiFerme.hide()
-	$micro.play()
+	$OrdiPower.play()
 
 func start_timer_intro():
 	$Timer.start()
@@ -160,7 +160,7 @@ func _on_Timer_timeout():
 	$Timer.stop()
 	$OrdiAllumage.show()
 	$OrdiAllumage.play()
-	$micro.play()
+	$OrdiPower.play()
 	$OrdiFerme.hide()
 	show_money_prestige()
 	$CallClient.show()

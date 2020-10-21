@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/backgrounds/scene_bureau_vide.png" type="Texture" id=1]
 [ext_resource path="res://HUDOffice.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/mic.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/ordi_power.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/icons_ui/cash.png" type="Texture" id=4]
 [ext_resource path="res://assets/icons_ui/prestige.png" type="Texture" id=5]
 [ext_resource path="res://assets/backgrounds/ordi/ordi_eteint.png" type="Texture" id=6]
@@ -153,7 +153,7 @@ animations = [ {
 position = Vector2( 18.8988, 166.31 )
 script = ExtResource( 2 )
 
-[node name="micro" type="AudioStreamPlayer" parent="."]
+[node name="OrdiPower" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
 [node name="Office" type="Sprite" parent="."]
@@ -284,7 +284,7 @@ shape = SubResource( 8 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 9 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="OpenSystem" type="AudioStreamPlayer" parent="ToSystem"]
@@ -302,7 +302,7 @@ shape = SubResource( 10 )
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
-frame = 2
+frame = 8
 playing = true
 script = ExtResource( 68 )
 
@@ -324,7 +324,7 @@ shape = SubResource( 12 )
 [node name="Sprite" type="AnimatedSprite" parent="CloseMission"]
 position = Vector2( 330, 242 )
 frames = SubResource( 13 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="ordi_clic" type="AudioStreamPlayer" parent="CloseMission"]
