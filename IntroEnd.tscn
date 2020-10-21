@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/fonts/8bitOperatorPlus8-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://IntroEnd.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Area2D.gd" type="Script" id=5]
 [ext_resource path="res://Commentaire.gd" type="Script" id=6]
 [ext_resource path="res://assets/title.png" type="Texture" id=7]
+[ext_resource path="res://assets/sounds/clic_ordi.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48.1523, 269.7 )
@@ -221,6 +222,9 @@ text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="clic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 [connection signal="enter" from="Zone2D" to="." method="_on_Zone2D_enter"]
 [connection signal="loreEnd" from="Area2D" to="." method="_on_Area2D_loreEnd"]
 [connection signal="Comment_end" from="Commentaire" to="." method="_on_Commentaire_Comment_end"]
