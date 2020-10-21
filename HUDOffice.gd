@@ -10,6 +10,9 @@ signal animation_finished
 signal thanks_ended
 signal see_missionIntro
 
+var prestige = 0
+var coef_prestige = 0
+
 
 func _ready():
 	$AffichMissionButton.hide()
@@ -30,7 +33,7 @@ func new_mission():
 	$CallClient.show()
 	$MissionWaitingLabel.show()
 	$Mic.show()
-	$Mic/ButtonLightUp.play()
+	$micro.play()
 	$MicSimple.hide()
 	
 func mission_validated(mission):
@@ -40,7 +43,7 @@ func mission_validated(mission):
 	$Objectifs.show()
 	$AffichMissionButton.show()
 	add_to_money(mission.get_budget())
-	var string = "%s °C\n %s" %[str(mission.get_asked_tmp()), mission.get_gaz()]
+	var string = "Objectives:\n%s °C\n %s" %[str(mission.get_asked_tmp()), mission.get_gaz()]
 	$Objectifs.text = string
 	color_descr(0)
 	$Objectifs.show()
@@ -50,14 +53,24 @@ func mission_validated(mission):
 
 func add_to_money(somme):
 	$Money.text = str(int($Money.text) + somme)
+	$Accept/cash.play()
 
-func add_to_prestige(val):
-	$Prestige.text = str(int($Prestige.text) + val)
+func update_prestige(prest_m, coef_prest_m):
+	var sum_coeff_prestige = coef_prest_m + coef_prestige
+	var up_prest = (float(prestige * coef_prestige) + float(prest_m * coef_prest_m)) / sum_coeff_prestige
+	if (prest_m > 5):
+		$mission_success.play()
+	else:
+		$mission_fail.play()
+	prestige = up_prest
+	coef_prestige += int(coef_prest_m)
+	$Prestige.text = str(stepify(prestige/20, 0.1))
 
 func start_anim_ordi():
 	$OrdiAllumage.show()
 	$OrdiAllumage.play()
 	$OrdiFerme.hide()
+	$micro.play()
 
 func start_timer_intro():
 	$Timer.start()
@@ -67,7 +80,7 @@ func color_descr(val):
 		$Objectifs.modulate = Color(0, 0, 0, 1)
 	else: # system
 		$Objectifs.modulate = Color(1, 1, 1, 1)
-	
+
 # =============
 # =  Display  =
 # =============
@@ -142,6 +155,7 @@ func _on_Timer_timeout():
 	$Timer.stop()
 	$OrdiAllumage.show()
 	$OrdiAllumage.play()
+	$micro.play()
 	$OrdiFerme.hide()
 	show_money_prestige()
 	$CallClient.show()
@@ -176,4 +190,4 @@ func get_money():
 	return int($Money.text)
 	
 func get_prestige():
-	return int($Prestige.text)
+	return float($Prestige.text)

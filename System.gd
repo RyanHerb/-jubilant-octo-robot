@@ -6,8 +6,6 @@ var Star = preload("res://Star.tscn")
 const PLANET_PATH = 'res://assets/planets'
 const STAR_PATH = 'res://assets/stars'
 
-var arrow_sprite = load('res://assets/arrow_end.png')
-
 var viewport_size
 var planets = []
 var valid = true
@@ -24,6 +22,11 @@ var max_step = 75
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport_size = get_viewport_rect().size
+	$dragging.stream.loop_mode = 2
+	$dragging.stream.loop_begin = 0
+	$dragging.stream.loop_end = 100000
+	$dragging.volume_db = -6.0
+
 
 func _draw():
 	var radius
@@ -156,7 +159,7 @@ func drag_planet():
 
 		current_planet.set_warn(!valid)
 
-		var diff = planet_dist - mouse_dist - current_planet.mouse_offset
+		var diff = planet_dist - mouse_dist
 		var move_vector = Vector2(diff, 0)
 		move_vector = move_vector.rotated(current_planet.rotation)
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
@@ -206,17 +209,22 @@ func _unhandled_input(event):
 	and event.button_index == BUTTON_LEFT\
 	and !event.pressed and current_planet\
 	and current_planet.dragging:
-		current_planet.stop_drag()
+		current_planet.dragging = false
+		$dragging_end.play()
+		$dragging.stop()
 
 func _on_planet_click(target):
 	$HUDLayer/HUDSystem.show()
 	compute_temp(target)
+	if current_planet and (target != current_planet):
+		current_planet.selected = false
 	update_current_planet(target)
-
-	var mousepos = get_viewport().get_mouse_position()
-	var mouse_dist = mousepos.distance_to(star.position)
-	var offset = current_planet.position.distance_to(star.position) - mouse_dist
-	current_planet.drag(offset)
+	if (current_planet.selected):
+		current_planet.dragging = true
+		$dragging.play()
+	else:
+		$target_planet.play()
+	current_planet.selected = true
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 	compute_temp(target)
 
@@ -226,6 +234,7 @@ func _on_HUDSystem_atmo_changed(new_atmo):
 	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_atmo() - cost_curr_planet)
 
 func _on_HUDSystem_reinit_system():
+	$reset.play()
 	for i in planets.size():
 		planets[i].position = planets[i].get_origin_position()
 		planets[i].reinit()
@@ -260,8 +269,8 @@ func get_file_list(path):
 		if file == "":
 			break
 		elif not file.begins_with("."):
-			if file.ends_with(".import"):
-				files.append("%s/%s" % [path, file.replace(".import", "")])
+			if file.ends_with("png"):
+				files.append("%s/%s" % [path, file])
 
 	dir.list_dir_end()
 	return files

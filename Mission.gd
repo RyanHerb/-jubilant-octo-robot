@@ -49,7 +49,9 @@ func show_ending_mission(min_temp, max_temp, atm):
 		$ThanksCools.show()
 	else:
 		$ThanksNuls.show()
-	prestige *= coef_prestige 
+	$Prestige.compute_stars(int(prestige))
+	$Prestige.show()
+	#prestige *= coef_prestige
 	return int(prestige)
 
 func update_descr(text):
@@ -68,6 +70,8 @@ func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, prestige, file):
 	coef_prestige = prestige
 	var sprite = load(file)
 	$Alien.texture = sprite
+	var string = "Budget: %s$" %[money] 
+	$Budget.text = string
 
 # =============
 # =  Display  =
@@ -87,10 +91,13 @@ func hide():
 	$Alien.hide()
 	$ThanksCools.hide()
 	$ThanksNuls.hide()
+	$Prestige.hide()
+	$Budget.hide()
 
 func show():
 	$Description.show()
 	$Alien.show()
+	$Budget.show()
 
 # =========
 # = Utils =
@@ -110,11 +117,15 @@ func get_gaz():
 	
 func get_budget():
 	return budget
+	
 func get_desc():
 	return $Description.text
 	
 func get_buget():
 	return budget
+
+func get_coef_prestige():
+	return coef_prestige
 
 func set_intro_sound(path):
 	$IntroSound.stream = load(path)

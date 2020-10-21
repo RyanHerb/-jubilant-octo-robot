@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/notif_ordi.wav-65bbaca01bccfa40da57d473901064cb.sample"
+
+[deps]
+
+source_file="res://assets/sounds/notif_ordi.wav"
+dest_files=[ "res://.import/notif_ordi.wav-65bbaca01bccfa40da57d473901064cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

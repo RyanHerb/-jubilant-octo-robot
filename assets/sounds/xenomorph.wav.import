@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/xenomorph.wav-932f56e1e1051b25de8cdc323e524233.sample"
+
+[deps]
+
+source_file="res://assets/sounds/xenomorph.wav"
+dest_files=[ "res://.import/xenomorph.wav-932f56e1e1051b25de8cdc323e524233.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

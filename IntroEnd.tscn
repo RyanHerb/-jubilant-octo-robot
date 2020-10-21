@@ -121,7 +121,7 @@ margin_right = 768.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 193.017, 8.822 )
 custom_fonts/font = SubResource( 6 )
-text = "Total"
+text = "Customers' reviews:"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -168,10 +168,10 @@ __meta__ = {
 }
 
 [node name="Click" type="Label" parent="Commentaire"]
-margin_left = 393.0
-margin_top = 461.342
-margin_right = 603.0
-margin_bottom = 477.342
+margin_left = 375.0
+margin_top = 460.342
+margin_right = 585.0
+margin_bottom = 476.342
 custom_fonts/font = SubResource( 2 )
 text = "Click to continue"
 align = 1
@@ -186,6 +186,7 @@ margin_right = 704.0
 margin_bottom = 192.0
 custom_fonts/font = SubResource( 8 )
 text = "Thanks for playing"
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
