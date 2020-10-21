@@ -25,4 +25,5 @@ shape = SubResource( 1 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.02
 [connection signal="input_event" from="KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
+[connection signal="input_event" from="KinematicBody2D" to="." method="_on_KinematicBody2D_input_event_right"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

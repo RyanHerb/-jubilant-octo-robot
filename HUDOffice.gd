@@ -58,10 +58,6 @@ func add_to_money(somme):
 func update_prestige(prest_m, coef_prest_m):
 	var sum_coeff_prestige = coef_prest_m + coef_prestige
 	var up_prest = (float(prestige * coef_prestige) + float(prest_m * coef_prest_m)) / sum_coeff_prestige
-	if (prest_m > 5):
-		$mission_success.play()
-	else:
-		$mission_fail.play()
 	prestige = up_prest
 	coef_prestige += int(coef_prest_m)
 	$Prestige.text = str(stepify(prestige/20, 0.1))
@@ -80,6 +76,15 @@ func color_descr(val):
 		$Objectifs.modulate = Color(0, 0, 0, 1)
 	else: # system
 		$Objectifs.modulate = Color(1, 1, 1, 1)
+
+
+func endgame():
+	$OrdiIdle.hide()
+	$OrdiFerme.show()
+	$Prestige.text = "0"
+	$Money.text = "0"
+	prestige = 0
+	coef_prestige = 0
 
 # =============
 # =  Display  =

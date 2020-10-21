@@ -157,7 +157,6 @@ func _on_ReinitPlanet_pressed():
 	check_cost_to_money()
 	emit_signal("reinit_system")
 
-
 func _on_NewSystem_pressed():
 	$NewSystem/new_system.play()
 	show_tips()

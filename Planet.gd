@@ -13,6 +13,7 @@ var tmp_cost = Vector2(0, 0)
 var pos_left
 
 signal clicked(target)
+signal right_clicked(target)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +30,7 @@ func reinit():
 	atmosphere_new = atmosphere_origin
 	tmp_cost = [0, 0]
 	selected = false
+	position = position_init
 
 func distance_to_star(star):
 	return position.distance_to(star)
@@ -72,7 +74,13 @@ func _on_KinematicBody2D_input_event(_viewport, event, _shape_idx):
 	and event.button_index == BUTTON_LEFT\
 	and event.pressed:
 		emit_signal("clicked", self)
-			
+
+func _on_KinematicBody2D_input_event_right(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton\
+	and event.button_index == BUTTON_RIGHT\
+	and event.pressed:
+		emit_signal("right_clicked", self)
+
 # =========
 # = Utils =
 # =========
@@ -88,6 +96,9 @@ func get_cost_atmo():
 	
 func get_cost_pos():
 	return tmp_cost[0]
+	
+func get_cost():
+	return tmp_cost[0] + tmp_cost[1]
 
 func set_sprite(sprite):
 	$KinematicBody2D/Sprite.texture = sprite

@@ -94,6 +94,7 @@ func init_planets():
 		planets.append(p)
 		$CalqueSystem.add_child(p)
 		p.connect("clicked", self, "_on_planet_click")
+		p.connect("right_clicked", self, "_on_planet_right_click")
 
 		var atmosphere = atmospheres[randi()%atmospheres.size()]
 		var rand_sprite = get_random_sprite(planet_sprites)
@@ -142,29 +143,32 @@ func my_free():
 
 func drag_planet():
 	if (typeof(current_planet) > 0) and (current_planet.dragging):
-		valid = true
 		var mousepos = get_viewport().get_mouse_position()
 		var mouse_dist = mousepos.distance_to(star.position)
 		var planet_dist = current_planet.position.distance_to(star.position)
-
-		for p in planets:
-			if current_planet != p:
-				var p_dist = p.position.distance_to(star.position)
-				var mouse_diff = p_dist - mouse_dist
-				if abs(mouse_diff) <= 32:
-					valid = false
-					p.set_warn(true)
-				else:
-					p.set_warn(false)
-
-		current_planet.set_warn(!valid)
-
+	
+		calculate_warning()
+	
 		var diff = planet_dist - mouse_dist
 		var move_vector = Vector2(diff, 0)
 		move_vector = move_vector.rotated(current_planet.rotation)
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
 			current_planet.position -= move_vector
 		compute_temp(current_planet)
+
+func calculate_warning():
+	valid = true
+	for p in planets:
+		if current_planet != p:
+			var p_dist = p.position.distance_to(star.position)
+			var current_planet_diff = p_dist - current_planet.position.distance_to(star.position)
+			if abs(current_planet_diff) <= 32:
+				valid = false
+				p.set_warn(true)
+			else:
+				p.set_warn(false)
+
+	current_planet.set_warn(!valid)
 
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star(star.position))
@@ -228,6 +232,12 @@ func _on_planet_click(target):
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 	compute_temp(target)
 
+func _on_planet_right_click(target):
+	$HUDLayer/HUDSystem.add_to_total_cout(-target.get_cost())
+	target.reinit()
+	calculate_warning()
+	compute_temp(target)
+	
 func _on_HUDSystem_atmo_changed(new_atmo):
 	var cost_curr_planet = current_planet.get_cost_atmo()
 	current_planet.update_atmosphere(new_atmo, get_cost_change_atmo(new_atmo))
@@ -236,7 +246,6 @@ func _on_HUDSystem_atmo_changed(new_atmo):
 func _on_HUDSystem_reinit_system():
 	$reset.play()
 	for i in planets.size():
-		planets[i].position = planets[i].get_origin_position()
 		planets[i].reinit()
 	$HUDLayer/HUDSystem.add_to_total_cout(0)
 	update_current_planet(null)
