@@ -40,26 +40,17 @@ func update_gaz(gaz):
 	$ChangeGaz2.show()
 	$ChangeGaz3.show()
 	if gaz == "Oxygen":
-		$ChangeGaz1.disabled = true
-		$ChangeGaz1.modulate = Color(0.5, 0.5, 0.5, 1)
-		$ChangeGaz2.disabled = false
-		$ChangeGaz2.modulate = Color(1, 1, 1, 1)
-		$ChangeGaz3.disabled = false
-		$ChangeGaz3.modulate = Color(1, 1, 1, 1)
-	elif gaz == "Nitrogen":
-		$ChangeGaz1.disabled = false
 		$ChangeGaz1.modulate = Color(1, 1, 1, 1)
-		$ChangeGaz2.disabled = true
 		$ChangeGaz2.modulate = Color(0.5, 0.5, 0.5, 1)
-		$ChangeGaz3.disabled = false
-		$ChangeGaz3.modulate = Color(1, 1, 1, 1)
-	else:
-		$ChangeGaz1.disabled = false
-		$ChangeGaz1.modulate = Color(1, 1, 1, 1)
-		$ChangeGaz2.disabled = false
-		$ChangeGaz2.modulate = Color(1, 1, 1, 1)
-		$ChangeGaz3.disabled = true
 		$ChangeGaz3.modulate = Color(0.5, 0.5, 0.5, 1)
+	elif gaz == "Nitrogen":
+		$ChangeGaz1.modulate = Color(0.5, 0.5, 0.5, 1)
+		$ChangeGaz2.modulate = Color(1, 1, 1, 1)
+		$ChangeGaz3.modulate = Color(0.5, 0.5, 0.5, 1)
+	else:
+		$ChangeGaz1.modulate = Color(0.5, 0.5, 0.5, 1)
+		$ChangeGaz2.modulate = Color(0.5, 0.5, 0.5, 1)
+		$ChangeGaz3.modulate = Color(1, 1, 1, 1)
 	
 func add_to_total_cout(val):
 	$CoutChanges.text = str(int($CoutChanges.text) + val)
