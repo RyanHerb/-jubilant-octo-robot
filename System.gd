@@ -149,7 +149,7 @@ func drag_planet():
 	
 		calculate_warning()
 	
-		var diff = planet_dist - mouse_dist
+		var diff = planet_dist - mouse_dist - current_planet.mouse_offset
 		var move_vector = Vector2(diff, 0)
 		move_vector = move_vector.rotated(current_planet.rotation)
 		if mouse_dist < viewport_size.y/2 and mouse_dist > 60:
@@ -213,6 +213,7 @@ func _unhandled_input(event):
 	and event.button_index == BUTTON_LEFT\
 	and !event.pressed and current_planet\
 	and current_planet.dragging:
+		current_planet.stop_drag()
 		current_planet.dragging = false
 		$dragging_end.play()
 		$dragging.stop()
@@ -220,15 +221,13 @@ func _unhandled_input(event):
 func _on_planet_click(target):
 	$HUDLayer/HUDSystem.show()
 	compute_temp(target)
-	if current_planet and (target != current_planet):
-		current_planet.selected = false
 	update_current_planet(target)
-	if (current_planet.selected):
-		current_planet.dragging = true
-		$dragging.play()
-	else:
-		$target_planet.play()
-	current_planet.selected = true
+	var mousepos = get_viewport().get_mouse_position()
+	var mouse_dist = mousepos.distance_to(star.position)
+	var offset = current_planet.position.distance_to(star.position) - mouse_dist
+	current_planet.drag(offset)
+	$dragging.play()
+	
 	$HUDLayer/HUDSystem.update_gaz(current_planet.get_gaz())
 	compute_temp(target)
 
@@ -278,8 +277,8 @@ func get_file_list(path):
 		if file == "":
 			break
 		elif not file.begins_with("."):
-			if file.ends_with("png"):
-				files.append("%s/%s" % [path, file])
+			if file.ends_with(".import"):
+				files.append("%s/%s" % [path, file.replace(".import", "")])
 
 	dir.list_dir_end()
 	return files
