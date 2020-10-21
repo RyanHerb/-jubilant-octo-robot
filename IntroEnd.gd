@@ -46,20 +46,17 @@ func comment_result(prestige, prestige_max, money, money_max):
 # =============
 
 func _on_Zone2D_enter():
-	$clic.play()
 	$ASS.hide()
 	$Area2D.show()
 
 
 func _on_Area2D_loreEnd():
-	$clic.play()
 	$Area2D.hide()
 	$Background.hide()
 	emit_signal("start_game")
 
 
 func _on_Commentaire_Comment_end():
-	$clic.play()
 	$Commentaire.hide()
 	show_game_over()
 
