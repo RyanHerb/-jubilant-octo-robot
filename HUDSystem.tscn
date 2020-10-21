@@ -383,7 +383,7 @@ __meta__ = {
 position = Vector2( 801.438, 114.491 )
 frames = SubResource( 10 )
 animation = "5"
-frame = 7
+frame = 16
 playing = true
 
 [node name="SwitchTo" type="Label" parent="."]

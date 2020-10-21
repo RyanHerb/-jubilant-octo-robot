@@ -25,6 +25,7 @@ func entrer_system():
 
 func reinit():
 	$CoutChanges.text = "0"
+	check_cost_to_money()
 
 func update_maxi_planet(val):
 	$MaxiPlanet.animation = str(val)
@@ -148,6 +149,7 @@ func _on_ReinitPlanet_pressed():
 	$TempMin.text = "-1000"
 	$TempMax.text = "-1000"
 	#$Currentgaz.text = "Aze"
+	check_cost_to_money()
 	emit_signal("reinit_system")
 
 
