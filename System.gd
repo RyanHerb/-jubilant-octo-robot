@@ -15,7 +15,7 @@ var cout_atmospheres = {"Oxygen" : 50, "Nitrogen" : 100, "Xenon" : 200}
 var dragged_planet
 var current_planet
 
-var min_step = 25
+var min_step = 33
 var max_step = 75
 
 
