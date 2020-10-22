@@ -49,9 +49,11 @@ func _on_Zone2D_enter():
 	$ASS.hide()
 	$Area2D.show()
 	$clic.play()
+	$lore_val.play()
 
 
 func _on_Area2D_loreEnd():
+	$lore_val.stop()
 	$Area2D.hide()
 	$Background.hide()
 	$clic.play()
