@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/fonts/8bitOperatorPlus8-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://IntroEnd.gd" type="Script" id=2]
@@ -10,40 +10,44 @@
 [ext_resource path="res://assets/sounds/clic_ordi.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/lore_val.wav" type="AudioStream" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 48.1523, 269.7 )
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 22
 font_data = ExtResource( 1 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 48.1523, 269.7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 47.8344, 26.6522 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 48.1523, 26.7581 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 40
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=7]
-size = 35
+size = 40
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 40
+size = 35
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 24
+size = 40
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=10]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
 size = 22
 font_data = ExtResource( 1 )
 
@@ -73,13 +77,26 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Mute" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 510.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Press 'M' to mute"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Zone2D" type="Area2D" parent="."]
 script = ExtResource( 4 )
 
 [node name="EntierZone" type="CollisionShape2D" parent="Zone2D"]
 position = Vector2( 480.996, 268.044 )
 scale = Vector2( 10, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="clickAnywhere" type="Label" parent="Zone2D"]
 anchor_left = 0.5
@@ -90,7 +107,7 @@ margin_left = 400.0
 margin_top = 415.785
 margin_right = 570.0
 margin_bottom = 431.785
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Click to start"
 align = 1
 __meta__ = {
@@ -103,7 +120,7 @@ script = ExtResource( 5 )
 [node name="ZoneLore" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 484.175, 268.044 )
 scale = Vector2( 10, 10 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Lore" type="Label" parent="Area2D"]
 anchor_left = 0.5
@@ -114,7 +131,7 @@ margin_left = 179.98
 margin_top = 107.0
 margin_right = 828.98
 margin_bottom = 433.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Lore
 "
 autowrap = true
@@ -129,7 +146,7 @@ script = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Commentaire"]
 position = Vector2( 484.175, 268.044 )
 scale = Vector2( 10, 10 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="TotalRes" type="Label" parent="Commentaire"]
 margin_left = 192.0
@@ -137,7 +154,7 @@ margin_top = 71.0
 margin_right = 768.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 193.017, 8.822 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "Customers' reviews:"
 align = 1
 __meta__ = {
@@ -149,7 +166,7 @@ margin_left = 192.0
 margin_top = 128.0
 margin_right = 768.0
 margin_bottom = 240.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "You did it"
 align = 1
 autowrap = true
@@ -162,7 +179,7 @@ margin_left = 128.0
 margin_top = 297.0
 margin_right = 832.0
 margin_bottom = 329.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "Total"
 align = 1
 autowrap = true
@@ -176,7 +193,7 @@ margin_left = 192.0
 margin_top = 355.0
 margin_right = 768.0
 margin_bottom = 443.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "You served your office well."
 align = 1
 autowrap = true
@@ -189,7 +206,7 @@ margin_left = 375.0
 margin_top = 476.342
 margin_right = 585.0
 margin_bottom = 492.342
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Click to continue"
 align = 1
 __meta__ = {
@@ -201,7 +218,7 @@ margin_left = 256.0
 margin_top = 143.0
 margin_right = 704.0
 margin_bottom = 175.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "Thanks for playing"
 align = 1
 autowrap = true
@@ -214,7 +231,7 @@ margin_left = 408.0
 margin_top = 472.0
 margin_right = 547.0
 margin_bottom = 496.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Play again"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -225,7 +242,7 @@ margin_left = 256.0
 margin_top = 263.0
 margin_right = 704.0
 margin_bottom = 383.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "Credits"
 align = 1
 __meta__ = {

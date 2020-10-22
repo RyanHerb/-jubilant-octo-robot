@@ -20,6 +20,14 @@ signal right_clicked(target)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport_size = get_viewport_rect().size
+	$dragging.stream.loop_mode = 2
+	$dragging.stream.loop_begin = 0
+	$dragging.stream.loop_end = 100000
+	$dragging.volume_db = -6.0
+	
+func _process(delta):
+	if (!dragging):
+		$dragging.stop()
 
 func init(pos, atm, sprt, coef):
 	position = pos
@@ -70,10 +78,13 @@ func set_warn(warn):
 func drag(offset):
 	dragging = true
 	mouse_offset = offset
+	$dragging.play()
 
 func stop_drag():
 	dragging = false
 	mouse_offset = 0
+	$dragging.stop()
+	
 # =============
 # = Callbacks =
 # =============

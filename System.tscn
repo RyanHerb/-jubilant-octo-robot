@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://System.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/end_dragging.wav" type="AudioStream" id=2]
-[ext_resource path="res://assets/sounds/dragging.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/reset_system.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sounds/clic_ordi.wav" type="AudioStream" id=5]
 [ext_resource path="res://HUDSystem.tscn" type="PackedScene" id=6]
@@ -23,9 +22,6 @@ color = Color( 0.27451, 0.27451, 0.27451, 1 )
 position = Vector2( -2.38111, -7.62939e-06 )
 
 [node name="CalqueSystem" type="Node2D" parent="."]
-
-[node name="dragging" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [node name="dragging_end" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )

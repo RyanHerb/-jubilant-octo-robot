@@ -32,6 +32,7 @@ func new_game():
 	$ASS.show()
 	$Area2D.hide()
 	$Zone2D.show()
+	$Mute.show()
 
 func comment_result(prestige, prestige_max, money, money_max):
 	$Commentaire.show()
@@ -57,6 +58,7 @@ func _on_Area2D_loreEnd():
 	$Area2D.hide()
 	$Background.hide()
 	$clic.play()
+	$Mute.hide()
 	emit_signal("start_game")
 
 
