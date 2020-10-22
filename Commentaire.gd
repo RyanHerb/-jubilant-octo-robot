@@ -3,12 +3,13 @@ extends Area2D
 signal Comment_end
 
 var nul = "Did your mama forced you to chose this job?"
-var moyen = "You did the minimum expected"
-var good = "Nice job!"
+var moyen = "You did the minimum expected."
+var good = "Nice job! You are a real friend to Asylum Seekers from Space!"
 
+var negMoney = "Where did you find that extra cash? You're Fired!"
 var nulMoney = "Did you expect us to do charity?"
 var midMoney = "Today is not a promotion day."
-var goodMoney = "You served your office well."
+var goodMoney = "You served your office well!"
 
 func choose_comments(prestige, prestige_max):
 	if (prestige < (prestige_max/2)):
@@ -21,7 +22,9 @@ func choose_comments(prestige, prestige_max):
 	$TotalRes.text = strTotal
 
 func choose_comments_money(money, money_max):
-	if (money < (money_max/3)):
+	if (money < 0):
+		$CommentMoney.text = negMoney
+	elif (money < (money_max/3)):
 		$CommentMoney.text = nulMoney
 	elif (money > (money_max/2)):
 		$CommentMoney.text = goodMoney

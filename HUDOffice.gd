@@ -20,7 +20,7 @@ func _ready():
 	$MissionWaitingLabel.hide()
 	$ToSystem.hide()
 	$OrdiIdle.hide()
-	$CallClient.hide()
+	#$CallClient.hide()
 	$OrdiAllumage.hide()
 	$Accept.hide()
 	show_money_prestige()
@@ -30,7 +30,7 @@ func _ready():
 	$Mic.hide()
 	
 func new_mission():
-	$CallClient.show()
+	#$CallClient.show()
 	$MissionWaitingLabel.show()
 	$Mic.show()
 	$Mic/ButtonLightUp.play()
@@ -128,7 +128,7 @@ func objectif_show():
 
 func hide_buttons():
 	$AffichMissionButton.hide()
-	$CallClient.hide()
+	#$CallClient.hide()
 	$MissionWaitingLabel.hide()
 	$MicSimple.hide()
 
@@ -147,7 +147,7 @@ func _on_AffichMissionButton_pressed():
 	emit_signal("see_mission", $AffichMissionButton.text)
 
 func hide_mission_descr():
-	$CallClient.hide()
+	#$CallClient.hide()
 	$MissionWaitingLabel.hide()
 
 func _on_OrdiAllumage_animation_finished():
@@ -163,7 +163,7 @@ func _on_Timer_timeout():
 	$OrdiPower.play()
 	$OrdiFerme.hide()
 	show_money_prestige()
-	$CallClient.show()
+	#$CallClient.show()
 	emit_signal("start_game")
 
 func _on_ToSystem_click_to_system():

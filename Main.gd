@@ -122,14 +122,14 @@ func create_mission_2():
 	var thanksBien = "Not bad, friend, come visit my palace if you get the chance."
 	var thanksNuls = "Just asking for a friend... how strong is your army?"
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(-85, -15, -50, "Nitrogen", 400, 2, "res://assets/aliens/alien_mars_double.png")
+	mission.update_values(-100, 0, -50, "Nitrogen", 400, 2, "res://assets/aliens/alien_mars_double.png")
 	mission.set_intro_sound("res://assets/sounds/martian.wav")
 	
 func create_mission_3():
-	var descri = "YOU THERE! MY PLANET HAS BEEN DESTROYED DUE TO SOME FILTHY MAGGOTS’ DECEPTION. FIND ME A NEW PLANET FROM WHICH I CAN ANNIHILATE THEM WITH XENON. FAR FROM THE SUN, WE DON’T LIKE THE HEAT, SO MAKE IT 120°C AT MOST, YOU HEAR?! AND HURRY UP OR YOUR MANGY OFFICE\nWILL SUFFER THE\nSAME FATE AS\nTHE CREATORS!!"
+	var descri = "YOU THERE! MY PLANET HAS BEEN DESTROYED DUE TO SOME FILTHY MAGGOTS’ DECEPTION. FIND US A NEW PLANET FROM WHICH I CAN ANNIHILATE THEM WITH XENON. FAR CLOSE TO THE SUN, WE DON’T LIKE THE COLD, SO MAKE IT 120°C, YOU HEAR?! AND HURRY UP OR YOUR MANGY OFFICE WILL\nSUFFER THE SAME\nFATE AS THE\nCREATORS!!"
 	mission.update_descr(descri)
 	var thanksBien = "PERHAPS YOU AREN’T AS USELESS AS YOU SEEM !\nNOW TELL ME, HAS A SMALL SPECIES WITH LIGHT-UP FINGERS BEEN THROUGH HERE?"
 	var thanksNuls = "DIE!!!!"
 	mission.update_thank(thanksBien, thanksNuls)
-	mission.update_values(100,140, 120, "Xenon", 300, 3,  "res://assets/aliens/alien_xenomorph_half.png")
+	mission.update_values(80, 160, 120, "Xenon", 300, 3,  "res://assets/aliens/alien_xenomorph_half.png")
 	mission.set_intro_sound("res://assets/sounds/xenomorph.wav")

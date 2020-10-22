@@ -38,3 +38,4 @@ stream = ExtResource( 5 )
 [connection signal="atmo_changed" from="HUDLayer/HUDSystem" to="." method="_on_HUDSystem_atmo_changed"]
 [connection signal="find_new_system" from="HUDLayer/HUDSystem" to="." method="_on_HUDSystem_find_new_system"]
 [connection signal="reinit_system" from="HUDLayer/HUDSystem" to="." method="_on_HUDSystem_reinit_system"]
+[connection signal="release_target" from="HUDLayer/HUDSystem" to="." method="_on_HUDSystem_release_target"]

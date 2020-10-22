@@ -4,6 +4,7 @@ signal mission_finished(cost, tmp_min, tmp_max, gaz)
 signal atmo_changed
 signal reinit_system
 signal find_new_system
+signal release_target
 
 var current_money
 var current_gaz
@@ -83,6 +84,8 @@ func check_cost_to_money():
 func show():
 	.show()
 	$Tips.hide()
+	$Help.show()
+	$RightClick.show()
 	$ReinitPlanet.show()
 	$CoutChanges.show()
 	$Total.show()
@@ -102,6 +105,8 @@ func show():
 func show_tips():
 	.show()
 	$Tips.show()
+	$Help.hide()
+	$RightClick.hide()
 	$ReinitPlanet.hide()
 	$ChangeGaz1.hide()
 	$ChangeGaz2.hide()
@@ -162,3 +167,8 @@ func _on_NewSystem_pressed():
 	show_tips()
 	reinit()
 	emit_signal("find_new_system")
+
+func _on_Help_pressed():
+	#show_tips()
+	$ChangeGaz1/clic.play()
+	emit_signal("release_target")

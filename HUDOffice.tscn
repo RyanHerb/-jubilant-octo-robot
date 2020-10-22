@@ -200,7 +200,9 @@ margin_top = -129.0
 margin_right = 571.0
 margin_bottom = -89.0
 custom_fonts/font = SubResource( 3 )
-text = "One mission awaiting..."
+text = "One mission awaiting...
+Use your intercom to call
+your next customer."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -247,6 +249,7 @@ __meta__ = {
 }
 
 [node name="CallClient" type="Label" parent="."]
+visible = false
 margin_left = 533.101
 margin_top = 313.69
 margin_right = 657.101
@@ -284,7 +287,6 @@ shape = SubResource( 8 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 9 )
-frame = 7
 playing = true
 
 [node name="OpenSystem" type="AudioStreamPlayer" parent="ToSystem"]
@@ -302,7 +304,7 @@ shape = SubResource( 10 )
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
-frame = 4
+frame = 7
 playing = true
 script = ExtResource( 68 )
 
@@ -324,7 +326,7 @@ shape = SubResource( 12 )
 [node name="Sprite" type="AnimatedSprite" parent="CloseMission"]
 position = Vector2( 330, 242 )
 frames = SubResource( 13 )
-frame = 4
+frame = 7
 playing = true
 
 [node name="ordi_clic" type="AudioStreamPlayer" parent="CloseMission"]
@@ -340,7 +342,6 @@ shape = SubResource( 14 )
 [node name="Mic_anim" type="AnimatedSprite" parent="Mic"]
 position = Vector2( 597, 241 )
 frames = SubResource( 15 )
-frame = 1
 playing = true
 
 [node name="ButtonLightUp" type="AudioStreamPlayer" parent="Mic"]
@@ -349,7 +350,7 @@ stream = ExtResource( 62 )
 [node name="MicSimple" type="AnimatedSprite" parent="."]
 position = Vector2( 597, 241 )
 frames = SubResource( 16 )
-frame = 3
+frame = 2
 playing = true
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="animation_finished" from="OrdiAllumage" to="." method="_on_OrdiAllumage_animation_finished"]

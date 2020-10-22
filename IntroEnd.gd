@@ -3,7 +3,7 @@ extends CanvasLayer
 signal start_game
 signal start_new_game
 var loreText = "Welcome to your social worker’s space office ! \nYour mission, should you choose to accept it, is to help asylum seekers from space find a new home.\nListen to their requests and build them the perfect planet to meet their needs !"
-var credits = "A game by:\n\nKevin \"Abytron\" Delahaye\n\t\tRyan \"Bananaman\" Herbert\nCyanael\nValhanya\n\nCredit music:  Kevin MacLeod"
+var credits = "A game by:\n\nKevin \"Abytron\" Delahaye\n\t\tRyan \"Bananaman\" Herbert\nCyanael\nValhanya\n\nMusic by:  Kevin MacLeod - Acid Jazz"
 
 func _ready():
 	$Area2D.hide()

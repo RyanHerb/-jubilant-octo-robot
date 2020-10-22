@@ -255,6 +255,10 @@ func _on_HUDSystem_find_new_system():
 	for i in range(len(planets)):
 		planets[i].move_to_left(600)
 	star.connect("move_left_done", self, "reinit")
+	
+func _on_HUDSystem_release_target():
+	update_current_planet(null)
+	$HUDLayer/HUDSystem.show_tips()
 
 # =========
 # = Utils =

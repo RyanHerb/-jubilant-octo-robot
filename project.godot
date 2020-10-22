@@ -15,9 +15,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Different-planet"
+config/name="Asylum Seekers from Space"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/ASS_32.ico"
+config/windows_native_icon="res://assets/ASS_32.ico"
 
 [display]
 
