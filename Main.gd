@@ -2,6 +2,7 @@ extends Node
 
 export (PackedScene) var Mission
 
+var mute = false
 var mission = preload("res://Mission.tscn").instance()
 
 # Called when the node enters the scene tree for the first time.
@@ -102,6 +103,15 @@ func _on_BeforeAnimOrdi_timeout():
 func _on_HUD_start_game():
 	$Office.show()
 	$BeforeAnimOrdi.start()
+
+func _input(event):
+	if event is InputEventKey and event.pressed and event.scancode == KEY_M:
+		if mute == false:
+			AudioServer.set_bus_mute(0,true)
+			mute = true
+		else:
+			AudioServer.set_bus_mute(0,false)
+			mute = false
 
 # ====================
 # = List of missions =
