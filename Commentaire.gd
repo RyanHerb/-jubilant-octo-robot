@@ -5,15 +5,19 @@ signal Comment_end
 var nul = "Did your mama forced you to chose this job?"
 var moyen = "You did the minimum expected."
 var good = "Nice job! You are a real friend to Asylum Seekers from Space!"
+var perfect = "Well played! A new cult is spreading all around the universe, with you as their idol!"
 
 var negMoney = "Where did you find that extra cash? You're Fired!"
 var nulMoney = "Did you expect us to do charity?"
 var midMoney = "Today is not a promotion day."
 var goodMoney = "You served your office well!"
+var perfectMoney = "Great news! Your boss' position is suddenly available!"
 
 func choose_comments(prestige, prestige_max):
 	if (prestige < (prestige_max/2)):
 		$Comment.text = nul
+	elif (prestige >= (prestige_max*0.92)):
+		$Comment.text = perfect
 	elif (prestige > (prestige_max*3/4)):
 		$Comment.text = good
 	else:
@@ -24,6 +28,8 @@ func choose_comments(prestige, prestige_max):
 func choose_comments_money(money, money_max):
 	if (money < 0):
 		$CommentMoney.text = negMoney
+	elif (money >= (money_max*0.92)):
+		$CommentMoney.text = perfectMoney
 	elif (money < (money_max/3)):
 		$CommentMoney.text = nulMoney
 	elif (money > (money_max/2)):
