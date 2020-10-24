@@ -20,7 +20,6 @@ func _ready():
 	$MissionWaitingLabel.hide()
 	$ToSystem.hide()
 	$OrdiIdle.hide()
-	#$CallClient.hide()
 	$OrdiAllumage.hide()
 	$Accept.hide()
 	show_money_prestige()
@@ -30,13 +29,12 @@ func _ready():
 	$Mic.hide()
 	
 func new_mission():
-	#$CallClient.show()
 	$MissionWaitingLabel.show()
 	$Mic.show()
 	$Mic/ButtonLightUp.play()
 	$MicSimple.hide()
 	
-func mission_validated(mission):
+func mission_accepted(mission):
 	$OrdiFerme.hide()
 	$OrdiIdle.hide()
 	$ToSystem.show()
@@ -50,6 +48,15 @@ func mission_validated(mission):
 	$OrdiIdle.hide()
 	$ToSystem.show()
 	$MicSimple.show()
+
+func mission_validated(money, prestige, coef_prestige):
+	add_to_money(-money)
+	objectif_hide()
+	$OrdiIdle.show()
+	color_descr(1)
+	update_prestige(prestige, coef_prestige)
+	show_thank()
+	show_prestige()
 
 func add_to_money(somme):
 	$Money.text = str(int($Money.text) + somme)
@@ -66,15 +73,15 @@ func start_anim_ordi():
 	$OrdiAllumage.show()
 	$OrdiAllumage.play()
 	$OrdiFerme.hide()
-	$OrdiPower.play()
+	$OrdiPower_sound.play()
 
 func start_timer_intro():
 	$Timer.start()
 
 func color_descr(val):
-	if (val == 0): # office
+	if (val == 0): # office in black
 		$Objectifs.modulate = Color(0, 0, 0, 1)
-	else: # system
+	else: # system in white
 		$Objectifs.modulate = Color(1, 1, 1, 1)
 
 
@@ -128,7 +135,6 @@ func objectif_show():
 
 func hide_buttons():
 	$AffichMissionButton.hide()
-	#$CallClient.hide()
 	$MissionWaitingLabel.hide()
 	$MicSimple.hide()
 
@@ -147,7 +153,6 @@ func _on_AffichMissionButton_pressed():
 	emit_signal("see_mission", $AffichMissionButton.text)
 
 func hide_mission_descr():
-	#$CallClient.hide()
 	$MissionWaitingLabel.hide()
 
 func _on_OrdiAllumage_animation_finished():
@@ -158,12 +163,8 @@ func _on_OrdiAllumage_animation_finished():
 
 func _on_Timer_timeout():
 	$Timer.stop()
-	$OrdiAllumage.show()
-	$OrdiAllumage.play()
-	$OrdiPower.play()
-	$OrdiFerme.hide()
+	start_anim_ordi()
 	show_money_prestige()
-	#$CallClient.show()
 	emit_signal("start_game")
 
 func _on_ToSystem_click_to_system():

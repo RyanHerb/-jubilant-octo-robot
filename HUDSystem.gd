@@ -137,28 +137,22 @@ func _on_Valider_pressed():
 	$CoutChanges.text = str(0)
 
 func _on_ChangeGaz1_pressed():
-	#$Currentgaz.text = $ChangeGaz1.text
 	$ChangeGaz1/clic.play()
 	update_gaz($ChangeGaz1.text)
 	emit_signal("atmo_changed", $ChangeGaz1.text)
 
 func _on_ChangeGaz2_pressed():
-	#$Currentgaz.text = $ChangeGaz2.text
 	$ChangeGaz1/clic.play()
 	update_gaz($ChangeGaz2.text)
 	emit_signal("atmo_changed", $ChangeGaz2.text)
 
 func _on_ChangeGaz3_pressed():
-	#$Currentgaz.text = $ChangeGaz3.text
 	$ChangeGaz1/clic.play()
 	update_gaz($ChangeGaz3.text)
 	emit_signal("atmo_changed", $ChangeGaz3.text)
 
 func _on_ReinitPlanet_pressed():
 	$CoutChanges.text = str(0)
-	$TempMin.text = "-1000"
-	$TempMax.text = "-1000"
-	#$Currentgaz.text = "Aze"
 	check_cost_to_money()
 	emit_signal("reinit_system")
 
@@ -169,6 +163,5 @@ func _on_NewSystem_pressed():
 	emit_signal("find_new_system")
 
 func _on_Help_pressed():
-	#show_tips()
 	$ChangeGaz1/clic.play()
 	emit_signal("release_target")

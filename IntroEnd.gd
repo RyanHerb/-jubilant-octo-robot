@@ -14,7 +14,6 @@ func _ready():
 	$Credits.hide()
 	$Credits.text = credits
 
-
 func show_message(text):
 	$Titre.text = text
 	$Titre.show()
@@ -23,7 +22,6 @@ func show_game_over():
 	$ThanksForPlaying.show()
 	$Credits.show()
 	$PlayAgain.show()
-# Called when the node enters the scene tree for the first time.
 
 func update_money(value):
 	$Money.text = str(int($Money.text)+value)
@@ -39,9 +37,6 @@ func comment_result(prestige, prestige_max, money, money_max):
 	$Commentaire.choose_comments(prestige, prestige_max)
 	$Commentaire.choose_comments_money(money, money_max)
 
-#func end_game():
-	#show_game_over()
-
 # =============
 # = Callbacks =
 # =============
@@ -52,7 +47,6 @@ func _on_Zone2D_enter():
 	$clic.play()
 	$lore_val.play()
 
-
 func _on_Area2D_loreEnd():
 	$lore_val.stop()
 	$Area2D.hide()
@@ -61,12 +55,10 @@ func _on_Area2D_loreEnd():
 	$Mute.hide()
 	emit_signal("start_game")
 
-
 func _on_Commentaire_Comment_end():
 	$Commentaire.hide()
 	$clic.play()
 	show_game_over()
-
 
 func _on_PlayAgain_pressed():
 	$ThanksForPlaying.hide()
@@ -74,4 +66,3 @@ func _on_PlayAgain_pressed():
 	$Credits.hide()
 	$clic.play()
 	emit_signal("start_new_game")
-	

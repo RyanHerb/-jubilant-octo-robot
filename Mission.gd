@@ -77,6 +77,7 @@ func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, prestige, file):
 
 func show_intro_mission():
 	self.show()
+	$IntroSound.play()
 
 func show_text_mission(text):
 	if text == "hide":
@@ -86,7 +87,6 @@ func show_text_mission(text):
 
 func hide():
 	$Description.hide()
-	#$Alien.hide()
 	$ThanksCools.hide()
 	$ThanksNuls.hide()
 	$Prestige.hide()

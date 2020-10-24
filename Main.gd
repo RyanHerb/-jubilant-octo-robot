@@ -7,22 +7,23 @@ var mission = preload("res://Mission.tscn").instance()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$BeforeAnimOrdi.stop()
 	$IntroEnd.new_game()
-	$System.hide()
-	$Office.hide()
-
-func start_scenario():
-	create_mission_1()
 	$System.init()
-	add_child(mission)
-	$Office.new_mission()
+
+func connections():
 	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", self, "mission_intro", [mission])
 	$Office/HUDLayer/HUDOffice.connect("mission_accepted", self, "mission_accepte", [mission])
 	$Office/HUDLayer/HUDOffice.connect("see_mission", mission, "show_text_mission")
 	$Office/HUDLayer/HUDOffice.connect("see_system", self, "go_to_system", [mission])
 	$System/HUDLayer/HUDSystem.connect("mission_finished", self, "mission_validated", [mission])
 	$Office/HUDLayer/HUDOffice.connect("thanks_ended", self, "mission_finished", [mission])
+
+func start_scenario():
+	connections()
+	add_child(mission)
+	
+	create_mission_1()
+	$Office.new_mission()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
 	
@@ -37,6 +38,7 @@ func start_scenario():
 	$Office.new_mission()
 	yield($EntreMissions, "timeout")
 	$EntreMissions.stop()
+	
 	$System.my_free()
 	end_game()
 
@@ -49,28 +51,20 @@ func go_to_system(_mission):
 	_mission.hide()
 	_mission.hide_alien()
 	
-	
 func mission_intro(_mission):
 	_mission.show_intro_mission()
-	_mission.get_node('IntroSound').play()
 	$Office/HUDLayer/HUDOffice.show_ordi_accept()
 	
 func mission_accepte(_mission):
 	_mission.hide()
-	$Office/HUDLayer/HUDOffice.mission_validated(mission)
+	$Office/HUDLayer/HUDOffice.mission_accepted(mission)
 	
 func mission_validated(text, tmp_min, tmp_max, gas, _mission):
-	$Office/HUDLayer/HUDOffice.add_to_money(-text)
 	$System.hide()
 	$Office.show()
-	$Office/HUDLayer/HUDOffice.objectif_hide()
-	$Office/HUDLayer/HUDOffice/OrdiIdle.show()
-	$Office/HUDLayer/HUDOffice.color_descr(1)
 	var prestige = _mission.show_ending_mission(tmp_min, tmp_max, gas)
 	var coef_prestige = _mission.get_coef_prestige()
-	$Office/HUDLayer/HUDOffice.update_prestige(prestige, coef_prestige)
-	$Office/HUDLayer/HUDOffice.show_thank()
-	$Office/HUDLayer/HUDOffice.show_prestige()
+	$Office/HUDLayer/HUDOffice.mission_validated(text, prestige, coef_prestige)
 
 func mission_finished(_mission):
 	_mission.hide()

@@ -9,7 +9,6 @@ var prestigeNone = preload('res://assets/icons_ui/prestige_empty.png')
 func _ready():
 	array_stars_icons = [$Prestige1, $Prestige2, $Prestige3, $Prestige4, $Prestige5]
 
-
 func compute_stars(val): # int, valeur sur 100
 	var prestige = round(val/10)
 	var higher_star = prestige/2

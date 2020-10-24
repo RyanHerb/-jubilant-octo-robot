@@ -19,9 +19,9 @@ var min_step = 33
 var max_step = 75
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport_size = get_viewport_rect().size
+	hide()
 
 func _draw():
 	var radius
@@ -53,7 +53,6 @@ func draw_arrow():
 	arrow_star.append(star.position + Vector2(32, 0).rotated(current_planet.rotation))
 	draw_colored_polygon(arrow_star, Color(1, 1, 1, 1))	
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	drag_planet()
 	update()

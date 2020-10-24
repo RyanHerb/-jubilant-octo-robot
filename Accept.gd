@@ -2,9 +2,6 @@ extends Area2D
 
 signal accept_mission
 
-func _ready():
-	pass # Replace with function body.
-
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \

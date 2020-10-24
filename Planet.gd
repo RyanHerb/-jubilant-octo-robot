@@ -17,7 +17,6 @@ var pos_left
 signal clicked(target)
 signal right_clicked(target)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport_size = get_viewport_rect().size
 	$dragging.stream.loop_mode = 2
