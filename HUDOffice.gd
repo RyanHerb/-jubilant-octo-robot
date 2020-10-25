@@ -12,6 +12,7 @@ signal see_missionIntro
 
 var prestige = 0
 var coef_prestige = 0
+var detail_descr = false
 
 
 func _ready():
@@ -146,11 +147,13 @@ func show_interface():
 # =============
 
 func _on_AffichMissionButton_pressed():
-	if $AffichMissionButton.text == "details":
-		$AffichMissionButton.text = "hide"
+	if detail_descr :
+		$AffichMissionButton.text = tr("KEY_DETAILS")
+		detail_descr = false
 	else:
-		$AffichMissionButton.text = "details"
-	emit_signal("see_mission", $AffichMissionButton.text)
+		$AffichMissionButton.text = tr("KEY_HIDE")
+		detail_descr = true
+	emit_signal("see_mission", detail_descr)
 
 func hide_mission_descr():
 	$MissionWaitingLabel.hide()

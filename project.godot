@@ -31,6 +31,10 @@ window/stretch/aspect="keep"
 
 singletons=[  ]
 
+[locale]
+
+translations=PoolStringArray( "res://assets/Traductions.en.translation", "res://assets/Traductions.fr.translation" )
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

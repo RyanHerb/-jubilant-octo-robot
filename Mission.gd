@@ -79,8 +79,8 @@ func show_intro_mission():
 	self.show()
 	$IntroSound.play()
 
-func show_text_mission(text):
-	if text == "hide":
+func show_text_mission(text_mission):
+	if text_mission:
 		$Description.show()
 	else:
 		$Description.hide()

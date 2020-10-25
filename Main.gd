@@ -9,6 +9,7 @@ var mission = preload("res://Mission.tscn").instance()
 func _ready():
 	$IntroEnd.new_game()
 	$System.init()
+	TranslationServer.set_locale("fr")
 
 func connections():
 	$Office/HUDLayer/HUDOffice.connect("see_missionIntro", self, "mission_intro", [mission])

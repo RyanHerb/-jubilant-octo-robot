@@ -236,39 +236,9 @@ animations = [ {
 "name": "3",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 73 ), ExtResource( 80 ), ExtResource( 81 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 77 ), ExtResource( 76 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 123 ), ExtResource( 100 ), ExtResource( 112 ), ExtResource( 126 ), ExtResource( 110 ), ExtResource( 105 ), ExtResource( 143 ), ExtResource( 111 ), ExtResource( 109 ) ],
+"frames": [ ExtResource( 150 ), ExtResource( 149 ), ExtResource( 145 ), ExtResource( 146 ), ExtResource( 147 ), ExtResource( 151 ), ExtResource( 154 ), ExtResource( 156 ), ExtResource( 157 ), ExtResource( 152 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 41 ), ExtResource( 37 ), ExtResource( 40 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,
-"name": "1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 181 ), ExtResource( 162 ), ExtResource( 187 ), ExtResource( 169 ), ExtResource( 182 ), ExtResource( 170 ), ExtResource( 171 ), ExtResource( 158 ), ExtResource( 172 ), ExtResource( 175 ), ExtResource( 167 ), ExtResource( 184 ), ExtResource( 190 ), ExtResource( 183 ), ExtResource( 174 ), ExtResource( 185 ), ExtResource( 191 ), ExtResource( 165 ) ],
-"loop": true,
-"name": "10",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 36 ), ExtResource( 55 ), ExtResource( 45 ), ExtResource( 42 ), ExtResource( 48 ), ExtResource( 56 ), ExtResource( 38 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 39 ), ExtResource( 43 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 65 ), ExtResource( 60 ), ExtResource( 61 ) ],
-"loop": true,
-"name": "6",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 62 ), ExtResource( 66 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 71 ), ExtResource( 70 ), ExtResource( 72 ), ExtResource( 69 ), ExtResource( 28 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 30 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "7",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 32 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "8",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 35 ), ExtResource( 33 ), ExtResource( 186 ), ExtResource( 176 ), ExtResource( 189 ), ExtResource( 173 ), ExtResource( 164 ), ExtResource( 168 ), ExtResource( 188 ), ExtResource( 178 ), ExtResource( 160 ), ExtResource( 159 ), ExtResource( 161 ), ExtResource( 177 ), ExtResource( 180 ), ExtResource( 163 ), ExtResource( 166 ), ExtResource( 179 ) ],
-"loop": true,
-"name": "9",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 135 ), ExtResource( 124 ), ExtResource( 136 ), ExtResource( 137 ), ExtResource( 138 ), ExtResource( 139 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 99 ), ExtResource( 103 ), ExtResource( 93 ), ExtResource( 96 ), ExtResource( 104 ), ExtResource( 106 ), ExtResource( 107 ), ExtResource( 155 ), ExtResource( 148 ), ExtResource( 153 ) ],
-"loop": true,
-"name": "4",
+"name": "5",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 130 ), ExtResource( 94 ), ExtResource( 113 ), ExtResource( 101 ), ExtResource( 144 ), ExtResource( 127 ), ExtResource( 140 ), ExtResource( 85 ), ExtResource( 116 ), ExtResource( 132 ), ExtResource( 128 ), ExtResource( 97 ), ExtResource( 141 ), ExtResource( 129 ), ExtResource( 118 ), ExtResource( 120 ), ExtResource( 102 ), ExtResource( 121 ), ExtResource( 117 ) ],
@@ -276,9 +246,39 @@ animations = [ {
 "name": "2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 150 ), ExtResource( 149 ), ExtResource( 145 ), ExtResource( 146 ), ExtResource( 147 ), ExtResource( 151 ), ExtResource( 154 ), ExtResource( 156 ), ExtResource( 157 ), ExtResource( 152 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 41 ), ExtResource( 37 ), ExtResource( 40 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 46 ), ExtResource( 47 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 32 ), ExtResource( 34 ) ],
 "loop": true,
-"name": "5",
+"name": "8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 55 ), ExtResource( 45 ), ExtResource( 42 ), ExtResource( 48 ), ExtResource( 56 ), ExtResource( 38 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 39 ), ExtResource( 43 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 65 ), ExtResource( 60 ), ExtResource( 61 ) ],
+"loop": true,
+"name": "6",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 73 ), ExtResource( 80 ), ExtResource( 81 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 77 ), ExtResource( 76 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 123 ), ExtResource( 100 ), ExtResource( 112 ), ExtResource( 126 ), ExtResource( 110 ), ExtResource( 105 ), ExtResource( 143 ), ExtResource( 111 ), ExtResource( 109 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 135 ), ExtResource( 124 ), ExtResource( 136 ), ExtResource( 137 ), ExtResource( 138 ), ExtResource( 139 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 99 ), ExtResource( 103 ), ExtResource( 93 ), ExtResource( 96 ), ExtResource( 104 ), ExtResource( 106 ), ExtResource( 107 ), ExtResource( 155 ), ExtResource( 148 ), ExtResource( 153 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 33 ), ExtResource( 186 ), ExtResource( 176 ), ExtResource( 189 ), ExtResource( 173 ), ExtResource( 164 ), ExtResource( 168 ), ExtResource( 188 ), ExtResource( 178 ), ExtResource( 160 ), ExtResource( 159 ), ExtResource( 161 ), ExtResource( 177 ), ExtResource( 180 ), ExtResource( 163 ), ExtResource( 166 ), ExtResource( 179 ) ],
+"loop": true,
+"name": "9",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 181 ), ExtResource( 162 ), ExtResource( 187 ), ExtResource( 169 ), ExtResource( 182 ), ExtResource( 170 ), ExtResource( 171 ), ExtResource( 158 ), ExtResource( 172 ), ExtResource( 175 ), ExtResource( 167 ), ExtResource( 184 ), ExtResource( 190 ), ExtResource( 183 ), ExtResource( 174 ), ExtResource( 185 ), ExtResource( 191 ), ExtResource( 165 ) ],
+"loop": true,
+"name": "10",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 62 ), ExtResource( 66 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 71 ), ExtResource( 70 ), ExtResource( 72 ), ExtResource( 69 ), ExtResource( 28 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 30 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "7",
 "speed": 5.0
 } ]
 
@@ -309,7 +309,7 @@ margin_top = 478.0
 margin_right = 902.0
 margin_bottom = 500.0
 custom_fonts/font = SubResource( 2 )
-text = "Find a New System"
+text = "KEY_NEW_SYS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -416,7 +416,7 @@ __meta__ = {
 position = Vector2( 801.438, 114.491 )
 frames = SubResource( 10 )
 animation = "5"
-frame = 3
+frame = 13
 playing = true
 
 [node name="SwitchTo" type="Label" parent="."]
@@ -500,12 +500,13 @@ offset = Vector2( 0, -16 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 725.762
+margin_left = 724.762
 margin_top = 438.181
-margin_right = 878.762
+margin_right = 877.762
 margin_bottom = 459.181
+grow_horizontal = 2
 custom_fonts/font = SubResource( 2 )
-text = "Reset System"
+text = "KEY_RESET"
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
