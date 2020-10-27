@@ -38,16 +38,14 @@ func update_temp(min_tmp, max_tmp):
 
 func update_gaz(gaz):
 	current_gaz = gaz
-	$SwitchTo.show()
-	#$Currentgaz.text = gaz
 	$ChangeGaz1.show()
 	$ChangeGaz2.show()
 	$ChangeGaz3.show()
-	if gaz == "Oxygen":
+	if gaz == tr("KEY_OXYGEN"):
 		$ChangeGaz1.modulate = Color(1, 1, 1, 1)
 		$ChangeGaz2.modulate = Color(0.5, 0.5, 0.5, 1)
 		$ChangeGaz3.modulate = Color(0.5, 0.5, 0.5, 1)
-	elif gaz == "Nitrogen":
+	elif gaz == tr("KEY_NITROGEN"):
 		$ChangeGaz1.modulate = Color(0.5, 0.5, 0.5, 1)
 		$ChangeGaz2.modulate = Color(1, 1, 1, 1)
 		$ChangeGaz3.modulate = Color(0.5, 0.5, 0.5, 1)
@@ -111,7 +109,6 @@ func show_tips():
 	$ChangeGaz1.hide()
 	$ChangeGaz2.hide()
 	$ChangeGaz3.hide()
-	$SwitchTo.hide()
 	$TempLabel.hide()
 	$TempLabel.hide()
 	$TempMax.hide()
@@ -138,17 +135,17 @@ func _on_Valider_pressed():
 
 func _on_ChangeGaz1_pressed():
 	$ChangeGaz1/clic.play()
-	update_gaz($ChangeGaz1.text)
+	update_gaz(tr($ChangeGaz1.text))
 	emit_signal("atmo_changed", $ChangeGaz1.text)
 
 func _on_ChangeGaz2_pressed():
 	$ChangeGaz1/clic.play()
-	update_gaz($ChangeGaz2.text)
+	update_gaz(tr($ChangeGaz2.text))
 	emit_signal("atmo_changed", $ChangeGaz2.text)
 
 func _on_ChangeGaz3_pressed():
 	$ChangeGaz1/clic.play()
-	update_gaz($ChangeGaz3.text)
+	update_gaz(tr($ChangeGaz3.text))
 	emit_signal("atmo_changed", $ChangeGaz3.text)
 
 func _on_ReinitPlanet_pressed():

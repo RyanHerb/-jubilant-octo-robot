@@ -74,7 +74,7 @@ font_data = ExtResource( 39 )
 font_data = ExtResource( 39 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 24
+size = 20
 font_data = ExtResource( 39 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -197,13 +197,11 @@ __meta__ = {
 [node name="MissionWaitingLabel" type="Label" parent="."]
 margin_left = 285.0
 margin_top = -129.0
-margin_right = 571.0
-margin_bottom = -89.0
+margin_right = 620.0
+margin_bottom = 97.0
 custom_fonts/font = SubResource( 3 )
-text = "One mission awaiting...
-
-Use the intercom to call
-your next customer."
+text = "KEY_MIS_WAIT"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -288,7 +286,7 @@ shape = SubResource( 8 )
 [node name="OrdiSystem" type="AnimatedSprite" parent="ToSystem"]
 position = Vector2( 330, 242 )
 frames = SubResource( 9 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="OpenSystem" type="AudioStreamPlayer" parent="ToSystem"]
@@ -306,6 +304,7 @@ shape = SubResource( 10 )
 [node name="OrdiAccept" type="AnimatedSprite" parent="Accept"]
 position = Vector2( 330, 242 )
 frames = SubResource( 11 )
+frame = 3
 playing = true
 script = ExtResource( 68 )
 
@@ -327,6 +326,7 @@ shape = SubResource( 12 )
 [node name="Sprite" type="AnimatedSprite" parent="CloseMission"]
 position = Vector2( 330, 242 )
 frames = SubResource( 13 )
+frame = 3
 playing = true
 
 [node name="ordi_clic" type="AudioStreamPlayer" parent="CloseMission"]
@@ -342,7 +342,7 @@ shape = SubResource( 14 )
 [node name="Mic_anim" type="AnimatedSprite" parent="Mic"]
 position = Vector2( 597, 241 )
 frames = SubResource( 15 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="ButtonLightUp" type="AudioStreamPlayer" parent="Mic"]
@@ -351,7 +351,6 @@ stream = ExtResource( 62 )
 [node name="MicSimple" type="AnimatedSprite" parent="."]
 position = Vector2( 597, 241 )
 frames = SubResource( 16 )
-frame = 3
 playing = true
 [connection signal="pressed" from="AffichMissionButton" to="." method="_on_AffichMissionButton_pressed"]
 [connection signal="animation_finished" from="OrdiAllumage" to="." method="_on_OrdiAllumage_animation_finished"]

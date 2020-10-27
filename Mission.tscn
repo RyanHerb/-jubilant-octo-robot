@@ -41,9 +41,9 @@ __meta__ = {
 
 [node name="Description" type="Label" parent="."]
 margin_left = 285.0
-margin_top = 35.0
-margin_right = 632.0
-margin_bottom = 280.0
+margin_top = 25.0
+margin_right = 656.0
+margin_bottom = 270.0
 custom_fonts/font = SubResource( 1 )
 text = "bliblblibo azdazd
 azdazd
@@ -90,7 +90,7 @@ margin_right = 366.0
 margin_bottom = 303.0
 rect_rotation = 0.546919
 custom_fonts/font = SubResource( 2 )
-text = "Budget:"
+text = "KEY_BUDGET"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -103,27 +103,27 @@ volume_db = 3.0
 script = ExtResource( 7 )
 
 [node name="Prestige1" type="Sprite" parent="Prestige"]
-position = Vector2( 440, 147 )
+position = Vector2( 480, 147 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Prestige2" type="Sprite" parent="Prestige"]
-position = Vector2( 470, 147 )
+position = Vector2( 510, 147 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Prestige3" type="Sprite" parent="Prestige"]
-position = Vector2( 500, 147 )
+position = Vector2( 540, 147 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Prestige4" type="Sprite" parent="Prestige"]
-position = Vector2( 530, 147 )
+position = Vector2( 570, 147 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Prestige5" type="Sprite" parent="Prestige"]
-position = Vector2( 560, 147 )
+position = Vector2( 600, 147 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
@@ -133,7 +133,7 @@ margin_top = 141.84
 margin_right = 418.193
 margin_bottom = 156.84
 custom_fonts/font = SubResource( 3 )
-text = "Your review:"
+text = "KEY_MIS_REVIEW"
 __meta__ = {
 "_edit_use_anchors_": false
 }

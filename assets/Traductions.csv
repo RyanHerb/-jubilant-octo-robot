@@ -1,6 +1,44 @@
 clés,en,fr
-KEY_OBJ,Objectives,Objectifs
+KEY_LORE,"Welcome to your social worker’s space office ! \nYour mission, should you choose to accept it, is to help asylum seekers from space find a new home.\nListen to their requests and build them the perfect planet to meet their needs !",Bienvenue au bureau de Asylum Seekers from Space.\nVotre mission sera d'aider les Aliens venus vous demander de l'aide pour construire leur nouveau foyer.\nEcoutez leur requête et créez leur nouvelle planète suivant leur critères.
+KEY_OBJ,Objectives:,Objectifs :
 KEY_HIDE,hide,cacher
 KEY_DETAILS,details,détails
 KEY_NEW_SYS,Find a New System,Trouver autre système
 KEY_RESET,Reset System,Reinitialiser système
+KEY_MIS_1,"Excuse me, I’m wondering if you can help me. You see, the Xenomorphs have destroyed my home planet following a misunderstanding about a certain “spud-gun”. It isn’t a weapon, rest assured… \nWould you be so kind as to find us a planet rich in Oxygen, with a nice and welcoming climate averaging about 20°C ? If it’s not too much to ask, that is.","Excusez-moi, je me demandais si vous pouviez m'aider. Vous voyez, les Xénomorphes ont détruits ma planète suite à un malentendu implicant un ""lance-patate"". Je vous rassure, ce n'est pas une arme... Nous recherchons maintenant un endroit avec de l'oxygène et un climat de 20°C environ\nJ'espère que ce n'est pas trop demander."
+KEY_GG_1,Thank you so much! Oh and please don’t mention our new planet to the Xenomorphs.,Merci beaucoup. Oh et si vous pouviez éviter de donner nos nouvelles coordonnées aux Xénomorphes s'il vous plaît
+KEY_FAIL_1,"Hum... well, I may have asked too much. \nBut please don’t mention our new planet to the Xenomorphs.",Ho... j'ai du trop en demander. Mais évitez de donner nos nouvelles coordonnées aux Xénomorphes s'il vous plait.
+KEY_MIS_2,"Don’t run, I am your friend ! I have a simple mission for you ! I’m looking for a new planet in order to please my superior kind. Some place where we could breathe pure nitrogen, with a nice, fresh tropical climate would be fine. Minus 50° would be the least you can do.\nNow hurry up you punk, my palace won’t build itself up !","Salutation race inférieure.\nSuite à des expériences accomplies par des sujets incompétents, ma planète a été détruite. Je recherche pour ma royale personne et ma race supérieure un endroit où nous pourrons respirer du nitrogène pur et un climat tropical, aux alentours de -50°C.\nPlus vite que ça, ce palais ne se construira pas seul !"
+KEY_GG_2,"Not bad, friend, come visit my palace if you get the chance.",Pas mal mon ami. Venez visiter mon palais si vous en avez l'opportunité.
+KEY_FAIL_2,Just asking for a friend... how strong is your army?,"Juste pour information, quelle est la puissance de votre armée ?"
+KEY_MIS_3,"YOU THERE! MY PLANET HAS BEEN DESTROYED DUE TO SOME FILTHY MAGGOTS’ DECEPTION. FIND US A NEW PLANET FROM WHICH I CAN ANNIHILATE THEM WITH XENON. FAR CLOSE TO THE SUN, WE DON’T LIKE THE COLD, SO MAKE IT 120°C, YOU HEAR?! AND HURRY UP OR YOUR MANGY OFFICE WILL\nSUFFER THE SAME\nFATE AS THE\nCREATORS!!",TOI LA ! MA PLANETE A ETE DETRUITE A CAUSE DE SALES INSECTES QUI M'ONT TROMPES. JE VEUX UNE NOUVELLE PLANETE POUR POUVOIR LES ANNIHILER AVEC DU XENON ET TRES LOIN DU SOLEIL? MAXIMUM -50°C CAR J’AIME PAS LE CHAUD TU M’ENTENDS? J’AIME PAS LE CHAUD!! DEPECHE TOI OU TON MISERABLE BUREAU SUBIRA LE\nMEME SORT QUE\nLES CREATEURS !!
+KEY_GG_3,"PERHAPS YOU AREN’T AS USELESS AS YOU SEEM !\nNOW TELL ME, HAS A SMALL SPECIES WITH LIGHT-UP FINGERS BEEN THROUGH HERE?","PEUT-ETRE N'ETES-VOUS PAS AUSSI INUTILES QUE PREVU ! MAIS DITES-MOI, AVEZ-VOUS VU PASSER UNE PETITE ESPECE AU DOIGT LUMINEUX ?"
+KEY_FAIL_3,DIE!!!!,MOURREZ !!!
+KEY_PRES_NUL,Did your mama forced you to chose this job?,C'est votre maman qui vous a donné ce boulot ?
+KEY_PRES_MID,You did the minimum expected.,Vous avez fait le minimum demandé
+KEY_PRES_GOOD,Nice job! You are a real friend to Asylum Seekers from Space!,Bon travail ! Vous êtes un bon allié du bureau Asylum Seeker from Space.
+KEY_PRES_PERF,"Well played! A new cult is spreading all around the universe, with you as their idol!",Bien joué ! Un nouveau culte vous idolant s'étend à travers l'espace.
+KEY_MONEY_NEG,Where did you find that extra cash? You're Fired!,Où avez-vous trouvé tout cet argent ? Vous êtes viré !
+KEY_MONEY_NUL,Did you expect us to do charity?,Nous ne sommes pas une charité vous savez ?
+KEY_MONEY_MID,Today is not a promotion day.,La promotion que vous demandiez ne sera pas pour aujourd'hui.
+KEY_MONEY_GOOD,You served your office well!,Vous avez bien servi votre employeur !
+KEY_MONEY_PERF,Great news! Your boss' position is suddenly available!,Super nouvelle : le poste de votre chef est maintenant vacant !
+KEY_PRES_SCORE,Customers' reviews:,Votre score de la journée :
+KEY_MONEY_SCORE,Your day's earnings:,Vos gains de la journée :
+KEY_CREDIT,"A game by:\n\nKevin \""Abytron\"" Delahaye\n\t\tRyan \""Bananaman\"" Herbert\nCyanael\nValhanya\n\nMusic by:  Kevin MacLeod - Acid Jazz","Un jeu de :\nKevin ""Abyton"" Delahaye\nRyan ""Bananaman"" Herbert\nCyanael\nValhanya\n\nMusique de :Kevin MacLeod - Acid Jazz"
+KEY_OXYGEN,Oxygne,Oxygène
+KEY_NITROGEN,Nitrogen,Nitrogène
+KEY_XENON,Xenon,Xénon
+KEY_BUDGET,Budget:,Budget :
+KEY_VAL,Validate,Valider
+KEY_PLAY_AGAIN,Play again,Rejouer
+KEY_THANKS,Thanks for playing,Merci d'avoir joué
+KEY_CLICK,Click to continue,Cliquer pour continuer
+KEY_START,Click to start,Cliquer pour commencer
+KEY_MUTE,Press 'M' to mute,Appuyer sur 'M' pour couper le son
+KEY_MIS_REVIEW,Your review:,Votre critique :
+KEY_MIS_WAIT,One mission awaiting...\n\nUse the intercom to call\nyour next customer.,Une mission en attente...\n\nUtiliser l'interphone pour appeler votre prochain client.
+KEY_TIPS_CLICK,Right click on any planet to reset it.,Click droit pour réinitialiser la planète.
+KEY_TIP,"Find the perfect planet to complete your mission.\n\nChange its orbit and atmosphere to make the ideal planet, but care for its price!\n\nKeep the cost low to make your boss proud.\n\nLook for a new system if you can't complete the mission with the given one.","Fabriquez la planète parfaite pour compléter votre mission.\n\nModifiez son orbite et son atmospère pour avoir la planète idéale, mais attention au coût !\n\nGarder un coût faible pour satisfaire votre patron.\n\nCherchez un autre système si vous ne pouvez compléter la mission."
+KEY_ATM,Change\nAtmosphere,Modifier\nAtmosphère
+KEY_HIGH_LOW,High\nLow,Haut\nBas

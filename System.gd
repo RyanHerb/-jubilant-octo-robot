@@ -10,8 +10,8 @@ var viewport_size
 var planets = []
 var valid = true
 var star
-var atmospheres = ["Oxygen", "Nitrogen", "Xenon"]
-var cout_atmospheres = {"Oxygen" : 50, "Nitrogen" : 100, "Xenon" : 200}
+var atmospheres = [tr("KEY_OXYGEN"), tr("KEY_NITROGEN"), tr("XENON")]
+var cout_atmospheres = {tr("KEY_OXYGEN") : 50, tr("KEY_NITROGEN") : 100, tr("KEY_XENON") : 200}
 var dragged_planet
 var current_planet
 
@@ -232,7 +232,7 @@ func _on_planet_right_click(target):
 	
 func _on_HUDSystem_atmo_changed(new_atmo):
 	var cost_curr_planet = current_planet.get_cost_atmo()
-	current_planet.update_atmosphere(new_atmo, get_cost_change_atmo(new_atmo))
+	current_planet.update_atmosphere(tr(new_atmo), get_cost_change_atmo(tr(new_atmo)))
 	$HUDLayer/HUDSystem.add_to_total_cout(current_planet.get_cost_atmo() - cost_curr_planet)
 
 func _on_HUDSystem_reinit_system():

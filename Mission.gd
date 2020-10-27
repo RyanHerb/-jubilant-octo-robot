@@ -3,7 +3,7 @@ extends Node2D
 var min_temperature
 var max_temperature
 var temp_asked
-var atmosphere = "Oxygen"
+var atmosphere = tr("KEY_OXYGEN")
 var budget
 var repartition_point = [50, 50] #temperature, gaz
 var prestige_good_job = 60 # au dessus de ce prestige, l'alien est content!
@@ -68,7 +68,7 @@ func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, prestige, file):
 	coef_prestige = prestige
 	var sprite = load(file)
 	$Alien.texture = sprite
-	var string = "Budget: %s$" %[money] 
+	var string = "%s %s$" %[tr("KEY_BUDGET"), money] 
 	$Budget.text = string
 
 # =============
