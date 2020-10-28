@@ -7,10 +7,8 @@ func _ready():
 	$Area2D.hide()
 	$Commentaire.hide()
 	$ThanksForPlaying.hide()
-	$Area2D/Lore.text = tr("KEY_LORE")
 	$PlayAgain.hide()
 	$Credits.hide()
-	$Credits.text = tr("KEY_CREDITS")
 
 func show_message(text):
 	$Titre.text = text
@@ -18,6 +16,7 @@ func show_message(text):
 	
 func show_game_over():
 	$ThanksForPlaying.show()
+	$Credits.text = tr("KEY_CREDIT")
 	$Credits.show()
 	$PlayAgain.show()
 
@@ -42,6 +41,7 @@ func comment_result(prestige, prestige_max, money, money_max):
 func _on_Zone2D_enter():
 	$ASS.hide()
 	$Area2D.show()
+	$Area2D/Lore.text = tr("KEY_LORE")
 	$LanguageFr.hide()
 	$LanguageUK.hide()
 	$clic.play()

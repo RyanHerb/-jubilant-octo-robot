@@ -10,8 +10,8 @@ var viewport_size
 var planets = []
 var valid = true
 var star
-var atmospheres = [tr("KEY_OXYGEN"), tr("KEY_NITROGEN"), tr("XENON")]
-var cout_atmospheres = {tr("KEY_OXYGEN") : 50, tr("KEY_NITROGEN") : 100, tr("KEY_XENON") : 200}
+var atmospheres #= [tr("KEY_OXYGEN"), tr("KEY_NITROGEN"), tr("KEY_XENON")]
+var cout_atmospheres #= {tr("KEY_OXYGEN") : 50, tr("KEY_NITROGEN") : 100, tr("KEY_XENON") : 200}
 var dragged_planet
 var current_planet
 
@@ -91,6 +91,7 @@ func init_planets():
 		p.connect("right_clicked", self, "_on_planet_right_click")
 
 		var atmosphere = atmospheres[randi()%atmospheres.size()]
+		print("planet ", _n, " d'atmo ", atmosphere)
 		var rand_sprite = get_random_sprite(planet_sprites)
 		var rand_index = rand_sprite[0]
 		var sprite = rand_sprite[1]
@@ -115,6 +116,8 @@ func free_planets():
 	planets = []
 
 func init():
+	atmospheres = [tr("KEY_OXYGEN"), tr("KEY_NITROGEN"), tr("KEY_XENON")]
+	cout_atmospheres = {tr("KEY_OXYGEN") : 50, tr("KEY_NITROGEN") : 100, tr("KEY_XENON") : 200}
 	init_star()
 	init_planets()
 	star.position.x += viewport_size.x

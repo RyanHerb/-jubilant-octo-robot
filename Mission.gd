@@ -50,6 +50,7 @@ func show_ending_mission(min_temp, max_temp, atm):
 	$Prestige.compute_stars(int(prestige))
 	$Prestige.show()
 	#prestige *= coef_prestige
+	$Prestige/Review.set_text(tr("KEY_MIS_REVIEW"))
 	return int(prestige)
 
 func update_descr(text):

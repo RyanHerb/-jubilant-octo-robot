@@ -12,7 +12,7 @@ var current_gaz
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	show_tips()
-	
+			
 func _process(_delta):
 	var system = get_parent().get_parent()
 	if !system.valid and !$Valider.disabled:

@@ -25,8 +25,8 @@ KEY_MONEY_GOOD,You served your office well!,Vous avez bien servi votre employeur
 KEY_MONEY_PERF,Great news! Your boss' position is suddenly available!,Super nouvelle : le poste de votre chef est maintenant vacant !
 KEY_PRES_SCORE,Customers' reviews:,Votre score de la journée :
 KEY_MONEY_SCORE,Your day's earnings:,Vos gains de la journée :
-KEY_CREDIT,"A game by:\n\nKevin \""Abytron\"" Delahaye\n\t\tRyan \""Bananaman\"" Herbert\nCyanael\nValhanya\n\nMusic by:  Kevin MacLeod - Acid Jazz","Un jeu de :\nKevin ""Abyton"" Delahaye\nRyan ""Bananaman"" Herbert\nCyanael\nValhanya\n\nMusique de :Kevin MacLeod - Acid Jazz"
-KEY_OXYGEN,Oxygne,Oxygène
+KEY_CREDIT,"A game by:\n\nKevin \""Abytron\"" Delahaye\n\t\tRyan \""Bananaman\"" Herbert\nCyanael\nValhanya\n\nMusic by:  Kevin MacLeod - Acid Jazz","Un jeu de :\nKevin ""Abyton"" Delahaye\nRyan ""Bananaman"" Herbert\nCyanael\nValhanya\n\nMusique de : Kevin MacLeod - Acid Jazz"
+KEY_OXYGEN,Oxygen,Oxygène
 KEY_NITROGEN,Nitrogen,Nitrogène
 KEY_XENON,Xenon,Xénon
 KEY_BUDGET,Budget:,Budget :

@@ -2,23 +2,11 @@ extends Area2D
 
 signal Comment_end
 
-
-var nulPres = tr("KEY_PRES_NUL")
-var moyenPres = tr("KEY_PRES_MID")
-var goodPres = tr("KEY_PRES_GOOD")
-var perfectPres = tr("KEY_PRES_PERF")
-var tab_val_pres = [0.5, 0.75, 0.92, 1]
-var comment_prest = [nulPres, moyenPres, goodPres, perfectPres]
-
-var negMoney = tr("KEY_MONEY_NEG")
-var nulMoney = tr("KEY_MONEY_NUL")
-var midMoney = tr("KEY_MONEY_MID")
-var goodMoney = tr("KEY_MONEY_GOOD")
-var perfectMoney = tr("KEY_MONEY_PERF")
-var tab_val_money = [0, 0.3, 0.5, 0.92, 1]
-var comment_money = [negMoney, nulMoney, midMoney, goodMoney, perfectMoney]
-
 func choose_comments(prestige, prestige_max):
+	var tab_val_pres = [0.5, 0.75, 0.92, 1]
+	var comment_prest = [tr("KEY_PRES_NUL"), tr("KEY_PRES_MID"),
+	tr("KEY_PRES_GOOD"), tr("KEY_PRES_PERF")]
+	
 	var i = 0
 	while (prestige > prestige_max * tab_val_pres[i] and i < 3) :
 		i += 1
@@ -27,6 +15,10 @@ func choose_comments(prestige, prestige_max):
 	$TotalRes.text = strTotal
 
 func choose_comments_money(money, money_max):
+	var tab_val_money = [0, 0.3, 0.5, 0.92, 1]
+	var comment_money = [tr("KEY_MONEY_NEG"), tr("KEY_MONEY_NUL"),
+	tr("KEY_MONEY_MID"), tr("KEY_MONEY_GOOD"), tr("KEY_MONEY_PERF")]
+
 	var i = 0
 	while money > money_max * tab_val_money[i] and i < 4 :
 		i += 1

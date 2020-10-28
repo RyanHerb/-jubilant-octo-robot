@@ -50,9 +50,9 @@ func is_origin_atmosphere(text):
 	return false
 
 func update_atmosphere(text, cost):
-	print("text ", text, " cost ", cost)
 	atmosphere_new = text
 	print(tmp_cost, cost)
+	print("test atmo ", atmosphere_origin, " ", text, " cost ", cost)
 	if atmosphere_origin == text:
 		tmp_cost[1] = 0
 	else:

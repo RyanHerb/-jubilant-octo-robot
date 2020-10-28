@@ -139,7 +139,7 @@ margin_top = 107.0
 margin_right = 828.98
 margin_bottom = 433.0
 custom_fonts/font = SubResource( 4 )
-text = "Lore
+text = "KEY_LORE
 "
 autowrap = true
 __meta__ = {
@@ -156,9 +156,9 @@ scale = Vector2( 10, 10 )
 shape = SubResource( 5 )
 
 [node name="TotalRes" type="Label" parent="Commentaire"]
-margin_left = 192.0
+margin_left = 128.0
 margin_top = 71.0
-margin_right = 768.0
+margin_right = 832.0
 margin_bottom = 100.0
 grow_horizontal = 2
 rect_pivot_offset = Vector2( 193.017, 8.822 )
@@ -184,9 +184,9 @@ __meta__ = {
 }
 
 [node name="TotalMoney" type="Label" parent="Commentaire"]
-margin_left = 128.0
+margin_left = 64.0
 margin_top = 297.0
-margin_right = 832.0
+margin_right = 896.0
 margin_bottom = 329.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 6 )
@@ -256,7 +256,7 @@ margin_top = 263.0
 margin_right = 704.0
 margin_bottom = 383.0
 custom_fonts/font = SubResource( 10 )
-text = "Credits"
+text = "KEY_CREDITS"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
