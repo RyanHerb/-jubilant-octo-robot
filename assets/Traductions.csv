@@ -37,7 +37,7 @@ KEY_CLICK,Click to continue,Cliquer pour continuer
 KEY_START,Click to start,Cliquer pour commencer
 KEY_MUTE,Press 'M' to mute,Appuyer sur 'M' pour couper le son
 KEY_MIS_REVIEW,Your review:,Votre critique :
-KEY_MIS_WAIT,One mission awaiting...\n\nUse the intercom to call\nyour next customer.,Une mission en attente...\n\nUtiliser l'interphone pour appeler votre prochain client.
+KEY_MIS_WAIT,One mission awaiting...\n\nUse the intercom to cal\nyour next customer.,Une mission en attente...\n\nUtiliser l'interphone pour appeler votre prochain client.
 KEY_TIPS_CLICK,Right click on any planet to reset it.,Click droit pour réinitialiser la planète.
 KEY_TIP,"Find the perfect planet to complete your mission.\n\nChange its orbit and atmosphere to make the ideal planet, but care for its price!\n\nKeep the cost low to make your boss proud.\n\nLook for a new system if you can't complete the mission with the given one.","Fabriquez la planète parfaite pour compléter votre mission.\n\nModifiez son orbite et son atmospère pour avoir la planète idéale, mais attention au coût !\n\nGarder un coût faible pour satisfaire votre patron.\n\nCherchez un autre système si vous ne pouvez compléter la mission."
 KEY_ATM,Change\nAtmosphere,Modifier\nAtmosphère

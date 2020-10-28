@@ -42,6 +42,8 @@ func comment_result(prestige, prestige_max, money, money_max):
 func _on_Zone2D_enter():
 	$ASS.hide()
 	$Area2D.show()
+	$LanguageFr.hide()
+	$LanguageUK.hide()
 	$clic.play()
 	$lore_val.play()
 
