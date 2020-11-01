@@ -155,17 +155,19 @@ func drag_planet():
 
 func calculate_warning():
 	valid = true
-	for p in planets:
-		if current_planet != p:
-			var p_dist = p.position.distance_to(star.position)
-			var current_planet_diff = p_dist - current_planet.position.distance_to(star.position)
-			if abs(current_planet_diff) <= 32:
-				valid = false
-				p.set_warn(true)
-			else:
-				p.set_warn(false)
+	for p1 in planets:
+		p1.set_warn(false)
 
-	current_planet.set_warn(!valid)
+	for p in planets:
+		p.set_warn(false)
+		for p2 in planets:
+			if p2 != p:
+				var p_dist = p.position.distance_to(star.position)
+				var diff = p_dist - p2.position.distance_to(star.position)
+				if abs(diff) <= 32:
+					valid = false
+					p2.set_warn(true)
+					p.set_warn(true)
 
 func compute_temp(planet):
 	var dist = float(planet.distance_to_star(star.position))
