@@ -1,0 +1,13 @@
+{
+  "description": "KEY_MIS_1",
+  "success": "KEY_GG_1",
+  "failure": "KEY_FAIL_1",
+  "min_temp": -60,
+  "max_temp": 100,
+  "requested_temp": 20,
+  "requested_gas": "KEY_OXYGEN",
+  "money": 700,
+  "prestige_coef": 1,
+  "sprite": "alien_ET.png",
+  "voice": "martian.wav"
+}

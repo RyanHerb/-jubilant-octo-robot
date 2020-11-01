@@ -4,9 +4,11 @@ export (PackedScene) var Mission
 
 var mute = false
 var mission = preload("res://Mission.tscn").instance()
+var missions = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	load_missions()
 	TranslationServer.set_locale("en")
 	$IntroEnd.new_game()
 
@@ -23,22 +25,18 @@ func start_scenario():
 	connections()
 	add_child(mission)
 	
-	create_mission_1()
-	$Office.new_mission()
-	yield($EntreMissions, "timeout")
-	$EntreMissions.stop()
+	var first = true
 	
-	create_mission_2()
-	$System.reinit()
-	$Office.new_mission()
-	yield($EntreMissions, "timeout")
-	$EntreMissions.stop()
-	
-	create_mission_3()
-	$System.reinit()
-	$Office.new_mission()
-	yield($EntreMissions, "timeout")
-	$EntreMissions.stop()
+	for m in missions:
+		if first:
+			pass
+		else:
+			$System.reinit()
+
+		mission.load_json(m)
+		$Office.new_mission()
+		yield($EntreMissions, "timeout")
+		$EntreMissions.stop()
 	
 	$System.my_free()
 	end_game()
@@ -138,3 +136,8 @@ func create_mission_3():
 	mission.update_thank(thanksBien, thanksNuls)
 	mission.update_values(80, 160, 120, tr("KEY_XENON"), 300, 3,  "res://assets/aliens/alien_xenomorph_half.png")
 	mission.set_intro_sound("res://assets/sounds/xenomorph.wav")
+
+func load_missions():
+	var mission_files = ['et_mission.json', 'martian_mission.json', 'xenomorph_mission.json']
+	for file in mission_files:
+		missions.append(mission.load_mission_json(file))

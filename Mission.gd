@@ -60,18 +60,6 @@ func update_thank(cools, nuls):
 	$ThanksCools.text = cools
 	$ThanksNuls.text = nuls
 
-func update_values(min_tmp, max_tmp, tmp_asked, gaz, money, prestige, file):
-	min_temperature = min_tmp
-	max_temperature = max_tmp
-	atmosphere = gaz
-	temp_asked = tmp_asked
-	budget = money
-	coef_prestige = prestige
-	var sprite = load(file)
-	$Alien.texture = sprite
-	var string = "%s %s$" %[tr("KEY_BUDGET"), money] 
-	$Budget.text = string
-
 # =============
 # =  Display  =
 # =============
@@ -131,3 +119,23 @@ func get_coef_prestige():
 
 func set_intro_sound(path):
 	$IntroSound.stream = load(path)
+
+func load_mission_json(fname):
+	var file = File.new()
+	file.open("res://missions/%s" % fname, file.READ)
+	var json = file.get_as_text()
+	var json_result = JSON.parse(json)
+	file.close()
+	return json_result
+
+func load_json(mission_json):
+	min_temperature = mission_json['min_temp']
+	max_temperature = mission_json['max_temp']
+	temp_asked = mission_json['requested_temp']
+	atmosphere = mission_json['gas']
+	budget = mission_json['money']
+	coef_prestige = mission_json['prestige_coef']
+
+	$Budget.text = "%s %s$" %[tr("KEY_BUDGET"), budget]
+	$Alien.texture = load('res://asssets/aliens/%s' % mission_json['sprite'])
+	set_intro_sound('res://assets/sounds/%s' % mission_json['voice'])
